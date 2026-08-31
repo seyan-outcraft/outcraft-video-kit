@@ -1,0 +1,296 @@
+{
+  "comment": "Colours and fonts of the brands we show. Pulled from Brandfetch. Handy when a logo wall needs each mark on its own brand colour.",
+  "updated": "2026-08-30",
+  "brands": {
+    "salesforce": {
+      "domain": "salesforce.com",
+      "name": "Salesforce",
+      "colors": {
+        "dark": "#032e61",
+        "light": "#ffffff",
+        "accent": "#00a1e0"
+      },
+      "fonts": {
+        "title": "ITC Avant Garde",
+        "body": "Salesforce Sans"
+      },
+      "pulled": "2026-08-30"
+    },
+    "hubspot": {
+      "domain": "hubspot.com",
+      "name": "HubSpot",
+      "colors": {
+        "dark": "#1F1F1F",
+        "light": "#FFFFFF",
+        "accent": "#FE4802",
+        "brand": "#F8F5EE"
+      },
+      "fonts": {
+        "body": "HubSpot Sans",
+        "title": "HubSpot Serif"
+      },
+      "pulled": "2026-08-30"
+    },
+    "pipedrive": {
+      "domain": "pipedrive.com",
+      "name": "Pipedrive",
+      "colors": {
+        "dark": "#404346",
+        "light": "#ffffff",
+        "accent": "#027737",
+        "brand": "#D7F9D3"
+      },
+      "fonts": {
+        "title": "Haffer",
+        "body": "Inter"
+      },
+      "pulled": "2026-08-30"
+    },
+    "attio": {
+      "domain": "attio.com",
+      "name": "Attio",
+      "colors": {
+        "accent": "#266DF0",
+        "light": "#FFFFFF",
+        "dark": "#1D1E20"
+      },
+      "fonts": {
+        "title": "Inter Display",
+        "body": "Inter"
+      },
+      "pulled": "2026-08-30"
+    },
+    "dynamics": {
+      "domain": "dynamics.microsoft.com",
+      "name": "Microsoft",
+      "colors": {
+        "accent": "#00A4EF",
+        "brand": "#FFB900",
+        "light": "#FFFFFF",
+        "dark": "#000000"
+      },
+      "fonts": {
+        "title": "Segoe UI",
+        "body": "Segoe UI"
+      },
+      "pulled": "2026-08-30"
+    },
+    "shopify": {
+      "domain": "shopify.com",
+      "name": "Shopify.com",
+      "colors": {
+        "accent": "#95C049",
+        "dark": "#002E25",
+        "brand": "#FBF7ED",
+        "light": "#FFFFFF"
+      },
+      "fonts": {
+        "title": "Shopify Sans",
+        "body": "Shopify Sans"
+      },
+      "pulled": "2026-08-30"
+    },
+    "klaviyo": {
+      "domain": "klaviyo.com",
+      "name": "Klaviyo",
+      "colors": {
+        "accent": "#FF4B32",
+        "light": "#FFFAF3",
+        "dark": "#232426"
+      },
+      "fonts": {
+        "title": "DM Mono",
+        "body": "Instrument Sans"
+      },
+      "pulled": "2026-08-30"
+    },
+    "omnisend": {
+      "domain": "omnisend.com",
+      "name": "Omnisend",
+      "colors": {
+        "accent": "#A6F41B",
+        "light": "#FFFFFF",
+        "dark": "#000000",
+        "brand": "#2F8480"
+      },
+      "fonts": {
+        "title": "Faktum Bold",
+        "body": "Roboto"
+      },
+      "pulled": "2026-08-30"
+    },
+    "checkoutchamp": {
+      "domain": "checkoutchamp.com",
+      "name": "Checkout Champ",
+      "colors": {
+        "accent": "#f36319",
+        "dark": "#1e2139",
+        "light": "#ffffff"
+      },
+      "fonts": {
+        "body": "montserrat"
+      },
+      "pulled": "2026-08-30"
+    },
+    "slack": {
+      "domain": "slack.com",
+      "name": "Slack",
+      "colors": {
+        "accent": "#611F69",
+        "dark": "#1D1D1D",
+        "light": "#FFFFFF",
+        "brand": "#36C5F0"
+      },
+      "fonts": {
+        "title": "Salesforce Avant Garde",
+        "body": "Salesforce Sans"
+      },
+      "pulled": "2026-08-30"
+    },
+    "gmail": {
+      "domain": "gmail.com",
+      "name": "Gmail",
+      "colors": {
+        "dark": "#202124",
+        "light": "#FFFFFF",
+        "accent": "#1A73E8",
+        "brand": "#16A765"
+      },
+      "fonts": {
+        "title": "Google Sans",
+        "body": "Google Sans"
+      },
+      "pulled": "2026-08-30"
+    },
+    "outlook": {
+      "domain": "outlook.com",
+      "name": "Outlook",
+      "colors": {
+        "dark": "#212121",
+        "light": "#fefdfb",
+        "accent": "#ffb903"
+      },
+      "fonts": {
+        "body": "wf_segoe-ui_normal"
+      },
+      "pulled": "2026-08-30"
+    },
+    "whatsapp": {
+      "domain": "whatsapp.com",
+      "name": "WhatsApp",
+      "colors": {
+        "accent": "#25D366",
+        "dark": "#111B21",
+        "brand": "#E6FFDA",
+        "light": "#FFFFFF"
+      },
+      "fonts": {
+        "title": "Helvetica Neue",
+        "body": "Helvetica"
+      },
+      "pulled": "2026-08-30"
+    },
+    "zendesk": {
+      "domain": "zendesk.com",
+      "name": "Zendesk®",
+      "colors": {
+        "accent": "#CAEC6C",
+        "brand": "#213423",
+        "dark": "#000000",
+        "light": "#FFFFFF"
+      },
+      "fonts": {
+        "title": "Vanilla Sans",
+        "body": "Vanilla Sans"
+      },
+      "pulled": "2026-08-30"
+    },
+    "calendly": {
+      "domain": "calendly.com",
+      "name": "Calendly",
+      "colors": {
+        "brand": "#006BFF",
+        "light": "#FFFFFF",
+        "dark": "#004796",
+        "accent": "#0AE8F0"
+      },
+      "fonts": {
+        "title": "Gilroy",
+        "body": "Gilroy"
+      },
+      "pulled": "2026-08-30"
+    },
+    "cal": {
+      "domain": "cal.com",
+      "name": "Cal.com",
+      "colors": {
+        "dark": "#F4F4F4",
+        "light": "#ffffff",
+        "accent": "#141414"
+      },
+      "fonts": {
+        "body": "Matter",
+        "title": "Cal Sans"
+      },
+      "pulled": "2026-08-30"
+    },
+    "chilipiper": {
+      "domain": "chilipiper.com",
+      "name": "Chili Piper",
+      "colors": {
+        "dark": "#141624",
+        "light": "#FFFFFF",
+        "accent": "#ff5722",
+        "brand": "#533DFF"
+      },
+      "fonts": {
+        "title": "Neue Plak",
+        "body": "Calibre"
+      },
+      "pulled": "2026-08-30"
+    },
+    "monday": {
+      "domain": "monday.com",
+      "name": "monday.com",
+      "colors": {
+        "dark": "#181b34",
+        "light": "#FFFFFF",
+        "accent": "#6161FF"
+      },
+      "fonts": {
+        "body": "Poppins",
+        "title": "Poppins"
+      },
+      "pulled": "2026-08-30"
+    },
+    "zapier": {
+      "domain": "zapier.com",
+      "name": "Zapier",
+      "colors": {
+        "accent": "#FF4F00",
+        "light": "#FFFDF9",
+        "dark": "#201515",
+        "brand": "#FFF3E6"
+      },
+      "fonts": {
+        "body": "Inter",
+        "title": "Degular"
+      },
+      "pulled": "2026-08-30"
+    },
+    "make": {
+      "domain": "make.com",
+      "name": "Make",
+      "colors": {
+        "accent": "#EE2FEE",
+        "dark": "#240342",
+        "light": "#ffffff"
+      },
+      "fonts": {
+        "title": "Inter",
+        "body": "Inter"
+      },
+      "pulled": "2026-08-30"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+Pulsetto's 30x ROI Success with Outcraft AI - Customer Success Story | Outcraft AI
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+#base-site-header-widget_1781536472897 .base-site-header-desktop,
+#base-site-header-widget_1781536472897 .base-site-header-mobile {
+		background-color: rgba(241, 243, 255, 1);
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li > a {
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li:hover > a,
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li > a:hover,
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li:has(> .base-submenu-wrapper.base-show) > a {
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.active > a,
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.active:has(> .base-submenu-wrapper.base-show) > a {
+/* Add padding right for dropdown toggle if toggles are set to visible */
+	#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li > a {
+			padding-right: calc(0.3em + calc(var(--base-menu-horizontal-dropdown-toggle-scale) * 1em) + var(--base-menu-horizontal-link-padding-right));
+/* Hide dropdown toggles if toggles are set to hidden */
+	#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.hs-item-has-children > .base-dropdown-toggle svg {
+/* Show dropdown toggle */
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.hs-item-has-children > .base-dropdown-toggle {
+			right: var(--base-menu-horizontal-link-padding-right);
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.hs-item-has-children:hover > .base-dropdown-toggle,
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.hs-item-has-children > .base-dropdown-toggle:hover,
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.hs-item-has-children:has(> .base-submenu-wrapper.base-show) > .base-dropdown-toggle {
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.hs-item-has-children.active > .base-dropdown-toggle,
+#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li.hs-item-has-children.active:has(> .base-submenu-wrapper.base-show) > .base-dropdown-toggle {
+	@media (max-width: 991px) {
+		#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li > .base-submenu-wrapper {
+	@media (min-width: 992px) {
+		#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li > .base-submenu-wrapper {
+	#base-site-header-widget_1781536472897 .base-site-header-menu > ul > li > .base-submenu-wrapper > .base-dropdown {
+		/* Dropdown simple menu */
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-simple-menu ul > li > a {
+			border-radius: var(--base-corner-radius);
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-simple-menu ul > li > a:hover {
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-simple-menu ul > li.active > a {
+		/* Dropdown link primary */
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a .base-site-header-dropdown-link__text {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a .base-site-header-dropdown-link__description {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a .base-site-header-dropdown-link__icon {
+				#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a .base-site-header-dropdown-link__icon svg {
+	            #base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a .base-site-header-dropdown-link__icon i {
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a:hover {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a:hover .base-site-header-dropdown-link__text {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a:hover .base-site-header-dropdown-link__description {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a:hover .base-site-header-dropdown-link__icon svg {
+	        #base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary a:hover .base-site-header-dropdown-link__icon i {
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary.active a {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary.active a .base-site-header-dropdown-link__text {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary.active a .base-site-header-dropdown-link__description {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary.active a .base-site-header-dropdown-link__icon svg {
+	        #base-site-header-widget_1781536472897 .base-site-header-dropdown-link_primary.active a .base-site-header-dropdown-link__icon i {
+	    /* Dropdown link secondary */
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a .base-site-header-dropdown-link__text {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a .base-site-header-dropdown-link__description {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a .base-site-header-dropdown-link__icon {
+				#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a .base-site-header-dropdown-link__icon svg {
+	            #base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a .base-site-header-dropdown-link__icon i {
+		#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a:hover {
+			#base-site-header-widget_1781536472897 .base-site-header-dropdown-link_secondary a:hover .base-site-header-dropdown-link__text {

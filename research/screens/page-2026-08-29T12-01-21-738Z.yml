@@ -1,0 +1,54 @@
+- generic [active] [ref=f24e1]:
+  - main [ref=f24e3]:
+    - generic [ref=f24e5]:
+      - link "Exit Setup" [ref=f24e7] [cursor=pointer]:
+        - /url: https://app.outcraft.ai/campaigns
+      - generic [ref=f24e24]:
+        - generic [ref=f24e126]:
+          - heading "Where Should This Campaign Get Leads From?" [level=1] [ref=f24e130]
+          - paragraph [ref=f24e131]: Choose the system that will provide contacts, customer events, or campaign triggers.
+        - generic [ref=f24e32]:
+          - generic [ref=f24e134]:
+            - generic [ref=f24e135]: Provider
+            - generic [ref=f24e137]:
+              - generic [ref=f24e141] [cursor=pointer]:
+                - text: Klaviyo
+                - paragraph [ref=f24e142]: Use this to create targeted campaigns based on customer interactions such as email opens, clicks, and purchases.
+              - generic [ref=f24e146] [cursor=pointer]:
+                - text: HubSpot
+                - paragraph [ref=f24e147]: Use contact property changes, CRM events, scheduling links, and meetings.
+              - generic [ref=f24e151] [cursor=pointer]:
+                - text: Attio
+                - paragraph [ref=f24e152]: Connect Attio CRM to trigger campaigns based on customer data.
+              - generic [ref=f24e156] [cursor=pointer]:
+                - text: Custom API
+                - paragraph [ref=f24e157]: Use this if you have your own backend or unsupported service.
+              - generic [ref=f24e161] [cursor=pointer]:
+                - text: Microsoft Dynamics
+                - paragraph [ref=f24e162]: Connect Microsoft Dynamics to trigger campaigns based on CRM events and customer data.
+              - generic [ref=f24e166] [cursor=pointer]:
+                - text: CSV File / Manual
+                - paragraph [ref=f24e167]: Manually import leads via CSV or create them one by one.
+              - generic [ref=f24e171] [cursor=pointer]:
+                - text: Salesforce
+                - paragraph [ref=f24e172]: Integrate Salesforce to trigger campaigns based on CRM events and customer data.
+              - generic [ref=f24e176] [cursor=pointer]:
+                - text: Pipedrive
+                - paragraph [ref=f24e177]: Integrate Pipedrive to trigger campaigns based on CRM events and customer data.
+              - generic [ref=f24e181] [cursor=pointer]:
+                - text: GoHighLevel
+                - paragraph [ref=f24e182]: Connect GoHighLevel to trigger campaigns based on CRM contact updates and customer data.
+          - generic [ref=f24e110]:
+            - button "Back" [ref=f24e183] [cursor=pointer]
+            - button "Continue" [ref=f24e120] [cursor=pointer]
+  - generic:
+    - status
+  - iframe
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - iframe
+          - iframe [ref=f24e124]:
+            - button "Open customer support" [ref=f27e4]

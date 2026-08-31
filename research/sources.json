@@ -1,0 +1,87 @@
+{
+  "comment": "Every page the workshop re-reads. `npm run research:refresh` pulls these through Firecrawl, saves markdown to research/pages/, and reports what changed since last time. Blog posts are deliberately left out: they are SEO, not product truth.",
+  "updated": "2026-08-30",
+  "sources": [
+    {
+      "slug": "home",
+      "url": "https://www.outcraft.ai",
+      "why": "positioning, hero claim, customer logo wall"
+    },
+    {
+      "slug": "pricing",
+      "url": "https://www.outcraft.ai/pricing",
+      "why": "plan names and numbers"
+    },
+    {
+      "slug": "faq",
+      "url": "https://www.outcraft.ai/faq",
+      "why": "objections in the company's own words"
+    },
+    {
+      "slug": "company",
+      "url": "https://www.outcraft.ai/company",
+      "why": "who they are, tone of voice"
+    },
+    {
+      "slug": "solutions-b2b",
+      "url": "https://www.outcraft.ai/solutions/b2b",
+      "why": "B2B story spine"
+    },
+    {
+      "slug": "solutions-b2c",
+      "url": "https://www.outcraft.ai/solutions/b2c",
+      "why": "B2C story spine, cart recovery"
+    },
+    {
+      "slug": "integrations",
+      "url": "https://www.outcraft.ai/integrations",
+      "why": "the logo wall list. Drives assets/logos/."
+    },
+    {
+      "slug": "case-pulsetto",
+      "url": "https://www.outcraft.ai/customer-success-stories/how-pulsetto-leveraged-outcraft-ai-to-drive-dollar100k-in-monthly-recovered-revenue-with-30x-roi",
+      "why": "$100k/month, 30x ROI"
+    },
+    {
+      "slug": "case-omnisend",
+      "url": "https://www.outcraft.ai/customer-success-stories/omnisend-driving-engagement-and-scaling-lead-outreach-with-outcraft-ai",
+      "why": "60-second response, 5x connection"
+    },
+    {
+      "slug": "case-goth-n-rock",
+      "url": "https://www.outcraft.ai/customer-success-stories/goth-n-rock-boosts-revenue-with-outcraft-ai",
+      "why": "revenue proof"
+    },
+    {
+      "slug": "case-taima",
+      "url": "https://www.outcraft.ai/customer-success-stories/how-taima-titanium-leveraged-outcraft-ai-to-recover-revenue",
+      "why": "NEW 2026-08-30, not in old research"
+    },
+    {
+      "slug": "case-warmy",
+      "url": "https://www.outcraft.ai/customer-success-stories/how-warmy-uses-outcraft-ai-to-turn-free-trials-into-5-more-sales-meetings",
+      "why": "NEW 2026-08-30, trial activation angle"
+    },
+    {
+      "slug": "checkout-recovery-demo",
+      "url": "https://www.outcraft.ai/checkout-recovery-demo",
+      "why": "the cart-recovery demo, closest thing to a live product walkthrough"
+    },
+    {
+      "slug": "partner-marketplace",
+      "url": "https://www.outcraft.ai/partner-marketplace",
+      "why": "more partner logos"
+    }
+  ],
+  "dead_links": {
+    "checked": "2026-08-30",
+    "note": "In sitemap.xml but the page returns a 404 body with an HTTP 200 status. The whole knowledge base is gone as of 2026-08-30. Do not re-add without testing.",
+    "urls": [
+      "https://www.outcraft.ai/outcraft-ai-knowledge-base/does-it-sound-robotic",
+      "https://www.outcraft.ai/outcraft-ai-knowledge-base/smooth-operator-how-to-nail-the-timing-of-every-touchpoint",
+      "https://www.outcraft.ai/outcraft-ai-knowledge-base/what-happens-if-a-lead-doesnt-respond",
+      "https://www.outcraft.ai/outcraft-ai-knowledge-base/what-happens-if-a-lead-asks-a-question-the-ai-cant-answer",
+      "https://www.outcraft.ai/outcraft-ai-knowledge-base"
+    ]
+  }
+}

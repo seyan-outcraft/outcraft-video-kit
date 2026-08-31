@@ -1,0 +1,121 @@
+- generic [active] [ref=f44e1]:
+  - generic [ref=f44e3]:
+    - generic [ref=f44e4]: Exit Setup
+    - generic [ref=f44e11]:
+      - generic [ref=f44e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f44e13]: Book Appointment
+    - navigation [ref=f44e14]:
+      - list [ref=f44e15]:
+        - listitem [ref=f44e16]:
+          - generic [ref=f44e17]: Company
+          - list [ref=f44e18]:
+            - listitem [ref=f44e19]:
+              - link "Information" [ref=f44e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f44e23]:
+              - link "Industry" [ref=f44e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f44e27]:
+              - link "Compliance" [ref=f44e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f44e31]:
+          - generic [ref=f44e32]: Campaign
+          - list [ref=f44e33]:
+            - listitem [ref=f44e34]:
+              - link "Instructions" [ref=f44e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f44e38]:
+              - link "General Settings" [ref=f44e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f44e43]:
+              - link "Schedule" [ref=f44e44] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f44e47]:
+              - link "Outreach Channels" [ref=f44e48] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f44e51]:
+              - link "Booking" [ref=f44e52] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f44e55]:
+              - link "Outreach Sequence" [ref=f44e56] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f44e59]:
+              - link "Follow-Ups" [ref=f44e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f44e63]:
+              - link "Conversation Intelligence" [ref=f44e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f44e67]:
+          - generic [ref=f44e68]: AI Agent
+          - list [ref=f44e69]:
+            - listitem [ref=f44e70]:
+              - link "Configuration" [ref=f44e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f44e74]:
+          - generic [ref=f44e75]: Finish
+          - list [ref=f44e76]:
+            - listitem [ref=f44e77]:
+              - link "Review & Launch" [ref=f44e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f44e81]:
+          - generic [ref=f44e82] [cursor=pointer]: Advanced
+          - list [ref=f44e87]:
+            - listitem [ref=f44e88]:
+              - link [ref=f44e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f44e93]:
+              - link [ref=f44e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f44e98]:
+    - main [ref=f44e99]:
+      - generic [ref=f44e101]:
+        - generic [ref=f44e108]:
+          - heading "General Settings" [level=2] [ref=f44e109]
+          - text: Configure general campaign settings, such as target audience, messaging preferences, and performance goals. This will help the AI tailor its interactions to better suit your campaign's objectives.
+        - generic [ref=f44e114]:
+          - generic [ref=f44e118]:
+            - generic [ref=f44e120]:
+              - heading "Follow-ups" [level=2] [ref=f44e121]
+              - paragraph [ref=f44e122]: When a lead responds to the first outreach, the agent can continue with a matching follow-up sequence. Enable sequences separately for Positive, Undecided, or Negative responses.
+            - generic [ref=f44e124]:
+              - generic [ref=f44e127]:
+                - generic [ref=f44e128]: After a Positive Response
+                - generic [ref=f44e132]: Use this sequence when the lead shows interest or gives a positive response. Follow up to confirm the next step, share details, or answer any remaining questions.
+              - generic [ref=f44e139]:
+                - generic [ref=f44e140]: When a Lead Is Engaged but Undecided
+                - generic [ref=f44e144]: Use this sequence when the lead has engaged into conversation, but has not clearly said yes or no. Follow up to clarify interest, handle objections, and guide them toward a decision.
+              - generic [ref=f44e151]:
+                - generic [ref=f44e152]: After a Negative Response
+                - generic [ref=f44e156]: Use this sequence when the lead declines or shows they are not interested. Follow up politely, close the loop, or leave the door open for later.
+          - generic [ref=f44e164]:
+            - generic [ref=f44e166]:
+              - heading "Sendable Links & Codes" [level=2] [ref=f44e167]
+              - paragraph [ref=f44e168]: Configure the resources the AI may include in follow-up messages, including discount codes, checkout links, and additional offer details.
+            - generic [ref=f44e173]:
+              - generic [ref=f44e174]: Should shorten links in messages?
+              - generic [ref=f44e178]: If enabled, any links the AI includes in emails will be shortened using the built-in link shortener.
+          - generic [ref=f44e186]:
+            - generic [ref=f44e188]:
+              - heading "Hand-offs" [level=2] [ref=f44e189]
+              - paragraph [ref=f44e190]: Decide if the AI should transfer a conversation to a human and how your team should be notified.
+            - generic [ref=f44e192]:
+              - generic [ref=f44e195]:
+                - generic [ref=f44e196]: Notify after a positive reply
+                - generic [ref=f44e200]: If enabled, you will be notified when the lead responds positively. Successful qualification is also considered a positive outcome.
+              - generic [ref=f44e207]:
+                - generic [ref=f44e208]: Hand-off to a human on sensitive requests
+                - generic [ref=f44e212]: When a defined situation comes up, the campaign for that lead stops and you are notified with the reason.
+          - generic [ref=f44e220]:
+            - heading "Live meeting transfer" [level=2] [ref=f44e223]
+            - generic [ref=f44e228]:
+              - generic [ref=f44e229]: Transfer callers who are available for a meeting right now?
+              - generic [ref=f44e233]: If enabled, the agent will transfer the conversation to a specified number if lead is available for a meeting right now.
+    - generic [ref=f44e241]:
+      - button "Back" [ref=f44e243] [cursor=pointer]
+      - generic [ref=f44e246]:
+        - generic [ref=f44e249]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f44e250] [cursor=pointer]
+        - button [ref=f44e257] [cursor=pointer]
+  - generic:
+    - status

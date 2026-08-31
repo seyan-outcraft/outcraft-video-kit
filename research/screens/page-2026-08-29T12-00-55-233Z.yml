@@ -1,0 +1,75 @@
+- generic [active] [ref=f24e1]:
+  - main [ref=f24e3]:
+    - generic [ref=f24e5]:
+      - link "Exit Setup" [ref=f24e7] [cursor=pointer]:
+        - /url: https://app.outcraft.ai/campaigns
+      - generic [ref=f24e24]:
+        - generic [ref=f24e26]:
+          - heading "Choose Campaign Objective" [level=1] [ref=f24e30]
+          - paragraph [ref=f24e31]: Select the main objective of this campaign. Outcraft will use it to prepare recommended outreach defaults, sequence, and insights.
+        - generic [ref=f24e32]:
+          - generic [ref=f24e36]:
+            - generic [ref=f24e37]: Template id
+            - generic [ref=f24e39]:
+              - generic [ref=f24e44] [cursor=pointer]:
+                - text: Book Appointment
+                - paragraph [ref=f24e45]:
+                  - text: Engages prospects to schedule a consultation.
+                  - generic [ref=f24e46]: Outbound
+              - generic [ref=f24e51] [cursor=pointer]:
+                - text: Recover Abandoned Checkout
+                - paragraph [ref=f24e52]:
+                  - text: Re-engages shoppers who left items behind.
+                  - generic [ref=f24e53]: Outbound
+              - generic [ref=f24e58] [cursor=pointer]:
+                - text: Upsell Post-Purchase
+                - paragraph [ref=f24e59]:
+                  - text: Follows up after a sale to offer related products and build loyalty.
+                  - generic [ref=f24e60]: Outbound
+              - generic [ref=f24e65] [cursor=pointer]:
+                - text: Qualify Lead
+                - paragraph [ref=f24e66]:
+                  - text: Asks targeted questions to determine if a prospect is a good fit.
+                  - generic [ref=f24e67]: Outbound
+              - generic [ref=f24e72] [cursor=pointer]:
+                - text: Send Information
+                - paragraph [ref=f24e73]:
+                  - text: Delivers targeted resources or updates to nurture leads.
+                  - generic [ref=f24e74]: Outbound
+              - generic [ref=f24e79] [cursor=pointer]:
+                - text: Provide Support
+                - paragraph [ref=f24e80]:
+                  - text: Handles incoming customer service and troubleshooting queries.
+                  - generic [ref=f24e81]: Inbound
+              - generic [ref=f24e86] [cursor=pointer]:
+                - text: Inbound Refund Request
+                - paragraph [ref=f24e87]:
+                  - text: Manages return/refund requests while keeping trust.
+                  - generic [ref=f24e88]: Inbound
+              - generic [ref=f24e93] [cursor=pointer]:
+                - text: Post-Delivery Follow-Up
+                - paragraph [ref=f24e94]:
+                  - text: Engages customers after delivery to confirm receipt, support usage, and introduce relevant offers.
+                  - generic [ref=f24e95]: Outbound
+              - generic [ref=f24e100] [cursor=pointer]:
+                - text: Client Reactivation
+                - paragraph [ref=f24e101]:
+                  - text: Re-engages customers who cancelled, became inactive, or stopped responding.
+                  - generic [ref=f24e102]: Outbound
+              - generic [ref=f24e107] [cursor=pointer]:
+                - text: Qualify Inbound Lead
+                - paragraph [ref=f24e108]:
+                  - text: Asks targeted questions to determine if a prospect is a good fit.
+                  - generic [ref=f24e109]: Inbound
+          - button "Continue" [ref=f24e120] [cursor=pointer]
+  - generic:
+    - status
+  - iframe
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - iframe
+          - iframe [ref=f24e124]:
+            - button "Open customer support" [ref=f27e4]

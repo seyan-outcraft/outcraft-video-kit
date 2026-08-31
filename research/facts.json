@@ -1,0 +1,494 @@
+{
+  "comment": "Every number and claim we may put on screen. One row = one fact. Read this instead of hunting through prose. `source` is a slug from research/sources.json; the page text is in research/pages/<slug>.md. Re-check anything whose source page changed after `checked`.",
+  "updated": "2026-08-31",
+  "legend": {
+    "on_screen": "The exact words to render. Never paraphrase a number on screen.",
+    "checked": "Date the source page was last read by npm run research:refresh.",
+    "approved": "true = Seyan cleared it for a video. null = not asked yet. false = do not use.",
+    "risk": "Why this could get us in trouble, or empty."
+  },
+  "facts": [
+    {
+      "id": "pos.oneline",
+      "kind": "positioning",
+      "on_screen": "AI sales team that calls, qualifies and converts inbound demand",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": ""
+    },
+    {
+      "id": "pos.enemy",
+      "kind": "positioning",
+      "on_screen": "Most systems collect signals. Outcraft acts on them.",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": false,
+      "risk": "Seyan rejected this as a video spine (angle 2, 'Collect vs Act'). Fine as body copy, not as the story."
+    },
+    {
+      "id": "pos.channels",
+      "kind": "product",
+      "on_screen": "Voice. SMS. Email. WhatsApp.",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": true,
+      "risk": ""
+    },
+    {
+      "id": "pos.signals",
+      "kind": "product",
+      "on_screen": "A form fill. A demo request. A missed call. An abandoned cart. A failed payment.",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": ""
+    },
+    {
+      "id": "pos.jobs",
+      "kind": "product",
+      "on_screen": "Convert inbound leads / Activate users / Prevent churn / Recover lost revenue",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": ""
+    },
+    {
+      "id": "pos.competitors",
+      "kind": "positioning",
+      "on_screen": "Bland, Synthflow, Retell give you a voice agent to configure.",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": false,
+      "risk": "Naming rivals on camera invites a legal letter. Keep it off screen."
+    },
+    {
+      "id": "num.languages.home",
+      "kind": "spec",
+      "on_screen": "40+ languages",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "CONFLICT: the pricing page says 30+. Ask Seyan which is true before it goes on screen."
+    },
+    {
+      "id": "num.languages.pricing",
+      "kind": "spec",
+      "on_screen": "30+ languages",
+      "source": "pricing",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "CONFLICT with num.languages.home (40+)."
+    },
+    {
+      "id": "num.integrations",
+      "kind": "spec",
+      "on_screen": "20+ native integrations",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": true,
+      "risk": "The integrations page lists 22 as of 2026-08-30, so 20+ is safe."
+    },
+    {
+      "id": "num.first_response",
+      "kind": "spec",
+      "on_screen": "Median first response under 30 seconds",
+      "source": "pricing",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "Stronger and newer than the 60-second Omnisend number. Prefer this one."
+    },
+    {
+      "id": "num.coverage",
+      "kind": "spec",
+      "on_screen": "24/7",
+      "source": "pricing",
+      "checked": "2026-08-30",
+      "approved": true,
+      "risk": ""
+    },
+    {
+      "id": "num.price_floor",
+      "kind": "pricing",
+      "on_screen": "From $300 a month for up to 100 leads",
+      "source": "pricing",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "Pricing moves. Re-check on the day of publish."
+    },
+    {
+      "id": "num.price_per_lead",
+      "kind": "pricing",
+      "on_screen": "$2.00 per lead, down to under $1.00 at scale",
+      "source": "pricing",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "Pricing moves. Re-check on the day of publish."
+    },
+    {
+      "id": "case.pulsetto.revenue",
+      "kind": "proof",
+      "customer": "Pulsetto",
+      "on_screen": "$100,000+ recovered every month",
+      "source": "case-pulsetto",
+      "checked": "2026-08-30",
+      "approved": true,
+      "risk": ""
+    },
+    {
+      "id": "case.pulsetto.roi",
+      "kind": "proof",
+      "customer": "Pulsetto",
+      "on_screen": "30x ROI",
+      "source": "case-pulsetto",
+      "checked": "2026-08-30",
+      "approved": true,
+      "risk": ""
+    },
+    {
+      "id": "case.pulsetto.carts",
+      "kind": "proof",
+      "customer": "Pulsetto",
+      "on_screen": "20%+ of abandoned carts recovered",
+      "source": "case-pulsetto",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": ""
+    },
+    {
+      "id": "case.pulsetto.calls",
+      "kind": "proof",
+      "customer": "Pulsetto",
+      "on_screen": "100,000+ autonomous AI calls",
+      "source": "case-pulsetto",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": ""
+    },
+    {
+      "id": "case.omnisend.speed",
+      "kind": "proof",
+      "customer": "Omnisend",
+      "on_screen": "60-second response",
+      "source": "case-omnisend",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "Weaker than num.first_response (under 30s). Do not show both."
+    },
+    {
+      "id": "case.omnisend.connection",
+      "kind": "proof",
+      "customer": "Omnisend",
+      "on_screen": "5x connection rate",
+      "source": "case-omnisend",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": ""
+    },
+    {
+      "id": "case.omnisend.meetings",
+      "kind": "proof",
+      "customer": "Omnisend",
+      "on_screen": "30+ meetings a month",
+      "source": "case-omnisend",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": ""
+    },
+    {
+      "id": "case.taima.revenue",
+      "kind": "proof",
+      "customer": "Taima Titanium",
+      "on_screen": "Over $230,000 recovered",
+      "source": "case-taima",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "NEW on 2026-08-30. Was not in the old research. Never shown to Seyan."
+    },
+    {
+      "id": "case.taima.conversion",
+      "kind": "proof",
+      "customer": "Taima Titanium",
+      "on_screen": "~29% conversion",
+      "source": "case-taima",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "NEW on 2026-08-30."
+    },
+    {
+      "id": "case.taima.channel_mix",
+      "kind": "proof",
+      "customer": "Taima Titanium",
+      "on_screen": "69% calls / 26% SMS / 5% email",
+      "source": "case-taima",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "NEW. A rare real channel split. Good raw material for a chart or a type shot."
+    },
+    {
+      "id": "case.warmy.meetings",
+      "kind": "proof",
+      "customer": "Warmy",
+      "on_screen": "5x more sales meetings",
+      "source": "case-warmy",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "NEW on 2026-08-30. Was not in the old research."
+    },
+    {
+      "id": "case.warmy.before_after",
+      "kind": "proof",
+      "customer": "Warmy",
+      "on_screen": "3-5 meetings a week to nearly 20",
+      "source": "case-warmy",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "NEW. A before/after pair, which no other case study gives us."
+    },
+    {
+      "id": "case.warmy.first_contact",
+      "kind": "proof",
+      "customer": "Warmy",
+      "on_screen": "5 minutes to first contact",
+      "source": "case-warmy",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "NEW."
+    },
+    {
+      "id": "stat.speed_to_lead",
+      "kind": "industry",
+      "on_screen": "Reply in 5 minutes and you are 9x more likely to convert",
+      "source": "case-warmy",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "Third-party industry stat quoted by Outcraft. Find the original study before putting it on screen."
+    },
+    {
+      "id": "stat.phone_vs_email",
+      "kind": "industry",
+      "on_screen": "Phone recovers 17% of carts. Email recovers about 5%.",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "TRACED 2026-08-31. It is Outcraft's own case-study prose quoting 'one trial'; the underlying trial is still unnamed. Safe as a comparison, not as a headline stat."
+    },
+    {
+      "id": "claim.not_ai",
+      "kind": "claim",
+      "on_screen": "Most do not realise it is AI until you tell them.",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": null,
+      "risk": "A strong claim about deceiving people. Legal and tone risk in some markets. Ask before using."
+    },
+    {
+      "id": "claim.decides",
+      "kind": "claim",
+      "on_screen": "It reads the reply, picks the channel, picks the next move.",
+      "source": "home",
+      "checked": "2026-08-30",
+      "approved": true,
+      "risk": ""
+    },
+    {
+      "id": "claim.cadence",
+      "kind": "product",
+      "on_screen": "Call now / Email 5 min / Call 6 hrs / SMS 1 day / Call 1 day / Email 2 days / Call 2 days",
+      "source": "app-observed",
+      "checked": "2026-08-29",
+      "approved": true,
+      "risk": "Read from the live app, not marketing. Already used in the punk v2 cut."
+    },
+    {
+      "id": "detail.office_sound",
+      "kind": "product",
+      "on_screen": "Background sound: Office",
+      "source": "app-observed",
+      "checked": "2026-08-29",
+      "approved": null,
+      "risk": "A real app setting. Nice human detail, never used yet."
+    },
+    {
+      "id": "case.gothnrock.carts",
+      "kind": "proof",
+      "customer": "Goth N' Rock",
+      "on_screen": "14% of abandoned carts recovered",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW 2026-08-31. Never shown to Seyan."
+    },
+    {
+      "id": "case.gothnrock.recovered",
+      "kind": "proof",
+      "customer": "Goth N' Rock",
+      "on_screen": "$25,000 recovered a month",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW. The case study says 'about $25,000'. Keep the word about, or round down."
+    },
+    {
+      "id": "case.gothnrock.upsell",
+      "kind": "proof",
+      "customer": "Goth N' Rock",
+      "on_screen": "$9,000 a month in upsell revenue",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW."
+    },
+    {
+      "id": "case.gothnrock.repeat",
+      "kind": "proof",
+      "customer": "Goth N' Rock",
+      "on_screen": "Repeat customers: 7% to 11%",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW. A clean before/after pair, which only Warmy also gives us."
+    },
+    {
+      "id": "case.gothnrock.repeat_pct",
+      "kind": "proof",
+      "customer": "Goth N' Rock",
+      "on_screen": "57% increase in repeat customer rate",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW. Same fact as case.gothnrock.repeat, stated as a lift. Do not show both."
+    },
+    {
+      "id": "case.taima.cart_revenue",
+      "kind": "proof",
+      "customer": "Taima Titanium",
+      "on_screen": "Over $180,000 from cart recovery",
+      "source": "case-taima",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW 2026-08-31. The abandoned-cart half of the $230k."
+    },
+    {
+      "id": "case.taima.upsell_revenue",
+      "kind": "proof",
+      "customer": "Taima Titanium",
+      "on_screen": "Nearly $42,000 from post-purchase upsells",
+      "source": "case-taima",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW. The upsell half of the $230k."
+    },
+    {
+      "id": "case.taima.engagement",
+      "kind": "proof",
+      "customer": "Taima Titanium",
+      "on_screen": "Over 32% average engagement rate",
+      "source": "case-taima",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "NEW."
+    },
+    {
+      "id": "stat.abandonment",
+      "kind": "industry",
+      "on_screen": "About 70% of carts are abandoned",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "Quoted by Outcraft. VERIFIED INDEPENDENTLY 2026-08-31 against Baymard Institute, which puts it at 70.22% across 50 studies. Safe."
+    },
+    {
+      "id": "stat.email_recovery",
+      "kind": "industry",
+      "on_screen": "Cart emails convert about 10%",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "Outcraft's own prose. The same paragraph reports one merchant seeing ~5%. Use one figure, not both."
+    },
+    {
+      "id": "stat.repeat_baseline",
+      "kind": "industry",
+      "on_screen": "Only 20% of first-time buyers ever buy again",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "Third-party stat quoted by Outcraft; original study unnamed."
+    },
+    {
+      "id": "stat.second_purchase",
+      "kind": "industry",
+      "on_screen": "One purchase: 27% come back. Two: 49%.",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "Third-party stat quoted by Outcraft; original study unnamed. Strong, but attribute it as industry research, never as Outcraft data."
+    },
+    {
+      "id": "stat.post_purchase_receptive",
+      "kind": "industry",
+      "on_screen": "68% are more receptive right after they buy",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "Third-party stat quoted by Outcraft; original study unnamed."
+    },
+    {
+      "id": "pos.b2c_hero",
+      "kind": "positioning",
+      "on_screen": "An abandoned cart isn't a lost sale. It's a question waiting to be asked.",
+      "source": "solutions-b2c",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "Outcraft's own B2C hero line. This is the spine of video 4."
+    },
+    {
+      "id": "pos.b2c_cta",
+      "kind": "positioning",
+      "on_screen": "Every abandoned cart deserves a phone call",
+      "source": "solutions-b2c",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "Outcraft's own B2C closing line."
+    },
+    {
+      "id": "pos.b2c_moments",
+      "kind": "product",
+      "on_screen": "Checkout recovery / Post-purchase upsells / Failed payments",
+      "source": "solutions-b2c",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "The three B2C flows Outcraft asks prospects to bring to a demo."
+    },
+    {
+      "id": "num.callcenter_cost",
+      "kind": "pricing",
+      "on_screen": "1,000 leads: a call centre costs about $4,200. Outcraft, about $900.",
+      "source": "solutions-b2c",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "The B2C page labels this 'illustrative'. Never show it as a quote or a guarantee."
+    },
+    {
+      "id": "claim.b2c_fallback",
+      "kind": "product",
+      "on_screen": "Call. No answer, text. No reply, call again. Then email.",
+      "source": "case-goth-n-rock",
+      "checked": "2026-08-31",
+      "approved": null,
+      "risk": "The fallback chain, described by the CEO in the channel-decision blog. Matches claim.cadence from the live app."
+    }
+  ],
+  "customers_on_the_logo_wall": [
+    "Hume Health",
+    "Pulsetto",
+    "Taima Titanium",
+    "Omnisend",
+    "Impact Brands",
+    "Kiloverse",
+    "Goth n Rock",
+    "Warmy",
+    "Salesforge"
+  ]
+}

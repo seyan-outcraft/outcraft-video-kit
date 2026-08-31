@@ -1,0 +1,94 @@
+- generic [active] [ref=f80e1]:
+  - generic [ref=f80e3]:
+    - generic [ref=f80e4]: Exit Setup
+    - generic [ref=f80e11]:
+      - generic [ref=f80e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f80e13]: Book Appointment
+    - navigation [ref=f80e14]:
+      - list [ref=f80e15]:
+        - listitem [ref=f80e16]:
+          - generic [ref=f80e17]: Company
+          - list [ref=f80e18]:
+            - listitem [ref=f80e19]:
+              - link "Information" [ref=f80e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f80e23]:
+              - link "Industry" [ref=f80e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f80e27]:
+              - link "Compliance" [ref=f80e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f80e31]:
+          - generic [ref=f80e32]: Campaign
+          - list [ref=f80e33]:
+            - listitem [ref=f80e34]:
+              - link "Instructions" [ref=f80e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f80e38]:
+              - link "General Settings" [ref=f80e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f80e42]:
+              - link "Schedule" [ref=f80e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f80e46]:
+              - link "Outreach Channels" [ref=f80e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f80e50]:
+              - link "Booking" [ref=f80e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f80e54]:
+              - link "Outreach Sequence" [ref=f80e55] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f80e58]:
+              - link "Follow-Ups" [ref=f80e59] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f80e62]:
+              - link "Conversation Intelligence" [ref=f80e63] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f80e66]:
+          - generic [ref=f80e67]: AI Agent
+          - list [ref=f80e68]:
+            - listitem [ref=f80e69]:
+              - link "Configuration" [ref=f80e70] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f80e73]:
+          - generic [ref=f80e74]: Finish
+          - list [ref=f80e75]:
+            - listitem [ref=f80e76]:
+              - link "Review & Launch" [ref=f80e77] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f80e80]:
+          - generic [ref=f80e81] [cursor=pointer]: Advanced
+          - list [ref=f80e86]:
+            - listitem [ref=f80e87]:
+              - link [ref=f80e88] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f80e92]:
+              - link [ref=f80e93] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f80e97]:
+    - main [ref=f80e98]:
+      - generic [ref=f80e100]:
+        - generic [ref=f80e107]:
+          - heading "Campaign Overrides" [level=2] [ref=f80e108]
+          - text: Set up rules to determine which campaign should run when a contact qualifies for multiple campaigns.
+        - generic [ref=f80e115]:
+          - button "Add Override Rule" [ref=f80e119] [cursor=pointer]
+          - table [ref=f80e123]:
+            - rowgroup [ref=f80e124]:
+              - row [ref=f80e125]:
+                - columnheader "Higher Priority Campaign" [ref=f80e126]
+                - columnheader [ref=f80e127]
+                - columnheader "Lower Priority Campaign" [ref=f80e128]
+          - generic [ref=f80e130]:
+            - heading "No campaign overrides" [level=2] [ref=f80e134]
+            - paragraph [ref=f80e135]: Create a campaign override to get started.
+    - generic [ref=f80e139]:
+      - button "Back" [ref=f80e141] [cursor=pointer]
+      - generic [ref=f80e144]:
+        - generic [ref=f80e147]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f80e148] [cursor=pointer]
+        - button [ref=f80e155] [cursor=pointer]
+  - generic:
+    - status

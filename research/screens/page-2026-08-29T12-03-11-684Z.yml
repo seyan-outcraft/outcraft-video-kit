@@ -1,0 +1,129 @@
+- generic [active] [ref=f48e1]:
+  - generic [ref=f48e3]:
+    - generic [ref=f48e4]: Exit Setup
+    - generic [ref=f48e11]:
+      - generic [ref=f48e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f48e13]: Book Appointment
+    - navigation [ref=f48e14]:
+      - list [ref=f48e15]:
+        - listitem [ref=f48e16]:
+          - generic [ref=f48e17]: Company
+          - list [ref=f48e18]:
+            - listitem [ref=f48e19]:
+              - link "Information" [ref=f48e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f48e23]:
+              - link "Industry" [ref=f48e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f48e27]:
+              - link "Compliance" [ref=f48e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f48e31]:
+          - generic [ref=f48e32]: Campaign
+          - list [ref=f48e33]:
+            - listitem [ref=f48e34]:
+              - link "Instructions" [ref=f48e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f48e38]:
+              - link "General Settings" [ref=f48e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f48e42]:
+              - link "Schedule" [ref=f48e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f48e47]:
+              - link "Outreach Channels" [ref=f48e48] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f48e51]:
+              - link "Booking" [ref=f48e52] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f48e55]:
+              - link "Outreach Sequence" [ref=f48e56] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f48e59]:
+              - link "Follow-Ups" [ref=f48e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f48e63]:
+              - link "Conversation Intelligence" [ref=f48e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f48e67]:
+          - generic [ref=f48e68]: AI Agent
+          - list [ref=f48e69]:
+            - listitem [ref=f48e70]:
+              - link "Configuration" [ref=f48e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f48e74]:
+          - generic [ref=f48e75]: Finish
+          - list [ref=f48e76]:
+            - listitem [ref=f48e77]:
+              - link "Review & Launch" [ref=f48e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f48e81]:
+          - generic [ref=f48e82] [cursor=pointer]: Advanced
+          - list [ref=f48e87]:
+            - listitem [ref=f48e88]:
+              - link [ref=f48e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f48e93]:
+              - link [ref=f48e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f48e98]:
+    - main [ref=f48e99]:
+      - generic [ref=f48e101]:
+        - generic [ref=f48e108]:
+          - heading "Schedule Settings" [level=2] [ref=f48e109]
+          - text: Outreach is scheduled and sent based on the lead's local timezone. The timezone is inferred from the lead's phone number and country data.
+        - generic [ref=f48e124]:
+          - generic [ref=f48e127]:
+            - generic [ref=f48e129]:
+              - generic [ref=f48e131]:
+                - text: Outreach Days
+                - superscript [ref=f48e132]: "*"
+              - button [ref=f48e135] [cursor=pointer]
+            - generic [ref=f48e140]:
+              - generic [ref=f48e142]:
+                - checkbox "Monday" [ref=f48e143]
+                - generic [ref=f48e144]: Monday
+              - generic [ref=f48e147]:
+                - checkbox "Tuesday" [ref=f48e148]
+                - generic [ref=f48e149]: Tuesday
+              - generic [ref=f48e152]:
+                - checkbox "Wednesday" [ref=f48e153]
+                - generic [ref=f48e154]: Wednesday
+              - generic [ref=f48e157]:
+                - checkbox "Thursday" [ref=f48e158]
+                - generic [ref=f48e159]: Thursday
+              - generic [ref=f48e162]:
+                - checkbox "Friday" [ref=f48e163]
+                - generic [ref=f48e164]: Friday
+              - generic [ref=f48e167]:
+                - checkbox "Saturday" [ref=f48e168]
+                - generic [ref=f48e169]: Saturday
+              - generic [ref=f48e172]:
+                - checkbox "Sunday" [ref=f48e173]
+                - generic [ref=f48e174]: Sunday
+          - generic [ref=f48e179]:
+            - generic [ref=f48e182]:
+              - generic [ref=f48e184]:
+                - generic [ref=f48e186]:
+                  - text: Outreach Start Hour
+                  - superscript [ref=f48e187]: "*"
+                - button [ref=f48e190] [cursor=pointer]
+              - textbox "Outreach Start Hour*" [ref=f48e196]:
+                - /placeholder: 09:00
+            - generic [ref=f48e199]:
+              - generic [ref=f48e201]:
+                - generic [ref=f48e203]:
+                  - text: Outreach End Hour
+                  - superscript [ref=f48e204]: "*"
+                - button [ref=f48e207] [cursor=pointer]
+              - textbox "Outreach End Hour*" [ref=f48e213]:
+                - /placeholder: 19:00
+    - generic [ref=f48e217]:
+      - button "Back" [ref=f48e219] [cursor=pointer]
+      - generic [ref=f48e222]:
+        - generic [ref=f48e225]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f48e226] [cursor=pointer]
+        - button [ref=f48e233] [cursor=pointer]
+  - generic:
+    - status

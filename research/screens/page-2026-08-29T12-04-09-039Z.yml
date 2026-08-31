@@ -1,0 +1,100 @@
+- generic [active] [ref=f68e1]:
+  - generic [ref=f68e3]:
+    - generic [ref=f68e4]: Exit Setup
+    - generic [ref=f68e11]:
+      - generic [ref=f68e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f68e13]: Book Appointment
+    - navigation [ref=f68e14]:
+      - list [ref=f68e15]:
+        - listitem [ref=f68e16]:
+          - generic [ref=f68e17]: Company
+          - list [ref=f68e18]:
+            - listitem [ref=f68e19]:
+              - link "Information" [ref=f68e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f68e23]:
+              - link "Industry" [ref=f68e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f68e27]:
+              - link "Compliance" [ref=f68e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f68e31]:
+          - generic [ref=f68e32]: Campaign
+          - list [ref=f68e33]:
+            - listitem [ref=f68e34]:
+              - link "Instructions" [ref=f68e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f68e38]:
+              - link "General Settings" [ref=f68e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f68e42]:
+              - link "Schedule" [ref=f68e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f68e46]:
+              - link "Outreach Channels" [ref=f68e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f68e50]:
+              - link "Booking" [ref=f68e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f68e54]:
+              - link "Outreach Sequence" [ref=f68e55] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f68e58]:
+              - link "Follow-Ups" [ref=f68e59] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f68e62]:
+              - link "Conversation Intelligence" [ref=f68e63] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f68e67]:
+          - generic [ref=f68e68]: AI Agent
+          - list [ref=f68e69]:
+            - listitem [ref=f68e70]:
+              - link "Configuration" [ref=f68e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f68e74]:
+          - generic [ref=f68e75]: Finish
+          - list [ref=f68e76]:
+            - listitem [ref=f68e77]:
+              - link "Review & Launch" [ref=f68e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f68e81]:
+          - generic [ref=f68e82] [cursor=pointer]: Advanced
+          - list [ref=f68e87]:
+            - listitem [ref=f68e88]:
+              - link [ref=f68e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f68e93]:
+              - link [ref=f68e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f68e98]:
+    - main [ref=f68e99]:
+      - generic [ref=f68e101]:
+        - generic [ref=f68e108]:
+          - heading "Conversation Intelligence" [level=2] [ref=f68e109]
+          - text: See and manage how AI evaluates interactions with leads, and set up custom evaluation fields to track the most important information for your business.
+        - generic [ref=f68e112]:
+          - button "Create New Evaluation" [ref=f68e114] [cursor=pointer]
+          - table [ref=f68e122]:
+            - rowgroup [ref=f68e123]:
+              - row [ref=f68e124]:
+                - columnheader "Evaluation" [ref=f68e125]
+                - columnheader "Response Format" [ref=f68e126]
+                - columnheader "Actions" [ref=f68e127]
+            - rowgroup [ref=f68e128]:
+              - row [ref=f68e129]:
+                - cell [ref=f68e130]:
+                  - generic [ref=f68e132]:
+                    - paragraph [ref=f68e133]: Summary of the interaction
+                    - paragraph [ref=f68e134]: Summarize the interaction in 1-2 short sentences.
+                - cell "Text Summary" [ref=f68e135]
+                - cell [ref=f68e138]:
+                  - button "Actions" [ref=f68e142] [cursor=pointer]
+    - generic [ref=f68e148]:
+      - button "Back" [ref=f68e150] [cursor=pointer]
+      - generic [ref=f68e153]:
+        - generic [ref=f68e156]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f68e157] [cursor=pointer]
+        - button [ref=f68e164] [cursor=pointer]
+  - generic:
+    - status

@@ -1,0 +1,120 @@
+- generic [active] [ref=f52e1]:
+  - generic [ref=f52e3]:
+    - generic [ref=f52e4]: Exit Setup
+    - generic [ref=f52e11]:
+      - generic [ref=f52e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f52e13]: Book Appointment
+    - navigation [ref=f52e14]:
+      - list [ref=f52e15]:
+        - listitem [ref=f52e16]:
+          - generic [ref=f52e17]: Company
+          - list [ref=f52e18]:
+            - listitem [ref=f52e19]:
+              - link "Information" [ref=f52e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f52e23]:
+              - link "Industry" [ref=f52e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f52e27]:
+              - link "Compliance" [ref=f52e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f52e31]:
+          - generic [ref=f52e32]: Campaign
+          - list [ref=f52e33]:
+            - listitem [ref=f52e34]:
+              - link "Instructions" [ref=f52e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f52e38]:
+              - link "General Settings" [ref=f52e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f52e42]:
+              - link "Schedule" [ref=f52e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f52e46]:
+              - link "Outreach Channels" [ref=f52e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f52e51]:
+              - link "Booking" [ref=f52e52] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f52e55]:
+              - link "Outreach Sequence" [ref=f52e56] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f52e59]:
+              - link "Follow-Ups" [ref=f52e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f52e63]:
+              - link "Conversation Intelligence" [ref=f52e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f52e67]:
+          - generic [ref=f52e68]: AI Agent
+          - list [ref=f52e69]:
+            - listitem [ref=f52e70]:
+              - link "Configuration" [ref=f52e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f52e74]:
+          - generic [ref=f52e75]: Finish
+          - list [ref=f52e76]:
+            - listitem [ref=f52e77]:
+              - link "Review & Launch" [ref=f52e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f52e81]:
+          - generic [ref=f52e82] [cursor=pointer]: Advanced
+          - list [ref=f52e87]:
+            - listitem [ref=f52e88]:
+              - link [ref=f52e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f52e93]:
+              - link [ref=f52e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f52e98]:
+    - main [ref=f52e99]:
+      - generic [ref=f52e101]:
+        - generic [ref=f52e108]:
+          - heading "Outreach Channels" [level=2] [ref=f52e109]
+          - text: Set up the channels your AI uses to connect with customers - calls, SMS, WhatsApp and email. Configure how each one operates.
+        - generic [ref=f52e114]:
+          - generic [ref=f52e120]:
+            - generic [ref=f52e123]:
+              - generic [ref=f52e124]: Voice & Calls
+              - generic [ref=f52e128]: Enable communication with leads through AI voice calls.
+            - button "Configure" [ref=f52e134] [cursor=pointer]
+          - generic [ref=f52e142]:
+            - generic [ref=f52e145]:
+              - generic [ref=f52e146]: Email
+              - generic [ref=f52e150]: Enable communication with leads through email.
+            - button "Configure" [ref=f52e156] [cursor=pointer]
+          - generic [ref=f52e164]:
+            - generic [ref=f52e167]:
+              - generic [ref=f52e168]: SMS
+              - generic [ref=f52e172]: Enable communication with leads through SMS.
+            - button "Configure" [ref=f52e178] [cursor=pointer]
+          - generic [ref=f52e186]:
+            - generic [ref=f52e189]:
+              - generic [ref=f52e190]: WhatsApp
+              - generic [ref=f52e194]: Enable communication with leads through WhatsApp.
+            - generic [ref=f52e202]:
+              - generic [ref=f52e210]:
+                - heading "Complete WhatsApp Business Account Setup" [level=1] [ref=f52e211]
+                - paragraph [ref=f52e212]: During setup, you will need to log in with Facebook and authorize your WhatsApp Business connection.
+                - paragraph [ref=f52e213]: "Make sure you have:"
+                - list [ref=f52e214]:
+                  - listitem [ref=f52e215]: Facebook login credentials
+                  - listitem [ref=f52e216]: Admin access to your Meta Business account
+                  - listitem [ref=f52e217]: Your Meta Business account is verified.
+                  - listitem [ref=f52e218]: A phone number you can receive a verification code on right now.
+                - paragraph [ref=f52e219]: Unverified businesses are unable to register WhatsApp senders or send messages through WhatsApp Business.
+                - paragraph [ref=f52e220]: During the setup, Meta will ask you to add a phone number and confirm a verification code sent to it. Use your own number and enter the code yourself.
+                - paragraph [ref=f52e221]: A number that already has a WhatsApp account cannot be registered. Use a number without an existing WhatsApp account, or delete the WhatsApp account on that number first.
+                - paragraph [ref=f52e222]: Your number is only used for this setup. After the connection, Outcraft automatically adds a dedicated number used for all WhatsApp outreach - you can then remove your own number in WhatsApp Manager.
+              - generic [ref=f52e225]:
+                - generic [ref=f52e226]: Whatsapp connection
+                - button "Connect WhatsApp" [ref=f52e229] [cursor=pointer]
+    - generic [ref=f52e233]:
+      - button "Back" [ref=f52e235] [cursor=pointer]
+      - generic [ref=f52e238]:
+        - generic [ref=f52e241]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f52e242] [cursor=pointer]
+        - button [ref=f52e249] [cursor=pointer]
+  - generic:
+    - status

@@ -1,0 +1,16 @@
+{
+  "name": "outcraft-video-workshop",
+  "private": true,
+  "type": "module",
+  "description": "Shared research + asset pipeline for every Outcraft AI video.",
+  "scripts": {
+    "asset:logo": "node tools/logo-pull.mjs",
+    "assets:verify": "node tools/assets-verify.mjs",
+    "research:refresh": "node tools/research-refresh.mjs",
+    "brand:check": "node tools/brand-check.mjs",
+    "brand:sync": "node tools/brand-check.mjs --fix",
+    "assets:site": "node tools/site-assets.mjs",
+    "audio:backfill": "node tools/audio-backfill.mjs",
+    "facts": "node tools/facts.mjs"
+  }
+}

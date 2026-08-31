@@ -1,0 +1,108 @@
+- generic [active] [ref=f56e1]:
+  - generic [ref=f56e3]:
+    - generic [ref=f56e4]: Exit Setup
+    - generic [ref=f56e11]:
+      - generic [ref=f56e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f56e13]: Book Appointment
+    - navigation [ref=f56e14]:
+      - list [ref=f56e15]:
+        - listitem [ref=f56e16]:
+          - generic [ref=f56e17]: Company
+          - list [ref=f56e18]:
+            - listitem [ref=f56e19]:
+              - link "Information" [ref=f56e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f56e23]:
+              - link "Industry" [ref=f56e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f56e27]:
+              - link "Compliance" [ref=f56e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f56e31]:
+          - generic [ref=f56e32]: Campaign
+          - list [ref=f56e33]:
+            - listitem [ref=f56e34]:
+              - link "Instructions" [ref=f56e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f56e38]:
+              - link "General Settings" [ref=f56e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f56e42]:
+              - link "Schedule" [ref=f56e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f56e46]:
+              - link "Outreach Channels" [ref=f56e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f56e50]:
+              - link "Booking" [ref=f56e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f56e55]:
+              - link "Outreach Sequence" [ref=f56e56] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f56e59]:
+              - link "Follow-Ups" [ref=f56e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f56e63]:
+              - link "Conversation Intelligence" [ref=f56e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f56e67]:
+          - generic [ref=f56e68]: AI Agent
+          - list [ref=f56e69]:
+            - listitem [ref=f56e70]:
+              - link "Configuration" [ref=f56e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f56e74]:
+          - generic [ref=f56e75]: Finish
+          - list [ref=f56e76]:
+            - listitem [ref=f56e77]:
+              - link "Review & Launch" [ref=f56e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f56e81]:
+          - generic [ref=f56e82] [cursor=pointer]: Advanced
+          - list [ref=f56e87]:
+            - listitem [ref=f56e88]:
+              - link [ref=f56e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f56e93]:
+              - link [ref=f56e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f56e98]:
+    - main [ref=f56e99]:
+      - generic [ref=f56e101]:
+        - generic [ref=f56e108]:
+          - heading "Booking" [level=2] [ref=f56e109]
+          - text: Configure how the AI books meetings and which scheduling link it should offer.
+        - generic [ref=f56e120]:
+          - generic [ref=f56e123]:
+            - generic [ref=f56e127]:
+              - text: Which Calendar Service do you use?
+              - superscript [ref=f56e128]: "*"
+            - generic [ref=f56e129]:
+              - combobox "Which Calendar Service do you use?*" [ref=f56e132]:
+                - option "Select an option" [selected]
+                - option "HubSpot"
+                - option "Calendly"
+                - option "GoHighLevel"
+              - generic [ref=f56e133]: Select the calendar service you use for booking appointments.
+          - generic [ref=f56e140]:
+            - generic [ref=f56e143]:
+              - generic [ref=f56e144]: Booking Link for Email
+              - generic [ref=f56e148]:
+                - textbox "Booking Link for Email" [ref=f56e151]:
+                  - /placeholder: https://example.com/your-link
+                - generic [ref=f56e152]: Optional*
+            - generic [ref=f56e158]:
+              - generic [ref=f56e159]: Booking Link for SMS
+              - generic [ref=f56e163]:
+                - textbox "Booking Link for SMS" [ref=f56e166]:
+                  - /placeholder: https://example.com/your-link
+                - generic [ref=f56e167]: Optional*
+    - generic [ref=f56e174]:
+      - button "Back" [ref=f56e176] [cursor=pointer]
+      - generic [ref=f56e179]:
+        - generic [ref=f56e182]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f56e183] [cursor=pointer]
+        - button [ref=f56e190] [cursor=pointer]
+  - generic:
+    - status

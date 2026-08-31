@@ -1,0 +1,55 @@
+- generic [active] [ref=f12e1]:
+  - navigation [ref=f12e16]:
+    - list [ref=f12e17]:
+      - listitem [ref=f12e18]:
+        - list [ref=f12e19]:
+          - listitem [ref=f12e20]:
+            - list [ref=f12e21]:
+              - listitem [ref=f12e22]:
+                - link "Campaigns" [ref=f12e23] [cursor=pointer]:
+                  - /url: /campaigns
+              - listitem [ref=f12e26]:
+                - link "Analytics" [ref=f12e27] [cursor=pointer]:
+                  - /url: /analytics
+              - listitem [ref=f12e30]:
+                - link "Conversation Intelligence" [ref=f12e31] [cursor=pointer]:
+                  - /url: /campaigns/304/evaluation
+              - listitem [ref=f12e34]:
+                - link "Leads Management" [ref=f12e35] [cursor=pointer]:
+                  - /url: /leads
+          - listitem [ref=f12e38]:
+            - generic [ref=f12e39]: Admin Routes
+            - list [ref=f12e40]:
+              - listitem [ref=f12e41]:
+                - link "AI Available Actions" [ref=f12e42] [cursor=pointer]:
+                  - /url: /campaigns/304/actions
+              - listitem [ref=f12e45]:
+                - link "Debug" [ref=f12e46] [cursor=pointer]:
+                  - /url: /quick-debug
+              - link "Admin Panel" [ref=f12e49] [cursor=pointer]:
+                - /url: /admin
+      - listitem [ref=f12e52]:
+        - 'button "OC Muhtasim Sey... #90" [ref=f12e55] [cursor=pointer]':
+          - generic [ref=f12e56]:
+            - generic [ref=f12e57]: OC
+            - generic [ref=f12e59]: Muhtasim Sey...
+            - generic [ref=f12e60]: "#90"
+  - main [ref=f12e63]:
+    - generic [ref=f12e65]:
+      - generic [ref=f12e67]:
+        - heading "Conversation Intelligence" [level=3] [ref=f12e68]
+        - paragraph [ref=f12e69]: Browse and analyze the results of your conversation intelligence evaluations for the selected campaign
+      - generic [ref=f12e76]:
+        - generic [ref=f12e77]: Campaign id
+        - button "My First Campaign" [ref=f12e84] [cursor=pointer]
+      - generic [ref=f12e93]:
+        - generic [ref=f12e94]:
+          - heading "Filters" [level=2] [ref=f12e95]
+          - button "Reset" [ref=f12e97] [cursor=pointer]
+        - group "Evaluation Field" [ref=f12e113]:
+          - generic [ref=f12e118]:
+            - generic [ref=f12e119]: Field id
+            - button "Select evaluated field" [ref=f12e126] [cursor=pointer]
+        - button "Apply Filters" [ref=f12e130] [cursor=pointer]
+  - generic:
+    - status

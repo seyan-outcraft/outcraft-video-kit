@@ -1,0 +1,148 @@
+- generic [active] [ref=f64e1]:
+  - generic [ref=f64e3]:
+    - generic [ref=f64e4]: Exit Setup
+    - generic [ref=f64e11]:
+      - generic [ref=f64e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f64e13]: Book Appointment
+    - navigation [ref=f64e14]:
+      - list [ref=f64e15]:
+        - listitem [ref=f64e16]:
+          - generic [ref=f64e17]: Company
+          - list [ref=f64e18]:
+            - listitem [ref=f64e19]:
+              - link "Information" [ref=f64e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f64e23]:
+              - link "Industry" [ref=f64e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f64e27]:
+              - link "Compliance" [ref=f64e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f64e31]:
+          - generic [ref=f64e32]: Campaign
+          - list [ref=f64e33]:
+            - listitem [ref=f64e34]:
+              - link "Instructions" [ref=f64e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f64e38]:
+              - link "General Settings" [ref=f64e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f64e42]:
+              - link "Schedule" [ref=f64e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f64e46]:
+              - link "Outreach Channels" [ref=f64e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f64e50]:
+              - link "Booking" [ref=f64e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f64e54]:
+              - link "Outreach Sequence" [ref=f64e55] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f64e58]:
+              - link "Follow-Ups" [ref=f64e59] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f64e63]:
+              - link "Conversation Intelligence" [ref=f64e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f64e67]:
+          - generic [ref=f64e68]: AI Agent
+          - list [ref=f64e69]:
+            - listitem [ref=f64e70]:
+              - link "Configuration" [ref=f64e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f64e74]:
+          - generic [ref=f64e75]: Finish
+          - list [ref=f64e76]:
+            - listitem [ref=f64e77]:
+              - link "Review & Launch" [ref=f64e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f64e81]:
+          - generic [ref=f64e82] [cursor=pointer]: Advanced
+          - list [ref=f64e87]:
+            - listitem [ref=f64e88]:
+              - link [ref=f64e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f64e93]:
+              - link [ref=f64e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f64e98]:
+    - main [ref=f64e99]:
+      - generic [ref=f64e101]:
+        - generic [ref=f64e108]:
+          - heading "Follow-up Sequence" [level=2] [ref=f64e109]
+          - text: When a lead responds to the first outreach, the agent can continue with a matching follow-up sequence. Enable sequences separately for Positive, Undecided, or Negative responses.
+        - generic [ref=f64e112]:
+          - generic [ref=f64e114]:
+            - generic [ref=f64e115]: "Choose follow-up sequence to edit:"
+            - combobox "Choose follow-up sequence to edit:" [ref=f64e118]:
+              - option "No Decision" [selected]
+          - generic [ref=f64e119]:
+            - button "Reorder actions" [ref=f64e120] [cursor=pointer]
+            - button "Add Step" [ref=f64e123] [cursor=pointer]
+          - generic [ref=f64e129]:
+            - button "Reorder records" [ref=f64e133] [cursor=pointer]
+            - table [ref=f64e137]:
+              - rowgroup [ref=f64e138]:
+                - row [ref=f64e139]:
+                  - columnheader "Label" [ref=f64e140]
+                  - columnheader "Delay" [ref=f64e141]
+                  - columnheader "Actions" [ref=f64e142]
+              - rowgroup [ref=f64e143]:
+                - row [ref=f64e144]:
+                  - cell [ref=f64e145]:
+                    - generic [ref=f64e147]:
+                      - paragraph [ref=f64e148]: Ping Call
+                      - paragraph [ref=f64e149]: Follow-up call referencing prior outreach or conversations to re-engage the lead
+                  - cell "2 days" [ref=f64e150]
+                  - cell [ref=f64e153]:
+                    - button "Actions" [ref=f64e157] [cursor=pointer]
+                - row [ref=f64e160]:
+                  - cell [ref=f64e161]:
+                    - generic [ref=f64e163]:
+                      - paragraph [ref=f64e164]: Ping Email
+                      - paragraph [ref=f64e165]: Follow-up email referencing prior outreach or conversations to re-engage the lead
+                  - cell "1 day" [ref=f64e166]
+                  - cell [ref=f64e169]:
+                    - button "Actions" [ref=f64e173] [cursor=pointer]
+                - row [ref=f64e176]:
+                  - cell [ref=f64e177]:
+                    - generic [ref=f64e179]:
+                      - paragraph [ref=f64e180]: Ping Sms
+                      - paragraph [ref=f64e181]: Follow-up sms referencing prior outreach or conversations to re-engage the lead
+                  - cell "1 day" [ref=f64e182]
+                  - cell [ref=f64e185]:
+                    - button "Actions" [ref=f64e189] [cursor=pointer]
+                - row [ref=f64e192]:
+                  - cell [ref=f64e193]:
+                    - generic [ref=f64e195]:
+                      - paragraph [ref=f64e196]: Ping Call
+                      - paragraph [ref=f64e197]: Follow-up call referencing prior outreach or conversations to re-engage the lead
+                  - cell "2 days" [ref=f64e198]
+                  - cell [ref=f64e201]:
+                    - button "Actions" [ref=f64e205] [cursor=pointer]
+                - row [ref=f64e208]:
+                  - cell [ref=f64e209]:
+                    - generic [ref=f64e211]:
+                      - paragraph [ref=f64e212]: Ping Email
+                      - paragraph [ref=f64e213]: Follow-up email referencing prior outreach or conversations to re-engage the lead
+                  - cell "1 day" [ref=f64e214]
+                  - cell [ref=f64e217]:
+                    - button "Actions" [ref=f64e221] [cursor=pointer]
+                - row [ref=f64e224]:
+                  - cell [ref=f64e225]:
+                    - generic [ref=f64e227]:
+                      - paragraph [ref=f64e228]: Ping Sms
+                      - paragraph [ref=f64e229]: Follow-up sms referencing prior outreach or conversations to re-engage the lead
+                  - cell "1 day" [ref=f64e230]
+                  - cell [ref=f64e233]:
+                    - button "Actions" [ref=f64e237] [cursor=pointer]
+    - generic [ref=f64e243]:
+      - button "Back" [ref=f64e245] [cursor=pointer]
+      - generic [ref=f64e248]:
+        - generic [ref=f64e251]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f64e252] [cursor=pointer]
+        - button [ref=f64e259] [cursor=pointer]
+  - generic:
+    - status

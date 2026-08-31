@@ -1,0 +1,62 @@
+- generic [active] [ref=f4e1]:
+  - navigation [ref=f4e16]:
+    - list [ref=f4e17]:
+      - listitem [ref=f4e18]:
+        - list [ref=f4e19]:
+          - listitem [ref=f4e20]:
+            - list [ref=f4e21]:
+              - listitem [ref=f4e22]:
+                - link "Campaigns" [ref=f4e23] [cursor=pointer]:
+                  - /url: /campaigns
+              - listitem [ref=f4e26]:
+                - link "Analytics" [ref=f4e27] [cursor=pointer]:
+                  - /url: /analytics
+              - listitem [ref=f4e30]:
+                - link "Conversation Intelligence" [ref=f4e31] [cursor=pointer]:
+                  - /url: /campaigns/304/evaluation
+              - listitem [ref=f4e34]:
+                - link "Leads Management" [ref=f4e35] [cursor=pointer]:
+                  - /url: /leads
+          - listitem [ref=f4e38]:
+            - generic [ref=f4e39]: Admin Routes
+            - list [ref=f4e40]:
+              - listitem [ref=f4e41]:
+                - link "AI Available Actions" [ref=f4e42] [cursor=pointer]:
+                  - /url: /campaigns/304/actions
+              - listitem [ref=f4e45]:
+                - link "Debug" [ref=f4e46] [cursor=pointer]:
+                  - /url: /quick-debug
+              - link "Admin Panel" [ref=f4e49] [cursor=pointer]:
+                - /url: /admin
+      - listitem [ref=f4e52]
+  - main [ref=f4e54]:
+    - generic [ref=f4e56]:
+      - navigation "Tabs" [ref=f4e62]:
+        - link "Overview" [ref=f4e63] [cursor=pointer]:
+          - /url: overview
+        - link "Reach" [ref=f4e66] [cursor=pointer]:
+          - /url: reach
+        - link "Conversions" [ref=f4e69] [cursor=pointer]:
+          - /url: conversions
+        - link "Interaction Evaluations New" [ref=f4e72] [cursor=pointer]:
+          - /url: interaction-evaluations
+          - generic [ref=f4e74]:
+            - text: Interaction Evaluations
+            - generic [ref=f4e75]: New
+      - generic [ref=f4e76]:
+        - generic [ref=f4e77]:
+          - heading "Overview" [level=2] [ref=f4e78]
+          - paragraph [ref=f4e79]: A high-level read on outreach performance and revenue motion.
+        - generic [ref=f4e80]:
+          - generic [ref=f4e81]: Campaign id
+          - generic [ref=f4e101]:
+            - generic [ref=f4e102]: Range
+            - combobox "Range" [ref=f4e106]:
+              - option "Last 24 Hours" [selected]
+              - option "Last 7 Days"
+              - option "Last 14 Days"
+              - option "Last 30 Days"
+              - option "All Time"
+              - option "Custom range"
+  - generic:
+    - status

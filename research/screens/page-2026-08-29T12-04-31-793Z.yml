@@ -1,0 +1,2169 @@
+- generic [active] [ref=f76e1]:
+  - generic [ref=f76e3]:
+    - generic [ref=f76e4]: Exit Setup
+    - generic [ref=f76e11]:
+      - generic [ref=f76e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f76e13]: Book Appointment
+    - navigation [ref=f76e14]:
+      - list [ref=f76e15]:
+        - listitem [ref=f76e16]:
+          - generic [ref=f76e17]: Company
+          - list [ref=f76e18]:
+            - listitem [ref=f76e19]:
+              - link "Information" [ref=f76e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f76e23]:
+              - link "Industry" [ref=f76e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f76e27]:
+              - link "Compliance" [ref=f76e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f76e31]:
+          - generic [ref=f76e32]: Campaign
+          - list [ref=f76e33]:
+            - listitem [ref=f76e34]:
+              - link "Instructions" [ref=f76e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f76e38]:
+              - link "General Settings" [ref=f76e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f76e42]:
+              - link "Schedule" [ref=f76e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f76e46]:
+              - link "Outreach Channels" [ref=f76e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f76e50]:
+              - link "Booking" [ref=f76e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f76e54]:
+              - link "Outreach Sequence" [ref=f76e55] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f76e58]:
+              - link "Follow-Ups" [ref=f76e59] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f76e62]:
+              - link "Conversation Intelligence" [ref=f76e63] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f76e66]:
+          - generic [ref=f76e67]: AI Agent
+          - list [ref=f76e68]:
+            - listitem [ref=f76e69]:
+              - link "Configuration" [ref=f76e70] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f76e73]:
+          - generic [ref=f76e74]: Finish
+          - list [ref=f76e75]:
+            - listitem [ref=f76e76]:
+              - link "Review & Launch" [ref=f76e77] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f76e80]:
+          - generic [ref=f76e81] [cursor=pointer]: Advanced
+          - list [ref=f76e86]:
+            - listitem [ref=f76e87]:
+              - link [ref=f76e88] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f76e92]:
+              - link [ref=f76e93] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f76e97]:
+    - main [ref=f76e98]:
+      - generic [ref=f76e100]:
+        - generic [ref=f76e107]:
+          - heading "Geographic Permissions" [level=2] [ref=f76e108]
+          - text: Select the destinations you want calls and messages to be sent to.
+        - generic [ref=f76e115]:
+          - generic [ref=f76e116]:
+            - generic [ref=f76e118]:
+              - button "Enable All" [ref=f76e119] [cursor=pointer]
+              - button "Disable All" [ref=f76e122] [cursor=pointer]
+            - generic [ref=f76e125]:
+              - generic [ref=f76e130]:
+                - generic [ref=f76e131]: Group by
+                - combobox "Group by" [ref=f76e134]:
+                  - option "-" [selected]
+                  - option "Type"
+                  - option "Region"
+                  - option "Continent"
+              - generic [ref=f76e135]:
+                - generic [ref=f76e136]:
+                  - generic [ref=f76e137]: Search
+                  - searchbox "Search" [ref=f76e143]
+                - button "Filter" [ref=f76e146] [cursor=pointer]:
+                  - generic [ref=f76e149]: "0"
+          - table [ref=f76e152]:
+            - rowgroup [ref=f76e153]:
+              - row [ref=f76e154]:
+                - columnheader "Country" [ref=f76e155]
+                - columnheader "ISO" [ref=f76e156]
+                - columnheader "Region" [ref=f76e157]
+                - columnheader "Country Code" [ref=f76e158]
+                - columnheader "Type" [ref=f76e159]
+                - columnheader "Call" [ref=f76e160]
+                - columnheader "SMS" [ref=f76e161]
+            - rowgroup [ref=f76e162]:
+              - row [ref=f76e163]:
+                - cell [ref=f76e164]:
+                  - 'heading "Type: Standard Rate" [level=2] [ref=f76e167]'
+              - row "🇦🇺 Australia AU Asia Pacific (+61) Standard Rate" [ref=f76e168]:
+                - cell "🇦🇺 Australia" [ref=f76e169]
+                - cell "AU" [ref=f76e172]
+                - cell "Asia Pacific" [ref=f76e175]
+                - cell "(+61)" [ref=f76e178]
+                - cell "Standard Rate" [ref=f76e181]
+                - cell [ref=f76e184]
+                - cell [ref=f76e187]
+              - row "🇦🇹 Austria AT European Union (+43) Standard Rate" [ref=f76e190]:
+                - cell "🇦🇹 Austria" [ref=f76e191]
+                - cell "AT" [ref=f76e194]
+                - cell "European Union" [ref=f76e197]
+                - cell "(+43)" [ref=f76e200]
+                - cell "Standard Rate" [ref=f76e203]
+                - cell [ref=f76e206]
+                - cell [ref=f76e209]
+              - row "🇧🇪 Belgium BE European Union (+32) Standard Rate" [ref=f76e212]:
+                - cell "🇧🇪 Belgium" [ref=f76e213]
+                - cell "BE" [ref=f76e216]
+                - cell "European Union" [ref=f76e219]
+                - cell "(+32)" [ref=f76e222]
+                - cell "Standard Rate" [ref=f76e225]
+                - cell [ref=f76e228]
+                - cell [ref=f76e231]
+              - row "🇧🇷 Brazil BR Latin America (+55) Standard Rate" [ref=f76e234]:
+                - cell "🇧🇷 Brazil" [ref=f76e235]
+                - cell "BR" [ref=f76e238]
+                - cell "Latin America" [ref=f76e241]
+                - cell "(+55)" [ref=f76e244]
+                - cell "Standard Rate" [ref=f76e247]
+                - cell [ref=f76e250]
+                - cell [ref=f76e253]
+              - row "🇨🇴 Colombia CO Latin America (+57) Standard Rate" [ref=f76e256]:
+                - cell "🇨🇴 Colombia" [ref=f76e257]
+                - cell "CO" [ref=f76e260]
+                - cell "Latin America" [ref=f76e263]
+                - cell "(+57)" [ref=f76e266]
+                - cell "Standard Rate" [ref=f76e269]
+                - cell [ref=f76e272]
+                - cell [ref=f76e275]
+              - row "🇨🇾 Cyprus CY European Union (+357) Standard Rate" [ref=f76e278]:
+                - cell "🇨🇾 Cyprus" [ref=f76e279]
+                - cell "CY" [ref=f76e282]
+                - cell "European Union" [ref=f76e285]
+                - cell "(+357)" [ref=f76e288]
+                - cell "Standard Rate" [ref=f76e291]
+                - cell [ref=f76e294]
+                - cell [ref=f76e297]
+              - row "🇨🇿 Czech Republic CZ European Union (+420) Standard Rate" [ref=f76e300]:
+                - cell "🇨🇿 Czech Republic" [ref=f76e301]
+                - cell "CZ" [ref=f76e304]
+                - cell "European Union" [ref=f76e307]
+                - cell "(+420)" [ref=f76e310]
+                - cell "Standard Rate" [ref=f76e313]
+                - cell [ref=f76e316]
+                - cell [ref=f76e319]
+              - row "🇩🇰 Denmark DK European Union (+45) Standard Rate" [ref=f76e322]:
+                - cell "🇩🇰 Denmark" [ref=f76e323]
+                - cell "DK" [ref=f76e326]
+                - cell "European Union" [ref=f76e329]
+                - cell "(+45)" [ref=f76e332]
+                - cell "Standard Rate" [ref=f76e335]
+                - cell [ref=f76e338]
+                - cell [ref=f76e341]
+              - row "🇪🇪 Estonia EE European Union (+372) Standard Rate" [ref=f76e344]:
+                - cell "🇪🇪 Estonia" [ref=f76e345]
+                - cell "EE" [ref=f76e348]
+                - cell "European Union" [ref=f76e351]
+                - cell "(+372)" [ref=f76e354]
+                - cell "Standard Rate" [ref=f76e357]
+                - cell [ref=f76e360]
+                - cell [ref=f76e363]
+              - row "🇫🇮 Finland FI European Union (+358) Standard Rate" [ref=f76e366]:
+                - cell "🇫🇮 Finland" [ref=f76e367]
+                - cell "FI" [ref=f76e370]
+                - cell "European Union" [ref=f76e373]
+                - cell "(+358)" [ref=f76e376]
+                - cell "Standard Rate" [ref=f76e379]
+                - cell [ref=f76e382]
+                - cell [ref=f76e385]
+              - row "🇫🇷 France FR European Union (+33) Standard Rate" [ref=f76e388]:
+                - cell "🇫🇷 France" [ref=f76e389]
+                - cell "FR" [ref=f76e392]
+                - cell "European Union" [ref=f76e395]
+                - cell "(+33)" [ref=f76e398]
+                - cell "Standard Rate" [ref=f76e401]
+                - cell [ref=f76e404]
+                - cell [ref=f76e407]
+              - row "🇩🇪 Germany DE European Union (+49) Standard Rate" [ref=f76e410]:
+                - cell "🇩🇪 Germany" [ref=f76e411]
+                - cell "DE" [ref=f76e414]
+                - cell "European Union" [ref=f76e417]
+                - cell "(+49)" [ref=f76e420]
+                - cell "Standard Rate" [ref=f76e423]
+                - cell [ref=f76e426]
+                - cell [ref=f76e429]
+              - row "🇬🇷 Greece GR European Union (+30) Standard Rate" [ref=f76e432]:
+                - cell "🇬🇷 Greece" [ref=f76e433]
+                - cell "GR" [ref=f76e436]
+                - cell "European Union" [ref=f76e439]
+                - cell "(+30)" [ref=f76e442]
+                - cell "Standard Rate" [ref=f76e445]
+                - cell [ref=f76e448]
+                - cell [ref=f76e451]
+              - row "🇭🇺 Hungary HU European Union (+36) Standard Rate" [ref=f76e454]:
+                - cell "🇭🇺 Hungary" [ref=f76e455]
+                - cell "HU" [ref=f76e458]
+                - cell "European Union" [ref=f76e461]
+                - cell "(+36)" [ref=f76e464]
+                - cell "Standard Rate" [ref=f76e467]
+                - cell [ref=f76e470]
+                - cell [ref=f76e473]
+              - row "🇮🇸 Iceland IS European Union (+354) Standard Rate" [ref=f76e476]:
+                - cell "🇮🇸 Iceland" [ref=f76e477]
+                - cell "IS" [ref=f76e480]
+                - cell "European Union" [ref=f76e483]
+                - cell "(+354)" [ref=f76e486]
+                - cell "Standard Rate" [ref=f76e489]
+                - cell [ref=f76e492]
+                - cell [ref=f76e495]
+              - row "🇮🇪 Ireland IE European Union (+353) Standard Rate" [ref=f76e498]:
+                - cell "🇮🇪 Ireland" [ref=f76e499]
+                - cell "IE" [ref=f76e502]
+                - cell "European Union" [ref=f76e505]
+                - cell "(+353)" [ref=f76e508]
+                - cell "Standard Rate" [ref=f76e511]
+                - cell [ref=f76e514]
+                - cell [ref=f76e517]
+              - row "🇮🇹 Italy IT European Union (+39) Standard Rate" [ref=f76e520]:
+                - cell "🇮🇹 Italy" [ref=f76e521]
+                - cell "IT" [ref=f76e524]
+                - cell "European Union" [ref=f76e527]
+                - cell "(+39)" [ref=f76e530]
+                - cell "Standard Rate" [ref=f76e533]
+                - cell [ref=f76e536]
+                - cell [ref=f76e539]
+              - row "🇯🇵 Japan JP Asia Pacific (+81) Standard Rate" [ref=f76e542]:
+                - cell "🇯🇵 Japan" [ref=f76e543]
+                - cell "JP" [ref=f76e546]
+                - cell "Asia Pacific" [ref=f76e549]
+                - cell "(+81)" [ref=f76e552]
+                - cell "Standard Rate" [ref=f76e555]
+                - cell [ref=f76e558]
+                - cell [ref=f76e561]
+              - row "🇱🇹 Lithuania LT European Union (+370) Standard Rate" [ref=f76e564]:
+                - cell "🇱🇹 Lithuania" [ref=f76e565]
+                - cell "LT" [ref=f76e568]
+                - cell "European Union" [ref=f76e571]
+                - cell "(+370)" [ref=f76e574]
+                - cell "Standard Rate" [ref=f76e577]
+                - cell [ref=f76e580]
+                - cell [ref=f76e583]
+              - row "🇱🇺 Luxembourg LU European Union (+352) Standard Rate" [ref=f76e586]:
+                - cell "🇱🇺 Luxembourg" [ref=f76e587]
+                - cell "LU" [ref=f76e590]
+                - cell "European Union" [ref=f76e593]
+                - cell "(+352)" [ref=f76e596]
+                - cell "Standard Rate" [ref=f76e599]
+                - cell [ref=f76e602]
+                - cell [ref=f76e605]
+              - row "🇲🇽 Mexico MX North America (+52) Standard Rate" [ref=f76e608]:
+                - cell "🇲🇽 Mexico" [ref=f76e609]
+                - cell "MX" [ref=f76e612]
+                - cell "North America" [ref=f76e615]
+                - cell "(+52)" [ref=f76e618]
+                - cell "Standard Rate" [ref=f76e621]
+                - cell [ref=f76e624]
+                - cell [ref=f76e627]
+              - row "🇳🇱 Netherlands NL European Union (+31) Standard Rate" [ref=f76e630]:
+                - cell "🇳🇱 Netherlands" [ref=f76e631]
+                - cell "NL" [ref=f76e634]
+                - cell "European Union" [ref=f76e637]
+                - cell "(+31)" [ref=f76e640]
+                - cell "Standard Rate" [ref=f76e643]
+                - cell [ref=f76e646]
+                - cell [ref=f76e649]
+              - row "🇳🇿 New Zealand NZ Asia Pacific (+64) Standard Rate" [ref=f76e652]:
+                - cell "🇳🇿 New Zealand" [ref=f76e653]
+                - cell "NZ" [ref=f76e656]
+                - cell "Asia Pacific" [ref=f76e659]
+                - cell "(+64)" [ref=f76e662]
+                - cell "Standard Rate" [ref=f76e665]
+                - cell [ref=f76e668]
+                - cell [ref=f76e671]
+              - row "🇳🇴 Norway NO European Union (+47) Standard Rate" [ref=f76e674]:
+                - cell "🇳🇴 Norway" [ref=f76e675]
+                - cell "NO" [ref=f76e678]
+                - cell "European Union" [ref=f76e681]
+                - cell "(+47)" [ref=f76e684]
+                - cell "Standard Rate" [ref=f76e687]
+                - cell [ref=f76e690]
+                - cell [ref=f76e693]
+              - row "🇵🇱 Poland PL European Union (+48) Standard Rate" [ref=f76e696]:
+                - cell "🇵🇱 Poland" [ref=f76e697]
+                - cell "PL" [ref=f76e700]
+                - cell "European Union" [ref=f76e703]
+                - cell "(+48)" [ref=f76e706]
+                - cell "Standard Rate" [ref=f76e709]
+                - cell [ref=f76e712]
+                - cell [ref=f76e715]
+              - row "🇵🇹 Portugal PT European Union (+351) Standard Rate" [ref=f76e718]:
+                - cell "🇵🇹 Portugal" [ref=f76e719]
+                - cell "PT" [ref=f76e722]
+                - cell "European Union" [ref=f76e725]
+                - cell "(+351)" [ref=f76e728]
+                - cell "Standard Rate" [ref=f76e731]
+                - cell [ref=f76e734]
+                - cell [ref=f76e737]
+              - row "🇶🇦 Qatar QA Middle East & North Africa (+974) Standard Rate" [ref=f76e740]:
+                - cell "🇶🇦 Qatar" [ref=f76e741]
+                - cell "QA" [ref=f76e744]
+                - cell "Middle East & North Africa" [ref=f76e747]
+                - cell "(+974)" [ref=f76e750]
+                - cell "Standard Rate" [ref=f76e753]
+                - cell [ref=f76e756]
+                - cell [ref=f76e759]
+              - row "🇷🇴 Romania RO European Union (+40) Standard Rate" [ref=f76e762]:
+                - cell "🇷🇴 Romania" [ref=f76e763]
+                - cell "RO" [ref=f76e766]
+                - cell "European Union" [ref=f76e769]
+                - cell "(+40)" [ref=f76e772]
+                - cell "Standard Rate" [ref=f76e775]
+                - cell [ref=f76e778]
+                - cell [ref=f76e781]
+              - row "🇸🇬 Singapore SG Asia Pacific (+65) Standard Rate" [ref=f76e784]:
+                - cell "🇸🇬 Singapore" [ref=f76e785]
+                - cell "SG" [ref=f76e788]
+                - cell "Asia Pacific" [ref=f76e791]
+                - cell "(+65)" [ref=f76e794]
+                - cell "Standard Rate" [ref=f76e797]
+                - cell [ref=f76e800]
+                - cell [ref=f76e803]
+              - row "🇸🇰 Slovakia SK European Union (+421) Standard Rate" [ref=f76e806]:
+                - cell "🇸🇰 Slovakia" [ref=f76e807]
+                - cell "SK" [ref=f76e810]
+                - cell "European Union" [ref=f76e813]
+                - cell "(+421)" [ref=f76e816]
+                - cell "Standard Rate" [ref=f76e819]
+                - cell [ref=f76e822]
+                - cell [ref=f76e825]
+              - row "🇸🇮 Slovenia SI European Union (+386) Standard Rate" [ref=f76e828]:
+                - cell "🇸🇮 Slovenia" [ref=f76e829]
+                - cell "SI" [ref=f76e832]
+                - cell "European Union" [ref=f76e835]
+                - cell "(+386)" [ref=f76e838]
+                - cell "Standard Rate" [ref=f76e841]
+                - cell [ref=f76e844]
+                - cell [ref=f76e847]
+              - row "🇰🇷 South Korea KR Asia Pacific (+82) Standard Rate" [ref=f76e850]:
+                - cell "🇰🇷 South Korea" [ref=f76e851]
+                - cell "KR" [ref=f76e854]
+                - cell "Asia Pacific" [ref=f76e857]
+                - cell "(+82)" [ref=f76e860]
+                - cell "Standard Rate" [ref=f76e863]
+                - cell [ref=f76e866]
+                - cell [ref=f76e869]
+              - row "🇪🇸 Spain ES European Union (+34) Standard Rate" [ref=f76e872]:
+                - cell "🇪🇸 Spain" [ref=f76e873]
+                - cell "ES" [ref=f76e876]
+                - cell "European Union" [ref=f76e879]
+                - cell "(+34)" [ref=f76e882]
+                - cell "Standard Rate" [ref=f76e885]
+                - cell [ref=f76e888]
+                - cell [ref=f76e891]
+              - row "🇸🇪 Sweden SE European Union (+46) Standard Rate" [ref=f76e894]:
+                - cell "🇸🇪 Sweden" [ref=f76e895]
+                - cell "SE" [ref=f76e898]
+                - cell "European Union" [ref=f76e901]
+                - cell "(+46)" [ref=f76e904]
+                - cell "Standard Rate" [ref=f76e907]
+                - cell [ref=f76e910]
+                - cell [ref=f76e913]
+              - row "🇨🇭 Switzerland CH European Union (+41) Standard Rate" [ref=f76e916]:
+                - cell "🇨🇭 Switzerland" [ref=f76e917]
+                - cell "CH" [ref=f76e920]
+                - cell "European Union" [ref=f76e923]
+                - cell "(+41)" [ref=f76e926]
+                - cell "Standard Rate" [ref=f76e929]
+                - cell [ref=f76e932]
+                - cell [ref=f76e935]
+              - row "🇻🇮 U.S. Virgin Islands VI North America (+1340) Standard Rate" [ref=f76e938]:
+                - cell "🇻🇮 U.S. Virgin Islands" [ref=f76e939]
+                - cell "VI" [ref=f76e942]
+                - cell "North America" [ref=f76e945]
+                - cell "(+1340)" [ref=f76e948]
+                - cell "Standard Rate" [ref=f76e951]
+                - cell [ref=f76e954]
+                - cell [ref=f76e957]
+              - row "🇦🇪 United Arab Emirates AE Middle East & North Africa (+971) Standard Rate" [ref=f76e960]:
+                - cell "🇦🇪 United Arab Emirates" [ref=f76e961]
+                - cell "AE" [ref=f76e964]
+                - cell "Middle East & North Africa" [ref=f76e967]
+                - cell "(+971)" [ref=f76e970]
+                - cell "Standard Rate" [ref=f76e973]
+                - cell [ref=f76e976]
+                - cell [ref=f76e979]
+              - row "🇬🇧 United Kingdom GB (+44) Standard Rate" [ref=f76e982]:
+                - cell "🇬🇧 United Kingdom" [ref=f76e983]
+                - cell "GB" [ref=f76e986]
+                - cell [ref=f76e989]
+                - cell "(+44)" [ref=f76e992]
+                - cell "Standard Rate" [ref=f76e995]
+                - cell [ref=f76e998]
+                - cell [ref=f76e1001]
+              - row "🇺🇸 United States US North America (+1) Standard Rate" [ref=f76e1004]:
+                - cell "🇺🇸 United States" [ref=f76e1005]
+                - cell "US" [ref=f76e1008]
+                - cell "North America" [ref=f76e1011]
+                - cell "(+1)" [ref=f76e1014]
+                - cell "Standard Rate" [ref=f76e1017]
+                - cell [ref=f76e1020]
+                - cell [ref=f76e1023]
+              - row [ref=f76e1026]:
+                - cell "🇦🇫 Afghanistan" [ref=f76e1027]
+                - cell "AF" [ref=f76e1030]
+                - cell "Asia Pacific" [ref=f76e1033]
+                - cell "(+93)" [ref=f76e1036]
+                - cell "Standard Rate" [ref=f76e1039]
+                - cell [ref=f76e1042]:
+                  - switch [ref=f76e1045] [cursor=pointer]
+                - cell [ref=f76e1046]:
+                  - switch [ref=f76e1049] [cursor=pointer]
+              - row [ref=f76e1050]:
+                - cell "🇦🇱 Albania" [ref=f76e1051]
+                - cell "AL" [ref=f76e1054]
+                - cell "European Union" [ref=f76e1057]
+                - cell "(+355)" [ref=f76e1060]
+                - cell "Standard Rate" [ref=f76e1063]
+                - cell [ref=f76e1066]:
+                  - switch [ref=f76e1069] [cursor=pointer]
+                - cell [ref=f76e1070]:
+                  - switch [ref=f76e1073] [cursor=pointer]
+              - row [ref=f76e1074]:
+                - cell "🇩🇿 Algeria" [ref=f76e1075]
+                - cell "DZ" [ref=f76e1078]
+                - cell "Middle East & North Africa" [ref=f76e1081]
+                - cell "(+213)" [ref=f76e1084]
+                - cell "Standard Rate" [ref=f76e1087]
+                - cell [ref=f76e1090]:
+                  - switch [ref=f76e1093] [cursor=pointer]
+                - cell [ref=f76e1094]:
+                  - switch [ref=f76e1097] [cursor=pointer]
+              - row [ref=f76e1098]:
+                - cell "🇦🇸 American Samoa" [ref=f76e1099]
+                - cell "AS" [ref=f76e1102]
+                - cell "Asia Pacific" [ref=f76e1105]
+                - cell "(+1684)" [ref=f76e1108]
+                - cell "Standard Rate" [ref=f76e1111]
+                - cell [ref=f76e1114]:
+                  - switch [ref=f76e1117] [cursor=pointer]
+                - cell [ref=f76e1118]:
+                  - switch [ref=f76e1121] [cursor=pointer]
+              - row [ref=f76e1122]:
+                - cell "🇦🇩 Andorra" [ref=f76e1123]
+                - cell "AD" [ref=f76e1126]
+                - cell "European Union" [ref=f76e1129]
+                - cell "(+376)" [ref=f76e1132]
+                - cell "Standard Rate" [ref=f76e1135]
+                - cell [ref=f76e1138]:
+                  - switch [ref=f76e1141] [cursor=pointer]
+                - cell [ref=f76e1142]:
+                  - switch [ref=f76e1145] [cursor=pointer]
+              - row [ref=f76e1146]:
+                - cell "🇦🇴 Angola" [ref=f76e1147]
+                - cell "AO" [ref=f76e1150]
+                - cell "Middle East & North Africa" [ref=f76e1153]
+                - cell "(+244)" [ref=f76e1156]
+                - cell "Standard Rate" [ref=f76e1159]
+                - cell [ref=f76e1162]:
+                  - switch [ref=f76e1165] [cursor=pointer]
+                - cell [ref=f76e1166]:
+                  - switch [ref=f76e1169] [cursor=pointer]
+              - row [ref=f76e1170]:
+                - cell "🇦🇮 Anguilla" [ref=f76e1171]
+                - cell "AI" [ref=f76e1174]
+                - cell "North America" [ref=f76e1177]
+                - cell "(+1264)" [ref=f76e1180]
+                - cell "Standard Rate" [ref=f76e1183]
+                - cell [ref=f76e1186]:
+                  - switch [ref=f76e1189] [cursor=pointer]
+                - cell [ref=f76e1190]:
+                  - switch [ref=f76e1193] [cursor=pointer]
+              - row [ref=f76e1194]:
+                - cell "🇦🇬 Antigua and Barbuda" [ref=f76e1195]
+                - cell "AG" [ref=f76e1198]
+                - cell "North America" [ref=f76e1201]
+                - cell "(+1268)" [ref=f76e1204]
+                - cell "Standard Rate" [ref=f76e1207]
+                - cell [ref=f76e1210]:
+                  - switch [ref=f76e1213] [cursor=pointer]
+                - cell [ref=f76e1214]:
+                  - switch [ref=f76e1217] [cursor=pointer]
+              - row [ref=f76e1218]:
+                - cell "🇦🇷 Argentina" [ref=f76e1219]
+                - cell "AR" [ref=f76e1222]
+                - cell "Latin America" [ref=f76e1225]
+                - cell "(+54)" [ref=f76e1228]
+                - cell "Standard Rate" [ref=f76e1231]
+                - cell [ref=f76e1234]:
+                  - switch [ref=f76e1237] [cursor=pointer]
+                - cell [ref=f76e1238]:
+                  - switch [ref=f76e1241] [cursor=pointer]
+              - row [ref=f76e1242]:
+                - cell "🇦🇲 Armenia" [ref=f76e1243]
+                - cell "AM" [ref=f76e1246]
+                - cell "Asia Pacific" [ref=f76e1249]
+                - cell "(+374)" [ref=f76e1252]
+                - cell "Standard Rate" [ref=f76e1255]
+                - cell [ref=f76e1258]:
+                  - switch [ref=f76e1261] [cursor=pointer]
+                - cell [ref=f76e1262]:
+                  - switch [ref=f76e1265] [cursor=pointer]
+              - row [ref=f76e1266]:
+                - cell "🇦🇼 Aruba" [ref=f76e1267]
+                - cell "AW" [ref=f76e1270]
+                - cell "North America" [ref=f76e1273]
+                - cell "(+297)" [ref=f76e1276]
+                - cell "Standard Rate" [ref=f76e1279]
+                - cell [ref=f76e1282]:
+                  - switch [ref=f76e1285] [cursor=pointer]
+                - cell [ref=f76e1286]:
+                  - switch [ref=f76e1289] [cursor=pointer]
+              - row [ref=f76e1290]:
+                - cell "🇳🇫 Australian External Territories" [ref=f76e1291]
+                - cell "NF" [ref=f76e1294]
+                - cell "Asia Pacific" [ref=f76e1297]
+                - cell "(+672)" [ref=f76e1300]
+                - cell "Standard Rate" [ref=f76e1303]
+                - cell [ref=f76e1306]:
+                  - switch [ref=f76e1309] [cursor=pointer]
+                - cell [ref=f76e1310]:
+                  - switch [ref=f76e1313] [cursor=pointer]
+              - row [ref=f76e1314]:
+                - cell "🇦🇿 Azerbaijan" [ref=f76e1315]
+                - cell "AZ" [ref=f76e1318]
+                - cell "Asia Pacific" [ref=f76e1321]
+                - cell "(+994)" [ref=f76e1324]
+                - cell "Standard Rate" [ref=f76e1327]
+                - cell [ref=f76e1330]:
+                  - switch [ref=f76e1333] [cursor=pointer]
+                - cell [ref=f76e1334]:
+                  - switch [ref=f76e1337] [cursor=pointer]
+              - row [ref=f76e1338]:
+                - cell "🇧🇭 Bahrain" [ref=f76e1339]
+                - cell "BH" [ref=f76e1342]
+                - cell "Middle East & North Africa" [ref=f76e1345]
+                - cell "(+973)" [ref=f76e1348]
+                - cell "Standard Rate" [ref=f76e1351]
+                - cell [ref=f76e1354]:
+                  - switch [ref=f76e1357] [cursor=pointer]
+                - cell [ref=f76e1358]:
+                  - switch [ref=f76e1361] [cursor=pointer]
+              - row [ref=f76e1362]:
+                - cell "🇧🇩 Bangladesh" [ref=f76e1363]
+                - cell "BD" [ref=f76e1366]
+                - cell "Asia Pacific" [ref=f76e1369]
+                - cell "(+880)" [ref=f76e1372]
+                - cell "Standard Rate" [ref=f76e1375]
+                - cell [ref=f76e1378]:
+                  - switch [ref=f76e1381] [cursor=pointer]
+                - cell [ref=f76e1382]:
+                  - switch [ref=f76e1385] [cursor=pointer]
+              - row [ref=f76e1386]:
+                - cell "🇧🇧 Barbados" [ref=f76e1387]
+                - cell "BB" [ref=f76e1390]
+                - cell "North America" [ref=f76e1393]
+                - cell "(+1246)" [ref=f76e1396]
+                - cell "Standard Rate" [ref=f76e1399]
+                - cell [ref=f76e1402]:
+                  - switch [ref=f76e1405] [cursor=pointer]
+                - cell [ref=f76e1406]:
+                  - switch [ref=f76e1409] [cursor=pointer]
+              - row [ref=f76e1410]:
+                - cell "🇧🇿 Belize" [ref=f76e1411]
+                - cell "BZ" [ref=f76e1414]
+                - cell "North America" [ref=f76e1417]
+                - cell "(+501)" [ref=f76e1420]
+                - cell "Standard Rate" [ref=f76e1423]
+                - cell [ref=f76e1426]:
+                  - switch [ref=f76e1429] [cursor=pointer]
+                - cell [ref=f76e1430]:
+                  - switch [ref=f76e1433] [cursor=pointer]
+              - row [ref=f76e1434]:
+                - cell "🇧🇯 Benin" [ref=f76e1435]
+                - cell "BJ" [ref=f76e1438]
+                - cell "Middle East & North Africa" [ref=f76e1441]
+                - cell "(+229)" [ref=f76e1444]
+                - cell "Standard Rate" [ref=f76e1447]
+                - cell [ref=f76e1450]:
+                  - switch [ref=f76e1453] [cursor=pointer]
+                - cell [ref=f76e1454]:
+                  - switch [ref=f76e1457] [cursor=pointer]
+              - row [ref=f76e1458]:
+                - cell "🇧🇹 Bhutan" [ref=f76e1459]
+                - cell "BT" [ref=f76e1462]
+                - cell "Asia Pacific" [ref=f76e1465]
+                - cell "(+975)" [ref=f76e1468]
+                - cell "Standard Rate" [ref=f76e1471]
+                - cell [ref=f76e1474]:
+                  - switch [ref=f76e1477] [cursor=pointer]
+                - cell [ref=f76e1478]:
+                  - switch [ref=f76e1481] [cursor=pointer]
+              - row [ref=f76e1482]:
+                - cell "🇧🇴 Bolivia" [ref=f76e1483]
+                - cell "BO" [ref=f76e1486]
+                - cell "Latin America" [ref=f76e1489]
+                - cell "(+591)" [ref=f76e1492]
+                - cell "Standard Rate" [ref=f76e1495]
+                - cell [ref=f76e1498]:
+                  - switch [ref=f76e1501] [cursor=pointer]
+                - cell [ref=f76e1502]:
+                  - switch [ref=f76e1505] [cursor=pointer]
+              - row [ref=f76e1506]:
+                - cell "🇧🇦 Bosnia and Herzegovina" [ref=f76e1507]
+                - cell "BA" [ref=f76e1510]
+                - cell "European Union" [ref=f76e1513]
+                - cell "(+387)" [ref=f76e1516]
+                - cell "Standard Rate" [ref=f76e1519]
+                - cell [ref=f76e1522]:
+                  - switch [ref=f76e1525] [cursor=pointer]
+                - cell [ref=f76e1526]:
+                  - switch [ref=f76e1529] [cursor=pointer]
+              - row [ref=f76e1530]:
+                - cell "🇧🇼 Botswana" [ref=f76e1531]
+                - cell "BW" [ref=f76e1534]
+                - cell "Middle East & North Africa" [ref=f76e1537]
+                - cell "(+267)" [ref=f76e1540]
+                - cell "Standard Rate" [ref=f76e1543]
+                - cell [ref=f76e1546]:
+                  - switch [ref=f76e1549] [cursor=pointer]
+                - cell [ref=f76e1550]:
+                  - switch [ref=f76e1553] [cursor=pointer]
+              - row [ref=f76e1554]:
+                - cell "🇮🇴 British Indian Ocean Territory" [ref=f76e1555]
+                - cell "IO" [ref=f76e1558]
+                - cell "Asia Pacific" [ref=f76e1561]
+                - cell "(+246)" [ref=f76e1564]
+                - cell "Standard Rate" [ref=f76e1567]
+                - cell [ref=f76e1570]:
+                  - switch [ref=f76e1573] [cursor=pointer]
+                - cell [ref=f76e1574]:
+                  - switch [ref=f76e1577] [cursor=pointer]
+              - row [ref=f76e1578]:
+                - cell "🇧🇳 Brunei" [ref=f76e1579]
+                - cell "BN" [ref=f76e1582]
+                - cell "Asia Pacific" [ref=f76e1585]
+                - cell "(+673)" [ref=f76e1588]
+                - cell "Standard Rate" [ref=f76e1591]
+                - cell [ref=f76e1594]:
+                  - switch [ref=f76e1597] [cursor=pointer]
+                - cell [ref=f76e1598]:
+                  - switch [ref=f76e1601] [cursor=pointer]
+              - row [ref=f76e1602]:
+                - cell "🇧🇬 Bulgaria" [ref=f76e1603]
+                - cell "BG" [ref=f76e1606]
+                - cell "European Union" [ref=f76e1609]
+                - cell "(+359)" [ref=f76e1612]
+                - cell "Standard Rate" [ref=f76e1615]
+                - cell [ref=f76e1618]:
+                  - switch [ref=f76e1621] [cursor=pointer]
+                - cell [ref=f76e1622]:
+                  - switch [ref=f76e1625] [cursor=pointer]
+              - row [ref=f76e1626]:
+                - cell "🇧🇫 Burkina Faso" [ref=f76e1627]
+                - cell "BF" [ref=f76e1630]
+                - cell "Middle East & North Africa" [ref=f76e1633]
+                - cell "(+226)" [ref=f76e1636]
+                - cell "Standard Rate" [ref=f76e1639]
+                - cell [ref=f76e1642]:
+                  - switch [ref=f76e1645] [cursor=pointer]
+                - cell [ref=f76e1646]:
+                  - switch [ref=f76e1649] [cursor=pointer]
+              - row [ref=f76e1650]:
+                - cell "🇧🇮 Burundi" [ref=f76e1651]
+                - cell "BI" [ref=f76e1654]
+                - cell "Middle East & North Africa" [ref=f76e1657]
+                - cell "(+257)" [ref=f76e1660]
+                - cell "Standard Rate" [ref=f76e1663]
+                - cell [ref=f76e1666]:
+                  - switch [ref=f76e1669] [cursor=pointer]
+                - cell [ref=f76e1670]:
+                  - switch [ref=f76e1673] [cursor=pointer]
+              - row [ref=f76e1674]:
+                - cell "🇰🇭 Cambodia" [ref=f76e1675]
+                - cell "KH" [ref=f76e1678]
+                - cell "Asia Pacific" [ref=f76e1681]
+                - cell "(+855)" [ref=f76e1684]
+                - cell "Standard Rate" [ref=f76e1687]
+                - cell [ref=f76e1690]:
+                  - switch [ref=f76e1693] [cursor=pointer]
+                - cell [ref=f76e1694]:
+                  - switch [ref=f76e1697] [cursor=pointer]
+              - row [ref=f76e1698]:
+                - cell "🇨🇲 Cameroon" [ref=f76e1699]
+                - cell "CM" [ref=f76e1702]
+                - cell "Middle East & North Africa" [ref=f76e1705]
+                - cell "(+237)" [ref=f76e1708]
+                - cell "Standard Rate" [ref=f76e1711]
+                - cell [ref=f76e1714]:
+                  - switch [ref=f76e1717] [cursor=pointer]
+                - cell [ref=f76e1718]:
+                  - switch [ref=f76e1721] [cursor=pointer]
+              - row [ref=f76e1722]:
+                - cell "🇨🇻 Cape Verde" [ref=f76e1723]
+                - cell "CV" [ref=f76e1726]
+                - cell "Middle East & North Africa" [ref=f76e1729]
+                - cell "(+238)" [ref=f76e1732]
+                - cell "Standard Rate" [ref=f76e1735]
+                - cell [ref=f76e1738]:
+                  - switch [ref=f76e1741] [cursor=pointer]
+                - cell [ref=f76e1742]:
+                  - switch [ref=f76e1745] [cursor=pointer]
+              - row [ref=f76e1746]:
+                - cell "🇨🇫 Central Africa" [ref=f76e1747]
+                - cell "CF" [ref=f76e1750]
+                - cell "Middle East & North Africa" [ref=f76e1753]
+                - cell "(+236)" [ref=f76e1756]
+                - cell "Standard Rate" [ref=f76e1759]
+                - cell [ref=f76e1762]:
+                  - switch [ref=f76e1765] [cursor=pointer]
+                - cell [ref=f76e1766]:
+                  - switch [ref=f76e1769] [cursor=pointer]
+              - row [ref=f76e1770]:
+                - cell "🇹🇩 Chad" [ref=f76e1771]
+                - cell "TD" [ref=f76e1774]
+                - cell "Middle East & North Africa" [ref=f76e1777]
+                - cell "(+235)" [ref=f76e1780]
+                - cell "Standard Rate" [ref=f76e1783]
+                - cell [ref=f76e1786]:
+                  - switch [ref=f76e1789] [cursor=pointer]
+                - cell [ref=f76e1790]:
+                  - switch [ref=f76e1793] [cursor=pointer]
+              - row [ref=f76e1794]:
+                - cell "🇨🇱 Chile" [ref=f76e1795]
+                - cell "CL" [ref=f76e1798]
+                - cell "Latin America" [ref=f76e1801]
+                - cell "(+56)" [ref=f76e1804]
+                - cell "Standard Rate" [ref=f76e1807]
+                - cell [ref=f76e1810]:
+                  - switch [ref=f76e1813] [cursor=pointer]
+                - cell [ref=f76e1814]:
+                  - switch [ref=f76e1817] [cursor=pointer]
+              - row [ref=f76e1818]:
+                - cell "🇰🇲 Comoros" [ref=f76e1819]
+                - cell "KM" [ref=f76e1822]
+                - cell "Middle East & North Africa" [ref=f76e1825]
+                - cell "(+269)" [ref=f76e1828]
+                - cell "Standard Rate" [ref=f76e1831]
+                - cell [ref=f76e1834]:
+                  - switch [ref=f76e1837] [cursor=pointer]
+                - cell [ref=f76e1838]:
+                  - switch [ref=f76e1841] [cursor=pointer]
+              - row [ref=f76e1842]:
+                - cell "🇨🇬 Congo" [ref=f76e1843]
+                - cell "CG" [ref=f76e1846]
+                - cell "Middle East & North Africa" [ref=f76e1849]
+                - cell "(+242)" [ref=f76e1852]
+                - cell "Standard Rate" [ref=f76e1855]
+                - cell [ref=f76e1858]:
+                  - switch [ref=f76e1861] [cursor=pointer]
+                - cell [ref=f76e1862]:
+                  - switch [ref=f76e1865] [cursor=pointer]
+              - row [ref=f76e1866]:
+                - cell "🇨🇩 Congo, Dem Rep" [ref=f76e1867]
+                - cell "CD" [ref=f76e1870]
+                - cell "Middle East & North Africa" [ref=f76e1873]
+                - cell "(+243)" [ref=f76e1876]
+                - cell "Standard Rate" [ref=f76e1879]
+                - cell [ref=f76e1882]:
+                  - switch [ref=f76e1885] [cursor=pointer]
+                - cell [ref=f76e1886]:
+                  - switch [ref=f76e1889] [cursor=pointer]
+              - row [ref=f76e1890]:
+                - cell "🇨🇰 Cook Islands" [ref=f76e1891]
+                - cell "CK" [ref=f76e1894]
+                - cell "Asia Pacific" [ref=f76e1897]
+                - cell "(+682)" [ref=f76e1900]
+                - cell "Standard Rate" [ref=f76e1903]
+                - cell [ref=f76e1906]:
+                  - switch [ref=f76e1909] [cursor=pointer]
+                - cell [ref=f76e1910]:
+                  - switch [ref=f76e1913] [cursor=pointer]
+              - row [ref=f76e1914]:
+                - cell "🇭🇷 Croatia" [ref=f76e1915]
+                - cell "HR" [ref=f76e1918]
+                - cell "European Union" [ref=f76e1921]
+                - cell "(+385)" [ref=f76e1924]
+                - cell "Standard Rate" [ref=f76e1927]
+                - cell [ref=f76e1930]:
+                  - switch [ref=f76e1933] [cursor=pointer]
+                - cell [ref=f76e1934]:
+                  - switch [ref=f76e1937] [cursor=pointer]
+              - row [ref=f76e1938]:
+                - cell "🇩🇯 Djibouti" [ref=f76e1939]
+                - cell "DJ" [ref=f76e1942]
+                - cell "Middle East & North Africa" [ref=f76e1945]
+                - cell "(+253)" [ref=f76e1948]
+                - cell "Standard Rate" [ref=f76e1951]
+                - cell [ref=f76e1954]:
+                  - switch [ref=f76e1957] [cursor=pointer]
+                - cell [ref=f76e1958]:
+                  - switch [ref=f76e1961] [cursor=pointer]
+              - row [ref=f76e1962]:
+                - cell "🇹🇱 East Timor" [ref=f76e1963]
+                - cell "TL" [ref=f76e1966]
+                - cell "Asia Pacific" [ref=f76e1969]
+                - cell "(+670)" [ref=f76e1972]
+                - cell "Standard Rate" [ref=f76e1975]
+                - cell [ref=f76e1978]:
+                  - switch [ref=f76e1981] [cursor=pointer]
+                - cell [ref=f76e1982]:
+                  - switch [ref=f76e1985] [cursor=pointer]
+              - row [ref=f76e1986]:
+                - cell "🇪🇨 Ecuador" [ref=f76e1987]
+                - cell "EC" [ref=f76e1990]
+                - cell "Latin America" [ref=f76e1993]
+                - cell "(+593)" [ref=f76e1996]
+                - cell "Standard Rate" [ref=f76e1999]
+                - cell [ref=f76e2002]:
+                  - switch [ref=f76e2005] [cursor=pointer]
+                - cell [ref=f76e2006]:
+                  - switch [ref=f76e2009] [cursor=pointer]
+              - row [ref=f76e2010]:
+                - cell "🇪🇬 Egypt" [ref=f76e2011]
+                - cell "EG" [ref=f76e2014]
+                - cell "Middle East & North Africa" [ref=f76e2017]
+                - cell "(+20)" [ref=f76e2020]
+                - cell "Standard Rate" [ref=f76e2023]
+                - cell [ref=f76e2026]:
+                  - switch [ref=f76e2029] [cursor=pointer]
+                - cell [ref=f76e2030]:
+                  - switch [ref=f76e2033] [cursor=pointer]
+              - row [ref=f76e2034]:
+                - cell "🇸🇻 El Salvador" [ref=f76e2035]
+                - cell "SV" [ref=f76e2038]
+                - cell "North America" [ref=f76e2041]
+                - cell "(+503)" [ref=f76e2044]
+                - cell "Standard Rate" [ref=f76e2047]
+                - cell [ref=f76e2050]:
+                  - switch [ref=f76e2053] [cursor=pointer]
+                - cell [ref=f76e2054]:
+                  - switch [ref=f76e2057] [cursor=pointer]
+              - row [ref=f76e2058]:
+                - cell "🇬🇶 Equatorial Guinea" [ref=f76e2059]
+                - cell "GQ" [ref=f76e2062]
+                - cell "Middle East & North Africa" [ref=f76e2065]
+                - cell "(+240)" [ref=f76e2068]
+                - cell "Standard Rate" [ref=f76e2071]
+                - cell [ref=f76e2074]:
+                  - switch [ref=f76e2077] [cursor=pointer]
+                - cell [ref=f76e2078]:
+                  - switch [ref=f76e2081] [cursor=pointer]
+              - row [ref=f76e2082]:
+                - cell "🇪🇷 Eritrea" [ref=f76e2083]
+                - cell "ER" [ref=f76e2086]
+                - cell "Middle East & North Africa" [ref=f76e2089]
+                - cell "(+291)" [ref=f76e2092]
+                - cell "Standard Rate" [ref=f76e2095]
+                - cell [ref=f76e2098]:
+                  - switch [ref=f76e2101] [cursor=pointer]
+                - cell [ref=f76e2102]:
+                  - switch [ref=f76e2105] [cursor=pointer]
+              - row [ref=f76e2106]:
+                - cell "🇪🇹 Ethiopia" [ref=f76e2107]
+                - cell "ET" [ref=f76e2110]
+                - cell "Middle East & North Africa" [ref=f76e2113]
+                - cell "(+251)" [ref=f76e2116]
+                - cell "Standard Rate" [ref=f76e2119]
+                - cell [ref=f76e2122]:
+                  - switch [ref=f76e2125] [cursor=pointer]
+                - cell [ref=f76e2126]:
+                  - switch [ref=f76e2129] [cursor=pointer]
+              - row [ref=f76e2130]:
+                - cell "🇫🇰 Falkland Islands" [ref=f76e2131]
+                - cell "FK" [ref=f76e2134]
+                - cell "Latin America" [ref=f76e2137]
+                - cell "(+500)" [ref=f76e2140]
+                - cell "Standard Rate" [ref=f76e2143]
+                - cell [ref=f76e2146]:
+                  - switch [ref=f76e2149] [cursor=pointer]
+                - cell [ref=f76e2150]:
+                  - switch [ref=f76e2153] [cursor=pointer]
+              - row [ref=f76e2154]:
+                - cell "🇫🇴 Faroe Islands" [ref=f76e2155]
+                - cell "FO" [ref=f76e2158]
+                - cell "European Union" [ref=f76e2161]
+                - cell "(+298)" [ref=f76e2164]
+                - cell "Standard Rate" [ref=f76e2167]
+                - cell [ref=f76e2170]:
+                  - switch [ref=f76e2173] [cursor=pointer]
+                - cell [ref=f76e2174]:
+                  - switch [ref=f76e2177] [cursor=pointer]
+              - row [ref=f76e2178]:
+                - cell "🇫🇯 Fiji" [ref=f76e2179]
+                - cell "FJ" [ref=f76e2182]
+                - cell "Asia Pacific" [ref=f76e2185]
+                - cell "(+679)" [ref=f76e2188]
+                - cell "Standard Rate" [ref=f76e2191]
+                - cell [ref=f76e2194]:
+                  - switch [ref=f76e2197] [cursor=pointer]
+                - cell [ref=f76e2198]:
+                  - switch [ref=f76e2201] [cursor=pointer]
+              - row [ref=f76e2202]:
+                - cell "🇬🇫 French Guiana" [ref=f76e2203]
+                - cell "GF" [ref=f76e2206]
+                - cell "Latin America" [ref=f76e2209]
+                - cell "(+594)" [ref=f76e2212]
+                - cell "Standard Rate" [ref=f76e2215]
+                - cell [ref=f76e2218]:
+                  - switch [ref=f76e2221] [cursor=pointer]
+                - cell [ref=f76e2222]:
+                  - switch [ref=f76e2225] [cursor=pointer]
+              - row [ref=f76e2226]:
+                - cell "🇵🇫 French Polynesia" [ref=f76e2227]
+                - cell "PF" [ref=f76e2230]
+                - cell "Asia Pacific" [ref=f76e2233]
+                - cell "(+689)" [ref=f76e2236]
+                - cell "Standard Rate" [ref=f76e2239]
+                - cell [ref=f76e2242]:
+                  - switch [ref=f76e2245] [cursor=pointer]
+                - cell [ref=f76e2246]:
+                  - switch [ref=f76e2249] [cursor=pointer]
+              - row [ref=f76e2250]:
+                - cell "🇬🇦 Gabon" [ref=f76e2251]
+                - cell "GA" [ref=f76e2254]
+                - cell "Middle East & North Africa" [ref=f76e2257]
+                - cell "(+241)" [ref=f76e2260]
+                - cell "Standard Rate" [ref=f76e2263]
+                - cell [ref=f76e2266]:
+                  - switch [ref=f76e2269] [cursor=pointer]
+                - cell [ref=f76e2270]:
+                  - switch [ref=f76e2273] [cursor=pointer]
+              - row [ref=f76e2274]:
+                - cell "🇬🇲 Gambia" [ref=f76e2275]
+                - cell "GM" [ref=f76e2278]
+                - cell "Middle East & North Africa" [ref=f76e2281]
+                - cell "(+220)" [ref=f76e2284]
+                - cell "Standard Rate" [ref=f76e2287]
+                - cell [ref=f76e2290]:
+                  - switch [ref=f76e2293] [cursor=pointer]
+                - cell [ref=f76e2294]:
+                  - switch [ref=f76e2297] [cursor=pointer]
+              - row [ref=f76e2298]:
+                - cell "🇬🇪 Georgia" [ref=f76e2299]
+                - cell "GE" [ref=f76e2302]
+                - cell "Asia Pacific" [ref=f76e2305]
+                - cell "(+995)" [ref=f76e2308]
+                - cell "Standard Rate" [ref=f76e2311]
+                - cell [ref=f76e2314]:
+                  - switch [ref=f76e2317] [cursor=pointer]
+                - cell [ref=f76e2318]:
+                  - switch [ref=f76e2321] [cursor=pointer]
+              - row [ref=f76e2322]:
+                - cell "🇬🇭 Ghana" [ref=f76e2323]
+                - cell "GH" [ref=f76e2326]
+                - cell "Middle East & North Africa" [ref=f76e2329]
+                - cell "(+233)" [ref=f76e2332]
+                - cell "Standard Rate" [ref=f76e2335]
+                - cell [ref=f76e2338]:
+                  - switch [ref=f76e2341] [cursor=pointer]
+                - cell [ref=f76e2342]:
+                  - switch [ref=f76e2345] [cursor=pointer]
+              - row [ref=f76e2346]:
+                - cell "🇬🇮 Gibraltar" [ref=f76e2347]
+                - cell "GI" [ref=f76e2350]
+                - cell "European Union" [ref=f76e2353]
+                - cell "(+350)" [ref=f76e2356]
+                - cell "Standard Rate" [ref=f76e2359]
+                - cell [ref=f76e2362]:
+                  - switch [ref=f76e2365] [cursor=pointer]
+                - cell [ref=f76e2366]:
+                  - switch [ref=f76e2369] [cursor=pointer]
+              - row [ref=f76e2370]:
+                - cell "🇬🇱 Greenland" [ref=f76e2371]
+                - cell "GL" [ref=f76e2374]
+                - cell "North America" [ref=f76e2377]
+                - cell "(+299)" [ref=f76e2380]
+                - cell "Standard Rate" [ref=f76e2383]
+                - cell [ref=f76e2386]:
+                  - switch [ref=f76e2389] [cursor=pointer]
+                - cell [ref=f76e2390]:
+                  - switch [ref=f76e2393] [cursor=pointer]
+              - row [ref=f76e2394]:
+                - cell "🇬🇩 Grenada" [ref=f76e2395]
+                - cell "GD" [ref=f76e2398]
+                - cell "North America" [ref=f76e2401]
+                - cell "(+1473)" [ref=f76e2404]
+                - cell "Standard Rate" [ref=f76e2407]
+                - cell [ref=f76e2410]:
+                  - switch [ref=f76e2413] [cursor=pointer]
+                - cell [ref=f76e2414]:
+                  - switch [ref=f76e2417] [cursor=pointer]
+              - row [ref=f76e2418]:
+                - cell "🇬🇵 Guadeloupe" [ref=f76e2419]
+                - cell "GP" [ref=f76e2422]
+                - cell "North America" [ref=f76e2425]
+                - cell "(+590)" [ref=f76e2428]
+                - cell "Standard Rate" [ref=f76e2431]
+                - cell [ref=f76e2434]:
+                  - switch [ref=f76e2437] [cursor=pointer]
+                - cell [ref=f76e2438]:
+                  - switch [ref=f76e2441] [cursor=pointer]
+              - row [ref=f76e2442]:
+                - cell "🇬🇺 Guam" [ref=f76e2443]
+                - cell "GU" [ref=f76e2446]
+                - cell "Asia Pacific" [ref=f76e2449]
+                - cell "(+1671)" [ref=f76e2452]
+                - cell "Standard Rate" [ref=f76e2455]
+                - cell [ref=f76e2458]:
+                  - switch [ref=f76e2461] [cursor=pointer]
+                - cell [ref=f76e2462]:
+                  - switch [ref=f76e2465] [cursor=pointer]
+              - row [ref=f76e2466]:
+                - cell "🇬🇹 Guatemala" [ref=f76e2467]
+                - cell "GT" [ref=f76e2470]
+                - cell "North America" [ref=f76e2473]
+                - cell "(+502)" [ref=f76e2476]
+                - cell "Standard Rate" [ref=f76e2479]
+                - cell [ref=f76e2482]:
+                  - switch [ref=f76e2485] [cursor=pointer]
+                - cell [ref=f76e2486]:
+                  - switch [ref=f76e2489] [cursor=pointer]
+              - row [ref=f76e2490]:
+                - cell "🇬🇳 Guinea" [ref=f76e2491]
+                - cell "GN" [ref=f76e2494]
+                - cell "Middle East & North Africa" [ref=f76e2497]
+                - cell "(+224)" [ref=f76e2500]
+                - cell "Standard Rate" [ref=f76e2503]
+                - cell [ref=f76e2506]:
+                  - switch [ref=f76e2509] [cursor=pointer]
+                - cell [ref=f76e2510]:
+                  - switch [ref=f76e2513] [cursor=pointer]
+              - row [ref=f76e2514]:
+                - cell "🇬🇼 Guinea-Bissau" [ref=f76e2515]
+                - cell "GW" [ref=f76e2518]
+                - cell "Middle East & North Africa" [ref=f76e2521]
+                - cell "(+245)" [ref=f76e2524]
+                - cell "Standard Rate" [ref=f76e2527]
+                - cell [ref=f76e2530]:
+                  - switch [ref=f76e2533] [cursor=pointer]
+                - cell [ref=f76e2534]:
+                  - switch [ref=f76e2537] [cursor=pointer]
+              - row [ref=f76e2538]:
+                - cell "🇬🇾 Guyana" [ref=f76e2539]
+                - cell "GY" [ref=f76e2542]
+                - cell "Latin America" [ref=f76e2545]
+                - cell "(+592)" [ref=f76e2548]
+                - cell "Standard Rate" [ref=f76e2551]
+                - cell [ref=f76e2554]:
+                  - switch [ref=f76e2557] [cursor=pointer]
+                - cell [ref=f76e2558]:
+                  - switch [ref=f76e2561] [cursor=pointer]
+              - row [ref=f76e2562]:
+                - cell "🇭🇹 Haiti" [ref=f76e2563]
+                - cell "HT" [ref=f76e2566]
+                - cell "North America" [ref=f76e2569]
+                - cell "(+509)" [ref=f76e2572]
+                - cell "Standard Rate" [ref=f76e2575]
+                - cell [ref=f76e2578]:
+                  - switch [ref=f76e2581] [cursor=pointer]
+                - cell [ref=f76e2582]:
+                  - switch [ref=f76e2585] [cursor=pointer]
+              - row [ref=f76e2586]:
+                - cell "🇭🇳 Honduras" [ref=f76e2587]
+                - cell "HN" [ref=f76e2590]
+                - cell "North America" [ref=f76e2593]
+                - cell "(+504)" [ref=f76e2596]
+                - cell "Standard Rate" [ref=f76e2599]
+                - cell [ref=f76e2602]:
+                  - switch [ref=f76e2605] [cursor=pointer]
+                - cell [ref=f76e2606]:
+                  - switch [ref=f76e2609] [cursor=pointer]
+              - row [ref=f76e2610]:
+                - cell "🇭🇰 Hong Kong" [ref=f76e2611]
+                - cell "HK" [ref=f76e2614]
+                - cell "Asia Pacific" [ref=f76e2617]
+                - cell "(+852)" [ref=f76e2620]
+                - cell "Standard Rate" [ref=f76e2623]
+                - cell [ref=f76e2626]:
+                  - switch [ref=f76e2629] [cursor=pointer]
+                - cell [ref=f76e2630]:
+                  - switch [ref=f76e2633] [cursor=pointer]
+              - row [ref=f76e2634]:
+                - cell "🇮🇳 India" [ref=f76e2635]
+                - cell "IN" [ref=f76e2638]
+                - cell "Asia Pacific" [ref=f76e2641]
+                - cell "(+91)" [ref=f76e2644]
+                - cell "Standard Rate" [ref=f76e2647]
+                - cell [ref=f76e2650]:
+                  - switch [ref=f76e2653] [cursor=pointer]
+                - cell [ref=f76e2654]:
+                  - switch [ref=f76e2657] [cursor=pointer]
+              - row [ref=f76e2658]:
+                - cell "🇮🇩 Indonesia" [ref=f76e2659]
+                - cell "ID" [ref=f76e2662]
+                - cell "Asia Pacific" [ref=f76e2665]
+                - cell "(+62)" [ref=f76e2668]
+                - cell "Standard Rate" [ref=f76e2671]
+                - cell [ref=f76e2674]:
+                  - switch [ref=f76e2677] [cursor=pointer]
+                - cell [ref=f76e2678]:
+                  - switch [ref=f76e2681] [cursor=pointer]
+              - row [ref=f76e2682]:
+                - cell "🇮🇶 Iraq" [ref=f76e2683]
+                - cell "IQ" [ref=f76e2686]
+                - cell "Middle East & North Africa" [ref=f76e2689]
+                - cell "(+964)" [ref=f76e2692]
+                - cell "Standard Rate" [ref=f76e2695]
+                - cell [ref=f76e2698]:
+                  - switch [ref=f76e2701] [cursor=pointer]
+                - cell [ref=f76e2702]:
+                  - switch [ref=f76e2705] [cursor=pointer]
+              - row [ref=f76e2706]:
+                - cell "🇮🇱 Israel" [ref=f76e2707]
+                - cell "IL" [ref=f76e2710]
+                - cell "Middle East & North Africa" [ref=f76e2713]
+                - cell "(+972)" [ref=f76e2716]
+                - cell "Standard Rate" [ref=f76e2719]
+                - cell [ref=f76e2722]:
+                  - switch [ref=f76e2725] [cursor=pointer]
+                - cell [ref=f76e2726]:
+                  - switch [ref=f76e2729] [cursor=pointer]
+              - row [ref=f76e2730]:
+                - cell "🇨🇮 Ivory Coast" [ref=f76e2731]
+                - cell "CI" [ref=f76e2734]
+                - cell "Middle East & North Africa" [ref=f76e2737]
+                - cell "(+225)" [ref=f76e2740]
+                - cell "Standard Rate" [ref=f76e2743]
+                - cell [ref=f76e2746]:
+                  - switch [ref=f76e2749] [cursor=pointer]
+                - cell [ref=f76e2750]:
+                  - switch [ref=f76e2753] [cursor=pointer]
+              - row [ref=f76e2754]:
+                - cell "🇯🇴 Jordan" [ref=f76e2755]
+                - cell "JO" [ref=f76e2758]
+                - cell "Middle East & North Africa" [ref=f76e2761]
+                - cell "(+962)" [ref=f76e2764]
+                - cell "Standard Rate" [ref=f76e2767]
+                - cell [ref=f76e2770]:
+                  - switch [ref=f76e2773] [cursor=pointer]
+                - cell [ref=f76e2774]:
+                  - switch [ref=f76e2777] [cursor=pointer]
+              - row [ref=f76e2778]:
+                - cell "🇰🇪 Kenya" [ref=f76e2779]
+                - cell "KE" [ref=f76e2782]
+                - cell "Middle East & North Africa" [ref=f76e2785]
+                - cell "(+254)" [ref=f76e2788]
+                - cell "Standard Rate" [ref=f76e2791]
+                - cell [ref=f76e2794]:
+                  - switch [ref=f76e2797] [cursor=pointer]
+                - cell [ref=f76e2798]:
+                  - switch [ref=f76e2801] [cursor=pointer]
+              - row [ref=f76e2802]:
+                - cell "🇰🇮 Kiribati" [ref=f76e2803]
+                - cell "KI" [ref=f76e2806]
+                - cell "Asia Pacific" [ref=f76e2809]
+                - cell "(+686)" [ref=f76e2812]
+                - cell "Standard Rate" [ref=f76e2815]
+                - cell [ref=f76e2818]:
+                  - switch [ref=f76e2821] [cursor=pointer]
+                - cell [ref=f76e2822]:
+                  - switch [ref=f76e2825] [cursor=pointer]
+              - row [ref=f76e2826]:
+                - cell "🇽🇰 Kosovo" [ref=f76e2827]
+                - cell "XK" [ref=f76e2830]
+                - cell "European Union" [ref=f76e2833]
+                - cell "(+383)" [ref=f76e2836]
+                - cell "Standard Rate" [ref=f76e2839]
+                - cell [ref=f76e2842]:
+                  - switch [ref=f76e2845] [cursor=pointer]
+                - cell [ref=f76e2846]:
+                  - switch [ref=f76e2849] [cursor=pointer]
+              - row [ref=f76e2850]:
+                - cell "🇰🇼 Kuwait" [ref=f76e2851]
+                - cell "KW" [ref=f76e2854]
+                - cell "Middle East & North Africa" [ref=f76e2857]
+                - cell "(+965)" [ref=f76e2860]
+                - cell "Standard Rate" [ref=f76e2863]
+                - cell [ref=f76e2866]:
+                  - switch [ref=f76e2869] [cursor=pointer]
+                - cell [ref=f76e2870]:
+                  - switch [ref=f76e2873] [cursor=pointer]
+              - row [ref=f76e2874]:
+                - cell "🇰🇬 Kyrgyzstan" [ref=f76e2875]
+                - cell "KG" [ref=f76e2878]
+                - cell "Asia Pacific" [ref=f76e2881]
+                - cell "(+996)" [ref=f76e2884]
+                - cell "Standard Rate" [ref=f76e2887]
+                - cell [ref=f76e2890]:
+                  - switch [ref=f76e2893] [cursor=pointer]
+                - cell [ref=f76e2894]:
+                  - switch [ref=f76e2897] [cursor=pointer]
+              - row [ref=f76e2898]:
+                - cell "🇱🇦 Laos PDR" [ref=f76e2899]
+                - cell "LA" [ref=f76e2902]
+                - cell "Asia Pacific" [ref=f76e2905]
+                - cell "(+856)" [ref=f76e2908]
+                - cell "Standard Rate" [ref=f76e2911]
+                - cell [ref=f76e2914]:
+                  - switch [ref=f76e2917] [cursor=pointer]
+                - cell [ref=f76e2918]:
+                  - switch [ref=f76e2921] [cursor=pointer]
+              - row [ref=f76e2922]:
+                - cell "🇱🇻 Latvia" [ref=f76e2923]
+                - cell "LV" [ref=f76e2926]
+                - cell "European Union" [ref=f76e2929]
+                - cell "(+371)" [ref=f76e2932]
+                - cell "Standard Rate" [ref=f76e2935]
+                - cell [ref=f76e2938]:
+                  - switch [ref=f76e2941] [cursor=pointer]
+                - cell [ref=f76e2942]:
+                  - switch [ref=f76e2945] [cursor=pointer]
+              - row [ref=f76e2946]:
+                - cell "🇱🇧 Lebanon" [ref=f76e2947]
+                - cell "LB" [ref=f76e2950]
+                - cell "Middle East & North Africa" [ref=f76e2953]
+                - cell "(+961)" [ref=f76e2956]
+                - cell "Standard Rate" [ref=f76e2959]
+                - cell [ref=f76e2962]:
+                  - switch [ref=f76e2965] [cursor=pointer]
+                - cell [ref=f76e2966]:
+                  - switch [ref=f76e2969] [cursor=pointer]
+              - row [ref=f76e2970]:
+                - cell "🇱🇸 Lesotho" [ref=f76e2971]
+                - cell "LS" [ref=f76e2974]
+                - cell "Middle East & North Africa" [ref=f76e2977]
+                - cell "(+266)" [ref=f76e2980]
+                - cell "Standard Rate" [ref=f76e2983]
+                - cell [ref=f76e2986]:
+                  - switch [ref=f76e2989] [cursor=pointer]
+                - cell [ref=f76e2990]:
+                  - switch [ref=f76e2993] [cursor=pointer]
+              - row [ref=f76e2994]:
+                - cell "🇱🇷 Liberia" [ref=f76e2995]
+                - cell "LR" [ref=f76e2998]
+                - cell "Middle East & North Africa" [ref=f76e3001]
+                - cell "(+231)" [ref=f76e3004]
+                - cell "Standard Rate" [ref=f76e3007]
+                - cell [ref=f76e3010]:
+                  - switch [ref=f76e3013] [cursor=pointer]
+                - cell [ref=f76e3014]:
+                  - switch [ref=f76e3017] [cursor=pointer]
+              - row [ref=f76e3018]:
+                - cell "🇱🇾 Libya" [ref=f76e3019]
+                - cell "LY" [ref=f76e3022]
+                - cell "Middle East & North Africa" [ref=f76e3025]
+                - cell "(+218)" [ref=f76e3028]
+                - cell "Standard Rate" [ref=f76e3031]
+                - cell [ref=f76e3034]:
+                  - switch [ref=f76e3037] [cursor=pointer]
+                - cell [ref=f76e3038]:
+                  - switch [ref=f76e3041] [cursor=pointer]
+              - row [ref=f76e3042]:
+                - cell "🇱🇮 Liechtenstein" [ref=f76e3043]
+                - cell "LI" [ref=f76e3046]
+                - cell "European Union" [ref=f76e3049]
+                - cell "(+423)" [ref=f76e3052]
+                - cell "Standard Rate" [ref=f76e3055]
+                - cell [ref=f76e3058]:
+                  - switch [ref=f76e3061] [cursor=pointer]
+                - cell [ref=f76e3062]:
+                  - switch [ref=f76e3065] [cursor=pointer]
+              - row [ref=f76e3066]:
+                - cell "🇲🇴 Macau" [ref=f76e3067]
+                - cell "MO" [ref=f76e3070]
+                - cell "Asia Pacific" [ref=f76e3073]
+                - cell "(+853)" [ref=f76e3076]
+                - cell "Standard Rate" [ref=f76e3079]
+                - cell [ref=f76e3082]:
+                  - switch [ref=f76e3085] [cursor=pointer]
+                - cell [ref=f76e3086]:
+                  - switch [ref=f76e3089] [cursor=pointer]
+              - row [ref=f76e3090]:
+                - cell "🇲🇰 Macedonia" [ref=f76e3091]
+                - cell "MK" [ref=f76e3094]
+                - cell "European Union" [ref=f76e3097]
+                - cell "(+389)" [ref=f76e3100]
+                - cell "Standard Rate" [ref=f76e3103]
+                - cell [ref=f76e3106]:
+                  - switch [ref=f76e3109] [cursor=pointer]
+                - cell [ref=f76e3110]:
+                  - switch [ref=f76e3113] [cursor=pointer]
+              - row [ref=f76e3114]:
+                - cell "🇲🇬 Madagascar" [ref=f76e3115]
+                - cell "MG" [ref=f76e3118]
+                - cell "Middle East & North Africa" [ref=f76e3121]
+                - cell "(+261)" [ref=f76e3124]
+                - cell "Standard Rate" [ref=f76e3127]
+                - cell [ref=f76e3130]:
+                  - switch [ref=f76e3133] [cursor=pointer]
+                - cell [ref=f76e3134]:
+                  - switch [ref=f76e3137] [cursor=pointer]
+              - row [ref=f76e3138]:
+                - cell "🇲🇼 Malawi" [ref=f76e3139]
+                - cell "MW" [ref=f76e3142]
+                - cell "Middle East & North Africa" [ref=f76e3145]
+                - cell "(+265)" [ref=f76e3148]
+                - cell "Standard Rate" [ref=f76e3151]
+                - cell [ref=f76e3154]:
+                  - switch [ref=f76e3157] [cursor=pointer]
+                - cell [ref=f76e3158]:
+                  - switch [ref=f76e3161] [cursor=pointer]
+              - row [ref=f76e3162]:
+                - cell "🇲🇾 Malaysia" [ref=f76e3163]
+                - cell "MY" [ref=f76e3166]
+                - cell "Asia Pacific" [ref=f76e3169]
+                - cell "(+60)" [ref=f76e3172]
+                - cell "Standard Rate" [ref=f76e3175]
+                - cell [ref=f76e3178]:
+                  - switch [ref=f76e3181] [cursor=pointer]
+                - cell [ref=f76e3182]:
+                  - switch [ref=f76e3185] [cursor=pointer]
+              - row [ref=f76e3186]:
+                - cell "🇲🇻 Maldives" [ref=f76e3187]
+                - cell "MV" [ref=f76e3190]
+                - cell "Asia Pacific" [ref=f76e3193]
+                - cell "(+960)" [ref=f76e3196]
+                - cell "Standard Rate" [ref=f76e3199]
+                - cell [ref=f76e3202]:
+                  - switch [ref=f76e3205] [cursor=pointer]
+                - cell [ref=f76e3206]:
+                  - switch [ref=f76e3209] [cursor=pointer]
+              - row [ref=f76e3210]:
+                - cell "🇲🇱 Mali" [ref=f76e3211]
+                - cell "ML" [ref=f76e3214]
+                - cell "Middle East & North Africa" [ref=f76e3217]
+                - cell "(+223)" [ref=f76e3220]
+                - cell "Standard Rate" [ref=f76e3223]
+                - cell [ref=f76e3226]:
+                  - switch [ref=f76e3229] [cursor=pointer]
+                - cell [ref=f76e3230]:
+                  - switch [ref=f76e3233] [cursor=pointer]
+              - row [ref=f76e3234]:
+                - cell "🇲🇹 Malta" [ref=f76e3235]
+                - cell "MT" [ref=f76e3238]
+                - cell "European Union" [ref=f76e3241]
+                - cell "(+356)" [ref=f76e3244]
+                - cell "Standard Rate" [ref=f76e3247]
+                - cell [ref=f76e3250]:
+                  - switch [ref=f76e3253] [cursor=pointer]
+                - cell [ref=f76e3254]:
+                  - switch [ref=f76e3257] [cursor=pointer]
+              - row [ref=f76e3258]:
+                - cell "🇲🇭 Marshall Islands" [ref=f76e3259]
+                - cell "MH" [ref=f76e3262]
+                - cell "Asia Pacific" [ref=f76e3265]
+                - cell "(+692)" [ref=f76e3268]
+                - cell "Standard Rate" [ref=f76e3271]
+                - cell [ref=f76e3274]:
+                  - switch [ref=f76e3277] [cursor=pointer]
+                - cell [ref=f76e3278]:
+                  - switch [ref=f76e3281] [cursor=pointer]
+              - row [ref=f76e3282]:
+                - cell "🇲🇶 Martinique" [ref=f76e3283]
+                - cell "MQ" [ref=f76e3286]
+                - cell "North America" [ref=f76e3289]
+                - cell "(+596)" [ref=f76e3292]
+                - cell "Standard Rate" [ref=f76e3295]
+                - cell [ref=f76e3298]:
+                  - switch [ref=f76e3301] [cursor=pointer]
+                - cell [ref=f76e3302]:
+                  - switch [ref=f76e3305] [cursor=pointer]
+              - row [ref=f76e3306]:
+                - cell "🇲🇷 Mauritania" [ref=f76e3307]
+                - cell "MR" [ref=f76e3310]
+                - cell "Middle East & North Africa" [ref=f76e3313]
+                - cell "(+222)" [ref=f76e3316]
+                - cell "Standard Rate" [ref=f76e3319]
+                - cell [ref=f76e3322]:
+                  - switch [ref=f76e3325] [cursor=pointer]
+                - cell [ref=f76e3326]:
+                  - switch [ref=f76e3329] [cursor=pointer]
+              - row [ref=f76e3330]:
+                - cell "🇲🇺 Mauritius" [ref=f76e3331]
+                - cell "MU" [ref=f76e3334]
+                - cell "Middle East & North Africa" [ref=f76e3337]
+                - cell "(+230)" [ref=f76e3340]
+                - cell "Standard Rate" [ref=f76e3343]
+                - cell [ref=f76e3346]:
+                  - switch [ref=f76e3349] [cursor=pointer]
+                - cell [ref=f76e3350]:
+                  - switch [ref=f76e3353] [cursor=pointer]
+              - row [ref=f76e3354]:
+                - cell "🇫🇲 Micronesia" [ref=f76e3355]
+                - cell "FM" [ref=f76e3358]
+                - cell "Asia Pacific" [ref=f76e3361]
+                - cell "(+691)" [ref=f76e3364]
+                - cell "Standard Rate" [ref=f76e3367]
+                - cell [ref=f76e3370]:
+                  - switch [ref=f76e3373] [cursor=pointer]
+                - cell [ref=f76e3374]:
+                  - switch [ref=f76e3377] [cursor=pointer]
+              - row [ref=f76e3378]:
+                - cell "🇲🇩 Moldova" [ref=f76e3379]
+                - cell "MD" [ref=f76e3382]
+                - cell "European Union" [ref=f76e3385]
+                - cell "(+373)" [ref=f76e3388]
+                - cell "Standard Rate" [ref=f76e3391]
+                - cell [ref=f76e3394]:
+                  - switch [ref=f76e3397] [cursor=pointer]
+                - cell [ref=f76e3398]:
+                  - switch [ref=f76e3401] [cursor=pointer]
+              - row [ref=f76e3402]:
+                - cell "🇲🇨 Monaco" [ref=f76e3403]
+                - cell "MC" [ref=f76e3406]
+                - cell "European Union" [ref=f76e3409]
+                - cell "(+377)" [ref=f76e3412]
+                - cell "Standard Rate" [ref=f76e3415]
+                - cell [ref=f76e3418]:
+                  - switch [ref=f76e3421] [cursor=pointer]
+                - cell [ref=f76e3422]:
+                  - switch [ref=f76e3425] [cursor=pointer]
+              - row [ref=f76e3426]:
+                - cell "🇲🇳 Mongolia" [ref=f76e3427]
+                - cell "MN" [ref=f76e3430]
+                - cell "Asia Pacific" [ref=f76e3433]
+                - cell "(+976)" [ref=f76e3436]
+                - cell "Standard Rate" [ref=f76e3439]
+                - cell [ref=f76e3442]:
+                  - switch [ref=f76e3445] [cursor=pointer]
+                - cell [ref=f76e3446]:
+                  - switch [ref=f76e3449] [cursor=pointer]
+              - row [ref=f76e3450]:
+                - cell "🇲🇪 Montenegro" [ref=f76e3451]
+                - cell "ME" [ref=f76e3454]
+                - cell "European Union" [ref=f76e3457]
+                - cell "(+382)" [ref=f76e3460]
+                - cell "Standard Rate" [ref=f76e3463]
+                - cell [ref=f76e3466]:
+                  - switch [ref=f76e3469] [cursor=pointer]
+                - cell [ref=f76e3470]:
+                  - switch [ref=f76e3473] [cursor=pointer]
+              - row [ref=f76e3474]:
+                - cell "🇲🇸 Montserrat" [ref=f76e3475]
+                - cell "MS" [ref=f76e3478]
+                - cell "North America" [ref=f76e3481]
+                - cell "(+1664)" [ref=f76e3484]
+                - cell "Standard Rate" [ref=f76e3487]
+                - cell [ref=f76e3490]:
+                  - switch [ref=f76e3493] [cursor=pointer]
+                - cell [ref=f76e3494]:
+                  - switch [ref=f76e3497] [cursor=pointer]
+              - row [ref=f76e3498]:
+                - cell "🇲🇦 Morocco / Western Sahara" [ref=f76e3499]
+                - cell "MA" [ref=f76e3502]
+                - cell "Middle East & North Africa" [ref=f76e3505]
+                - cell "(+212)" [ref=f76e3508]
+                - cell "Standard Rate" [ref=f76e3511]
+                - cell [ref=f76e3514]:
+                  - switch [ref=f76e3517] [cursor=pointer]
+                - cell [ref=f76e3518]:
+                  - switch [ref=f76e3521] [cursor=pointer]
+              - row [ref=f76e3522]:
+                - cell "🇲🇿 Mozambique" [ref=f76e3523]
+                - cell "MZ" [ref=f76e3526]
+                - cell "Middle East & North Africa" [ref=f76e3529]
+                - cell "(+258)" [ref=f76e3532]
+                - cell "Standard Rate" [ref=f76e3535]
+                - cell [ref=f76e3538]:
+                  - switch [ref=f76e3541] [cursor=pointer]
+                - cell [ref=f76e3542]:
+                  - switch [ref=f76e3545] [cursor=pointer]
+              - row [ref=f76e3546]:
+                - cell "🇲🇲 Myanmar" [ref=f76e3547]
+                - cell "MM" [ref=f76e3550]
+                - cell "Asia Pacific" [ref=f76e3553]
+                - cell "(+95)" [ref=f76e3556]
+                - cell "Standard Rate" [ref=f76e3559]
+                - cell [ref=f76e3562]:
+                  - switch [ref=f76e3565] [cursor=pointer]
+                - cell [ref=f76e3566]:
+                  - switch [ref=f76e3569] [cursor=pointer]
+              - row [ref=f76e3570]:
+                - cell "🇳🇵 Nepal" [ref=f76e3571]
+                - cell "NP" [ref=f76e3574]
+                - cell "Asia Pacific" [ref=f76e3577]
+                - cell "(+977)" [ref=f76e3580]
+                - cell "Standard Rate" [ref=f76e3583]
+                - cell [ref=f76e3586]:
+                  - switch [ref=f76e3589] [cursor=pointer]
+                - cell [ref=f76e3590]:
+                  - switch [ref=f76e3593] [cursor=pointer]
+              - row [ref=f76e3594]:
+                - cell "🇨🇼 Netherlands Antilles" [ref=f76e3595]
+                - cell "CW" [ref=f76e3598]
+                - cell "North America" [ref=f76e3601]
+                - cell "(+599)" [ref=f76e3604]
+                - cell "Standard Rate" [ref=f76e3607]
+                - cell [ref=f76e3610]:
+                  - switch [ref=f76e3613] [cursor=pointer]
+                - cell [ref=f76e3614]:
+                  - switch [ref=f76e3617] [cursor=pointer]
+              - row [ref=f76e3618]:
+                - cell "🇳🇨 New Caledonia" [ref=f76e3619]
+                - cell "NC" [ref=f76e3622]
+                - cell "Asia Pacific" [ref=f76e3625]
+                - cell "(+687)" [ref=f76e3628]
+                - cell "Standard Rate" [ref=f76e3631]
+                - cell [ref=f76e3634]:
+                  - switch [ref=f76e3637] [cursor=pointer]
+                - cell [ref=f76e3638]:
+                  - switch [ref=f76e3641] [cursor=pointer]
+              - row [ref=f76e3642]:
+                - cell "🇳🇮 Nicaragua" [ref=f76e3643]
+                - cell "NI" [ref=f76e3646]
+                - cell "North America" [ref=f76e3649]
+                - cell "(+505)" [ref=f76e3652]
+                - cell "Standard Rate" [ref=f76e3655]
+                - cell [ref=f76e3658]:
+                  - switch [ref=f76e3661] [cursor=pointer]
+                - cell [ref=f76e3662]:
+                  - switch [ref=f76e3665] [cursor=pointer]
+              - row [ref=f76e3666]:
+                - cell "🇳🇪 Niger" [ref=f76e3667]
+                - cell "NE" [ref=f76e3670]
+                - cell "Middle East & North Africa" [ref=f76e3673]
+                - cell "(+227)" [ref=f76e3676]
+                - cell "Standard Rate" [ref=f76e3679]
+                - cell [ref=f76e3682]:
+                  - switch [ref=f76e3685] [cursor=pointer]
+                - cell [ref=f76e3686]:
+                  - switch [ref=f76e3689] [cursor=pointer]
+              - row [ref=f76e3690]:
+                - cell "🇳🇬 Nigeria" [ref=f76e3691]
+                - cell "NG" [ref=f76e3694]
+                - cell "Middle East & North Africa" [ref=f76e3697]
+                - cell "(+234)" [ref=f76e3700]
+                - cell "Standard Rate" [ref=f76e3703]
+                - cell [ref=f76e3706]:
+                  - switch [ref=f76e3709] [cursor=pointer]
+                - cell [ref=f76e3710]:
+                  - switch [ref=f76e3713] [cursor=pointer]
+              - row [ref=f76e3714]:
+                - cell "🇴🇲 Oman" [ref=f76e3715]
+                - cell "OM" [ref=f76e3718]
+                - cell "Middle East & North Africa" [ref=f76e3721]
+                - cell "(+968)" [ref=f76e3724]
+                - cell "Standard Rate" [ref=f76e3727]
+                - cell [ref=f76e3730]:
+                  - switch [ref=f76e3733] [cursor=pointer]
+                - cell [ref=f76e3734]:
+                  - switch [ref=f76e3737] [cursor=pointer]
+              - row [ref=f76e3738]:
+                - cell "🇵🇰 Pakistan" [ref=f76e3739]
+                - cell "PK" [ref=f76e3742]
+                - cell "Asia Pacific" [ref=f76e3745]
+                - cell "(+92)" [ref=f76e3748]
+                - cell "Standard Rate" [ref=f76e3751]
+                - cell [ref=f76e3754]:
+                  - switch [ref=f76e3757] [cursor=pointer]
+                - cell [ref=f76e3758]:
+                  - switch [ref=f76e3761] [cursor=pointer]
+              - row [ref=f76e3762]:
+                - cell "🇵🇼 Palau" [ref=f76e3763]
+                - cell "PW" [ref=f76e3766]
+                - cell "Asia Pacific" [ref=f76e3769]
+                - cell "(+680)" [ref=f76e3772]
+                - cell "Standard Rate" [ref=f76e3775]
+                - cell [ref=f76e3778]:
+                  - switch [ref=f76e3781] [cursor=pointer]
+                - cell [ref=f76e3782]:
+                  - switch [ref=f76e3785] [cursor=pointer]
+              - row [ref=f76e3786]:
+                - cell "🇵🇸 Palestinian Territory" [ref=f76e3787]
+                - cell "PS" [ref=f76e3790]
+                - cell "Middle East & North Africa" [ref=f76e3793]
+                - cell "(+970)" [ref=f76e3796]
+                - cell "Standard Rate" [ref=f76e3799]
+                - cell [ref=f76e3802]:
+                  - switch [ref=f76e3805] [cursor=pointer]
+                - cell [ref=f76e3806]:
+                  - switch [ref=f76e3809] [cursor=pointer]
+              - row [ref=f76e3810]:
+                - cell "🇵🇦 Panama" [ref=f76e3811]
+                - cell "PA" [ref=f76e3814]
+                - cell "North America" [ref=f76e3817]
+                - cell "(+507)" [ref=f76e3820]
+                - cell "Standard Rate" [ref=f76e3823]
+                - cell [ref=f76e3826]:
+                  - switch [ref=f76e3829] [cursor=pointer]
+                - cell [ref=f76e3830]:
+                  - switch [ref=f76e3833] [cursor=pointer]
+              - row [ref=f76e3834]:
+                - cell "🇵🇬 Papua New Guinea" [ref=f76e3835]
+                - cell "PG" [ref=f76e3838]
+                - cell "Asia Pacific" [ref=f76e3841]
+                - cell "(+675)" [ref=f76e3844]
+                - cell "Standard Rate" [ref=f76e3847]
+                - cell [ref=f76e3850]:
+                  - switch [ref=f76e3853] [cursor=pointer]
+                - cell [ref=f76e3854]:
+                  - switch [ref=f76e3857] [cursor=pointer]
+              - row [ref=f76e3858]:
+                - cell "🇵🇾 Paraguay" [ref=f76e3859]
+                - cell "PY" [ref=f76e3862]
+                - cell "Latin America" [ref=f76e3865]
+                - cell "(+595)" [ref=f76e3868]
+                - cell "Standard Rate" [ref=f76e3871]
+                - cell [ref=f76e3874]:
+                  - switch [ref=f76e3877] [cursor=pointer]
+                - cell [ref=f76e3878]:
+                  - switch [ref=f76e3881] [cursor=pointer]
+              - row [ref=f76e3882]:
+                - cell "🇵🇪 Peru" [ref=f76e3883]
+                - cell "PE" [ref=f76e3886]
+                - cell "Latin America" [ref=f76e3889]
+                - cell "(+51)" [ref=f76e3892]
+                - cell "Standard Rate" [ref=f76e3895]
+                - cell [ref=f76e3898]:
+                  - switch [ref=f76e3901] [cursor=pointer]
+                - cell [ref=f76e3902]:
+                  - switch [ref=f76e3905] [cursor=pointer]
+              - row [ref=f76e3906]:
+                - cell "🇵🇭 Philippines" [ref=f76e3907]
+                - cell "PH" [ref=f76e3910]
+                - cell "Asia Pacific" [ref=f76e3913]
+                - cell "(+63)" [ref=f76e3916]
+                - cell "Standard Rate" [ref=f76e3919]
+                - cell [ref=f76e3922]:
+                  - switch [ref=f76e3925] [cursor=pointer]
+                - cell [ref=f76e3926]:
+                  - switch [ref=f76e3929] [cursor=pointer]
+              - row [ref=f76e3930]:
+                - cell "🇵🇷 Puerto Rico" [ref=f76e3931]
+                - cell "PR" [ref=f76e3934]
+                - cell "North America" [ref=f76e3937]
+                - cell "(+1787)" [ref=f76e3940]
+                - cell "Standard Rate" [ref=f76e3943]
+                - cell [ref=f76e3946]:
+                  - switch [ref=f76e3949] [cursor=pointer]
+                - cell [ref=f76e3950]:
+                  - switch [ref=f76e3953] [cursor=pointer]
+              - row [ref=f76e3954]:
+                - cell "🇷🇪 Reunion / Mayotte" [ref=f76e3955]
+                - cell "RE" [ref=f76e3958]
+                - cell "Middle East & North Africa" [ref=f76e3961]
+                - cell "(+262)" [ref=f76e3964]
+                - cell "Standard Rate" [ref=f76e3967]
+                - cell [ref=f76e3970]:
+                  - switch [ref=f76e3973] [cursor=pointer]
+                - cell [ref=f76e3974]:
+                  - switch [ref=f76e3977] [cursor=pointer]
+              - row [ref=f76e3978]:
+                - cell "🇷🇼 Rwanda" [ref=f76e3979]
+                - cell "RW" [ref=f76e3982]
+                - cell "Middle East & North Africa" [ref=f76e3985]
+                - cell "(+250)" [ref=f76e3988]
+                - cell "Standard Rate" [ref=f76e3991]
+                - cell [ref=f76e3994]:
+                  - switch [ref=f76e3997] [cursor=pointer]
+                - cell [ref=f76e3998]:
+                  - switch [ref=f76e4001] [cursor=pointer]
+              - row [ref=f76e4002]:
+                - cell "🇼🇸 Samoa" [ref=f76e4003]
+                - cell "WS" [ref=f76e4006]
+                - cell "Asia Pacific" [ref=f76e4009]
+                - cell "(+685)" [ref=f76e4012]
+                - cell "Standard Rate" [ref=f76e4015]
+                - cell [ref=f76e4018]:
+                  - switch [ref=f76e4021] [cursor=pointer]
+                - cell [ref=f76e4022]:
+                  - switch [ref=f76e4025] [cursor=pointer]
+              - row [ref=f76e4026]:
+                - cell "🇸🇲 San Marino" [ref=f76e4027]
+                - cell "SM" [ref=f76e4030]
+                - cell "European Union" [ref=f76e4033]
+                - cell "(+378)" [ref=f76e4036]
+                - cell "Standard Rate" [ref=f76e4039]
+                - cell [ref=f76e4042]:
+                  - switch [ref=f76e4045] [cursor=pointer]
+                - cell [ref=f76e4046]:
+                  - switch [ref=f76e4049] [cursor=pointer]
+              - row [ref=f76e4050]:
+                - cell "🇸🇦 Saudi Arabia" [ref=f76e4051]
+                - cell "SA" [ref=f76e4054]
+                - cell "Middle East & North Africa" [ref=f76e4057]
+                - cell "(+966)" [ref=f76e4060]
+                - cell "Standard Rate" [ref=f76e4063]
+                - cell [ref=f76e4066]:
+                  - switch [ref=f76e4069] [cursor=pointer]
+                - cell [ref=f76e4070]:
+                  - switch [ref=f76e4073] [cursor=pointer]
+              - row [ref=f76e4074]:
+                - cell "🇸🇳 Senegal" [ref=f76e4075]
+                - cell "SN" [ref=f76e4078]
+                - cell "Middle East & North Africa" [ref=f76e4081]
+                - cell "(+221)" [ref=f76e4084]
+                - cell "Standard Rate" [ref=f76e4087]
+                - cell [ref=f76e4090]:
+                  - switch [ref=f76e4093] [cursor=pointer]
+                - cell [ref=f76e4094]:
+                  - switch [ref=f76e4097] [cursor=pointer]
+              - row [ref=f76e4098]:
+                - cell "🇷🇸 Serbia" [ref=f76e4099]
+                - cell "RS" [ref=f76e4102]
+                - cell "European Union" [ref=f76e4105]
+                - cell "(+381)" [ref=f76e4108]
+                - cell "Standard Rate" [ref=f76e4111]
+                - cell [ref=f76e4114]:
+                  - switch [ref=f76e4117] [cursor=pointer]
+                - cell [ref=f76e4118]:
+                  - switch [ref=f76e4121] [cursor=pointer]
+              - row [ref=f76e4122]:
+                - cell "🇸🇨 Seychelles" [ref=f76e4123]
+                - cell "SC" [ref=f76e4126]
+                - cell "Middle East & North Africa" [ref=f76e4129]
+                - cell "(+248)" [ref=f76e4132]
+                - cell "Standard Rate" [ref=f76e4135]
+                - cell [ref=f76e4138]:
+                  - switch [ref=f76e4141] [cursor=pointer]
+                - cell [ref=f76e4142]:
+                  - switch [ref=f76e4145] [cursor=pointer]
+              - row [ref=f76e4146]:
+                - cell "🇸🇱 Sierra Leone" [ref=f76e4147]
+                - cell "SL" [ref=f76e4150]
+                - cell "Middle East & North Africa" [ref=f76e4153]
+                - cell "(+232)" [ref=f76e4156]
+                - cell "Standard Rate" [ref=f76e4159]
+                - cell [ref=f76e4162]:
+                  - switch [ref=f76e4165] [cursor=pointer]
+                - cell [ref=f76e4166]:
+                  - switch [ref=f76e4169] [cursor=pointer]
+              - row [ref=f76e4170]:
+                - cell "🇸🇧 Solomon Islands" [ref=f76e4171]
+                - cell "SB" [ref=f76e4174]
+                - cell "Asia Pacific" [ref=f76e4177]
+                - cell "(+677)" [ref=f76e4180]
+                - cell "Standard Rate" [ref=f76e4183]
+                - cell [ref=f76e4186]:
+                  - switch [ref=f76e4189] [cursor=pointer]
+                - cell [ref=f76e4190]:
+                  - switch [ref=f76e4193] [cursor=pointer]
+              - row [ref=f76e4194]:
+                - cell "🇸🇴 Somalia" [ref=f76e4195]
+                - cell "SO" [ref=f76e4198]
+                - cell "Middle East & North Africa" [ref=f76e4201]
+                - cell "(+252)" [ref=f76e4204]
+                - cell "Standard Rate" [ref=f76e4207]
+                - cell [ref=f76e4210]:
+                  - switch [ref=f76e4213] [cursor=pointer]
+                - cell [ref=f76e4214]:
+                  - switch [ref=f76e4217] [cursor=pointer]
+              - row [ref=f76e4218]:
+                - cell "🇿🇦 South Africa" [ref=f76e4219]
+                - cell "ZA" [ref=f76e4222]
+                - cell "Middle East & North Africa" [ref=f76e4225]
+                - cell "(+27)" [ref=f76e4228]
+                - cell "Standard Rate" [ref=f76e4231]
+                - cell [ref=f76e4234]:
+                  - switch [ref=f76e4237] [cursor=pointer]
+                - cell [ref=f76e4238]:
+                  - switch [ref=f76e4241] [cursor=pointer]
+              - row [ref=f76e4242]:
+                - cell "🇸🇸 South Sudan" [ref=f76e4243]
+                - cell "SS" [ref=f76e4246]
+                - cell "Middle East & North Africa" [ref=f76e4249]
+                - cell "(+211)" [ref=f76e4252]
+                - cell "Standard Rate" [ref=f76e4255]
+                - cell [ref=f76e4258]:
+                  - switch [ref=f76e4261] [cursor=pointer]
+                - cell [ref=f76e4262]:
+                  - switch [ref=f76e4265] [cursor=pointer]
+              - row [ref=f76e4266]:
+                - cell "🇱🇰 Sri Lanka" [ref=f76e4267]
+                - cell "LK" [ref=f76e4270]
+                - cell "Asia Pacific" [ref=f76e4273]
+                - cell "(+94)" [ref=f76e4276]
+                - cell "Standard Rate" [ref=f76e4279]
+                - cell [ref=f76e4282]:
+                  - switch [ref=f76e4285] [cursor=pointer]
+                - cell [ref=f76e4286]:
+                  - switch [ref=f76e4289] [cursor=pointer]
+              - row [ref=f76e4290]:
+                - cell "🇰🇳 St Kitts and Nevis" [ref=f76e4291]
+                - cell "KN" [ref=f76e4294]
+                - cell "North America" [ref=f76e4297]
+                - cell "(+1869)" [ref=f76e4300]
+                - cell "Standard Rate" [ref=f76e4303]
+                - cell [ref=f76e4306]:
+                  - switch [ref=f76e4309] [cursor=pointer]
+                - cell [ref=f76e4310]:
+                  - switch [ref=f76e4313] [cursor=pointer]
+              - row [ref=f76e4314]:
+                - cell "🇱🇨 St Lucia" [ref=f76e4315]
+                - cell "LC" [ref=f76e4318]
+                - cell "North America" [ref=f76e4321]
+                - cell "(+1758)" [ref=f76e4324]
+                - cell "Standard Rate" [ref=f76e4327]
+                - cell [ref=f76e4330]:
+                  - switch [ref=f76e4333] [cursor=pointer]
+                - cell [ref=f76e4334]:
+                  - switch [ref=f76e4337] [cursor=pointer]
+              - row [ref=f76e4338]:
+                - cell "🇵🇲 St Pierre and Miquelon" [ref=f76e4339]
+                - cell "PM" [ref=f76e4342]
+                - cell "North America" [ref=f76e4345]
+                - cell "(+508)" [ref=f76e4348]
+                - cell "Standard Rate" [ref=f76e4351]
+                - cell [ref=f76e4354]:
+                  - switch [ref=f76e4357] [cursor=pointer]
+                - cell [ref=f76e4358]:
+                  - switch [ref=f76e4361] [cursor=pointer]
+              - row [ref=f76e4362]:
+                - cell "🇻🇨 St Vincent Grenadines" [ref=f76e4363]
+                - cell "VC" [ref=f76e4366]
+                - cell "North America" [ref=f76e4369]
+                - cell "(+1784)" [ref=f76e4372]
+                - cell "Standard Rate" [ref=f76e4375]
+                - cell [ref=f76e4378]:
+                  - switch [ref=f76e4381] [cursor=pointer]
+                - cell [ref=f76e4382]:
+                  - switch [ref=f76e4385] [cursor=pointer]
+              - row [ref=f76e4386]:
+                - cell "🇸🇩 Sudan" [ref=f76e4387]
+                - cell "SD" [ref=f76e4390]
+                - cell "Middle East & North Africa" [ref=f76e4393]
+                - cell "(+249)" [ref=f76e4396]
+                - cell "Standard Rate" [ref=f76e4399]
+                - cell [ref=f76e4402]:
+                  - switch [ref=f76e4405] [cursor=pointer]
+                - cell [ref=f76e4406]:
+                  - switch [ref=f76e4409] [cursor=pointer]
+              - row [ref=f76e4410]:
+                - cell "🇸🇷 Suriname" [ref=f76e4411]
+                - cell "SR" [ref=f76e4414]
+                - cell "Latin America" [ref=f76e4417]
+                - cell "(+597)" [ref=f76e4420]
+                - cell "Standard Rate" [ref=f76e4423]
+                - cell [ref=f76e4426]:
+                  - switch [ref=f76e4429] [cursor=pointer]
+                - cell [ref=f76e4430]:
+                  - switch [ref=f76e4433] [cursor=pointer]
+              - row [ref=f76e4434]:
+                - cell "🇸🇿 Swaziland" [ref=f76e4435]
+                - cell "SZ" [ref=f76e4438]
+                - cell "Middle East & North Africa" [ref=f76e4441]
+                - cell "(+268)" [ref=f76e4444]
+                - cell "Standard Rate" [ref=f76e4447]
+                - cell [ref=f76e4450]:
+                  - switch [ref=f76e4453] [cursor=pointer]
+                - cell [ref=f76e4454]:
+                  - switch [ref=f76e4457] [cursor=pointer]
+              - row [ref=f76e4458]:
+                - cell "🇹🇼 Taiwan" [ref=f76e4459]
+                - cell "TW" [ref=f76e4462]
+                - cell "Asia Pacific" [ref=f76e4465]
+                - cell "(+886)" [ref=f76e4468]
+                - cell "Standard Rate" [ref=f76e4471]
+                - cell [ref=f76e4474]:
+                  - switch [ref=f76e4477] [cursor=pointer]
+                - cell [ref=f76e4478]:
+                  - switch [ref=f76e4481] [cursor=pointer]
+              - row [ref=f76e4482]:
+                - cell "🇹🇯 Tajikistan" [ref=f76e4483]
+                - cell "TJ" [ref=f76e4486]
+                - cell "Asia Pacific" [ref=f76e4489]
+                - cell "(+992)" [ref=f76e4492]
+                - cell "Standard Rate" [ref=f76e4495]
+                - cell [ref=f76e4498]:
+                  - switch [ref=f76e4501] [cursor=pointer]
+                - cell [ref=f76e4502]:
+                  - switch [ref=f76e4505] [cursor=pointer]
+              - row [ref=f76e4506]:
+                - cell "🇹🇿 Tanzania" [ref=f76e4507]
+                - cell "TZ" [ref=f76e4510]
+                - cell "Middle East & North Africa" [ref=f76e4513]
+                - cell "(+255)" [ref=f76e4516]
+                - cell "Standard Rate" [ref=f76e4519]
+                - cell [ref=f76e4522]:
+                  - switch [ref=f76e4525] [cursor=pointer]
+                - cell [ref=f76e4526]:
+                  - switch [ref=f76e4529] [cursor=pointer]
+              - row [ref=f76e4530]:
+                - cell "🇹🇭 Thailand" [ref=f76e4531]
+                - cell "TH" [ref=f76e4534]
+                - cell "Asia Pacific" [ref=f76e4537]
+                - cell "(+66)" [ref=f76e4540]
+                - cell "Standard Rate" [ref=f76e4543]
+                - cell [ref=f76e4546]:
+                  - switch [ref=f76e4549] [cursor=pointer]
+                - cell [ref=f76e4550]:
+                  - switch [ref=f76e4553] [cursor=pointer]
+              - row [ref=f76e4554]:
+                - cell "🇹🇬 Togo" [ref=f76e4555]
+                - cell "TG" [ref=f76e4558]
+                - cell "Middle East & North Africa" [ref=f76e4561]
+                - cell "(+228)" [ref=f76e4564]
+                - cell "Standard Rate" [ref=f76e4567]
+                - cell [ref=f76e4570]:
+                  - switch [ref=f76e4573] [cursor=pointer]
+                - cell [ref=f76e4574]:
+                  - switch [ref=f76e4577] [cursor=pointer]
+              - row [ref=f76e4578]:
+                - cell "🇹🇴 Tonga" [ref=f76e4579]
+                - cell "TO" [ref=f76e4582]
+                - cell "Asia Pacific" [ref=f76e4585]
+                - cell "(+676)" [ref=f76e4588]
+                - cell "Standard Rate" [ref=f76e4591]
+                - cell [ref=f76e4594]:
+                  - switch [ref=f76e4597] [cursor=pointer]
+                - cell [ref=f76e4598]:
+                  - switch [ref=f76e4601] [cursor=pointer]
+              - row [ref=f76e4602]:
+                - cell "🇹🇳 Tunisia" [ref=f76e4603]
+                - cell "TN" [ref=f76e4606]
+                - cell "Middle East & North Africa" [ref=f76e4609]
+                - cell "(+216)" [ref=f76e4612]
+                - cell "Standard Rate" [ref=f76e4615]
+                - cell [ref=f76e4618]:
+                  - switch [ref=f76e4621] [cursor=pointer]
+                - cell [ref=f76e4622]:
+                  - switch [ref=f76e4625] [cursor=pointer]
+              - row [ref=f76e4626]:
+                - cell "🇹🇷 Turkey" [ref=f76e4627]
+                - cell "TR" [ref=f76e4630]
+                - cell "Middle East & North Africa" [ref=f76e4633]
+                - cell "(+90)" [ref=f76e4636]
+                - cell "Standard Rate" [ref=f76e4639]
+                - cell [ref=f76e4642]:
+                  - switch [ref=f76e4645] [cursor=pointer]
+                - cell [ref=f76e4646]:
+                  - switch [ref=f76e4649] [cursor=pointer]
+              - row "🇨🇾 Turkish Republic of Northern Cyprus CY European Union (+90392) Standard Rate" [ref=f76e4650]:
+                - cell "🇨🇾 Turkish Republic of Northern Cyprus" [ref=f76e4651]
+                - cell "CY" [ref=f76e4654]
+                - cell "European Union" [ref=f76e4657]
+                - cell "(+90392)" [ref=f76e4660]
+                - cell "Standard Rate" [ref=f76e4663]
+                - cell [ref=f76e4666]
+                - cell [ref=f76e4669]
+              - row [ref=f76e4672]:
+                - cell "🇹🇲 Turkmenistan" [ref=f76e4673]
+                - cell "TM" [ref=f76e4676]
+                - cell "Asia Pacific" [ref=f76e4679]
+                - cell "(+993)" [ref=f76e4682]
+                - cell "Standard Rate" [ref=f76e4685]
+                - cell [ref=f76e4688]:
+                  - switch [ref=f76e4691] [cursor=pointer]
+                - cell [ref=f76e4692]:
+                  - switch [ref=f76e4695] [cursor=pointer]
+              - row [ref=f76e4696]:
+                - cell "🇹🇨 Turks and Caicos Islands" [ref=f76e4697]
+                - cell "TC" [ref=f76e4700]
+                - cell "North America" [ref=f76e4703]
+                - cell "(+1649)" [ref=f76e4706]
+                - cell "Standard Rate" [ref=f76e4709]
+                - cell [ref=f76e4712]:
+                  - switch [ref=f76e4715] [cursor=pointer]
+                - cell [ref=f76e4716]:
+                  - switch [ref=f76e4719] [cursor=pointer]
+              - row [ref=f76e4720]:
+                - cell "🇺🇬 Uganda" [ref=f76e4721]
+                - cell "UG" [ref=f76e4724]
+                - cell "Middle East & North Africa" [ref=f76e4727]
+                - cell "(+256)" [ref=f76e4730]
+                - cell "Standard Rate" [ref=f76e4733]
+                - cell [ref=f76e4736]:
+                  - switch [ref=f76e4739] [cursor=pointer]
+                - cell [ref=f76e4740]:
+                  - switch [ref=f76e4743] [cursor=pointer]
+              - row [ref=f76e4744]:
+                - cell "🇺🇦 Ukraine" [ref=f76e4745]
+                - cell "UA" [ref=f76e4748]
+                - cell "European Union" [ref=f76e4751]
+                - cell "(+380)" [ref=f76e4754]
+                - cell "Standard Rate" [ref=f76e4757]
+                - cell [ref=f76e4760]:
+                  - switch [ref=f76e4763] [cursor=pointer]
+                - cell [ref=f76e4764]:
+                  - switch [ref=f76e4767] [cursor=pointer]
+              - row [ref=f76e4768]:
+                - cell "🇺🇾 Uruguay" [ref=f76e4769]
+                - cell "UY" [ref=f76e4772]
+                - cell "Latin America" [ref=f76e4775]
+                - cell "(+598)" [ref=f76e4778]
+                - cell "Standard Rate" [ref=f76e4781]
+                - cell [ref=f76e4784]:
+                  - switch [ref=f76e4787] [cursor=pointer]
+                - cell [ref=f76e4788]:
+                  - switch [ref=f76e4791] [cursor=pointer]
+              - row [ref=f76e4792]:
+                - cell "🇺🇿 Uzbekistan" [ref=f76e4793]
+                - cell "UZ" [ref=f76e4796]
+                - cell "Asia Pacific" [ref=f76e4799]
+                - cell "(+998)" [ref=f76e4802]
+                - cell "Standard Rate" [ref=f76e4805]
+                - cell [ref=f76e4808]:
+                  - switch [ref=f76e4811] [cursor=pointer]
+                - cell [ref=f76e4812]:
+                  - switch [ref=f76e4815] [cursor=pointer]
+              - row [ref=f76e4816]:
+                - cell "🇻🇺 Vanuatu" [ref=f76e4817]
+                - cell "VU" [ref=f76e4820]
+                - cell "Asia Pacific" [ref=f76e4823]
+                - cell "(+678)" [ref=f76e4826]
+                - cell "Standard Rate" [ref=f76e4829]
+                - cell [ref=f76e4832]:
+                  - switch [ref=f76e4835] [cursor=pointer]
+                - cell [ref=f76e4836]:
+                  - switch [ref=f76e4839] [cursor=pointer]
+              - row [ref=f76e4840]:
+                - cell "🇻🇦 Vatican City" [ref=f76e4841]
+                - cell "VA" [ref=f76e4844]
+                - cell "European Union" [ref=f76e4847]
+                - cell "(+379)" [ref=f76e4850]
+                - cell "Standard Rate" [ref=f76e4853]
+                - cell [ref=f76e4856]:
+                  - switch [ref=f76e4859] [cursor=pointer]
+                - cell [ref=f76e4860]:
+                  - switch [ref=f76e4863] [cursor=pointer]
+              - row [ref=f76e4864]:
+                - cell "🇻🇪 Venezuela" [ref=f76e4865]
+                - cell "VE" [ref=f76e4868]
+                - cell "Latin America" [ref=f76e4871]
+                - cell "(+58)" [ref=f76e4874]
+                - cell "Standard Rate" [ref=f76e4877]
+                - cell [ref=f76e4880]:
+                  - switch [ref=f76e4883] [cursor=pointer]
+                - cell [ref=f76e4884]:
+                  - switch [ref=f76e4887] [cursor=pointer]
+              - row [ref=f76e4888]:
+                - cell "🇻🇳 Vietnam" [ref=f76e4889]
+                - cell "VN" [ref=f76e4892]
+                - cell "Asia Pacific" [ref=f76e4895]
+                - cell "(+84)" [ref=f76e4898]
+                - cell "Standard Rate" [ref=f76e4901]
+                - cell [ref=f76e4904]:
+                  - switch [ref=f76e4907] [cursor=pointer]
+                - cell [ref=f76e4908]:
+                  - switch [ref=f76e4911] [cursor=pointer]
+              - row [ref=f76e4912]:
+                - cell "🇾🇪 Yemen" [ref=f76e4913]
+                - cell "YE" [ref=f76e4916]
+                - cell "Middle East & North Africa" [ref=f76e4919]
+                - cell "(+967)" [ref=f76e4922]
+                - cell "Standard Rate" [ref=f76e4925]
+                - cell [ref=f76e4928]:
+                  - switch [ref=f76e4931] [cursor=pointer]
+                - cell [ref=f76e4932]:
+                  - switch [ref=f76e4935] [cursor=pointer]
+              - row [ref=f76e4936]:
+                - cell "🇿🇲 Zambia" [ref=f76e4937]
+                - cell "ZM" [ref=f76e4940]
+                - cell "Middle East & North Africa" [ref=f76e4943]
+                - cell "(+260)" [ref=f76e4946]
+                - cell "Standard Rate" [ref=f76e4949]
+                - cell [ref=f76e4952]:
+                  - switch [ref=f76e4955] [cursor=pointer]
+                - cell [ref=f76e4956]:
+                  - switch [ref=f76e4959] [cursor=pointer]
+              - row [ref=f76e4960]:
+                - cell "🇿🇼 Zimbabwe" [ref=f76e4961]
+                - cell "ZW" [ref=f76e4964]
+                - cell "Middle East & North Africa" [ref=f76e4967]
+                - cell "(+263)" [ref=f76e4970]
+                - cell "Standard Rate" [ref=f76e4973]
+                - cell [ref=f76e4976]:
+                  - switch [ref=f76e4979] [cursor=pointer]
+                - cell [ref=f76e4980]:
+                  - switch [ref=f76e4983] [cursor=pointer]
+              - row [ref=f76e4984]:
+                - cell [ref=f76e4985]:
+                  - 'heading "Type: Special Territory" [level=2] [ref=f76e4988]'
+              - row [ref=f76e4989]:
+                - cell "🇧🇸 Bahamas" [ref=f76e4990]
+                - cell "BS" [ref=f76e4993]
+                - cell "North America" [ref=f76e4996]
+                - cell "(+1242)" [ref=f76e4999]
+                - cell "Special Territory" [ref=f76e5002]
+                - cell [ref=f76e5005]:
+                  - switch [ref=f76e5008] [cursor=pointer]
+                - cell [ref=f76e5009]:
+                  - switch [ref=f76e5012] [cursor=pointer]
+              - row [ref=f76e5013]:
+                - cell "🇧🇲 Bermuda" [ref=f76e5014]
+                - cell "BM" [ref=f76e5017]
+                - cell "North America" [ref=f76e5020]
+                - cell "(+1441)" [ref=f76e5023]
+                - cell "Special Territory" [ref=f76e5026]
+                - cell [ref=f76e5029]:
+                  - switch [ref=f76e5032] [cursor=pointer]
+                - cell [ref=f76e5033]:
+                  - switch [ref=f76e5036] [cursor=pointer]
+              - row [ref=f76e5037]:
+                - cell "🇻🇬 British Virgin Islands" [ref=f76e5038]
+                - cell "VG" [ref=f76e5041]
+                - cell "Latin America" [ref=f76e5044]
+                - cell "(+1284)" [ref=f76e5047]
+                - cell "Special Territory" [ref=f76e5050]
+                - cell [ref=f76e5053]:
+                  - switch [ref=f76e5056] [cursor=pointer]
+                - cell [ref=f76e5057]:
+                  - switch [ref=f76e5060] [cursor=pointer]
+              - row [ref=f76e5061]:
+                - cell "🇰🇾 Cayman Islands" [ref=f76e5062]
+                - cell "KY" [ref=f76e5065]
+                - cell "Latin America" [ref=f76e5068]
+                - cell "(+1345)" [ref=f76e5071]
+                - cell "Special Territory" [ref=f76e5074]
+                - cell [ref=f76e5077]:
+                  - switch [ref=f76e5080] [cursor=pointer]
+                - cell [ref=f76e5081]:
+                  - switch [ref=f76e5084] [cursor=pointer]
+              - row [ref=f76e5085]:
+                - cell "🇩🇲 Dominica" [ref=f76e5086]
+                - cell "DM" [ref=f76e5089]
+                - cell "Latin America" [ref=f76e5092]
+                - cell "(+1809)" [ref=f76e5095]
+                - cell "Special Territory" [ref=f76e5098]
+                - cell [ref=f76e5101]:
+                  - switch [ref=f76e5104] [cursor=pointer]
+                - cell [ref=f76e5105]:
+                  - switch [ref=f76e5108] [cursor=pointer]
+              - row [ref=f76e5109]:
+                - cell "🇩🇴 Dominican Republic" [ref=f76e5110]
+                - cell "DO" [ref=f76e5113]
+                - cell "Latin America" [ref=f76e5116]
+                - cell "(+1829)" [ref=f76e5119]
+                - cell "Special Territory" [ref=f76e5122]
+                - cell [ref=f76e5125]:
+                  - switch [ref=f76e5128] [cursor=pointer]
+                - cell [ref=f76e5129]:
+                  - switch [ref=f76e5132] [cursor=pointer]
+              - row [ref=f76e5133]:
+                - cell "🇯🇲 Jamaica" [ref=f76e5134]
+                - cell "JM" [ref=f76e5137]
+                - cell "Latin America" [ref=f76e5140]
+                - cell "(+1876)" [ref=f76e5143]
+                - cell "Special Territory" [ref=f76e5146]
+                - cell [ref=f76e5149]:
+                  - switch [ref=f76e5152] [cursor=pointer]
+                - cell [ref=f76e5153]:
+                  - switch [ref=f76e5156] [cursor=pointer]
+              - row [ref=f76e5157]:
+                - cell "🇲🇵 Northern Mariana Islands" [ref=f76e5158]
+                - cell "MP" [ref=f76e5161]
+                - cell "Asia Pacific" [ref=f76e5164]
+                - cell "(+1670)" [ref=f76e5167]
+                - cell "Special Territory" [ref=f76e5170]
+                - cell [ref=f76e5173]:
+                  - switch [ref=f76e5176] [cursor=pointer]
+                - cell [ref=f76e5177]:
+                  - switch [ref=f76e5180] [cursor=pointer]
+              - row [ref=f76e5181]:
+                - cell "🇹🇹 Trinidad and Tobago" [ref=f76e5182]
+                - cell "TT" [ref=f76e5185]
+                - cell "Latin America" [ref=f76e5188]
+                - cell "(+1868)" [ref=f76e5191]
+                - cell "Special Territory" [ref=f76e5194]
+                - cell [ref=f76e5197]:
+                  - switch [ref=f76e5200] [cursor=pointer]
+                - cell [ref=f76e5201]:
+                  - switch [ref=f76e5204] [cursor=pointer]
+    - generic [ref=f76e5208]:
+      - button "Back" [ref=f76e5210] [cursor=pointer]
+      - generic [ref=f76e5213]:
+        - generic [ref=f76e5216]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f76e5217] [cursor=pointer]
+        - button [ref=f76e5224] [cursor=pointer]
+  - generic:
+    - status

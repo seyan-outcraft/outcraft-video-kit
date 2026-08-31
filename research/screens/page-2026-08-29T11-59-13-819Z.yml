@@ -1,0 +1,96 @@
+- generic [active] [ref=f20e1]:
+  - navigation [ref=f20e16]:
+    - list [ref=f20e17]:
+      - listitem [ref=f20e18]:
+        - list [ref=f20e19]:
+          - listitem [ref=f20e20]:
+            - list [ref=f20e21]:
+              - listitem [ref=f20e22]:
+                - link "Campaigns" [ref=f20e23] [cursor=pointer]:
+                  - /url: /campaigns
+              - listitem [ref=f20e26]:
+                - link "Analytics" [ref=f20e27] [cursor=pointer]:
+                  - /url: /analytics
+              - listitem [ref=f20e30]:
+                - link "Conversation Intelligence" [ref=f20e31] [cursor=pointer]:
+                  - /url: /campaigns/304/evaluation
+              - listitem [ref=f20e34]:
+                - link "Leads Management" [ref=f20e35] [cursor=pointer]:
+                  - /url: /leads
+          - listitem [ref=f20e38]:
+            - generic [ref=f20e39]: Admin Routes
+            - list [ref=f20e40]:
+              - listitem [ref=f20e41]:
+                - link "AI Available Actions" [ref=f20e42] [cursor=pointer]:
+                  - /url: /campaigns/304/actions
+              - listitem [ref=f20e45]:
+                - link "Debug" [ref=f20e46] [cursor=pointer]:
+                  - /url: /quick-debug
+              - link "Admin Panel" [ref=f20e49] [cursor=pointer]:
+                - /url: /admin
+      - listitem [ref=f20e52]
+  - main [ref=f20e54]:
+    - generic [ref=f20e56]:
+      - navigation "Tabs" [ref=f20e61]:
+        - link "Campaigns" [ref=f20e62] [cursor=pointer]:
+          - /url: /campaigns
+        - link "A/B Tests" [ref=f20e64] [cursor=pointer]:
+          - /url: /ab-tests
+        - link "Archived" [ref=f20e66] [cursor=pointer]:
+          - /url: /campaigns/archived
+      - generic [ref=f20e68]:
+        - generic [ref=f20e69]:
+          - generic [ref=f20e71]:
+            - heading "Campaigns" [level=3] [ref=f20e72]
+            - paragraph [ref=f20e73]: All your campaigns in one place. Manage, group, and optimise your outreach.
+          - button "Create New" [ref=f20e75] [cursor=pointer]
+        - generic [ref=f20e79]:
+          - generic [ref=f20e80]: Search
+          - searchbox "Search campaigns" [ref=f20e86]
+        - generic [ref=f20e91]:
+          - generic [ref=f20e93]:
+            - link "Test Modified 1 week ago 0 Setup Not Completed" [ref=f20e95] [cursor=pointer]:
+              - /url: /campaigns/1011/onboarding
+              - generic [ref=f20e97]:
+                - generic [ref=f20e107]:
+                  - generic [ref=f20e108]: Test
+                  - generic [ref=f20e110]: Modified 1 week ago
+                - generic [ref=f20e113]:
+                  - button "0" [ref=f20e114]
+                  - generic [ref=f20e119]: Setup Not Completed
+            - button "Actions" [ref=f20e125] [cursor=pointer]
+          - generic [ref=f20e129]:
+            - link "test Modified 1 week ago 0 Setup Not Completed" [ref=f20e131] [cursor=pointer]:
+              - /url: /campaigns/430/onboarding
+              - generic [ref=f20e133]:
+                - generic [ref=f20e143]:
+                  - generic [ref=f20e144]: test
+                  - generic [ref=f20e146]: Modified 1 week ago
+                - generic [ref=f20e149]:
+                  - button "0" [ref=f20e150]
+                  - generic [ref=f20e155]: Setup Not Completed
+            - button "Actions" [ref=f20e161] [cursor=pointer]
+          - generic [ref=f20e165]:
+            - link "My First Campaign Modified 1 week ago 0 Setup Not Completed" [ref=f20e167] [cursor=pointer]:
+              - /url: /campaigns/304/onboarding
+              - generic [ref=f20e169]:
+                - generic [ref=f20e177]:
+                  - generic [ref=f20e178]: My First Campaign
+                  - generic [ref=f20e180]: Modified 1 week ago
+                - generic [ref=f20e183]:
+                  - button "0" [ref=f20e184]
+                  - generic [ref=f20e189]: Setup Not Completed
+            - button "Actions" [ref=f20e195] [cursor=pointer]
+          - generic [ref=f20e199]:
+            - link "Test HubSpot Campaign Modified 2 weeks ago 0 Setup Not Completed" [ref=f20e201] [cursor=pointer]:
+              - /url: /campaigns/1143/onboarding
+              - generic [ref=f20e203]:
+                - generic [ref=f20e213]:
+                  - generic [ref=f20e214]: Test HubSpot Campaign
+                  - generic [ref=f20e216]: Modified 2 weeks ago
+                - generic [ref=f20e219]:
+                  - button "0" [ref=f20e220]
+                  - generic [ref=f20e225]: Setup Not Completed
+            - button "Actions" [ref=f20e231] [cursor=pointer]
+  - generic:
+    - status

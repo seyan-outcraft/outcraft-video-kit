@@ -1,0 +1,7 @@
+- generic [ref=f4e2]:
+  - link [ref=f4e3] [cursor=pointer]:
+    - /url: https://app.outcraft.ai
+  - heading "404" [level=1] [ref=f4e15]
+  - paragraph [ref=f4e16]: Page not found
+  - link "Go to the home page" [ref=f4e17] [cursor=pointer]:
+    - /url: https://app.outcraft.ai

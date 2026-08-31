@@ -1,0 +1,93 @@
+---
+slug: case-goth-n-rock
+url: https://www.outcraft.ai/customer-success-stories/goth-n-rock-boosts-revenue-with-outcraft-ai
+why: revenue proof
+fetched: 2026-08-31
+hash: 1bede24af5c18109
+---
+
+[Skip to main content](https://www.outcraft.ai/customer-success-stories/goth-n-rock-boosts-revenue-with-outcraft-ai#main-content)
+
+![4-1](https://www.outcraft.ai/hs-fs/hubfs/4-1.png?width=960&height=564&name=4-1.png)
+
+# Goth N’ Rock Boosts Revenue with Outcraft AI
+
+### 14%
+
+of abandoned carts recovered
+
+
+### $9k/month
+
+in additional upsell revenue
+
+
+### 57%
+
+increase in repeat customer rate
+
+
+### Products & Tactics Used
+
+AI voice call outreachPost-purchase upsell callsAbandoned cart recovery
+
+## Challenges: Abandoned Carts & One-Time Buyers
+
+Shopping cart abandonment is a widespread issue in e-commerce – the average online cart abandonment rate is about 70%, meaning the majority of potential orders are lost. Goth N' Rock experienced this firsthand: many shoppers would browse and add items to the cart, only to drop off at checkout. Each abandoned cart represented lost revenue and wasted advertising spend that brought the shopper to the site. Traditional recovery methods (like follow-up emails) help somewhat, but have limited effectiveness – shopping cart abandonment emails convert only around 10% of lost shoppers on average. In fact, one merchant reported their automated emails were converting just ~5% of abandoned checkouts.
+
+Another challenge was improving customer retention. Only ~20% of first-time online buyers typically ever make a second purchase, yet winning that second purchase is crucial for long-term loyalty. Industry research shows that after one purchase, a customer has only about a 27% chance of returning, but if you get them to make a second purchase, their chance of buying yet again jumps to 49%. Goth N' Rock wanted to increase its rate of repeat buyers (which was about 7%) to boost customer lifetime value and profitability. In short, the team needed a way to recapture abandoned sales and encourage new customers to buy again, thereby maximizing the return on their marketing investments.
+
+## Solution: AI-Powered Outreach with Outcraft
+
+To tackle these challenges, Goth N' Rock implemented Outcraft AI, an automated conversational agent, as a 24/7 virtual sales assistant. Outcraft's solution engaged customers at two critical points in the customer journey:
+
+- Real-Time Abandoned Checkout Calls
+
+When a shopper abandoned the checkout, Outcraft's AI would place a prompt, personalized phone call to the customer (using the phone number provided at checkout). The AI agent speaks in a natural, friendly voice and is trained to handle common objections or questions. The goal is to assist the hesitant customer in real time, address any issues (like questions about sizing or shipping), and gently encourage them to complete the purchase. If the shopper needs more information or a direct link to their cart, the AI follows up immediately via SMS or email with the relevant details. This multi-channel approach ensures the customer has everything they need – for example, a custom checkout link or a personal discount code – to finish ordering with minimal friction. By reaching out within minutes of the abandonment (when interest is still high), Outcraft's call stands out compared to an easily ignored email. (It's worth noting how effective this approach can be: one trial found phone calls converted 17% of abandoned carts vs. only ~5% via email. The human-like voice and real-time assistance build trust, leading to more recoveries and even higher subsequent loyalty from those customers.)
+
+- Post-Purchase "Thank You & Upsell" Calls
+
+Outcraft's AI didn't stop at the first order – it also helped turn one-time buyers into repeat customers. Shortly after a customer placed an order, the AI agent would automatically call to thank them for their purchase and offer an exclusive limited-time deal. For instance, the caller (AI) might say "Thank you for shopping with Goth N' Rock! As a special thank-you, you now have an opportunity to pick any other item in our store for 30% off, for the next 48 hours." This surprise offer during the post-purchase high leveraged a key moment: research shows 68% of customers are more receptive to complementary offers immediately after making a purchase, and well-timed post-purchase upsells can boost revenue by up to 30%. By calling customers to present a personalized upsell (instead of just an email or on-screen prompt), Goth N' Rock made the experience feel concierge-like and special. The AI agent can answer product questions on the spot, recommend an item that pairs with their first purchase, and even process the order or send a direct checkout link via text. This approach not only increases average order value, but also nudges new buyers to make that crucial second purchase – which, as noted, dramatically increases the likelihood they'll purchase again. In essence, Outcraft's upsell calls helped Goth N' Rock drive repeat business and build loyalty right after the first sale, when customers are most delighted and engaged.
+
+
+
+Throughout these campaigns, Outcraft's AI operated seamlessly in the background, handling the outreach automatically so the Goth N' Rock team could focus on other parts of the business. The AI's natural language capabilities and courteous approach meant customers felt they were getting a helpful call from a store representative, not a robocall. Importantly, the calls were only made to customers who had opted in to be contacted, respecting customer preferences (no random cold calls). The combination of real-time engagement, personalized assistance, and multi-channel follow-up made Outcraft's solution highly effective and customer-friendly.
+
+
+## Impressive Results
+
+Since partnering with Outcraft AI, Goth N' Rock has achieved remarkable improvements in both recovering lost sales and increasing customer lifetime value. Key results from the first few months of running these AI-driven campaigns include:
+
+- 14% of Abandoned Carts Recovered: Outcraft's immediate outreach converted roughly 14% of abandoned checkouts into completed orders, turning would-be lost sales into revenue. Given the high abandonment baseline in e-commerce, recovering this many otherwise lost customers is a significant win. For Goth N' Rock, this amounted to about $25,000 in recovered revenue per month that the company might have otherwise missed out on, just from the abandoned cart calls. This is pure added revenue without increasing ad spend – effectively boosting the return on existing marketing investments by salvaging sales that were on the verge of slipping away.
+
+- $9,000/Month in Upsell Revenue: The post-purchase upsell campaign generated approximately $9,000 in additional revenue each month from thank-you call offers. These are incremental sales achieved by leveraging that 30%-off limited-time deal on a second item. Customers responded well to the personalized follow-up; many took advantage of the exclusive discount to buy an extra product they had their eye on. This not only increases immediate revenue, but also exposes customers to more of Goth N' Rock's product line, deepening their engagement with the brand.
+
+- Higher Repeat Purchase Rate (Customer Retention): By encouraging more second purchases, Goth N' Rock saw its repeat customer rate climb from 7% to 11% after implementing Outcraft's campaigns. In other words, a greater share of first-time buyers are coming back for another order. This lift in second-time purchasers is crucial for long-term growth – those customers are now far more likely to continue buying (since, for example, moving from one to two purchases raises the chance of a third purchase from 27% to roughly 49%). The increase from 7% to 11% in repeat rate represents a substantial improvement in customer retention and lifetime value for the brand.
+
+- Improved Profitability and ROAS: Perhaps most importantly, these recovered sales and upsells have translated into significantly improved profitability for Goth N' Rock. Every recovered cart or upsell means more revenue without additional acquisition cost. By capturing more value from the traffic and advertising they already have, Goth N' Rock dramatically improved its Revenue vs. Ad Spend ratio. In marketing terms, the return on ad spend (ROAS) is now much higher, since fewer ad-driven visits are "wasted" without a sale. (This aligns with broader industry findings – merchants using AI-driven cart recovery often report extremely high ROI, even up to 35× returns on their investment.) For Goth N' Rock, Outcraft's impact means that the dollars spent on ads and promotions yield much more sales than before, directly lifting the bottom line.
+
+
+## Testimonial
+
+> _"We are extremely happy with Outcraft AI's impact on our business. It's like having an always-on sales team that reaches out to every lost or potential opportunity. Outcraft's AI agent has significantly lifted our profitability – by recovering abandoned carts and driving repeat purchases, we're generating more revenue from the same traffic. Our revenue versus ad spend is much better now than it was before, because fewer customers slip through the cracks. This has truly improved our efficiency and growth in a way we hadn't imagined."_
+>
+> — Lukas Zapolskas, Founder & CEO of Goth N' Rock
+
+## Conclusion
+
+By deploying Outcraft AI's innovative conversational agent, Goth N' Rock managed to recover lost sales and increase customer lifetime value with minimal manual effort. The real-time abandoned cart calls addressed a major leak in the funnel, converting 14% of would-be drop-offs into happy customers. Meanwhile, the post-purchase upsell calls turned first-time buyers into repeat buyers, boosting retention and revenue per customer. For an e-commerce brand in a competitive space, these gains have been game-changing. Goth N' Rock not only saw tens of thousands of dollars in new monthly revenue, but also strengthened customer relationships through personalized follow-ups.
+
+This success story demonstrates how AI-driven outreach can solve common e-commerce pain points: it engages customers in a human way at critical moments, improves the shopping experience, and recaptures revenue that would otherwise be lost. In the words of Goth N' Rock's founder, the investment in Outcraft AI has paid off through higher profitability and a better return on marketing spend. For e-commerce managers and founders looking to boost their store's performance, Goth N' Rock's results show that an AI sales agent like Outcraft can be a powerful tool to increase conversions, repeat sales, and overall growth – all while delighting customers with proactive service.
+
+### About the Company
+
+Goth N' Rock is a fast-growing online fashion retailer offering gothic and rock-inspired apparel and accessories to a global customer base. Embracing a bold, dark aesthetic, the brand curates edgy fashion pieces that let individuals showcase their alternative style. Serving customers in over 130 countries, Goth N' Rock has built a passionate community of shoppers who "march to the beat of their own drum". However, like many e-commerce businesses, Goth N' Rock faced challenges with shoppers leaving before completing purchases and the need to turn first-time buyers into loyal repeat customers.
+
+
+## What Could Faster Follow-Up Add To Your Numbers?
+
+Let Outcraft AI turn every lead into real customer revenue and growth.
+
+[Start Free](https://www.outcraft.ai/customer-success-stories/goth-n-rock-boosts-revenue-with-outcraft-ai)
+
+[Prefer a guided walkthrough? **Book a Demo**](https://www.outcraft.ai/customer-success-stories/goth-n-rock-boosts-revenue-with-outcraft-ai)

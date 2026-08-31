@@ -1,0 +1,128 @@
+- generic [active] [ref=f72e1]:
+  - generic [ref=f72e3]:
+    - generic [ref=f72e4]: Exit Setup
+    - generic [ref=f72e11]:
+      - generic [ref=f72e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f72e13]: Book Appointment
+    - navigation [ref=f72e14]:
+      - list [ref=f72e15]:
+        - listitem [ref=f72e16]:
+          - generic [ref=f72e17]: Company
+          - list [ref=f72e18]:
+            - listitem [ref=f72e19]:
+              - link "Information" [ref=f72e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f72e23]:
+              - link "Industry" [ref=f72e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f72e27]:
+              - link "Compliance" [ref=f72e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f72e31]:
+          - generic [ref=f72e32]: Campaign
+          - list [ref=f72e33]:
+            - listitem [ref=f72e34]:
+              - link "Instructions" [ref=f72e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f72e38]:
+              - link "General Settings" [ref=f72e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f72e42]:
+              - link "Schedule" [ref=f72e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f72e46]:
+              - link "Outreach Channels" [ref=f72e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f72e50]:
+              - link "Booking" [ref=f72e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f72e54]:
+              - link "Outreach Sequence" [ref=f72e55] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f72e58]:
+              - link "Follow-Ups" [ref=f72e59] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f72e62]:
+              - link "Conversation Intelligence" [ref=f72e63] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f72e66]:
+          - generic [ref=f72e67]: AI Agent
+          - list [ref=f72e68]:
+            - listitem [ref=f72e69]:
+              - link "Configuration" [ref=f72e70] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f72e74]:
+          - generic [ref=f72e75]: Finish
+          - list [ref=f72e76]:
+            - listitem [ref=f72e77]:
+              - link "Review & Launch" [ref=f72e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f72e81]:
+          - generic [ref=f72e82] [cursor=pointer]: Advanced
+          - list [ref=f72e87]:
+            - listitem [ref=f72e88]:
+              - link [ref=f72e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f72e93]:
+              - link [ref=f72e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f72e98]:
+    - main [ref=f72e99]:
+      - generic [ref=f72e101]:
+        - generic [ref=f72e108]:
+          - heading "AI Agent" [level=2] [ref=f72e109]
+          - text: Choose how your AI agent introduces itself, sounds, and represents your company.
+        - generic [ref=f72e112]:
+          - button "Add Language" [ref=f72e114] [cursor=pointer]
+          - generic [ref=f72e117]:
+            - navigation "Tabs" [ref=f72e120]:
+              - link "🇺🇸 US Default" [ref=f72e121] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=f72e122]: 🇺🇸 US
+                - generic [ref=f72e123]: Default
+            - generic [ref=f72e132]:
+              - generic [ref=f72e136]:
+                - button "Make Default" [disabled]
+              - generic [ref=f72e140]:
+                - generic [ref=f72e143]:
+                  - generic [ref=f72e145]:
+                    - generic [ref=f72e147]:
+                      - text: Agent Name
+                      - superscript [ref=f72e148]: "*"
+                    - button [ref=f72e151] [cursor=pointer]
+                  - generic [ref=f72e154]:
+                    - textbox "Agent Name*" [ref=f72e157]:
+                      - /placeholder: Jessica
+                    - generic [ref=f72e158]: How the AI assistant will introduce itself to leads.
+                - generic [ref=f72e166]:
+                  - generic [ref=f72e168]:
+                    - text: Voice
+                    - superscript [ref=f72e169]: "*"
+                  - button [ref=f72e172] [cursor=pointer]
+              - generic [ref=f72e182]:
+                - term [ref=f72e185]: Hear how your AI agent sounds
+                - definition [ref=f72e187]
+              - generic [ref=f72e193]:
+                - generic [ref=f72e194]: Call background sound
+                - combobox "Call background sound" [ref=f72e201]:
+                  - option "Office" [selected]
+                  - option "Off"
+              - generic [ref=f72e204]:
+                - generic [ref=f72e205]: Email signature
+                - generic [ref=f72e209]: This signature will be used in the end of all emails sent by AI agent
+              - generic [ref=f72e217]:
+                - generic [ref=f72e218] [cursor=pointer]:
+                  - generic [ref=f72e219]:
+                    - heading "Advanced" [level=2] [ref=f72e220]
+                    - paragraph [ref=f72e221]: We strongly recommend using our default Advanced settings. They are optimized for natural conversation flow, realism, and higher conversion rates.
+                  - button [ref=f72e222]
+                - text: "{{}} {{}} {{}} {{}} {{}} {{}} {{}}"
+    - generic [ref=f72e228]:
+      - button "Back" [ref=f72e230] [cursor=pointer]
+      - generic [ref=f72e233]:
+        - generic [ref=f72e236]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f72e237] [cursor=pointer]
+        - button [ref=f72e244] [cursor=pointer]
+  - generic:
+    - status

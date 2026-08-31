@@ -1,0 +1,107 @@
+- generic [active] [ref=f28e1]:
+  - generic [ref=f28e3]:
+    - generic [ref=f28e4]: Exit Setup
+    - generic [ref=f28e11]:
+      - generic [ref=f28e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f28e13]: Book Appointment
+    - navigation [ref=f28e14]:
+      - list [ref=f28e15]:
+        - listitem [ref=f28e16]:
+          - generic [ref=f28e17]: Company
+          - list [ref=f28e18]:
+            - listitem [ref=f28e19]:
+              - link "Information" [ref=f28e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f28e24]:
+              - link "Industry" [ref=f28e25] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f28e28]:
+              - link "Compliance" [ref=f28e29] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f28e32]:
+          - generic [ref=f28e33]: Campaign
+          - list [ref=f28e34]:
+            - listitem [ref=f28e35]:
+              - link "Instructions" [ref=f28e36] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f28e39]:
+              - link "General Settings" [ref=f28e40] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f28e43]:
+              - link "Schedule" [ref=f28e44] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f28e47]:
+              - link "Outreach Channels" [ref=f28e48] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f28e51]:
+              - link "Booking" [ref=f28e52] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f28e55]:
+              - link "Outreach Sequence" [ref=f28e56] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f28e59]:
+              - link "Conversation Intelligence" [ref=f28e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f28e63]:
+          - generic [ref=f28e64]: AI Agent
+          - list [ref=f28e65]:
+            - listitem [ref=f28e66]:
+              - link "Configuration" [ref=f28e67] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f28e70]:
+          - generic [ref=f28e71]: Finish
+          - list [ref=f28e72]:
+            - listitem [ref=f28e73]:
+              - link "Review & Launch" [ref=f28e74] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f28e77]:
+          - generic [ref=f28e78] [cursor=pointer]: Advanced
+          - list [ref=f28e83]:
+            - listitem [ref=f28e84]:
+              - link [ref=f28e85] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f28e89]:
+              - link [ref=f28e90] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f28e94]:
+    - main [ref=f28e95]:
+      - generic [ref=f28e97]:
+        - generic [ref=f28e104]:
+          - heading "Company Information" [level=2] [ref=f28e105]
+          - text: Provide your company details so we can verify your business and give the AI agent the context it needs to understand your brand.
+        - generic [ref=f28e110]:
+          - generic [ref=f28e116]:
+            - generic [ref=f28e120]:
+              - generic [ref=f28e123]:
+                - generic [ref=f28e125]:
+                  - generic [ref=f28e127]:
+                    - text: Brand Name
+                    - superscript [ref=f28e128]: "*"
+                  - button [ref=f28e131] [cursor=pointer]
+                - textbox "Brand Name*" [ref=f28e137]:
+                  - /placeholder: Example Wellness Co.
+              - generic [ref=f28e140]:
+                - generic [ref=f28e142]:
+                  - generic [ref=f28e144]:
+                    - text: Website URL
+                    - superscript [ref=f28e145]: "*"
+                  - button [ref=f28e148] [cursor=pointer]
+                - textbox "Website URL*" [ref=f28e154]:
+                  - /placeholder: example.com
+            - generic [ref=f28e157]:
+              - generic [ref=f28e158]: Add brand name pronunciation guide
+              - generic [ref=f28e162]: Useful for voice calls or names that are often mispronounced.
+          - generic [ref=f28e175]:
+            - generic [ref=f28e196]:
+              - generic [ref=f28e197]: Operating in the US or Canada?
+              - generic [ref=f28e200]: Turn this on if your business is active in the United States or Canada, including selling to, supporting, or contacting customers in these markets.
+            - generic: Is operating in us or canada
+    - generic [ref=f28e207]:
+      - button "Back" [ref=f28e209] [cursor=pointer]
+      - generic [ref=f28e212]:
+        - generic [ref=f28e215]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f28e216] [cursor=pointer]
+        - button [ref=f28e223] [cursor=pointer]
+  - generic:
+    - status

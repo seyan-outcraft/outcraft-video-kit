@@ -1,0 +1,1428 @@
+<!doctype html>
+<!--
+  OUTCRAFT — THE UNASKED QUESTION.  Video 4.
+  48.0s · 1440 frames · 120 BPM · 24 bars · 1920x1080 · HyperFrames.
+
+  Three files come out of this one timeline. Music licensing and the venue a cut
+  gets played in are not decided by the person who mixed it (DO-NOT-DO 51), so
+  all three ship, every time.
+
+    npx hyperframes render                                          music + SFX
+    npx hyperframes render --variables '{"bgm":false}'              SFX only
+    npx hyperframes render --variables '{"bgm":false,"sfx":false}'  silent
+
+  Read STORYBOARD.md first. Nothing here is ported from videos 1-3: every scene,
+  every component and every cut in this file is new.
+-->
+<html
+  lang="en"
+  data-resolution="landscape"
+  data-composition-variables='[
+    {"id":"bgm","type":"boolean","label":"Music bed","default":true},
+    {"id":"sfx","type":"boolean","label":"Sound design","default":true}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Outcraft — The Unasked Question</title>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+
+    <style>
+      /*
+        Brand faces, bundled rather than fetched, so a render never depends on
+        the network. Both are the latin subsets taken from the Remotion projects'
+        @remotion/google-fonts copies.
+
+        Bricolage Grotesque has an optical-size axis. A file served with `opsz`
+        live lets Chrome drive it to the 96 ceiling at display sizes, which is a
+        visibly narrower cut. These files have opsz pinned at the family default,
+        so a headline measures the same here as it does in videos 1 and 2.
+      */
+      @font-face {
+        font-family: 'Bricolage Grotesque';
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: block;
+        src: url('assets/fonts/bricolage-grotesque-latin.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400 600;
+        font-display: block;
+        src: url('assets/fonts/inter-latin.woff2') format('woff2');
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; border: 0 solid; }
+
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #010101;
+        line-height: 1.5;
+      }
+
+      body { font-family: 'Inter', system-ui, sans-serif; }
+      img, svg { display: block; vertical-align: middle; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+
+      /* ------------------------------------------------------------------
+         LAYERS. The ground is painted once and re-coloured on the beat; every
+         scene and every cut is a full-bleed layer over it. z-index is explicit
+         because data-track-index is a Studio display lane, not a stacking
+         order.
+         ------------------------------------------------------------------ */
+      #ground { position: absolute; inset: 0; background: #faf8f1; z-index: 0; }
+      .scene  { position: absolute; inset: 0; z-index: 10; }
+      .cut    { position: absolute; inset: 0; z-index: 60; pointer-events: none; }
+
+      /* Centre stack. Flex, never a transform — a translate(-50%) on a box that
+         GSAP also tweens is a lint error and a fight over the same property. */
+      .mid {
+        position: absolute;
+        inset: 178px 142px;        /* the safe area, exactly */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ------------------------------------------------------------------
+         TYPE. Bricolage for display, Inter for everything that is read rather
+         than watched. Never a headline under 150px, never support under 78px.
+         Every hero box holds nowrap so an overflow is visible instead of a
+         silent reflow (DO-NOT-DO 67).
+         ------------------------------------------------------------------ */
+      .disp {
+        font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        white-space: nowrap;
+        text-align: center;
+        font-optical-sizing: none;
+      }
+      .ui { font-family: 'Inter', sans-serif; }
+
+      .eyebrow {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 40px;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        line-height: 1;
+      }
+      .sub {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 78px;
+        letter-spacing: 0;
+        line-height: 1.1;
+        white-space: nowrap;
+      }
+
+      /* The word mask. The wrapper owns layout, the inner span owns transform,
+         opacity and filter — an `em` inside the wrapper resolves against the
+         wrapper's own font size, which is why the size is never set on the
+         inner span (DO-NOT-DO 69). */
+      .mw {
+        display: inline-block;
+        overflow: hidden;
+        padding-bottom: 0.08em;
+        margin-bottom: -0.08em;
+        vertical-align: bottom;
+      }
+      /* Only for a line that actually has a descender in it. A mask skirt deep
+         enough for a `g` is deeper than the gap between two stacked display
+         lines, so it is opt-in rather than the default. */
+      .mw.desc { padding-bottom: 0.22em; margin-bottom: -0.22em; }
+      .mi { display: inline-block; }
+
+      /* Odometer. A column of ten glyphs behind a one-glyph window, so a total
+         that is still growing never re-centres the line under itself
+         (DO-NOT-DO 56 — the width is held from frame one). */
+      .odo { display: flex; align-items: flex-start; justify-content: center; }
+      .od  { display: inline-block; overflow: hidden; position: relative; }
+      .odc { display: block; position: absolute; left: 0; right: 0; top: 0; }
+
+      /* Bubbles. A shopper question that never gets an answer. */
+      .bub {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 22px;
+        padding: 22px 44px;
+        border-radius: 18px 18px 18px 4px;
+        background: #ffffff;
+        border: 2.5px solid #e6e9eb;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 78px;
+        line-height: 1;
+        color: #33353a;
+        white-space: nowrap;
+      }
+      .dots { display: inline-flex; gap: 10px; align-items: center; }
+      .dot { width: 14px; height: 14px; border-radius: 50%; background: #cdd2d6; }
+
+      /* Rail. The fallback chain, one chip per step. */
+      .rail { display: flex; align-items: center; gap: 26px; }
+      .chip {
+        padding: 22px 40px;
+        border-radius: 100px;
+        border: 2.5px solid #cdd2d6;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 44px;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        color: #6a6f76;
+        white-space: nowrap;
+      }
+      .arrow { width: 34px; height: 3px; background: #cdd2d6; }
+
+      /* Waveform. Sixty-four bars, heights from a fixed formula — never a
+         random number, because every frame has to be the same on every render. */
+      .wave { display: flex; align-items: center; gap: 7px; height: 150px; }
+      .wb { width: 8px; border-radius: 4px; background: #6366f1; }
+
+      /* The tick that lands on an answered question. */
+      .tickrow { display: flex; align-items: center; gap: 30px; }
+      .tick {
+        width: 62px; height: 62px; border-radius: 50%;
+        background: #6366f1;
+        display: flex; align-items: center; justify-content: center;
+        flex: 0 0 auto;
+      }
+      .tick svg { width: 32px; height: 32px; }
+
+      /* Proof row: a customer's own mark, then their own number. */
+      .proof { display: flex; align-items: center; gap: 44px; }
+      .proof img { height: 52px; width: auto; }
+      .plabel {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 44px;
+        color: #6a6f76;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+      .pnum {
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-weight: 700;
+        font-size: 78px;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        color: #ffffff;
+        white-space: nowrap;
+      }
+
+      /* The one CTA. One filled purple element in the frame (DO-NOT-DO 17). */
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        padding: 26px 56px;
+        border-radius: 100px;
+        background: #6366f1;
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 46px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .env {
+        width: 300px; height: 200px;
+        border: 3px solid #cdd2d6;
+        border-radius: 10px;
+        background: #ffffff;
+        position: relative;
+        overflow: hidden;
+      }
+      .env-flap {
+        position: absolute; inset: 0;
+        border-top: 100px solid #f6f7f7;
+        border-left: 150px solid transparent;
+        border-right: 150px solid transparent;
+      }
+
+      .ring {
+        position: absolute;
+        left: 50%; top: 50%;
+        border-radius: 50%;
+        border: 4px solid #6366f1;
+        width: 200px; height: 200px;
+        margin-left: -100px; margin-top: -100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      id="root"
+      data-composition-id="checkout"
+      data-start="0"
+      data-duration="48"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- The ground. It is re-coloured seven times and every change is a beat. -->
+      <div id="ground"></div>
+
+      <!-- ================= 1 · THE CART · 0.0-4.0 ================= -->
+      <div class="scene clip" id="s1" data-start="0" data-duration="4.5" data-track-index="1">
+        <div class="mid">
+          <div class="eyebrow" id="s1-eb" style="color: #6a6f76">CHECKOUT</div>
+          <div style="height: 54px"></div>
+          <div style="position: relative">
+            <div class="odo disp" id="s1-odo" style="font-size: 250px; color: #010101"></div>
+            <div
+              id="s1-strike"
+              style="
+                position: absolute;
+                left: -30px;
+                right: -30px;
+                top: 50%;
+                height: 12px;
+                margin-top: -6px;
+                background: #fe4e32;
+              "
+            ></div>
+          </div>
+          <div style="height: 46px"></div>
+          <div class="eyebrow" id="s1-tag" style="color: #fe4e32">Abandoned</div>
+        </div>
+      </div>
+
+      <!-- ================= 2 · SEVENTY · 4.0-7.0 ================= -->
+      <div class="scene clip" id="s2" data-start="4" data-duration="3.05" data-track-index="2">
+        <div class="mid">
+          <div class="eyebrow" id="s2-eb" style="color: #6a6f76">About</div>
+          <div style="height: 30px"></div>
+          <div class="disp" id="s2-hero" style="font-size: 400px; color: #010101">70%</div>
+          <div style="height: 34px"></div>
+          <div class="sub" id="s2-sub" style="color: #33353a">of carts end like this.</div>
+          <div
+            id="s2-rule"
+            style="position: absolute; left: 0; right: 0; top: 50%; height: 14px; background: #fe4e32"
+          ></div>
+        </div>
+      </div>
+
+      <!-- ================= 3 · THE BELIEF · 7.0-9.5 ================= -->
+      <div class="scene clip" id="s3" data-start="7" data-duration="2.5" data-track-index="3">
+        <div class="mid">
+          <div class="eyebrow" id="s3-eb" style="color: #818cf8">You call this</div>
+          <div style="height: 44px"></div>
+          <div class="disp" id="s3-hero" style="font-size: 200px; color: #ffffff">A LOST SALE.</div>
+        </div>
+      </div>
+
+      <!-- ================= 4 · THE TURN · 9.5-14.5 ================= -->
+      <div class="scene clip" id="s4" data-start="9.5" data-duration="5.5" data-track-index="4">
+        <!-- The purple floods out of the middle at 11.5, under the type. -->
+        <div
+          id="s4-flood"
+          style="position: absolute; left: 50%; top: 50%; width: 2400px; height: 2400px; margin-left: -1200px; margin-top: -1200px; border-radius: 50%; background: #6366f1"
+        ></div>
+        <div class="mid" id="s4-a-wrap">
+          <div class="disp" id="s4-a" style="font-size: 260px; color: #ffffff">IT ISN'T.</div>
+        </div>
+        <div class="mid" id="s4-b-wrap">
+          <div class="disp" id="s4-b1" style="font-size: 170px; color: #ffffff">IT'S A</div>
+          <div style="height: 20px"></div>
+          <div class="disp" id="s4-b2" style="font-size: 260px; color: #ffffff">QUESTION.</div>
+        </div>
+      </div>
+
+      <!-- ================= 5 · THE QUESTIONS · 14.5-20.5 ================= -->
+      <div class="scene clip" id="s5" data-start="15" data-duration="6.35" data-track-index="5">
+        <div class="mid">
+          <div id="s5-stack" style="display: flex; flex-direction: column; gap: 16px; width: 1560px">
+            <div style="display: flex; justify-content: flex-start; padding-left: 40px">
+              <div class="bub" id="s5-b0">
+                <span>Will it fit?</span>
+                <span class="dots" id="s5-d0"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; padding-right: 90px">
+              <div class="bub" id="s5-b1">
+                <span>When does it ship?</span>
+                <span class="dots" id="s5-d1"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: flex-start; padding-left: 130px">
+              <div class="bub" id="s5-b2">
+                <span>Is it really titanium?</span>
+                <span class="dots" id="s5-d2"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; padding-right: 30px">
+              <div class="bub" id="s5-b3">
+                <span>Can I send it back?</span>
+                <span class="dots" id="s5-d3"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+              </div>
+            </div>
+          </div>
+          <div id="s5-gap" style="height: 0px"></div>
+          <div class="disp" id="s5-hero" style="font-size: 150px; color: #fe4e32">NOBODY ASKED.</div>
+        </div>
+      </div>
+
+      <!-- ================= 6 · THE EMAIL · 20.5-24.0 ================= -->
+      <div class="scene clip" id="s6" data-start="21" data-duration="3" data-track-index="6">
+        <div class="mid" style="flex-direction: row; gap: 150px; justify-content: center">
+          <div id="s6-env" style="display: flex; flex-direction: column; align-items: center; gap: 30px">
+            <div class="env"><div class="env-flap"></div></div>
+            <div class="eyebrow" style="color: #6a6f76">One email</div>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: flex-start">
+            <div class="disp" id="s6-num" style="font-size: 340px; color: #6a6f76">5%</div>
+            <div style="height: 10px"></div>
+            <div class="sub" id="s6-cap" style="color: #33353a; font-size: 78px">is what it gets back.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 7 · SO ASK THEM · 24.0-28.0 ================= -->
+      <div class="scene clip" id="s7" data-start="24" data-duration="4.2" data-track-index="7">
+        <div class="mid">
+          <div class="disp" id="s7-hero" style="font-size: 220px; color: #ffffff">SO ASK THEM.</div>
+          <div style="height: 56px"></div>
+          <div class="wave" id="s7-wave"></div>
+          <div style="height: 50px"></div>
+          <div class="eyebrow" id="s7-ch" style="color: #818cf8">Voice · SMS · WhatsApp · Email</div>
+        </div>
+      </div>
+
+      <!-- ================= 8 · ANSWERED · 28.0-32.5 ================= -->
+      <div class="scene clip" id="s8" data-start="28" data-duration="4.8" data-track-index="8">
+        <div class="mid">
+          <div id="s8-rows" style="display: flex; flex-direction: column; gap: 20px; align-items: flex-start">
+            <div class="tickrow" id="s8-r0">
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+              <span class="sub" style="color: #ffffff; font-size: 78px">Will it fit?</span>
+            </div>
+            <div class="tickrow" id="s8-r1">
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+              <span class="sub" style="color: #ffffff; font-size: 78px">When does it ship?</span>
+            </div>
+            <div class="tickrow" id="s8-r2">
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+              <span class="sub" style="color: #ffffff; font-size: 78px">Is it really titanium?</span>
+            </div>
+            <div class="tickrow" id="s8-r3">
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+              <span class="sub" style="color: #ffffff; font-size: 78px">Can I send it back?</span>
+            </div>
+          </div>
+          <!-- The recovered total. Reserved from frame one so the block above it
+               never re-centres when this arrives (DO-NOT-DO 68). -->
+          <div id="s8-total" style="display: flex; flex-direction: column; align-items: center; height: 300px; justify-content: center">
+            <div class="odo disp" id="s8-odo" style="font-size: 250px; color: #6366f1"></div>
+            <div style="height: 18px"></div>
+            <div class="eyebrow" id="s8-cap" style="color: #ffffff">Recovered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 9 · THE CHAIN · 32.5-36.5 ================= -->
+      <div class="scene clip" id="s9" data-start="32.5" data-duration="3.75" data-track-index="9">
+        <div class="mid">
+          <div class="rail" id="s9-rail">
+            <span class="chip" id="s9-c0">Call</span>
+            <i class="arrow"></i>
+            <span class="chip" id="s9-c1">No answer, text</span>
+            <i class="arrow"></i>
+            <span class="chip" id="s9-c2">No reply, call</span>
+            <i class="arrow"></i>
+            <span class="chip" id="s9-c3">Then email</span>
+          </div>
+          <div style="height: 64px"></div>
+          <div class="disp" id="s9-h1" style="font-size: 150px; color: #010101">IT PICKS THE ONE</div>
+          <div style="height: 16px"></div>
+          <div class="disp" id="s9-h2" style="font-size: 150px; color: #010101">THEY ANSWER.</div>
+          <div style="height: 52px"></div>
+          <!-- The comparison. Two earlier tries at making the 5% "look weak"
+               were both wrong: #cdd2d6 on cream is 1.4:1, a number nobody can
+               read, and a grey mixed to hit exactly 3:1 was legible but was a
+               colour that exists nowhere in the brand (DO-NOT-DO 3). The
+               hierarchy is carried by SIZE and SATURATION instead — 96px of
+               ink-muted against 130px of purple — and the two halves are held
+               apart by a gap rather than by a separator nobody can see. Every
+               value here is a brand token. -->
+          <div id="s9-cmp" style="display: flex; align-items: baseline; gap: 26px">
+            <span class="disp" style="font-size: 96px; color: #6a6f76">5%</span>
+            <span class="ui" style="font-size: 46px; color: #6a6f76; font-weight: 600">email</span>
+            <span style="width: 76px"></span>
+            <span class="disp" id="s9-17" style="font-size: 130px; color: #6366f1">17%</span>
+            <span class="ui" style="font-size: 46px; color: #33353a; font-weight: 600">a phone call</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 10 · AGAIN · 36.5-40.5 ================= -->
+      <div class="scene clip" id="s10" data-start="36.5" data-duration="4.0" data-track-index="10">
+        <div class="mid">
+          <div class="disp" id="s10-h1" style="font-size: 150px; color: #ffffff">THEN IT</div>
+          <div style="height: 16px"></div>
+          <div class="disp" id="s10-h2" style="font-size: 200px; color: #ffffff">CALLS BACK.</div>
+          <div style="height: 26px"></div>
+          <!-- Reserved height: both rows exist from frame one, opacity does the
+               arriving, so the headline above never gets shoved (DO-NOT-DO 68). -->
+          <div id="s10-stats" style="height: 210px; display: flex; flex-direction: column; justify-content: center; gap: 22px; align-items: center">
+            <div id="s10-a" style="display: flex; align-items: baseline; gap: 26px">
+              <span class="disp" style="font-size: 110px; color: #ffffff">68%</span>
+              <span class="ui" style="font-size: 46px; color: #e7e7fd">more receptive right after they buy</span>
+            </div>
+            <div id="s10-b" style="display: flex; align-items: baseline; gap: 26px">
+              <span class="disp" style="font-size: 110px; color: #ffffff">7% → 11%</span>
+              <span class="ui" style="font-size: 46px; color: #e7e7fd">repeat customers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 11 · THE MONEY · 40.5-45.0 ================= -->
+      <div class="scene clip" id="s11" data-start="40.5" data-duration="4.8" data-track-index="11">
+        <div class="mid">
+          <div id="s11-hero" style="display: flex; flex-direction: column; align-items: center">
+            <div class="odo disp" id="s11-odo" style="font-size: 280px; color: #ffffff"></div>
+            <div style="height: 16px"></div>
+            <div class="eyebrow" id="s11-cap" style="color: #818cf8">Recovered for one store</div>
+          </div>
+          <div style="height: 62px"></div>
+          <div id="s11-rows" style="display: flex; flex-direction: column; gap: 30px; align-items: flex-start">
+            <div class="proof" id="s11-p0">
+              <!-- A customer's own mark, inverted to white because this shot is
+                   near-black. Inverting keeps the shape of the mark exactly and
+                   is how these logos are used on a dark ground; nothing is
+                   stretched, rotated or recoloured. -->
+              <span style="width: 210px; display: flex; align-items: center"><img src="assets/logos/taima-titanium-logo.png" alt="Taima Titanium" style="height: 72px; filter: brightness(0) invert(1)" /></span>
+              <span class="plabel">cart recovery and upsells</span>
+            </div>
+            <div class="proof" id="s11-p1">
+              <span style="width: 210px; display: flex; align-items: center"><img src="assets/logos/gothnrock-2.png" alt="Goth N' Rock" style="height: 32px; filter: brightness(0) invert(1)" /></span>
+              <span class="pnum">14%</span>
+              <span class="plabel">of carts back · $9,000 a month in upsells</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 12 · THE CLOSE · 45.0-48.0 ================= -->
+      <div class="scene clip" id="s12" data-start="45" data-duration="3" data-track-index="12">
+        <div class="mid">
+          <div class="disp" id="s12-l0" style="font-size: 150px; color: #010101">EVERY ABANDONED</div>
+          <div style="height: 16px"></div>
+          <div class="disp" id="s12-l1" style="font-size: 150px; color: #010101">CART DESERVES</div>
+          <div style="height: 16px"></div>
+          <div class="disp" id="s12-l2" style="font-size: 150px; color: #010101">A PHONE CALL.</div>
+          <div style="height: 44px"></div>
+          <img id="s12-logo" src="assets/brand/Outcraft_logo_black.svg" alt="Outcraft" style="width: 300px; height: auto" />
+          <div style="height: 36px"></div>
+          <div class="cta" id="s12-cta">
+            <span>Start Free</span>
+            <span style="opacity: 0.62">outcraft.ai</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= THE ELEVEN CUTS =================
+           One layer each, no two the same move. Counted off this markup, not
+           off the outline (DO-NOT-DO 63, 74). -->
+
+      <!-- Cut 2 · 7.0 · strike and invert -->
+      <div class="cut clip" id="c2" data-start="6.88" data-duration="0.55" data-track-index="30">
+        <div id="c2-panel" style="position: absolute; inset: 0; background: #010101"></div>
+      </div>
+
+      <!-- Cut 3 · 9.5 · split shear -->
+      <div class="cut clip" id="c3" data-start="9.5" data-duration="0.6" data-track-index="31">
+        <div id="c3-top" data-layout-allow-overlap style="position: absolute; left: 0; right: 0; top: 0; height: 540px; background: #010101; overflow: hidden">
+          <div style="position: absolute; left: 0; top: 0; width: 1920px; height: 1080px">
+            <div class="mid">
+              <div class="eyebrow" style="color: #818cf8">You call this</div>
+              <div style="height: 44px"></div>
+              <div class="disp" style="font-size: 200px; color: #ffffff">A LOST SALE.</div>
+            </div>
+          </div>
+        </div>
+        <div id="c3-bot" data-layout-allow-overlap style="position: absolute; left: 0; right: 0; top: 540px; height: 540px; background: #010101; overflow: hidden">
+          <div style="position: absolute; left: 0; top: -540px; width: 1920px; height: 1080px">
+            <div class="mid">
+              <div class="eyebrow" style="color: #818cf8">You call this</div>
+              <div style="height: 44px"></div>
+              <div class="disp" style="font-size: 200px; color: #ffffff">A LOST SALE.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cut 4 · 14.5 · glyph iris: the counter of a question mark opens -->
+      <div class="cut clip" id="c4" data-start="14.5" data-duration="1.0" data-track-index="32">
+        <div id="c4-purple" style="position: absolute; inset: 0; background: #6366f1"></div>
+        <div class="disp" id="c4-q" style="position: absolute; left: 0; right: 0; top: 260px; font-size: 520px; color: #ffffff">?</div>
+        <div id="c4-iris" style="position: absolute; left: 50%; top: 660px; width: 110px; height: 110px; margin-left: -55px; margin-top: -55px; border-radius: 50%; background: #faf8f1"></div>
+      </div>
+
+      <!-- Cut 6 · 24.0 · ring wipe, at the speed of a phone ringing -->
+      <div class="cut clip" id="c6" data-start="23.5" data-duration="0.65" data-track-index="33">
+        <div class="ring" id="c6-r0"></div>
+        <div class="ring" id="c6-r1"></div>
+        <div class="ring" id="c6-r2" style="border-width: 1200px; border-color: #232f8b"></div>
+      </div>
+
+      <!-- Cut 7 · 28.0 · the waveform is the wipe edge -->
+      <div class="cut clip" id="c7" data-start="27.6" data-duration="0.9" data-track-index="34">
+        <div id="c7-fill" style="position: absolute; left: 0; top: 0; width: 2200px; height: 1080px; background: #003f4e"></div>
+      </div>
+
+      <!-- Cut 8 · 32.5 · card flip; the back of the tile is the next scene -->
+      <div class="cut clip" id="c8" data-start="32.3" data-duration="0.7" data-track-index="35" style="perspective: 2600px">
+        <!-- What the card turns against. Without it the flip is teal on teal
+             and the move is invisible (DO-NOT-DO 62). -->
+        <div style="position: absolute; inset: 0; background: #faf8f1"></div>
+        <div id="c8-card" style="position: absolute; inset: 0; transform-style: preserve-3d">
+          <div id="c8-front" style="position: absolute; inset: 0; background: #003f4e; backface-visibility: hidden"></div>
+          <div id="c8-back" style="position: absolute; inset: 0; background: #faf8f1; backface-visibility: hidden"></div>
+        </div>
+      </div>
+
+      <!-- Cut 9 · 36.5 · diagonal tear, a 20 degree seam -->
+      <div class="cut clip" id="c9" data-start="36.2" data-duration="0.8" data-track-index="36">
+        <div id="c9-a" style="position: absolute; inset: 0; background: #faf8f1"></div>
+        <div id="c9-b" style="position: absolute; inset: 0; background: #faf8f1"></div>
+      </div>
+
+      <!-- Cut 10 · 40.5 · digits count so fast they smear into a bar -->
+      <div class="cut clip" id="c10" data-start="40.2" data-duration="0.8" data-track-index="37">
+        <div id="c10-bar" style="position: absolute; inset: 0; background: #010101"></div>
+      </div>
+
+      <!-- Cut 11 · 45.0 · everything collapses into the mark -->
+      <div class="cut clip" id="c11" data-start="44.7" data-duration="0.9" data-track-index="38">
+        <div id="c11-fill" style="position: absolute; inset: 0; background: #010101"></div>
+        <div id="c11-dot" style="position: absolute; left: 50%; top: 50%; width: 2600px; height: 2600px; margin-left: -1300px; margin-top: -1300px; border-radius: 50%; background: #faf8f1"></div>
+      </div>
+
+      <!--HF_AUDIO-->
+      <!--
+        SOUND. Generated by tools/gen-audio.mjs from tools/cues.mjs.
+        Do not hand-edit between these two markers.
+
+        THE BED is assets/audio/bed-48.mp3 — the Mixkit tech-house groove,
+        time-stretched from 124.5 BPM to 120 with ffmpeg atempo (which does
+        not shift pitch) and rebuilt to 48.0s as its own first 30.0s, fifteen
+        bars, followed by its own first 18.0s, nine bars, with a 15ms fade
+        across the seam. Both sides of the joint are downbeats, so the loop
+        sits ON the grid rather than merely near it (DO-NOT-DO 48, 66).
+
+        91 cues. Levels are set on the timeline, in the sound block.
+      -->
+      <audio id="bed" src="assets/audio/bed-48.mp3" data-start="0" data-duration="48" data-track-index="20" data-volume="0"></audio>
+      <audio id="cue0" src="assets/audio/sfx/transition/air-woosh-deep.mp3" data-start="0" data-duration="1.2" data-track-index="21" data-volume="0" data-note="the film opens on a checkout"></audio>
+      <audio id="cue1" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="0.1333333" data-duration="0.5333333" data-track-index="22" data-volume="0" data-note="CHECKOUT arrives"></audio>
+      <audio id="cue2" src="assets/audio/sfx/counter/clock-knob-spin.mp3" data-start="0.3333333" data-duration="0.7333333" data-track-index="23" data-volume="0" data-note="the total rolling up to $284.00"></audio>
+      <audio id="cue3" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="2.0666667" data-duration="0.4" data-track-index="24" data-volume="0" data-note="the last digit settling"></audio>
+      <audio id="cue4" src="assets/audio/sfx/text/marker-pen-line.mp3" data-start="3" data-duration="0.5333333" data-track-index="25" data-volume="0" data-note="the coral rule striking through the money"></audio>
+      <audio id="cue5" src="assets/audio/sfx/impact/hit-blow.mp3" data-start="3" data-duration="0.5666667" data-track-index="26" data-volume="0" data-note="weight under the strike"></audio>
+      <audio id="cue6" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="3.2666667" data-duration="0.4666667" data-track-index="27" data-volume="0" data-note="ABANDONED types in under it"></audio>
+      <audio id="cue7" src="assets/audio/sfx/transition/air-zoom-vacuum.mp3" data-start="4" data-duration="0.8666667" data-track-index="28" data-volume="0" data-note="CUT 1 - the digits falling out of the frame"></audio>
+      <audio id="cue8" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="4.0666667" data-duration="0.8666667" data-track-index="21" data-volume="0" data-note="CUT 1 - the floor going out from under it"></audio>
+      <audio id="cue9" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="4.2" data-duration="0.6" data-track-index="22" data-volume="0" data-note="70% rising through the gap"></audio>
+      <audio id="cue10" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="4.4" data-duration="0.7333333" data-track-index="23" data-volume="0" data-note="70% landing"></audio>
+      <audio id="cue11" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="4.8333333" data-duration="0.4666667" data-track-index="24" data-volume="0" data-note="of carts end like this."></audio>
+      <audio id="cue12" src="assets/audio/sfx/text/marker-pen-line.mp3" data-start="6.5333333" data-duration="0.6" data-track-index="25" data-volume="0" data-note="CUT 2 - the coral rule drawing across the number"></audio>
+      <audio id="cue13" src="assets/audio/sfx/impact/impact-cine-big.mp3" data-start="6.9666667" data-duration="1.0666667" data-track-index="26" data-volume="0" data-note="CUT 2 - the frame inverting to black"></audio>
+      <audio id="cue14" src="assets/audio/sfx/transition/air-woosh-quick.mp3" data-start="7.1333333" data-duration="0.6" data-track-index="27" data-volume="0" data-note="YOU CALL THIS"></audio>
+      <audio id="cue15" src="assets/audio/sfx/transition/sweep-metal-quick.mp3" data-start="7.2666667" data-duration="0.6666667" data-track-index="28" data-volume="0" data-note="A LOST SALE. rising on black"></audio>
+      <audio id="cue16" src="assets/audio/sfx/riser/riser-cine.mp3" data-start="8.7333333" data-duration="1" data-track-index="21" data-volume="0" data-note="the pressure under the turn that is coming"></audio>
+      <audio id="cue17" src="assets/audio/sfx/transition/whoosh-big.mp3" data-start="9.5" data-duration="1" data-track-index="22" data-volume="0" data-note="CUT 3 - the frame shearing in half"></audio>
+      <audio id="cue18" src="assets/audio/sfx/impact/impact-movie-epic.mp3" data-start="9.5" data-duration="1.3333333" data-track-index="23" data-volume="0" data-note="CUT 3 - weight under the shear"></audio>
+      <audio id="cue19" src="assets/audio/sfx/impact/bass-hit-futuristic.mp3" data-start="9.6666667" data-duration="0.9333333" data-track-index="24" data-volume="0" data-note="IT ISN'T. landing"></audio>
+      <audio id="cue20" src="assets/audio/sfx/transition/air-whoosh-powerful.mp3" data-start="11.8333333" data-duration="0.8" data-track-index="25" data-volume="0" data-note="IT ISN'T. leaving upward"></audio>
+      <audio id="cue21" src="assets/audio/sfx/transition/warp-slide.mp3" data-start="11.9333333" data-duration="1" data-track-index="26" data-volume="0" data-note="the purple flooding out of the middle"></audio>
+      <audio id="cue22" src="assets/audio/sfx/impact/impact-transition.mp3" data-start="12.0333333" data-duration="1" data-track-index="27" data-volume="0" data-note="the flood arriving at the edges"></audio>
+      <audio id="cue23" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="12.1666667" data-duration="0.6" data-track-index="28" data-volume="0" data-note="IT'S A"></audio>
+      <audio id="cue24" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="12.4666667" data-duration="0.8" data-track-index="21" data-volume="0" data-note="QUESTION. - the pivot of the whole film"></audio>
+      <audio id="cue25" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="12.4666667" data-duration="0.6666667" data-track-index="22" data-volume="0" data-note="a little light on the pivot"></audio>
+      <audio id="cue26" src="assets/audio/sfx/transition/air-zoom-vacuum.mp3" data-start="14.5333333" data-duration="0.8" data-track-index="23" data-volume="0" data-note="CUT 4 - the question mark growing"></audio>
+      <audio id="cue27" src="assets/audio/sfx/mech/door-open-futuristic.mp3" data-start="14.8333333" data-duration="1" data-track-index="24" data-volume="0" data-note="CUT 4 - the dot of the glyph opening out"></audio>
+      <audio id="cue28" src="assets/audio/sfx/transition/swoosh-quick.mp3" data-start="15.1" data-duration="0.5333333" data-track-index="25" data-volume="0" data-note="Will it fit?"></audio>
+      <audio id="cue29" src="assets/audio/sfx/impact/hit-blow.mp3" data-start="15.1666667" data-duration="0.4666667" data-track-index="26" data-volume="0" data-note="the first bubble landing"></audio>
+      <audio id="cue30" src="assets/audio/sfx/transition/swoosh-quick.mp3" data-start="15.9" data-duration="0.5333333" data-track-index="27" data-volume="0" data-note="When does it ship?"></audio>
+      <audio id="cue31" src="assets/audio/sfx/impact/hit-blow.mp3" data-start="15.9666667" data-duration="0.4666667" data-track-index="28" data-volume="0" data-note="the second bubble landing"></audio>
+      <audio id="cue32" src="assets/audio/sfx/transition/swoosh-quick.mp3" data-start="16.7" data-duration="0.5333333" data-track-index="21" data-volume="0" data-note="Is it really titanium?"></audio>
+      <audio id="cue33" src="assets/audio/sfx/impact/hit-blow.mp3" data-start="16.7666667" data-duration="0.4666667" data-track-index="22" data-volume="0" data-note="the third bubble landing"></audio>
+      <audio id="cue34" src="assets/audio/sfx/transition/swoosh-quick.mp3" data-start="17.5" data-duration="0.5333333" data-track-index="23" data-volume="0" data-note="Can I send it back?"></audio>
+      <audio id="cue35" src="assets/audio/sfx/impact/hit-blow.mp3" data-start="17.5666667" data-duration="0.4666667" data-track-index="24" data-volume="0" data-note="the fourth bubble landing"></audio>
+      <audio id="cue36" src="assets/audio/sfx/transition/sweep-metal-quick.mp3" data-start="18.5" data-duration="0.6" data-track-index="25" data-volume="0" data-note="the stack lifting and stepping down a size"></audio>
+      <audio id="cue37" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="18.6666667" data-duration="0.8666667" data-track-index="26" data-volume="0" data-note="NOBODY ASKED."></audio>
+      <audio id="cue38" src="assets/audio/sfx/transition/air-zoom-vacuum.mp3" data-start="20.8" data-duration="0.9333333" data-track-index="27" data-volume="0" data-note="CUT 5 - every bubble swallowed by one point"></audio>
+      <audio id="cue39" src="assets/audio/sfx/impact/impact-deep-whoosh.mp3" data-start="20.9666667" data-duration="1" data-track-index="28" data-volume="0" data-note="CUT 5 - the weight of the swallow"></audio>
+      <audio id="cue40" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="21.0666667" data-duration="0.6" data-track-index="21" data-volume="0" data-note="the envelope arriving, alone"></audio>
+      <audio id="cue41" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="21.3333333" data-duration="0.4666667" data-track-index="22" data-volume="0" data-note="5% - and nothing happening"></audio>
+      <audio id="cue42" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="22.5333333" data-duration="0.4666667" data-track-index="23" data-volume="0" data-note="the clock again. still nothing."></audio>
+      <audio id="cue43" src="assets/audio/sfx/riser/riser-cine.mp3" data-start="23.3333333" data-duration="0.8666667" data-track-index="24" data-volume="0" data-note="the room about to open"></audio>
+      <audio id="cue44" src="assets/audio/sfx/transition/whoosh-fast.mp3" data-start="23.5" data-duration="0.8" data-track-index="25" data-volume="0" data-note="CUT 6 - the first ring leaving the envelope"></audio>
+      <audio id="cue45" src="assets/audio/sfx/transition/air-whoosh-powerful.mp3" data-start="23.6666667" data-duration="0.8" data-track-index="26" data-volume="0" data-note="CUT 6 - the second ring"></audio>
+      <audio id="cue46" src="assets/audio/sfx/impact/impact-epic-trailer.mp3" data-start="23.8333333" data-duration="1.3333333" data-track-index="27" data-volume="0" data-note="CUT 6 - the third ring carrying the indigo out"></audio>
+      <audio id="cue47" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="24.2" data-duration="0.6" data-track-index="28" data-volume="0" data-note="SO ASK THEM. rising"></audio>
+      <audio id="cue48" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="24.4" data-duration="0.7333333" data-track-index="21" data-volume="0" data-note="the line landing"></audio>
+      <audio id="cue49" src="assets/audio/sfx/light/light-sweep-magic.mp3" data-start="24.8333333" data-duration="1.3333333" data-track-index="22" data-volume="0" data-note="the voice drawing itself in, left to right"></audio>
+      <audio id="cue50" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="25.8333333" data-duration="0.6666667" data-track-index="23" data-volume="0" data-note="the four channels under the wave"></audio>
+      <audio id="cue51" src="assets/audio/sfx/transition/warp-slide.mp3" data-start="27.6" data-duration="0.9333333" data-track-index="24" data-volume="0" data-note="CUT 7 - the waveform travelling right as the wipe edge"></audio>
+      <audio id="cue52" src="assets/audio/sfx/impact/bass-hit-futuristic.mp3" data-start="27.7666667" data-duration="1" data-track-index="25" data-volume="0" data-note="CUT 7 - weight behind the edge"></audio>
+      <audio id="cue53" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="28.3666667" data-duration="0.5333333" data-track-index="26" data-volume="0" data-note="tick 1 - Will it fit?"></audio>
+      <audio id="cue54" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="28.7666667" data-duration="0.5333333" data-track-index="27" data-volume="0" data-note="tick 2 - When does it ship?"></audio>
+      <audio id="cue55" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="29.1666667" data-duration="0.5333333" data-track-index="28" data-volume="0" data-note="tick 3 - Is it really titanium?"></audio>
+      <audio id="cue56" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="29.5666667" data-duration="0.5333333" data-track-index="21" data-volume="0" data-note="tick 4 - Can I send it back?"></audio>
+      <audio id="cue57" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="30.2" data-duration="0.6" data-track-index="22" data-volume="0" data-note="the total coming back"></audio>
+      <audio id="cue58" src="assets/audio/sfx/counter/clock-knob-spin.mp3" data-start="30.2" data-duration="0.7333333" data-track-index="23" data-volume="0" data-note="the odometer rolling back up to $284.00"></audio>
+      <audio id="cue59" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="31" data-duration="0.8" data-track-index="24" data-volume="0" data-note="RECOVERED. - the loop closing"></audio>
+      <audio id="cue60" src="assets/audio/sfx/light/sparkle-poof-hit.mp3" data-start="31" data-duration="0.8" data-track-index="25" data-volume="0" data-note="the light on the loop closing"></audio>
+      <audio id="cue61" src="assets/audio/sfx/transition/air-woosh-quick.mp3" data-start="32.3" data-duration="0.8" data-track-index="26" data-volume="0" data-note="CUT 8 - the tile turning over"></audio>
+      <audio id="cue62" src="assets/audio/sfx/mech/gear-lock-metallic.mp3" data-start="32.5" data-duration="0.8" data-track-index="27" data-volume="0" data-note="CUT 8 - the back face locking into place"></audio>
+      <audio id="cue63" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="32.7" data-duration="0.4666667" data-track-index="28" data-volume="0" data-note="CALL"></audio>
+      <audio id="cue64" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="33" data-duration="0.4666667" data-track-index="21" data-volume="0" data-note="NO ANSWER, TEXT"></audio>
+      <audio id="cue65" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="33.3" data-duration="0.4666667" data-track-index="22" data-volume="0" data-note="NO REPLY, CALL"></audio>
+      <audio id="cue66" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="33.6" data-duration="0.4666667" data-track-index="23" data-volume="0" data-note="THEN EMAIL"></audio>
+      <audio id="cue67" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="33.8" data-duration="0.6" data-track-index="24" data-volume="0" data-note="IT PICKS THE ONE"></audio>
+      <audio id="cue68" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="34.0666667" data-duration="0.8" data-track-index="25" data-volume="0" data-note="THEY ANSWER."></audio>
+      <audio id="cue69" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="34.9" data-duration="0.7333333" data-track-index="26" data-volume="0" data-note="17% - the other half of the comparison"></audio>
+      <audio id="cue70" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="34.9" data-duration="0.6" data-track-index="27" data-volume="0" data-note="light on the 17%"></audio>
+      <audio id="cue71" src="assets/audio/sfx/transition/whoosh-big.mp3" data-start="36.2" data-duration="0.9333333" data-track-index="28" data-volume="0" data-note="CUT 9 - the diagonal tear"></audio>
+      <audio id="cue72" src="assets/audio/sfx/impact/impact-cine-big.mp3" data-start="36.3333333" data-duration="1.1333333" data-track-index="21" data-volume="0" data-note="CUT 9 - the two pieces sliding apart"></audio>
+      <audio id="cue73" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="36.6" data-duration="0.6" data-track-index="22" data-volume="0" data-note="THEN IT"></audio>
+      <audio id="cue74" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="36.8333333" data-duration="0.8" data-track-index="23" data-volume="0" data-note="CALLS BACK."></audio>
+      <audio id="cue75" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="37.9" data-duration="0.4666667" data-track-index="24" data-volume="0" data-note="68% more receptive"></audio>
+      <audio id="cue76" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="38.7" data-duration="0.4666667" data-track-index="25" data-volume="0" data-note="7% to 11% repeat customers"></audio>
+      <audio id="cue77" src="assets/audio/sfx/riser/riser-cine.mp3" data-start="40" data-duration="0.7333333" data-track-index="26" data-volume="0" data-note="the run up to the money"></audio>
+      <audio id="cue78" src="assets/audio/sfx/transition/warp-slide.mp3" data-start="40.2" data-duration="0.8666667" data-track-index="27" data-volume="0" data-note="CUT 10 - the count smearing into a bar"></audio>
+      <audio id="cue79" src="assets/audio/sfx/impact/impact-movie-epic.mp3" data-start="40.4" data-duration="1.2" data-track-index="28" data-volume="0" data-note="CUT 10 - the bar clearing to the money"></audio>
+      <audio id="cue80" src="assets/audio/sfx/counter/clock-knob-spin.mp3" data-start="40.6333333" data-duration="0.7333333" data-track-index="21" data-volume="0" data-note="the odometer counting to $230,000"></audio>
+      <audio id="cue81" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="42.1333333" data-duration="0.4" data-track-index="22" data-volume="0" data-note="the last digit settling"></audio>
+      <audio id="cue82" src="assets/audio/sfx/transition/sweep-metal-quick.mp3" data-start="42.3" data-duration="0.5333333" data-track-index="23" data-volume="0" data-note="Taima Titanium wiping in"></audio>
+      <audio id="cue83" src="assets/audio/sfx/transition/sweep-metal-quick.mp3" data-start="43.1" data-duration="0.5333333" data-track-index="24" data-volume="0" data-note="Goth N' Rock wiping in"></audio>
+      <audio id="cue84" src="assets/audio/sfx/transition/air-zoom-vacuum.mp3" data-start="44.7" data-duration="0.8666667" data-track-index="25" data-volume="0" data-note="CUT 11 - the figures collapsing to a point"></audio>
+      <audio id="cue85" src="assets/audio/sfx/impact/impact-epic-trailer.mp3" data-start="44.8666667" data-duration="1.3333333" data-track-index="26" data-volume="0" data-note="CUT 11 - the point opening out as the close"></audio>
+      <audio id="cue86" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="45.2" data-duration="0.6" data-track-index="27" data-volume="0" data-note="EVERY ABANDONED"></audio>
+      <audio id="cue87" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="45.4" data-duration="0.6" data-track-index="28" data-volume="0" data-note="CART DESERVES"></audio>
+      <audio id="cue88" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="45.6" data-duration="0.8666667" data-track-index="21" data-volume="0" data-note="A PHONE CALL."></audio>
+      <audio id="cue89" src="assets/audio/sfx/light/sparkle.mp3" data-start="46.3" data-duration="0.8666667" data-track-index="22" data-volume="0" data-note="the Outcraft mark landing"></audio>
+      <audio id="cue90" src="assets/audio/sfx/light/sparkle-poof-hit.mp3" data-start="46.7666667" data-duration="0.8666667" data-track-index="23" data-volume="0" data-note="the one CTA"></audio>
+      <script>
+        /* The cue table, for the level tweens in the composition script. */
+        window.__HF_CUES = [{"from":0,"frames":36,"volume":0.26},{"from":4,"frames":16,"volume":0.16},{"from":10,"frames":22,"volume":0.3},{"from":62,"frames":12,"volume":0.22},{"from":90,"frames":16,"volume":0.3},{"from":90,"frames":17,"volume":0.26},{"from":98,"frames":14,"volume":0.14},{"from":120,"frames":26,"volume":0.34},{"from":122,"frames":26,"volume":0.3},{"from":126,"frames":18,"volume":0.2},{"from":132,"frames":22,"volume":0.24},{"from":145,"frames":14,"volume":0.13},{"from":196,"frames":18,"volume":0.32},{"from":209,"frames":32,"volume":0.34},{"from":214,"frames":18,"volume":0.2},{"from":218,"frames":20,"volume":0.22},{"from":262,"frames":30,"volume":0.26,"swell":22},{"from":285,"frames":30,"volume":0.4},{"from":285,"frames":40,"volume":0.36},{"from":290,"frames":28,"volume":0.32},{"from":355,"frames":24,"volume":0.26},{"from":358,"frames":30,"volume":0.34},{"from":361,"frames":30,"volume":0.3},{"from":365,"frames":18,"volume":0.18},{"from":374,"frames":24,"volume":0.3},{"from":374,"frames":20,"volume":0.13},{"from":436,"frames":24,"volume":0.3},{"from":445,"frames":30,"volume":0.28},{"from":453,"frames":16,"volume":0.2},{"from":455,"frames":14,"volume":0.13},{"from":477,"frames":16,"volume":0.19},{"from":479,"frames":14,"volume":0.12},{"from":501,"frames":16,"volume":0.19},{"from":503,"frames":14,"volume":0.12},{"from":525,"frames":16,"volume":0.19},{"from":527,"frames":14,"volume":0.12},{"from":555,"frames":18,"volume":0.2},{"from":560,"frames":26,"volume":0.3},{"from":624,"frames":28,"volume":0.36},{"from":629,"frames":30,"volume":0.26},{"from":632,"frames":18,"volume":0.14},{"from":640,"frames":14,"volume":0.16},{"from":676,"frames":14,"volume":0.13},{"from":700,"frames":26,"volume":0.3,"swell":20},{"from":705,"frames":24,"volume":0.32},{"from":710,"frames":24,"volume":0.3},{"from":715,"frames":40,"volume":0.38},{"from":726,"frames":18,"volume":0.22},{"from":732,"frames":22,"volume":0.28},{"from":745,"frames":40,"volume":0.26},{"from":775,"frames":20,"volume":0.14},{"from":828,"frames":28,"volume":0.34},{"from":833,"frames":30,"volume":0.3},{"from":851,"frames":16,"volume":0.18},{"from":863,"frames":16,"volume":0.18},{"from":875,"frames":16,"volume":0.18},{"from":887,"frames":16,"volume":0.18},{"from":906,"frames":18,"volume":0.2},{"from":906,"frames":22,"volume":0.3},{"from":930,"frames":24,"volume":0.32},{"from":930,"frames":24,"volume":0.2},{"from":969,"frames":24,"volume":0.3},{"from":975,"frames":24,"volume":0.26},{"from":981,"frames":14,"volume":0.18},{"from":990,"frames":14,"volume":0.17},{"from":999,"frames":14,"volume":0.17},{"from":1008,"frames":14,"volume":0.17},{"from":1014,"frames":18,"volume":0.2},{"from":1022,"frames":24,"volume":0.28},{"from":1047,"frames":22,"volume":0.28},{"from":1047,"frames":18,"volume":0.15},{"from":1086,"frames":28,"volume":0.36},{"from":1090,"frames":34,"volume":0.32},{"from":1098,"frames":18,"volume":0.2},{"from":1105,"frames":24,"volume":0.3},{"from":1137,"frames":14,"volume":0.16},{"from":1161,"frames":14,"volume":0.16},{"from":1200,"frames":22,"volume":0.28,"swell":16},{"from":1206,"frames":26,"volume":0.34},{"from":1212,"frames":36,"volume":0.34},{"from":1219,"frames":22,"volume":0.32},{"from":1264,"frames":12,"volume":0.2},{"from":1269,"frames":16,"volume":0.2},{"from":1293,"frames":16,"volume":0.19},{"from":1341,"frames":26,"volume":0.34},{"from":1346,"frames":40,"volume":0.36},{"from":1356,"frames":18,"volume":0.2},{"from":1362,"frames":18,"volume":0.18},{"from":1368,"frames":26,"volume":0.28},{"from":1389,"frames":26,"volume":0.2},{"from":1403,"frames":26,"volume":0.22}];
+      </script>
+      <!--/HF_AUDIO-->
+
+      <script>
+        /* ==================================================================
+           OUTCRAFT — THE UNASKED QUESTION.  One paused timeline, 48.0s.
+
+           The grid: 120 BPM at 30fps. A beat is 15 frames / 0.5s. A bar is 60
+           frames / 2.0s. Twenty-four bars. Every scene start and every cut in
+           the table above sits on a beat.
+
+           Nothing here reads a clock, calls Math.random, touches the network or
+           repeats forever: every value at time t is a pure function of t, which
+           is what lets the renderer seek to any frame and get the same picture.
+           ================================================================== */
+
+        /* --- Grid ------------------------------------------------------- */
+        const FPS = 30;
+        const F = (n) => n / FPS;          /* frames  -> seconds */
+        const B = (n) => n * 0.5;          /* beats   -> seconds */
+
+        /* --- Easing ------------------------------------------------------
+           The brand's four curves, as real cubic beziers rather than GSAP's
+           named approximations, so this film's motion language is identical to
+           videos 1 and 2. Things that enter decelerate; things that leave
+           accelerate; nothing is ever linear (DO-NOT-DO 23).
+
+           A duration-based curve also reaches its end value exactly, on a frame
+           you can name, and then stops — which is the whole reason no landing in
+           this film is a spring (DO-NOT-DO 53). */
+        function cubic(x1, y1, x2, y2) {
+          const ax = 3 * x1 - 3 * x2 + 1, bx = 3 * x2 - 6 * x1, cx = 3 * x1;
+          const ay = 3 * y1 - 3 * y2 + 1, by = 3 * y2 - 6 * y1, cy = 3 * y1;
+          const bez = (t, a, b, c) => ((a * t + b) * t + c) * t;
+          const dx = (t) => (3 * ax * t + 2 * bx) * t + cx;
+          return (x) => {
+            if (x <= 0) return 0;
+            if (x >= 1) return 1;
+            let t = x;
+            for (let i = 0; i < 8; i++) {
+              const e = bez(t, ax, bx, cx) - x;
+              if (Math.abs(e) < 1e-7) return bez(t, ay, by, cy);
+              const d = dx(t);
+              if (Math.abs(d) < 1e-7) break;
+              t -= e / d;
+            }
+            let lo = 0, hi = 1;
+            t = x;
+            for (let i = 0; i < 24; i++) {
+              const e = bez(t, ax, bx, cx);
+              if (Math.abs(e - x) < 1e-7) break;
+              if (e > x) hi = t; else lo = t;
+              t = (lo + hi) / 2;
+            }
+            return bez(t, ay, by, cy);
+          };
+        }
+
+        const E = {
+          out:   cubic(0.16, 1, 0.3, 1),      /* enter. the workhorse   */
+          in:    cubic(0.7, 0, 0.84, 0),      /* leave                  */
+          inOut: cubic(0.65, 0, 0.35, 1),     /* move something already there */
+          swift: cubic(0.22, 1, 0.36, 1),     /* confident, mechanical  */
+          none:  'none',
+        };
+
+        const C = {
+          cream: '#faf8f1', black: '#010101', purple: '#6366f1',
+          indigo: '#232f8b', teal: '#003f4e', coral: '#fe4e32',
+          white: '#ffffff', muted: '#6a6f76', grey: '#f6f7f7',
+        };
+
+        const $ = (id) => document.getElementById(id);
+        const all = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+        /* --- The word mask ------------------------------------------------
+           Splits a line into words, each behind its own window, so a word can
+           rise onto the baseline from nothing. Deterministic: it runs once, at
+           build time, off the text already in the markup.
+
+           Layout stays on the wrapper and transform stays on the inner span
+           (DO-NOT-DO 69), and the mask is only ever used on a move that runs
+           vertically — a sideways or scaling move clips itself against its own
+           window and reads as a stretch (DO-NOT-DO 46). */
+        function maskWords(el, desc) {
+          const words = (el.textContent || '').split(/\s+/).filter(Boolean);
+          el.textContent = '';
+          const inner = [];
+          words.forEach((w, i) => {
+            if (i) el.appendChild(document.createTextNode(' '));
+            const wrap = document.createElement('span');
+            wrap.className = desc ? 'mw desc' : 'mw';
+            const span = document.createElement('span');
+            span.className = 'mi';
+            span.textContent = w;
+            wrap.appendChild(span);
+            el.appendChild(wrap);
+            inner.push(span);
+          });
+          return inner;
+        }
+
+        /* Rise a masked line onto its baseline. `stag` is frames between words. */
+        function rise(tl, el, at, { dur = 16, stag = 3, from = 118, desc = false } = {}) {
+          const parts = maskWords(el, desc);
+          parts.forEach((p, i) => {
+            tl.fromTo(p,
+              { yPercent: from, opacity: 0 },
+              { yPercent: 0, opacity: 1, duration: F(dur), ease: E.out },
+              at + F(i * stag));
+          });
+          return parts;
+        }
+
+        /* --- The odometer -------------------------------------------------
+           A total that counts up without the line walking sideways under it.
+           Each digit is a ten-glyph column behind a one-glyph window; rolling
+           the column is the count. The width is the finished width from frame
+           one, which is the whole point (DO-NOT-DO 56). */
+        function odometer(host, text, size) {
+          const cols = [];
+          const H = size;                       /* line-height is 1 on .disp */
+          [].forEach.call(text, (ch) => {
+            if (ch >= '0' && ch <= '9') {
+              const win = document.createElement('span');
+              win.className = 'od';
+              /* Nine of these ten glyphs are always outside the window and
+                 clipped by overflow:hidden. The layout audit measures boxes, not
+                 clips, so the intent is declared rather than left to guesswork. */
+              win.setAttribute('data-layout-allow-overflow', '');
+              win.setAttribute('data-layout-allow-overlap', '');
+              win.style.height = H + 'px';
+              win.style.width = 0.56 * size + 'px';
+              const col = document.createElement('span');
+              col.className = 'odc';
+              col.setAttribute('data-layout-allow-overflow', '');
+              col.setAttribute('data-layout-allow-overlap', '');
+              for (let d = 0; d <= 9; d++) {
+                const g = document.createElement('span');
+                g.style.display = 'block';
+                g.style.height = H + 'px';
+                g.style.textAlign = 'center';
+                g.textContent = String(d);
+                g.setAttribute('data-layout-allow-overflow', '');
+                g.setAttribute('data-layout-allow-overlap', '');
+                col.appendChild(g);
+              }
+              win.appendChild(col);
+              host.appendChild(win);
+              cols.push({ col, target: Number(ch), H });
+            } else {
+              /* $ , and . are not digits and never roll — but they have to sit
+                 in a box exactly as tall as a digit window, or the row loses its
+                 common baseline the moment the columns leave the flow. */
+              const s = document.createElement('span');
+              s.textContent = ch;
+              s.style.display = 'inline-block';
+              s.style.height = H + 'px';
+              host.appendChild(s);
+            }
+          });
+          return cols;
+        }
+
+        /* Roll every column to its digit. Later columns settle later, which is
+           what an odometer actually does and what stops the roll reading as one
+           flat slab of motion. */
+        function roll(tl, cols, at, { dur = 42, stag = 3, spin = 2 } = {}) {
+          cols.forEach((c, i) => {
+            tl.fromTo(c.col,
+              { y: -((c.target + 10 * spin) % 10 === c.target ? 0 : 0) - 0 },
+              { y: 0, duration: 0, ease: E.none }, at);
+            tl.fromTo(c.col,
+              { y: (10 * spin) * c.H - c.target * c.H - (10 * spin) * c.H },
+              { y: -c.target * c.H, duration: F(dur + i * stag), ease: E.swift },
+              at);
+          });
+        }
+
+        /* --- The waveform -------------------------------------------------
+           Sixty-four bars whose heights come from a fixed sum of sines. Never a
+           random number: every render has to draw the same wave. */
+        function waveBars(host, n) {
+          const bars = [];
+          for (let i = 0; i < n; i++) {
+            const a =
+              Math.sin(i * 0.72) * 0.5 +
+              Math.sin(i * 1.93 + 1.2) * 0.3 +
+              Math.sin(i * 0.31 + 2.4) * 0.2;
+            const h = 0.16 + Math.abs(a) * 0.84;
+            const b = document.createElement('i');
+            b.className = 'wb';
+            b.style.height = Math.round(h * 150) + 'px';
+            host.appendChild(b);
+            bars.push(b);
+          }
+          return bars;
+        }
+
+        function build() {
+          const tl = gsap.timeline({ paused: true });
+
+          /* ================================================================
+             THE GROUND. Seven colours over 48 seconds, each change on a beat
+             and each one hard — a ground that crossfades reads as a dissolve,
+             and there is not a single dissolve in this film.
+             ================================================================ */
+          const g = $('ground');
+          tl.set(g, { backgroundColor: C.cream }, 0);
+          tl.set(g, { backgroundColor: C.black }, 7.0);      /* s3 the belief  */
+          tl.set(g, { backgroundColor: C.cream }, 15.0);     /* s5 questions   */
+          tl.set(g, { backgroundColor: C.grey }, 21.0);      /* s6 the email   */
+          tl.set(g, { backgroundColor: C.indigo }, 24.0);    /* s7 so ask them */
+          tl.set(g, { backgroundColor: C.teal }, 28.0);      /* s8 answered    */
+          tl.set(g, { backgroundColor: C.cream }, 32.5);     /* s9 the chain   */
+          tl.set(g, { backgroundColor: C.purple }, 36.5);    /* s10 again      */
+          tl.set(g, { backgroundColor: C.black }, 40.5);     /* s11 the money  */
+          tl.set(g, { backgroundColor: C.cream }, 45.0);     /* s12 the close  */
+
+          /* ================================================================
+             1 · THE CART.  0.0-4.0.  Ground: cream.
+
+             A total builds, and then it dies. One focal point, dead centre.
+             ================================================================ */
+          {
+            const eb = $('s1-eb');
+            tl.fromTo(eb, { opacity: 0, y: -14 },
+              { opacity: 1, y: 0, duration: F(14), ease: E.out }, F(4));
+
+            const cols = odometer($('s1-odo'), '$284.00', 250);
+            roll(tl, cols, F(10), { dur: 52, stag: 4, spin: 3 });
+
+            /* The line the shot turns on: at 3.0 the money stops being money. */
+            tl.set($('s1-strike'), { scaleX: 0, transformOrigin: 'left center' }, 0);
+            tl.to($('s1-odo'), { color: C.muted, duration: F(6), ease: E.inOut }, 3.0);
+            tl.to($('s1-strike'), { scaleX: 1, duration: F(9), ease: E.swift }, 3.0);
+
+            const tag = $('s1-tag');
+            tl.fromTo(tag, { opacity: 0, y: 16 },
+              { opacity: 1, y: 0, duration: F(10), ease: E.out }, 3.25);
+
+            /* CUT 1 · DIGIT DROP.  The glyphs fall out of the bottom of the
+               frame under gravity, right to left, and 70% rises through the gap
+               they leave. The two moves overlap on purpose: a cut that opens
+               onto a held empty frame reads as a mistake (DO-NOT-DO 70). */
+            const glyphs = Array.from($('s1-odo').children);
+            glyphs.slice().reverse().forEach((el, i) => {
+              tl.to(el, { y: 1300, duration: F(9), ease: E.in }, 3.98 + F(i * 0.8));
+              tl.to(el, { opacity: 0, duration: F(4), ease: E.in }, 3.98 + F(i * 0.8));
+            });
+            tl.to([eb, $('s1-strike'), tag],
+              { opacity: 0, duration: F(5), ease: E.in }, 3.98);
+          }
+
+          /* ================================================================
+             2 · SEVENTY.  4.0-7.0.  Ground: cream.
+
+             How often the shot before this one happens. About 70% — Outcraft's
+             own case-study prose, checked against Baymard Institute's 70.22%
+             across fifty studies before it was allowed on screen.
+             ================================================================ */
+          {
+            tl.fromTo($('s2-eb'), { opacity: 0, y: -12 },
+              { opacity: 1, y: 0, duration: F(12), ease: E.out }, 4.25);
+
+            rise(tl, $('s2-hero'), 4.18, { dur: 20, stag: 0 });
+            rise(tl, $('s2-sub'), 4.72, { dur: 16, stag: 2 });
+
+            /* CUT 2 · STRIKE AND INVERT. A coral rule draws through the number
+               left to right, and the instant it lands the whole frame is
+               black. The rule is drawn with clip-path, never by flipping a
+               transform-origin, which snaps a rule sideways by its own length
+               on one frame (DO-NOT-DO 47). */
+            const rule = $('s2-rule');
+            tl.set(rule, { clipPath: 'inset(0% 100% 0% 0%)' }, 0);
+            tl.to(rule, { clipPath: 'inset(0% 0% 0% 0%)', duration: F(9), ease: E.swift }, 6.6);
+
+            tl.set($('c2-panel'), { clipPath: 'inset(0% 0% 100% 0%)' }, 0);
+            tl.to($('c2-panel'), { clipPath: 'inset(0% 0% 0% 0%)', duration: F(5), ease: E.inOut }, 6.9);
+            /* Black panel over a ground that is already black — nothing pops. */
+            tl.set($('c2-panel'), { opacity: 0 }, 7.18);
+          }
+
+          /* ================================================================
+             3 · THE BELIEF.  7.0-9.5.  Ground: near-black.
+
+             The thing the viewer already thinks. Stated flat, so the next shot
+             has something to push against.
+             ================================================================ */
+          {
+            tl.fromTo($('s3-eb'), { opacity: 0, y: -12 },
+              { opacity: 1, y: 0, duration: F(12), ease: E.out }, 7.12);
+            rise(tl, $('s3-hero'), 7.22, { dur: 18, stag: 3 });
+
+            /* CUT 3 · SPLIT SHEAR. The frame splits on the baseline of the line
+               it is destroying, and the two halves shear away in opposite
+               directions carrying the words with them. The most violent move in
+               the film, spent on the moment the film turns. */
+            tl.fromTo($('c3-top'), { xPercent: 0, opacity: 1 },
+              { xPercent: -100, opacity: 1, duration: F(13), ease: E.in }, 9.5);
+            tl.fromTo($('c3-bot'), { xPercent: 0, opacity: 1 },
+              { xPercent: 100, opacity: 1, duration: F(13), ease: E.in }, 9.5);
+          }
+
+          /* ================================================================
+             4 · THE TURN.  9.5-14.5.  Ground: black, then purple.
+
+             The pivot. Outcraft's own B2C hero line, and the reason this film
+             is not another problem-then-rescue video.
+             ================================================================ */
+          {
+            /* Beat A — the denial, on black, at the biggest size in the film. */
+            const a = rise(tl, $('s4-a'), 9.62, { dur: 14, stag: 3 });
+            /* Lands 10.19, leaves 11.90 — 1.71s on the frame. */
+            tl.to(a, { opacity: 0, yPercent: -60, duration: F(8), ease: E.in }, 11.9);
+
+            /* The purple floods out of the middle, under the type. One filled
+               purple element in the frame, which is the frame (DO-NOT-DO 17). */
+            tl.set($('s4-flood'), { scale: 0, transformOrigin: '50% 50%' }, 0);
+            tl.to($('s4-flood'), { scale: 1, duration: F(15), ease: E.swift }, 12.0);
+
+            /* Beat B — the reframe. QUESTION. arrives a beat under IT'S A, so
+               the eye reads them in order rather than as one block. */
+            tl.set($('s4-b-wrap'), { opacity: 1 }, 0);
+            rise(tl, $('s4-b1'), 12.15, { dur: 16, stag: 0 });
+            /* Lands 13.12, cut at 14.55 — 1.43s, on one enormous word. */
+            rise(tl, $('s4-b2'), 12.45, { dur: 20, stag: 0, from: 108, desc: true });
+
+            /* CUT 4 · GLYPH IRIS. The full stop of QUESTION. grows into a
+               question mark, and the counter of the glyph — the hole in it —
+               opens out and becomes the window onto the next shot. */
+            tl.set($('c4-q'), { scale: 0.25, opacity: 0, transformOrigin: '50% 70%' }, 0);
+            tl.to($('c4-q'), { scale: 1, opacity: 1, duration: F(8), ease: E.out }, 14.55);
+            tl.set($('c4-iris'), { scale: 0 }, 0);
+            tl.to($('c4-iris'), { scale: 30, duration: F(13), ease: E.inOut }, 14.9);
+          }
+
+          /* ================================================================
+             5 · THE QUESTIONS.  14.5-20.5.  Ground: cream.
+
+             Four real reasons a checkout stops. Grounded: Goth N' Rock's case
+             study names sizing and shipping as the questions that lose the
+             sale, and Taima sells titanium cookware.
+
+             The stack ONLY EVER GROWS. Nothing fades back to make room for the
+             headline — a question that vanishes as it is asked is the opposite
+             of the point (DO-NOT-DO 42). The stack shrinks and lifts instead,
+             so hierarchy comes from size and position.
+             ================================================================ */
+          {
+            const AT = [15.12, 15.92, 16.72, 17.52];
+            AT.forEach((t, i) => {
+              const b = $('s5-b' + i);
+              tl.fromTo(b,
+                { opacity: 0, y: 40, scale: 0.94 },
+                { opacity: 1, y: 0, scale: 1, duration: F(15), ease: E.out }, t);
+
+              /* The ellipsis that never resolves. Three pulses, then it stops
+                 pulsing and just sits there, which is worse. */
+              const dots = all('.dot', $('s5-d' + i));
+              for (let p = 0; p < 3; p++) {
+                dots.forEach((d, k) => {
+                  tl.to(d, { opacity: 0.25, duration: F(7), ease: E.inOut },
+                    t + 0.45 + p * 0.55 + k * 0.09);
+                  tl.to(d, { opacity: 1, duration: F(7), ease: E.inOut },
+                    t + 0.45 + p * 0.55 + k * 0.09 + F(7));
+                });
+              }
+            });
+
+            /* 19.8 — the stack lifts and steps down a size, and the headline
+               takes the space it opened. Nobody disappeared. */
+            tl.to($('s5-stack'), { scale: 0.82, y: -34, duration: F(14), ease: E.inOut }, 18.5);
+            tl.to($('s5-gap'), { height: 54, duration: F(14), ease: E.inOut }, 18.5);
+            /* Lands 19.28, vacuum at 20.80 — 1.52s. */
+            rise(tl, $('s5-hero'), 18.65, { dur: 16, stag: 3 });
+
+            /* CUT 5 · VACUUM. Every bubble and the headline converge on one
+               point in the middle of the frame and are swallowed. The point is
+               where the envelope arrives. */
+            const eaten = [$('s5-b0'), $('s5-b1'), $('s5-b2'), $('s5-b3'), $('s5-hero')];
+            eaten.forEach((el, i) => {
+              tl.to(el, { scale: 0.02, opacity: 0, duration: F(9), ease: E.inOut },
+                20.8 + F(i * 1.0));
+            });
+          }
+
+          /* ================================================================
+             6 · THE EMAIL.  20.5-24.0.  Ground: light grey.
+
+             What actually got sent. The only sleepy shot in the film, and it is
+             sleepy on purpose: this is the shot the product is arguing with.
+
+             5% and the 17% in scene 9 are the two halves of ONE comparison from
+             ONE source, which is exactly how that fact's risk note permits it to
+             be used — as a comparison, never as a headline stat.
+             ================================================================ */
+          {
+            tl.fromTo($('s6-env'),
+              { opacity: 0, scale: 0.7 },
+              { opacity: 1, scale: 1, duration: F(18), ease: E.out }, 21.05);
+
+            rise(tl, $('s6-num'), 21.25, { dur: 26, stag: 0 });
+            /* The only line in the film with a descender in it — the `g` in
+               "gets" — so the only one that needs the deeper mask skirt. */
+            rise(tl, $('s6-cap'), 21.6, { dur: 16, stag: 2, desc: true });
+
+            /* It sits there. That is the whole performance. */
+            tl.to($('s6-env'), { y: 10, duration: F(40), ease: E.inOut }, 21.7);
+
+            /* CUT 6 · RING WIPE. Three rings leave the envelope at the speed of
+               a phone ringing, and the third one carries the indigo out to the
+               edges of the frame. */
+            const RING_AT = [23.5, 23.66, 23.82];
+            [0, 1, 2].forEach((i) => {
+              const r = $('c6-r' + i);
+              tl.set(r, { scale: 0, opacity: i === 2 ? 1 : 0.9 }, 0);
+              tl.to(r,
+                { scale: i === 2 ? 13 : 7, duration: F(i === 2 ? 9 : 15), ease: i === 2 ? E.swift : E.out },
+                RING_AT[i]);
+              if (i < 2) tl.to(r, { opacity: 0, duration: F(8), ease: E.in }, RING_AT[i] + F(5));
+            });
+          }
+
+          /* ================================================================
+             7 · SO ASK THEM.  24.0-28.0.  Ground: deep indigo.
+
+             The direct answer to scene 4. If it is a question, ask it.
+             ================================================================ */
+          {
+            rise(tl, $('s7-hero'), 24.2, { dur: 20, stag: 4 });
+
+            /* The voice draws itself in, left to right, one bar every frame and
+               a half. It is the product doing the thing the film just asked for. */
+            const bars = waveBars($('s7-wave'), 64);
+            bars.forEach((b, i) => {
+              tl.fromTo(b, { scaleY: 0.04, opacity: 0 },
+                { scaleY: 1, opacity: 1, duration: F(8), ease: E.out },
+                24.85 + F(i * 0.55));
+            });
+
+            tl.fromTo($('s7-ch'), { opacity: 0, y: 16 },
+              { opacity: 1, y: 0, duration: F(14), ease: E.out }, 25.85);
+
+            /* CUT 7 · WAVEFORM WIPE. The wipe edge is the waveform itself: the
+               teal travels right behind a ragged edge cut to the same shape the
+               voice just drew. The sound is the cut. */
+            const pts = [];
+            for (let i = 0; i <= 40; i++) {
+              const a =
+                Math.sin(i * 0.72) * 0.5 +
+                Math.sin(i * 1.93 + 1.2) * 0.3 +
+                Math.sin(i * 0.31 + 2.4) * 0.2;
+              pts.push((2140 + 55 * a).toFixed(1) + 'px ' + ((i / 40) * 1080).toFixed(1) + 'px');
+            }
+            $('c7-fill').style.clipPath = 'polygon(0px 0px,' + pts.join(',') + ',0px 1080px)';
+            tl.fromTo($('c7-fill'),
+              { x: -2200 }, { x: -280, duration: F(15), ease: E.inOut }, 27.62);
+          }
+
+          /* ================================================================
+             8 · ANSWERED.  28.0-32.5.  Ground: dark teal.
+
+             The four questions come back and each one gets a tick, in the order
+             they were asked. Then the $284.00 from scene 1 returns, alive, in
+             purple, at the size it died at.
+
+             This is the loop closing, and it is the single most important frame
+             in the film.
+             ================================================================ */
+          {
+            [0, 1, 2, 3].forEach((i) => {
+              const row = $('s8-r' + i);
+              const t = 28.35 + i * 0.4;
+              tl.fromTo(row, { opacity: 0, x: -40 },
+                { opacity: 1, x: 0, duration: F(11), ease: E.out }, t);
+              tl.fromTo(all('.tick', row)[0],
+                { scale: 0 }, { scale: 1, duration: F(9), ease: E.swift }, t + F(4));
+            });
+
+            const cols = odometer($('s8-odo'), '$284.00', 250);
+            tl.set($('s8-total'), { opacity: 0 }, 0);
+            tl.to($('s8-total'), { opacity: 1, duration: F(8), ease: E.out }, 30.1);
+            roll(tl, cols, 30.2, { dur: 30, stag: 2, spin: 2 });
+
+            tl.fromTo($('s8-cap'), { opacity: 0, y: 14 },
+              { opacity: 1, y: 0, duration: F(12), ease: E.out }, 31.0);
+
+            /* CUT 8 · CARD FLIP. The whole frame is a tile; it turns over on its
+               Y axis and the back of it is the next scene, which is already
+               moving by the time you see it. */
+            tl.set($('c8-back'), { rotationY: 180 }, 0);
+            tl.fromTo($('c8-card'),
+              { rotationY: 0 }, { rotationY: 180, duration: F(16), ease: E.inOut }, 32.32);
+          }
+
+          /* ================================================================
+             9 · THE CHAIN.  32.5-36.5.  Ground: cream.
+
+             How it actually reaches somebody: call, no answer text, no reply
+             call again, then email — the fallback chain Outcraft's CEO describes
+             and the one the live app runs.
+
+             And the other half of the comparison scene 6 opened.
+             ================================================================ */
+          {
+            [0, 1, 2, 3].forEach((i) => {
+              const c = $('s9-c' + i);
+              const t = 32.7 + i * 0.3;
+              tl.fromTo(c, { opacity: 0, y: 22 },
+                { opacity: 1, y: 0, duration: F(11), ease: E.out }, t);
+              /* Each step lights as the chain reaches it, and stays lit. */
+              tl.to(c, { borderColor: C.purple, color: C.black, duration: F(7), ease: E.inOut },
+                t + F(6));
+            });
+            all('.arrow', $('s9-rail')).forEach((a, i) => {
+              tl.fromTo(a, { scaleX: 0, transformOrigin: 'left center' },
+                { scaleX: 1, duration: F(6), ease: E.swift }, 32.92 + i * 0.3);
+            });
+
+            rise(tl, $('s9-h1'), 33.8, { dur: 16, stag: 3 });
+            rise(tl, $('s9-h2'), 34.05, { dur: 16, stag: 3 });
+
+            tl.fromTo($('s9-cmp'), { opacity: 0, y: 26 },
+              { opacity: 1, y: 0, duration: F(14), ease: E.out }, 34.6);
+            /* The 17% is the point of the row, so it lands last and alone. */
+            tl.fromTo($('s9-17'), { scale: 0.72 },
+              { scale: 1, duration: F(12), ease: E.swift }, 34.9);
+
+            /* CUT 9 · DIAGONAL TEAR. The frame tears along a 20 degree seam and
+               the two pieces slide apart in opposite directions, revealing the
+               purple underneath. */
+            $('c9-a').style.clipPath = 'polygon(0% 0%,100% 0%,100% 26%,0% 62%)';
+            $('c9-b').style.clipPath = 'polygon(0% 62%,100% 26%,100% 100%,0% 100%)';
+            tl.fromTo($('c9-a'), { x: 0, y: 0 },
+              { x: 340, y: -980, duration: F(15), ease: E.inOut }, 36.2);
+            tl.fromTo($('c9-b'), { x: 0, y: 0 },
+              { x: -340, y: 980, duration: F(15), ease: E.inOut }, 36.24);
+          }
+
+          /* ================================================================
+             10 · AGAIN.  36.5-40.5.  Ground: purple.
+
+             It does not stop at the recovered cart. Right after somebody buys,
+             it calls back — which is the moment they are most likely to say yes
+             to the next thing.
+             ================================================================ */
+          {
+            rise(tl, $('s10-h1'), 36.6, { dur: 16, stag: 0 });
+            rise(tl, $('s10-h2'), 36.85, { dur: 20, stag: 3 });
+
+            /* Both rows exist from frame one inside a fixed box; opacity does
+               the arriving. A block that grows re-centres itself and shoves the
+               line somebody is reading (DO-NOT-DO 68). */
+            tl.set([$('s10-a'), $('s10-b')], { opacity: 0 }, 0);
+            tl.fromTo($('s10-a'), { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: F(13), ease: E.out }, 37.9);
+            tl.fromTo($('s10-b'), { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: F(13), ease: E.out }, 38.7);
+
+            /* CUT 10 · COUNT BLUR. A purple bar opens across the middle of the
+               frame the way a number counting too fast to read would smear, and
+               then clears to the money.
+
+               Both phases are transforms, never height or margin: a layout
+               property snaps to integer device pixels during browser layout, and
+               a slow tail on one stutters under a seek-by-frame capture. */
+            tl.set($('c10-bar'), { scaleX: 0, scaleY: 0.004, transformOrigin: '50% 50%' }, 0);
+            tl.to($('c10-bar'), { scaleX: 1, duration: F(7), ease: E.swift }, 40.2);
+            tl.to($('c10-bar'), { scaleY: 1, duration: F(6), ease: E.inOut }, 40.38);
+            /* The bar IS the black of the money shot, so once the ground has
+               changed under it there is nothing to clear — it simply stops
+               being the thing in front. */
+            tl.set($('c10-bar'), { opacity: 0 }, 40.7);
+          }
+
+          /* ================================================================
+             11 · THE MONEY.  40.5-45.0.  Ground: near-black.
+
+             Two real stores, their own marks, their own numbers. Neither row
+             replaces the other — they stack, because two customers are more
+             convincing than one customer twice.
+             ================================================================ */
+          {
+            const cols = odometer($('s11-odo'), '$230,000+', 280);
+            roll(tl, cols, 40.62, { dur: 44, stag: 3, spin: 3 });
+            tl.fromTo($('s11-cap'), { opacity: 0, y: 14 },
+              { opacity: 1, y: 0, duration: F(12), ease: E.out }, 41.9);
+
+            [0, 1].forEach((i) => {
+              const p = $('s11-p' + i);
+              /* Each row wipes in from its own left edge, so the customer's mark
+                 arrives before their number does. */
+              tl.fromTo(p,
+                { opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' },
+                { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: F(16), ease: E.swift },
+                42.3 + i * 0.8);
+            });
+
+            /* CUT 11 · COLLAPSE TO MARK. Every figure on screen collapses to a
+               single point, and the point opens out as the cream the logo sits
+               on. */
+            tl.to([$('s11-hero'), $('s11-rows')],
+              { scale: 0.02, opacity: 0, duration: F(12), ease: E.in }, 44.7);
+            tl.set($('c11-fill'), { opacity: 1 }, 0);
+            tl.set($('c11-dot'), { scale: 0 }, 0);
+            tl.to($('c11-dot'), { scale: 1, duration: F(13), ease: E.swift }, 44.85);
+          }
+
+          /* ================================================================
+             12 · THE CLOSE.  45.0-48.0.  Ground: cream.
+
+             Outcraft's own closing line, then the logo, then one CTA and no
+             choices (DO-NOT-DO 29, 34).
+             ================================================================ */
+          {
+            rise(tl, $('s12-l0'), 45.15, { dur: 16, stag: 3 });
+            rise(tl, $('s12-l1'), 45.35, { dur: 16, stag: 3 });
+            rise(tl, $('s12-l2'), 45.55, { dur: 16, stag: 3 });
+
+            tl.fromTo($('s12-logo'), { opacity: 0, y: 24 },
+              { opacity: 1, y: 0, duration: F(16), ease: E.out }, 46.3);
+            tl.fromTo($('s12-cta'), { opacity: 0, scale: 0.9 },
+              { opacity: 1, scale: 1, duration: F(14), ease: E.swift }, 46.75);
+          }
+
+          /* ================================================================
+             SOUND.
+
+             Sound is a timeline asset, not a shot asset. Every cue is one row of
+             the table in tools/cues.mjs, pinned to an absolute frame, and there
+             is not a line of audio code in any scene above (DO-NOT-DO 49).
+
+             The <audio> elements are written into the markup by
+             tools/gen-audio.mjs, because the runtime finds media with a flat
+             document query before any script runs. This block only sets levels.
+             ================================================================ */
+
+          /* One gain over the whole mix. The cue levels are a balance against
+             each other, not a delivery level. Measured off a render, never
+             assumed (DO-NOT-DO 65). */
+          const MASTER = 1.40;
+
+          (function sound() {
+            const vars =
+              (window.__hyperframes && window.__hyperframes.getVariables
+                ? window.__hyperframes.getVariables()
+                : null) || {};
+            const wantBed = vars.bgm !== false;
+            const wantCues = vars.sfx !== false;
+
+            /* The bed follows the film's energy, not a flat number. It drops
+               under the email (the film's quietest shot) and opens up again for
+               the call. */
+            const BED_F = [0, 20, 120, 210, 285, 435, 615, 720, 840, 975, 1095, 1215, 1350, 1440];
+            const BED_V = [0, 0.20, 0.26, 0.20, 0.30, 0.24, 0.14, 0.30, 0.26, 0.30, 0.32, 0.28, 0.20, 0];
+            const bed = $('bed');
+            if (bed && wantBed) {
+              tl.set(bed, { volume: BED_V[0] * MASTER }, 0);
+              for (let i = 1; i < BED_F.length; i++) {
+                tl.to(bed, {
+                  volume: BED_V[i] * MASTER,
+                  duration: F(BED_F[i] - BED_F[i - 1]),
+                  ease: E.none,
+                }, F(BED_F[i - 1]));
+              }
+            } else if (bed) {
+              tl.set(bed, { volume: 0 }, 0);
+            }
+
+            /* Every cue: flat at its own level, with four frames of fade at the
+               tail so a file cut short never clicks. Risers swell in. */
+            (window.__HF_CUES || []).forEach((cue, i) => {
+              const a = $('cue' + i);
+              if (!a) return;
+              if (!wantCues) { tl.set(a, { volume: 0 }, 0); return; }
+              const v = cue.volume * MASTER;
+              if (cue.swell) {
+                tl.fromTo(a, { volume: 0.12 * v },
+                  { volume: v, duration: F(cue.swell), ease: E.none }, F(cue.from));
+              } else {
+                tl.set(a, { volume: v }, F(cue.from));
+              }
+              tl.to(a, { volume: 0, duration: F(4), ease: E.none },
+                F(cue.from + cue.frames - 4));
+            });
+          })();
+
+          /* The one paused timeline, registered under the root's composition id.
+             Last line of build(), so it is never seen half-made. */
+          window.__timelines['checkout'] = tl;
+        }
+
+        Promise.all([
+          document.fonts.load("700 260px 'Bricolage Grotesque'"),
+          document.fonts.load("600 78px 'Inter'"),
+          document.fonts.load("400 78px 'Inter'"),
+        ])
+          .then(() => document.fonts.ready)
+          .then(build)
+          .catch(build);
+      </script>
+    </div>
+  </body>
+</html>

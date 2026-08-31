@@ -1,0 +1,17 @@
+{
+  "name": "engine-hf",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.20 preview",
+    "check": "npx --yes hyperframes@0.8.20 check",
+    "snapshot": "npx --yes hyperframes@0.8.20 snapshot --at 3,9,17,26,37,45 -o out/frames --no-end",
+    "render": "npx --yes hyperframes@0.8.20 render --output out/outcraft-engine-hf-sound.mp4",
+    "render:sfx": "npx --yes hyperframes@0.8.20 render --output out/outcraft-engine-hf-sfx-only.mp4 --variables \"{\\\"bgm\\\":false}\"",
+    "render:silent": "npx --yes hyperframes@0.8.20 render --output out/outcraft-engine-hf-silent.mp4 --variables \"{\\\"bgm\\\":false,\\\"sfx\\\":false}\"",
+    "render:all": "npm run render && npm run render:sfx && npm run render:silent",
+    "audio": "node tools/gen-audio.mjs",
+    "assets": "node tools/record-assets.mjs",
+    "publish": "npx --yes hyperframes@0.8.20 publish"
+  }
+}

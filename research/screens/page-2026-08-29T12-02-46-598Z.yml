@@ -1,0 +1,120 @@
+- generic [active] [ref=f36e1]:
+  - generic [ref=f36e3]:
+    - generic [ref=f36e4]: Exit Setup
+    - generic [ref=f36e11]:
+      - generic [ref=f36e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f36e13]: Book Appointment
+    - navigation [ref=f36e14]:
+      - list [ref=f36e15]:
+        - listitem [ref=f36e16]:
+          - generic [ref=f36e17]: Company
+          - list [ref=f36e18]:
+            - listitem [ref=f36e19]:
+              - link "Information" [ref=f36e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f36e23]:
+              - link "Industry" [ref=f36e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f36e27]:
+              - link "Compliance" [ref=f36e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f36e32]:
+          - generic [ref=f36e33]: Campaign
+          - list [ref=f36e34]:
+            - listitem [ref=f36e35]:
+              - link "Instructions" [ref=f36e36] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f36e39]:
+              - link "General Settings" [ref=f36e40] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f36e43]:
+              - link "Schedule" [ref=f36e44] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f36e47]:
+              - link "Outreach Channels" [ref=f36e48] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f36e51]:
+              - link "Booking" [ref=f36e52] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f36e55]:
+              - link "Outreach Sequence" [ref=f36e56] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f36e59]:
+              - link "Follow-Ups" [ref=f36e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f36e63]:
+              - link "Conversation Intelligence" [ref=f36e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f36e67]:
+          - generic [ref=f36e68]: AI Agent
+          - list [ref=f36e69]:
+            - listitem [ref=f36e70]:
+              - link "Configuration" [ref=f36e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f36e74]:
+          - generic [ref=f36e75]: Finish
+          - list [ref=f36e76]:
+            - listitem [ref=f36e77]:
+              - link "Review & Launch" [ref=f36e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f36e81]:
+          - generic [ref=f36e82] [cursor=pointer]: Advanced
+          - list [ref=f36e87]:
+            - listitem [ref=f36e88]:
+              - link [ref=f36e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f36e93]:
+              - link [ref=f36e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f36e98]:
+    - main [ref=f36e99]:
+      - generic [ref=f36e101]:
+        - generic [ref=f36e108]:
+          - heading "Compliance & Legal" [level=2] [ref=f36e109]
+          - text: Provide the key compliance details, including policy links, terms, and support contact information.
+        - generic [ref=f36e112]:
+          - button [ref=f36e114] [cursor=pointer]
+          - generic [ref=f36e118]:
+            - generic [ref=f36e131]:
+              - generic [ref=f36e135]:
+                - text: Support Email
+                - superscript [ref=f36e136]: "*"
+              - generic [ref=f36e137]:
+                - textbox "Support Email*" [ref=f36e140]:
+                  - /placeholder: support@example.com
+                - generic [ref=f36e141]: Human support email.
+            - generic [ref=f36e150]:
+              - generic [ref=f36e153]:
+                - generic [ref=f36e154]: Terms of Service Page
+                - generic [ref=f36e158]:
+                  - textbox "Terms of Service Page" [ref=f36e161]:
+                    - /placeholder: https://example.com/terms-of-service
+                  - generic [ref=f36e162]: Link to your terms of service or user agreement page.
+              - generic [ref=f36e168]:
+                - generic [ref=f36e169]: Privacy Policy Page
+                - generic [ref=f36e173]:
+                  - textbox "Privacy Policy Page" [ref=f36e176]:
+                    - /placeholder: https://example.com/privacy-policy
+                  - generic [ref=f36e177]: Link to your privacy policy or legal compliance page.
+            - generic [ref=f36e186]:
+              - generic [ref=f36e189]:
+                - generic [ref=f36e190]: Certifications
+                - generic [ref=f36e194]:
+                  - textbox "Certifications" [ref=f36e197]:
+                    - /placeholder: SOC2, ISO 27001, HIPAA
+                  - generic [ref=f36e198]: List any relevant certifications your company holds.
+              - generic [ref=f36e204]:
+                - generic [ref=f36e205]: Compliance
+                - generic [ref=f36e209]:
+                  - textbox "Compliance" [ref=f36e212]:
+                    - /placeholder: GDPR
+                  - generic [ref=f36e213]: List any relevant compliance standards your company adheres to.
+    - generic [ref=f36e220]:
+      - button "Back" [ref=f36e222] [cursor=pointer]
+      - generic [ref=f36e225]:
+        - generic [ref=f36e228]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f36e229] [cursor=pointer]
+        - button [ref=f36e236] [cursor=pointer]
+  - generic:
+    - status

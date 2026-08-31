@@ -1,0 +1,169 @@
+- generic [active] [ref=f60e1]:
+  - generic [ref=f60e3]:
+    - generic [ref=f60e4]: Exit Setup
+    - generic [ref=f60e11]:
+      - generic [ref=f60e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f60e13]: Book Appointment
+    - navigation [ref=f60e14]:
+      - list [ref=f60e15]:
+        - listitem [ref=f60e16]:
+          - generic [ref=f60e17]: Company
+          - list [ref=f60e18]:
+            - listitem [ref=f60e19]:
+              - link "Information" [ref=f60e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f60e23]:
+              - link "Industry" [ref=f60e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f60e27]:
+              - link "Compliance" [ref=f60e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f60e31]:
+          - generic [ref=f60e32]: Campaign
+          - list [ref=f60e33]:
+            - listitem [ref=f60e34]:
+              - link "Instructions" [ref=f60e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f60e38]:
+              - link "General Settings" [ref=f60e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f60e42]:
+              - link "Schedule" [ref=f60e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f60e46]:
+              - link "Outreach Channels" [ref=f60e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f60e50]:
+              - link "Booking" [ref=f60e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f60e54]:
+              - link "Outreach Sequence" [ref=f60e55] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f60e59]:
+              - link "Follow-Ups" [ref=f60e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f60e63]:
+              - link "Conversation Intelligence" [ref=f60e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f60e67]:
+          - generic [ref=f60e68]: AI Agent
+          - list [ref=f60e69]:
+            - listitem [ref=f60e70]:
+              - link "Configuration" [ref=f60e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f60e74]:
+          - generic [ref=f60e75]: Finish
+          - list [ref=f60e76]:
+            - listitem [ref=f60e77]:
+              - link "Review & Launch" [ref=f60e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f60e81]:
+          - generic [ref=f60e82] [cursor=pointer]: Advanced
+          - list [ref=f60e87]:
+            - listitem [ref=f60e88]:
+              - link [ref=f60e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f60e93]:
+              - link [ref=f60e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f60e98]:
+    - main [ref=f60e99]:
+      - generic [ref=f60e101]:
+        - generic [ref=f60e108]:
+          - heading "Outreach Sequence" [level=2] [ref=f60e109]
+          - text: Set actions the AI will run and the delay time between them. You can edit the sequence, but we recommend keeping the template defaults unless you have a specific reason to change them.
+        - generic [ref=f60e112]:
+          - generic [ref=f60e113]:
+            - button "Reorder actions" [ref=f60e114] [cursor=pointer]
+            - button "Add Step" [ref=f60e117] [cursor=pointer]
+          - generic [ref=f60e123]:
+            - button "Reorder records" [ref=f60e127] [cursor=pointer]
+            - table [ref=f60e131]:
+              - rowgroup [ref=f60e132]:
+                - row [ref=f60e133]:
+                  - columnheader "Channel" [ref=f60e134]
+                  - columnheader "Delay" [ref=f60e135]
+                  - columnheader "Action" [ref=f60e136]
+                  - columnheader "Actions" [ref=f60e137]
+              - rowgroup [ref=f60e138]:
+                - row [ref=f60e139]:
+                  - cell "Call" [ref=f60e140]
+                  - cell "-" [ref=f60e145]
+                  - cell [ref=f60e148]:
+                    - generic [ref=f60e150]:
+                      - paragraph [ref=f60e151]: Initial Call
+                      - paragraph [ref=f60e152]: Initial outbound call to a lead introducing the company/product and the campaign offer
+                  - cell [ref=f60e153]:
+                    - button "Actions" [ref=f60e157] [cursor=pointer]
+                - row [ref=f60e160]:
+                  - cell "Email" [ref=f60e161]
+                  - cell "5 minutes" [ref=f60e166]
+                  - cell [ref=f60e169]:
+                    - generic [ref=f60e171]:
+                      - paragraph [ref=f60e172]: Initial Email
+                      - paragraph [ref=f60e173]: Initial outbound email introducing the company/product and campaign to a new lead
+                  - cell [ref=f60e174]:
+                    - button "Actions" [ref=f60e178] [cursor=pointer]
+                - row [ref=f60e181]:
+                  - cell "Call" [ref=f60e182]
+                  - cell "6 hours" [ref=f60e187]
+                  - cell [ref=f60e190]:
+                    - generic [ref=f60e192]:
+                      - paragraph [ref=f60e193]: Initial Call
+                      - paragraph [ref=f60e194]: Initial outbound call to a lead introducing the company/product and the campaign offer
+                  - cell [ref=f60e195]:
+                    - button "Actions" [ref=f60e199] [cursor=pointer]
+                - row [ref=f60e202]:
+                  - cell "SMS" [ref=f60e203]
+                  - cell "1 day" [ref=f60e208]
+                  - cell [ref=f60e211]:
+                    - generic [ref=f60e213]:
+                      - paragraph [ref=f60e214]: Initial Sms
+                      - paragraph [ref=f60e215]: Initial outbound sms to the lead regarding the campaign
+                  - cell [ref=f60e216]:
+                    - button "Actions" [ref=f60e220] [cursor=pointer]
+                - row [ref=f60e223]:
+                  - cell "Call" [ref=f60e224]
+                  - cell "1 day" [ref=f60e229]
+                  - cell [ref=f60e232]:
+                    - generic [ref=f60e234]:
+                      - paragraph [ref=f60e235]: Initial Call
+                      - paragraph [ref=f60e236]: Initial outbound call to a lead introducing the company/product and the campaign offer
+                  - cell [ref=f60e237]:
+                    - button "Actions" [ref=f60e241] [cursor=pointer]
+                - row [ref=f60e244]:
+                  - cell "Email" [ref=f60e245]
+                  - cell "2 days" [ref=f60e250]
+                  - cell [ref=f60e253]:
+                    - generic [ref=f60e255]:
+                      - paragraph [ref=f60e256]: Initial Email
+                      - paragraph [ref=f60e257]: Initial outbound email introducing the company/product and campaign to a new lead
+                  - cell [ref=f60e258]:
+                    - button "Actions" [ref=f60e262] [cursor=pointer]
+                - row [ref=f60e265]:
+                  - cell "Call" [ref=f60e266]
+                  - cell "2 days" [ref=f60e271]
+                  - cell [ref=f60e274]:
+                    - generic [ref=f60e276]:
+                      - paragraph [ref=f60e277]: Initial Call
+                      - paragraph [ref=f60e278]: Initial outbound call to a lead introducing the company/product and the campaign offer
+                  - cell [ref=f60e279]:
+                    - button "Actions" [ref=f60e283] [cursor=pointer]
+                - row [ref=f60e286]:
+                  - cell "None" [ref=f60e287]
+                  - cell "3 days" [ref=f60e292]
+                  - cell [ref=f60e295]:
+                    - generic [ref=f60e297]:
+                      - paragraph [ref=f60e298]: Campaign End
+                      - paragraph [ref=f60e299]: Indicates the end of a campaign flow. No further actions will be taken for this lead in the current campaign.
+                  - cell [ref=f60e300]:
+                    - button "Actions" [ref=f60e304] [cursor=pointer]
+    - generic [ref=f60e310]:
+      - button "Back" [ref=f60e312] [cursor=pointer]
+      - generic [ref=f60e315]:
+        - generic [ref=f60e318]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f60e319] [cursor=pointer]
+        - button [ref=f60e326] [cursor=pointer]
+  - generic:
+    - status

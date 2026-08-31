@@ -1,0 +1,84 @@
+- generic [active] [ref=f84e1]:
+  - generic [ref=f84e3]:
+    - generic [ref=f84e4]: Exit Setup
+    - generic [ref=f84e11]:
+      - generic [ref=f84e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f84e13]: Book Appointment
+    - navigation [ref=f84e14]:
+      - list [ref=f84e15]:
+        - listitem [ref=f84e16]:
+          - generic [ref=f84e17]: Company
+          - list [ref=f84e18]:
+            - listitem [ref=f84e19]:
+              - link "Information" [ref=f84e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f84e23]:
+              - link "Industry" [ref=f84e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f84e27]:
+              - link "Compliance" [ref=f84e28] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f84e31]:
+          - generic [ref=f84e32]: Campaign
+          - list [ref=f84e33]:
+            - listitem [ref=f84e34]:
+              - link "Instructions" [ref=f84e35] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f84e38]:
+              - link "General Settings" [ref=f84e39] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f84e42]:
+              - link "Schedule" [ref=f84e43] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f84e46]:
+              - link "Outreach Channels" [ref=f84e47] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f84e50]:
+              - link "Booking" [ref=f84e51] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f84e54]:
+              - link "Outreach Sequence" [ref=f84e55] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f84e58]:
+              - link "Follow-Ups" [ref=f84e59] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f84e62]:
+              - link "Conversation Intelligence" [ref=f84e63] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f84e66]:
+          - generic [ref=f84e67]: AI Agent
+          - list [ref=f84e68]:
+            - listitem [ref=f84e69]:
+              - link "Configuration" [ref=f84e70] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f84e73]:
+          - generic [ref=f84e74]: Finish
+          - list [ref=f84e75]:
+            - listitem [ref=f84e76]:
+              - link "Review & Launch" [ref=f84e77] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f84e81]:
+          - generic [ref=f84e82] [cursor=pointer]: Advanced
+          - list [ref=f84e87]:
+            - listitem [ref=f84e88]:
+              - link [ref=f84e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f84e93]:
+              - link [ref=f84e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f84e98]:
+    - main [ref=f84e99]:
+      - generic [ref=f84e101]:
+        - generic [ref=f84e108]:
+          - heading "Review & Launch" [level=2] [ref=f84e109]
+          - text: Before your AI agent starts working on this campaign, review the setup, run a test, and publish it. You can update the campaign again later if needed.
+        - link "Back to Dashboard" [ref=f84e114] [cursor=pointer]:
+          - /url: https://app.outcraft.ai/campaigns
+    - generic [ref=f84e120]:
+      - button "Back" [ref=f84e122] [cursor=pointer]
+      - generic [ref=f84e125]:
+        - generic [ref=f84e128]:
+          - button "Test" [disabled]
+        - button [ref=f84e133] [cursor=pointer]
+  - generic:
+    - status

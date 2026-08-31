@@ -1,0 +1,1968 @@
+<!doctype html>
+<!--
+  Three files come out of this one timeline: music + SFX, SFX only, and silent.
+  Music licensing and the venue a cut gets played in are not decided by the
+  person who mixed it (DO-NOT-DO 51), so all three ship, every time.
+
+    npx hyperframes render                                        music + SFX
+    npx hyperframes render --variables '{"bgm":false}'            SFX only
+    npx hyperframes render --variables '{"bgm":false,"sfx":false}' silent
+-->
+<html
+  lang="en"
+  data-resolution="landscape"
+  data-composition-variables='[
+    {"id":"bgm","type":"boolean","label":"Music bed","default":true},
+    {"id":"sfx","type":"boolean","label":"Sound design","default":true}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Outcraft — The Engine</title>
+
+    <!--
+      OUTCRAFT — THE ENGINE. 48.0s, 1440 frames, 120 BPM, 1920x1080.
+
+      A ONE-WAY PORT of engine/ (Remotion) to HyperFrames, made with the
+      /remotion-to-hyperframes workflow. The Remotion project is untouched and
+      still renders. See TRANSLATION_NOTES.md for every place the two differ.
+
+      The whole film is one paused GSAP timeline. Remotion's useCurrentFrame()
+      is gone: every interpolate() is now a tween placed at an absolute time on
+      that timeline, and every frame number from src/engine/beat.ts survives as
+      `F(frames)` = frames / 30.
+
+      Grid: 120 BPM. A beat is 15 frames. A bar is 60 frames. 24 bars.
+      Ten cuts and no two are the same move. Nothing shakes, the camera never
+      moves, and the logo lands at the end.
+    -->
+
+    <script src="assets/vendor/gsap.min.js"></script>
+
+    <style>
+      /*
+        Brand faces, bundled rather than fetched, so a render never depends on
+        the network. Both files are the latin subsets, and both are the EXACT
+        files @remotion/google-fonts resolves for this project — taken from
+        engine/node_modules/@remotion/google-fonts, not re-requested from the
+        Google Fonts API.
+
+        THIS MATTERS AND IT COST A ROUND OF STILLS. Bricolage Grotesque has an
+        optical-size axis. Asking fonts.googleapis.com for `opsz,wght@12..96`
+        serves a file with `opsz` live, and Chrome's font-optical-sizing: auto
+        then drives opsz to its 96 ceiling at 152px — a visibly narrower
+        display cut. Every headline in the film came out about a tenth
+        narrower than the Remotion original. Remotion asks for `ital,wght`
+        only, so its file has opsz pinned at the family default. Same request,
+        same metrics, same line breaks.
+      */
+      @font-face {
+        font-family: 'Bricolage Grotesque';
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: block;
+        src: url('assets/fonts/bricolage-grotesque-latin.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400 600;
+        font-display: block;
+        src: url('assets/fonts/inter-latin.woff2') format('woff2');
+      }
+
+      /*
+        THE SAME RESET THE REMOTION CUT INHERITS.
+        engine/src/index.css is one line — `@import "tailwindcss"` — so every
+        shot in that film is laid out under Tailwind v4's preflight. Three of
+        its rules move pixels here and all three are copied deliberately:
+
+          line-height: 1.5 on the root. The browser default is about 1.21, and
+          nothing in this film sets a line-height on Inter. Every eyebrow, pill
+          and URL was therefore ~20% shorter here than in the original, which
+          pushed the six-lockup wall in scene 8 twenty-five pixels up the frame
+          and moved the CTA in scene 11. Display type is unaffected: it sets
+          line-height 1 itself.
+
+          box-sizing: border-box, so a card's 2.5px border stays inside its
+          stated width.
+
+          img and svg are block-level, so they never sit on a text baseline.
+      */
+      * { margin: 0; padding: 0; box-sizing: border-box; border: 0 solid; }
+
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #010101;
+        line-height: 1.5;
+      }
+
+      body { font-family: 'Inter', system-ui, sans-serif; }
+
+      img, svg { display: block; vertical-align: middle; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+
+      /* Every scene, every colour cut and the ground are full-bleed layers. */
+      .clip, .fill { position: absolute; inset: 0; }
+
+      /* The ground. It changes ten times and every change is a beat. */
+      #ground { position: absolute; inset: 0; background: #faf8f1; }
+
+      .disp {
+        font-family: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+      .body {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-weight: 600;
+      }
+      .eyebrow { letter-spacing: 0.11em; }
+      .num { font-variant-numeric: tabular-nums; }
+      .nowrap { white-space: nowrap; }
+
+      .centre { display: flex; align-items: center; justify-content: center; }
+      .col { display: flex; flex-direction: column; align-items: center; }
+
+      /* A partner mark on a white card. The card is the only thing that makes
+         a wall of fifteen logos readable. */
+      .tile {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        border-radius: 22px;
+        border: 2.5px solid #e6e9eb;
+        box-shadow: 0 2px 10px -4px rgba(1, 1, 1, 0.1);
+      }
+      .tile img { object-fit: contain; }
+
+      .pill { border-radius: 999px; white-space: nowrap; }
+    </style>
+  </head>
+
+  <body>
+    <div
+      id="root"
+      data-composition-id="engine"
+      data-start="0"
+      data-duration="48"
+      data-fps="30"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- 0 — THE GROUND. Scenes render transparent on top of it. -->
+      <div id="ground" data-track-index="0"></div>
+
+      <!-- The eleven scenes. data-start / data-duration are the Remotion
+           <Sequence from=… durationInFrames=…> values divided by 30. -->
+      <section id="s01" class="clip" data-start="0"           data-duration="3"          data-track-index="1"></section>
+      <section id="s02" class="clip" data-start="3"           data-duration="5"          data-track-index="1"></section>
+      <section id="s03" class="clip" data-start="8"           data-duration="4"          data-track-index="1"></section>
+      <section id="s04" class="clip" data-start="11.5"        data-duration="4.5"        data-track-index="1"></section>
+      <section id="s05" class="clip" data-start="16"          data-duration="4"          data-track-index="1"></section>
+      <section id="s06" class="clip" data-start="20"          data-duration="6"          data-track-index="1"></section>
+      <section id="s07" class="clip" data-start="26"          data-duration="2.8666667"  data-track-index="1"></section>
+      <section id="s08" class="clip" data-start="28.8666667"  data-duration="6.1333333"  data-track-index="1"></section>
+      <section id="s09" class="clip" data-start="35"          data-duration="5"          data-track-index="1"></section>
+      <section id="s10" class="clip" data-start="40"          data-duration="3"          data-track-index="1"></section>
+      <section id="s11" class="clip" data-start="43"          data-duration="5"          data-track-index="1"></section>
+
+      <!--
+        THE SIX COLOUR CUTS, above every scene.
+        The other four cuts are made by the scene that performs them, because a
+        cut made of logos or of a list can only be made by the thing that owns
+        those logos or that list.
+      -->
+      <!-- 3 — the purple ground itself splits and parts like a barn door. -->
+      <div id="cut3" class="clip" data-start="11.5" data-duration="0.5333333" data-track-index="10">
+        <div id="cut3a"></div>
+        <div id="cut3b"></div>
+      </div>
+
+      <!-- 4 — five cream bars shred the black frame in alternating directions. -->
+      <div id="cut4" class="clip" data-start="15.4" data-duration="0.6333333" data-track-index="10"></div>
+
+      <!-- 5 — a hard indigo edge crosses from the right on an eight-degree slant. -->
+      <div id="cut5" class="clip" data-start="19.6" data-duration="0.4666667" data-track-index="10">
+        <div id="cut5p"></div>
+      </div>
+
+      <!-- 7 — a black band irises open out of a slit in the middle. -->
+      <div id="cut7" class="clip" data-start="28.5" data-duration="0.4666667" data-track-index="10"></div>
+
+      <!-- 9 — a black shutter drops from the top edge and lands. -->
+      <div id="cut9" class="clip" data-start="39.5" data-duration="0.5333333" data-track-index="10">
+        <div id="cut9p"></div>
+      </div>
+
+      <!-- 10 — teal ink floods across on a slant, under the logo. -->
+      <div id="cut10" class="clip" data-start="42.5" data-duration="0.5" data-track-index="10">
+        <div id="cut10r"><div id="cut10f"></div></div>
+      </div>
+
+      <!--HF_AUDIO-->
+      <!--
+        SOUND. Generated by tools/gen-audio.mjs from tools/cues.mjs.
+        Do not hand-edit between these two markers.
+
+        THE BED is assets/audio/bed-48.mp3 — the Mixkit tech-house groove
+        time-stretched from 124.5 BPM to 120 with ffmpeg atempo, then built
+        from itself: its first 30.0s (fifteen bars) followed by its own first
+        18.0s (nine bars), with a 15ms fade across the seam. Both sides of the
+        joint are downbeats, so the loop sits on the grid (DO-NOT-DO 48, 66).
+
+        83 cues. Levels are set on the timeline, in the sound block.
+      -->
+      <audio id="bed" src="assets/audio/bed-48.mp3" data-start="0" data-duration="48" data-track-index="20" data-volume="0"></audio>
+      <audio id="cue0" src="assets/audio/sfx/transition/air-woosh-deep.mp3" data-start="0" data-duration="1.3333333" data-track-index="21" data-volume="0" data-note="the film opens"></audio>
+      <audio id="cue1" src="assets/audio/sfx/transition/air-whoosh-powerful.mp3" data-start="0" data-duration="1.1333333" data-track-index="22" data-volume="0" data-note="fifteen tiles coming at the frame from every edge"></audio>
+      <audio id="cue2" src="assets/audio/sfx/impact/hit-blow.mp3" data-start="0.2" data-duration="0.6" data-track-index="23" data-volume="0" data-note="the first tiles hitting the wall"></audio>
+      <audio id="cue3" src="assets/audio/sfx/impact/hit-blow.mp3" data-start="0.4666667" data-duration="0.6" data-track-index="24" data-volume="0" data-note="the middle of the storm"></audio>
+      <audio id="cue4" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="0.8" data-duration="0.7333333" data-track-index="25" data-volume="0" data-note="the wall completing"></audio>
+      <audio id="cue5" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="1.1333333" data-duration="0.6" data-track-index="26" data-volume="0" data-note="ALL YOUR TOOLS. rises in"></audio>
+      <audio id="cue6" src="assets/audio/sfx/light/light-sweep-magic.mp3" data-start="1.6" data-duration="1" data-track-index="27" data-volume="0" data-note="the purple wave crossing the wall on the diagonal"></audio>
+      <audio id="cue7" src="assets/audio/sfx/transition/air-zoom-vacuum.mp3" data-start="2.6" data-duration="0.8666667" data-track-index="28" data-volume="0" data-note="cut 1 - the whole wall implodes into one point"></audio>
+      <audio id="cue8" src="assets/audio/sfx/impact/bass-hit-futuristic.mp3" data-start="2.8" data-duration="1" data-track-index="21" data-volume="0" data-note="cut 1 - the point it collapses to"></audio>
+      <audio id="cue9" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="3" data-duration="0.8666667" data-track-index="22" data-volume="0" data-note="the beacon lands where the wall vanished"></audio>
+      <audio id="cue10" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="3.0666667" data-duration="0.6666667" data-track-index="23" data-volume="0" data-note="the beacon - a little light on it"></audio>
+      <audio id="cue11" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="3.2666667" data-duration="0.5333333" data-track-index="24" data-volume="0" data-note="the first ring leaving the beacon"></audio>
+      <audio id="cue12" src="assets/audio/sfx/text/typewriter-digital.mp3" data-start="3.2666667" data-duration="0.8666667" data-track-index="25" data-volume="0" data-note="ONE SIGNAL. - eleven characters flipping onto the baseline"></audio>
+      <audio id="cue13" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="3.6" data-duration="0.5333333" data-track-index="26" data-volume="0" data-note="the second ring"></audio>
+      <audio id="cue14" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="4.3333333" data-duration="0.6" data-track-index="27" data-volume="0" data-note="the three signal chips arrive together"></audio>
+      <audio id="cue15" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="6.6666667" data-duration="0.5333333" data-track-index="28" data-volume="0" data-note="the chips lift away after 1.7s of holding still"></audio>
+      <audio id="cue16" src="assets/audio/sfx/transition/whoosh-big.mp3" data-start="7.5" data-duration="1" data-track-index="21" data-volume="0" data-note="cut 2 - the beacon growing until it is the frame"></audio>
+      <audio id="cue17" src="assets/audio/sfx/impact/impact-cine-big.mp3" data-start="7.5" data-duration="1.3333333" data-track-index="22" data-volume="0" data-note="cut 2 - weight under the growth"></audio>
+      <audio id="cue18" src="assets/audio/sfx/transition/wind-swoosh-short.mp3" data-start="8.1333333" data-duration="0.7333333" data-track-index="23" data-volume="0" data-note="SOMETHING PICKS IT UP. burns in"></audio>
+      <audio id="cue19" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="9" data-duration="0.6" data-track-index="24" data-volume="0" data-note="AN AI SALES TEAM. takes the space under it"></audio>
+      <audio id="cue20" src="assets/audio/sfx/light/sparkle.mp3" data-start="9.0666667" data-duration="0.8666667" data-track-index="25" data-volume="0" data-note="the answer - a little light on the reveal"></audio>
+      <audio id="cue21" src="assets/audio/sfx/riser/riser-cine.mp3" data-start="10.7333333" data-duration="1" data-track-index="26" data-volume="0" data-note="tension under the one still shot in the first half"></audio>
+      <audio id="cue22" src="assets/audio/sfx/mech/door-open-futuristic.mp3" data-start="11.5" data-duration="1.0666667" data-track-index="27" data-volume="0" data-note="cut 3 - the purple ground parts like a barn door"></audio>
+      <audio id="cue23" src="assets/audio/sfx/impact/impact-transition.mp3" data-start="11.5" data-duration="1.2666667" data-track-index="28" data-volume="0" data-note="cut 3 - weight under the doors"></audio>
+      <audio id="cue24" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="11.7666667" data-duration="0.4" data-track-index="21" data-volume="0" data-note="VOICE."></audio>
+      <audio id="cue25" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="12.1666667" data-duration="0.4" data-track-index="22" data-volume="0" data-note="SMS."></audio>
+      <audio id="cue26" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="12.5666667" data-duration="0.4" data-track-index="23" data-volume="0" data-note="EMAIL."></audio>
+      <audio id="cue27" src="assets/audio/sfx/mech/gear-lock-metallic.mp3" data-start="12.9666667" data-duration="0.8" data-track-index="24" data-volume="0" data-note="WHATSAPP. - the fourth and last one"></audio>
+      <audio id="cue28" src="assets/audio/sfx/light/light-sweep-magic.mp3" data-start="13.7666667" data-duration="1" data-track-index="25" data-volume="0" data-note="the purple pass checking each channel is live"></audio>
+      <audio id="cue29" src="assets/audio/sfx/light/sparkle-poof-hit.mp3" data-start="14.6333333" data-duration="0.8666667" data-track-index="26" data-volume="0" data-note="all four lighting together"></audio>
+      <audio id="cue30" src="assets/audio/sfx/impact/hit-fast-exciting.mp3" data-start="14.6333333" data-duration="0.7333333" data-track-index="27" data-volume="0" data-note="all four - weight under the light"></audio>
+      <audio id="cue31" src="assets/audio/sfx/transition/sweep-metal-quick.mp3" data-start="15.4" data-duration="0.9333333" data-track-index="28" data-volume="0" data-note="cut 4 - five cream bars shred the frame"></audio>
+      <audio id="cue32" src="assets/audio/sfx/impact/impact-transition.mp3" data-start="15.4" data-duration="1.3333333" data-track-index="21" data-volume="0" data-note="cut 4 - weight under the shred"></audio>
+      <audio id="cue33" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="16" data-duration="0.6" data-track-index="22" data-volume="0" data-note="the four channel chips arrive as the bars clear"></audio>
+      <audio id="cue34" src="assets/audio/sfx/transition/wind-swoosh-short.mp3" data-start="16.2" data-duration="0.6666667" data-track-index="23" data-volume="0" data-note="IT READS THE REPLY."></audio>
+      <audio id="cue35" src="assets/audio/sfx/transition/swoosh-quick.mp3" data-start="16.7" data-duration="0.6" data-track-index="24" data-volume="0" data-note="PICKS THE CHANNEL. - one line later, 15 frames apart"></audio>
+      <audio id="cue36" src="assets/audio/sfx/mech/gear-lock-metallic.mp3" data-start="17" data-duration="0.7333333" data-track-index="25" data-volume="0" data-note="the VOICE chip locks purple - the choice being made"></audio>
+      <audio id="cue37" src="assets/audio/sfx/transition/swoosh-quick.mp3" data-start="17.2" data-duration="0.6" data-track-index="26" data-volume="0" data-note="PICKS THE NEXT MOVE."></audio>
+      <audio id="cue38" src="assets/audio/sfx/transition/warp-slide.mp3" data-start="19.6" data-duration="0.8666667" data-track-index="27" data-volume="0" data-note="cut 5 - the skewed indigo panel crosses from the right"></audio>
+      <audio id="cue39" src="assets/audio/sfx/impact/impact-deep-whoosh.mp3" data-start="19.6" data-duration="1.1333333" data-track-index="28" data-volume="0" data-note="cut 5 - weight under the panel"></audio>
+      <audio id="cue40" src="assets/audio/sfx/transition/air-woosh-deep.mp3" data-start="20" data-duration="0.8666667" data-track-index="21" data-volume="0" data-note="landing on indigo"></audio>
+      <audio id="cue41" src="assets/audio/sfx/riser/riser-cine.mp3" data-start="20.4666667" data-duration="3.3333333" data-track-index="22" data-volume="0" data-note="the cadence building all the way into BOOKED"></audio>
+      <audio id="cue42" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="20.4666667" data-duration="0.4" data-track-index="23" data-volume="0" data-note="CALL - NOW"></audio>
+      <audio id="cue43" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="21" data-duration="0.4" data-track-index="24" data-volume="0" data-note="EMAIL - 5 MIN"></audio>
+      <audio id="cue44" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="21.5333333" data-duration="0.4" data-track-index="25" data-volume="0" data-note="CALL - 6 HRS"></audio>
+      <audio id="cue45" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="22.0666667" data-duration="0.4" data-track-index="26" data-volume="0" data-note="SMS - 1 DAY"></audio>
+      <audio id="cue46" src="assets/audio/sfx/counter/clock-tick-single.mp3" data-start="22.6" data-duration="0.4" data-track-index="27" data-volume="0" data-note="CALL - 2 DAYS"></audio>
+      <audio id="cue47" src="assets/audio/sfx/impact/impact-movie-epic.mp3" data-start="23.6" data-duration="1.6" data-track-index="28" data-volume="0" data-note="BOOKED. - the white pill lands"></audio>
+      <audio id="cue48" src="assets/audio/sfx/light/sparkle.mp3" data-start="23.6" data-duration="1.3333333" data-track-index="21" data-volume="0" data-note="BOOKED. - a little light on top"></audio>
+      <audio id="cue49" src="assets/audio/sfx/transition/whoosh-fast.mp3" data-start="25.5" data-duration="0.9333333" data-track-index="22" data-volume="0" data-note="cut 6 - the rail rolls up and off the top"></audio>
+      <audio id="cue50" src="assets/audio/sfx/impact/impact-transition.mp3" data-start="25.5" data-duration="1.1333333" data-track-index="23" data-volume="0" data-note="cut 6 - weight under the roll"></audio>
+      <audio id="cue51" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="26.0666667" data-duration="0.8666667" data-track-index="24" data-volume="0" data-note="24/7 struck onto the frame"></audio>
+      <audio id="cue52" src="assets/audio/sfx/counter/clock-knob-spin.mp3" data-start="26.0666667" data-duration="0.8" data-track-index="25" data-volume="0" data-note="24/7 - the four characters landing"></audio>
+      <audio id="cue53" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="26.8" data-duration="0.6" data-track-index="26" data-volume="0" data-note="IT NEVER CLOCKS OFF"></audio>
+      <audio id="cue54" src="assets/audio/sfx/transition/air-woosh-quick.mp3" data-start="28.5" data-duration="0.8" data-track-index="27" data-volume="0" data-note="cut 7 - the black band irises open from the middle"></audio>
+      <audio id="cue55" src="assets/audio/sfx/impact/bass-hit-futuristic.mp3" data-start="28.5" data-duration="1.0666667" data-track-index="28" data-volume="0" data-note="cut 7 - weight under the band"></audio>
+      <audio id="cue56" src="assets/audio/sfx/transition/sweep-fast-small.mp3" data-start="28.8666667" data-duration="0.6" data-track-index="21" data-volume="0" data-note="20+ NATIVE INTEGRATIONS"></audio>
+      <audio id="cue57" src="assets/audio/sfx/transition/wind-swoosh-short.mp3" data-start="29.0666667" data-duration="0.6666667" data-track-index="22" data-volume="0" data-note="THEN IT WRITES BACK."></audio>
+      <audio id="cue58" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="29.3333333" data-duration="0.6666667" data-track-index="23" data-volume="0" data-note="the six lockup tiles rising"></audio>
+      <audio id="cue59" src="assets/audio/sfx/light/light-sweep-magic.mp3" data-start="30.8666667" data-duration="2.0666667" data-track-index="24" data-volume="0" data-note="the write pulse stepping through the six, 10 frames apart"></audio>
+      <audio id="cue60" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="31" data-duration="0.5333333" data-track-index="25" data-volume="0" data-note="the first check"></audio>
+      <audio id="cue61" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="31.6666667" data-duration="0.5333333" data-track-index="26" data-volume="0" data-note="the third check"></audio>
+      <audio id="cue62" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="32.3333333" data-duration="0.5333333" data-track-index="27" data-volume="0" data-note="the fifth check"></audio>
+      <audio id="cue63" src="assets/audio/sfx/light/sparkle.mp3" data-start="32.8666667" data-duration="1" data-track-index="28" data-volume="0" data-note="all six ticked at once - held for 1.7s"></audio>
+      <audio id="cue64" src="assets/audio/sfx/transition/air-whoosh-powerful.mp3" data-start="34.6" data-duration="0.9333333" data-track-index="21" data-volume="0" data-note="cut 8 - the wall pushes outward and clears"></audio>
+      <audio id="cue65" src="assets/audio/sfx/impact/impact-deep-whoosh.mp3" data-start="34.6" data-duration="1.1333333" data-track-index="22" data-volume="0" data-note="cut 8 - weight under the opening"></audio>
+      <audio id="cue66" src="assets/audio/sfx/counter/clock-knob-spin.mp3" data-start="35.0666667" data-duration="1.8" data-track-index="23" data-volume="0" data-note="the money counting, echoing the storm at the top of the film"></audio>
+      <audio id="cue67" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="36.8" data-duration="1" data-track-index="24" data-volume="0" data-note="$100,000 lands"></audio>
+      <audio id="cue68" src="assets/audio/sfx/light/sparkle-poof-hit.mp3" data-start="36.8" data-duration="0.8666667" data-track-index="25" data-volume="0" data-note="the + stamps on after it"></audio>
+      <audio id="cue69" src="assets/audio/sfx/text/marker-pen-line.mp3" data-start="37" data-duration="0.8" data-track-index="26" data-volume="0" data-note="the black rule draws"></audio>
+      <audio id="cue70" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="37.2" data-duration="0.6" data-track-index="27" data-volume="0" data-note="RECOVERED. EVERY MONTH."></audio>
+      <audio id="cue71" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="38.0666667" data-duration="0.7333333" data-track-index="28" data-volume="0" data-note="the Pulsetto logo"></audio>
+      <audio id="cue72" src="assets/audio/sfx/transition/whoosh-big.mp3" data-start="39.5" data-duration="0.9333333" data-track-index="21" data-volume="0" data-note="cut 9 - the black shutter drops from the top"></audio>
+      <audio id="cue73" src="assets/audio/sfx/impact/impact-cine-big.mp3" data-start="39.5" data-duration="1.2666667" data-track-index="22" data-volume="0" data-note="cut 9 - weight under the shutter"></audio>
+      <audio id="cue74" src="assets/audio/sfx/impact/impact-epic-trailer.mp3" data-start="40" data-duration="1.4666667" data-track-index="23" data-volume="0" data-note="30x thrown in from a scatter and stopping dead"></audio>
+      <audio id="cue75" src="assets/audio/sfx/light/sparkle.mp3" data-start="40" data-duration="1" data-track-index="24" data-volume="0" data-note="30x - a little light on the payoff"></audio>
+      <audio id="cue76" src="assets/audio/sfx/transition/sweep-short.mp3" data-start="40.8" data-duration="0.6" data-track-index="25" data-volume="0" data-note="ROI"></audio>
+      <audio id="cue77" src="assets/audio/sfx/transition/whoosh-big.mp3" data-start="42.5" data-duration="1" data-track-index="26" data-volume="0" data-note="cut 10 - teal ink floods across on a slant"></audio>
+      <audio id="cue78" src="assets/audio/sfx/impact/impact-cine-big.mp3" data-start="42.5" data-duration="1.3333333" data-track-index="27" data-volume="0" data-note="cut 10 - weight under the flood"></audio>
+      <audio id="cue79" src="assets/audio/sfx/light/light-sweep-magic.mp3" data-start="43.0333333" data-duration="1.5333333" data-track-index="28" data-volume="0" data-note="the logo wipes on behind its clip"></audio>
+      <audio id="cue80" src="assets/audio/sfx/light/sparkle-touch.mp3" data-start="43.9666667" data-duration="0.8" data-track-index="21" data-volume="0" data-note="outcraft.ai"></audio>
+      <audio id="cue81" src="assets/audio/sfx/impact/bass-hit-short.mp3" data-start="44.7666667" data-duration="0.9333333" data-track-index="22" data-volume="0" data-note="Book a demo"></audio>
+      <audio id="cue82" src="assets/audio/sfx/light/sparkle-poof-hit.mp3" data-start="44.7666667" data-duration="0.7333333" data-track-index="23" data-volume="0" data-note="Book a demo - a little light on the CTA"></audio>
+      <script>
+        /* The cue table, for the level tweens further down the page. */
+        window.__HF_CUES = [{"from":0,"frames":40,"volume":0.3},{"from":0,"frames":34,"volume":0.34},{"from":6,"frames":18,"volume":0.22},{"from":14,"frames":18,"volume":0.2},{"from":24,"frames":22,"volume":0.26},{"from":34,"frames":18,"volume":0.18},{"from":48,"frames":30,"volume":0.24},{"from":78,"frames":26,"volume":0.4},{"from":84,"frames":30,"volume":0.34},{"from":90,"frames":26,"volume":0.32},{"from":92,"frames":20,"volume":0.14},{"from":98,"frames":16,"volume":0.16},{"from":98,"frames":26,"volume":0.24},{"from":108,"frames":16,"volume":0.12},{"from":130,"frames":18,"volume":0.16},{"from":200,"frames":16,"volume":0.13},{"from":225,"frames":30,"volume":0.38},{"from":225,"frames":40,"volume":0.32},{"from":244,"frames":22,"volume":0.24},{"from":270,"frames":18,"volume":0.18},{"from":272,"frames":26,"volume":0.14},{"from":322,"frames":30,"volume":0.26,"swell":24},{"from":345,"frames":32,"volume":0.38},{"from":345,"frames":38,"volume":0.32},{"from":353,"frames":12,"volume":0.28},{"from":365,"frames":12,"volume":0.28},{"from":377,"frames":12,"volume":0.28},{"from":389,"frames":24,"volume":0.28},{"from":413,"frames":30,"volume":0.26},{"from":439,"frames":26,"volume":0.24},{"from":439,"frames":22,"volume":0.22},{"from":462,"frames":28,"volume":0.4},{"from":462,"frames":40,"volume":0.36},{"from":480,"frames":18,"volume":0.16},{"from":486,"frames":20,"volume":0.22},{"from":501,"frames":18,"volume":0.2},{"from":510,"frames":22,"volume":0.26},{"from":516,"frames":18,"volume":0.2},{"from":588,"frames":26,"volume":0.36},{"from":588,"frames":34,"volume":0.34},{"from":600,"frames":26,"volume":0.26},{"from":614,"frames":100,"volume":0.3,"swell":90},{"from":614,"frames":12,"volume":0.26},{"from":630,"frames":12,"volume":0.26},{"from":646,"frames":12,"volume":0.26},{"from":662,"frames":12,"volume":0.26},{"from":678,"frames":12,"volume":0.26},{"from":708,"frames":48,"volume":0.44},{"from":708,"frames":40,"volume":0.16},{"from":765,"frames":28,"volume":0.36},{"from":765,"frames":34,"volume":0.28},{"from":782,"frames":26,"volume":0.3},{"from":782,"frames":24,"volume":0.24},{"from":804,"frames":18,"volume":0.16},{"from":855,"frames":24,"volume":0.34},{"from":855,"frames":32,"volume":0.34},{"from":866,"frames":18,"volume":0.2},{"from":872,"frames":20,"volume":0.22},{"from":880,"frames":20,"volume":0.18},{"from":926,"frames":62,"volume":0.26},{"from":930,"frames":16,"volume":0.12},{"from":950,"frames":16,"volume":0.12},{"from":970,"frames":16,"volume":0.12},{"from":986,"frames":30,"volume":0.13},{"from":1038,"frames":28,"volume":0.36},{"from":1038,"frames":34,"volume":0.3},{"from":1052,"frames":54,"volume":0.3},{"from":1104,"frames":30,"volume":0.34},{"from":1104,"frames":26,"volume":0.2},{"from":1110,"frames":24,"volume":0.24},{"from":1116,"frames":18,"volume":0.18},{"from":1142,"frames":22,"volume":0.12},{"from":1185,"frames":28,"volume":0.38},{"from":1185,"frames":38,"volume":0.32},{"from":1200,"frames":44,"volume":0.44},{"from":1200,"frames":30,"volume":0.14},{"from":1224,"frames":18,"volume":0.16},{"from":1275,"frames":30,"volume":0.36},{"from":1275,"frames":40,"volume":0.3},{"from":1291,"frames":46,"volume":0.3},{"from":1319,"frames":24,"volume":0.16},{"from":1343,"frames":28,"volume":0.22},{"from":1343,"frames":22,"volume":0.14}];
+      </script>
+      <!--/HF_AUDIO-->
+    </div>
+
+    <script>
+      /* ===================================================================
+       * THE KIT
+       * =================================================================== */
+
+      const FPS = 30;
+      /** Frames to seconds. Every number lifted out of the Remotion source
+       *  goes through this and nothing else. */
+      const F = (f) => f / FPS;
+
+      /** Brand tokens, copied unchanged from outcraft-teaser/src/brand/tokens.ts. */
+      const C = {
+        purple: '#6366F1',
+        deepIndigo: '#232F8B',
+        darkTeal: '#003F4E',
+        coral: '#FE4E32',
+        nearBlack: '#010101',
+        inkSecondary: '#33353A',
+        inkMuted: '#6A6F76',
+        white: '#FFFFFF',
+        cream: '#FAF8F1',
+        lightGrey: '#F6F7F7',
+        borderCool: '#E6E9EB',
+        borderInput: '#CDD2D6',
+      };
+
+      const SAFE_X = 142;
+      const SAFE_Y = 178;
+
+      /**
+       * Cubic bezier, the same solver Remotion's Easing.bezier uses, handed to
+       * GSAP as a plain ease function. No CustomEase plugin, and the four brand
+       * curves keep their exact control points.
+       */
+      function cubic(x1, y1, x2, y2) {
+        const ax = 3 * x1 - 3 * x2 + 1;
+        const bx = 3 * x2 - 6 * x1;
+        const cx = 3 * x1;
+        const ay = 3 * y1 - 3 * y2 + 1;
+        const by = 3 * y2 - 6 * y1;
+        const cy = 3 * y1;
+        const bez = (t, a, b, c) => ((a * t + b) * t + c) * t;
+        const dx = (t) => (3 * ax * t + 2 * bx) * t + cx;
+        return (x) => {
+          if (x <= 0) return 0;
+          if (x >= 1) return 1;
+          let t = x;
+          for (let i = 0; i < 8; i++) {
+            const e = bez(t, ax, bx, cx) - x;
+            if (Math.abs(e) < 1e-7) return bez(t, ay, by, cy);
+            const d = dx(t);
+            if (Math.abs(d) < 1e-7) break;
+            t -= e / d;
+          }
+          let lo = 0;
+          let hi = 1;
+          t = x;
+          for (let i = 0; i < 24; i++) {
+            const e = bez(t, ax, bx, cx);
+            if (Math.abs(e - x) < 1e-7) break;
+            if (e > x) hi = t;
+            else lo = t;
+            t = (lo + hi) / 2;
+          }
+          return bez(t, ay, by, cy);
+        };
+      }
+
+      /** The motion language. Things that enter decelerate, things that leave
+       *  accelerate. One set of curves for the whole film. */
+      const E = {
+        out: cubic(0.16, 1, 0.3, 1),
+        in: cubic(0.7, 0, 0.84, 0),
+        inOut: cubic(0.65, 0, 0.35, 1),
+        swift: cubic(0.22, 1, 0.36, 1),
+        none: 'none',
+      };
+
+      /**
+       * The one spring left in the film, spent once on 30x.
+       * Sampled off Remotion's own spring({damping:14.4, mass:0.8,
+       * stiffness:96}) at 30fps and forced to exactly 1 at frame 13, so the
+       * landing has an end and the type actually stops.
+       */
+      const POP = [
+        0, 0.054531, 0.178213, 0.32758, 0.476233, 0.609753, 0.721728, 0.810775,
+        0.878409, 0.927584, 0.961753, 0.984298, 0.998228, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      ];
+      const popEase = (t) => {
+        const x = Math.min(30, Math.max(0, t * 30));
+        const i = Math.min(29, Math.floor(x));
+        return POP[i] + (POP[i + 1] - POP[i]) * (x - i);
+      };
+
+      /* --- DOM helpers ------------------------------------------------- */
+
+      const $ = (id) => document.getElementById(id);
+
+      function mk(parent, tag, style, cls) {
+        const n = document.createElement(tag || 'div');
+        if (cls) n.className = cls;
+        if (style) Object.assign(n.style, style);
+        if (parent) parent.appendChild(n);
+        return n;
+      }
+
+      function px(n) {
+        return n + 'px';
+      }
+
+      const tl = gsap.timeline({ paused: true });
+
+      /**
+       * Build the whole film, then register the timeline.
+       *
+       * WHY THIS IS NOT AT TOP LEVEL. Scene 3 measures a rendered line box to
+       * work out how far its stack has to move, and a line box measured before
+       * the woff2 has arrived is a Helvetica line box. The Remotion cut has the
+       * same guard — src/brand/fonts.ts holds the render with delayRender until
+       * both faces are on the page. Here the two faces are loaded explicitly
+       * (document.fonts.ready alone can resolve before a face nothing has used
+       * yet is even requested), and window.__timelines is only assigned at the
+       * very end, after every tween is on the timeline.
+       */
+      function build() {
+
+      /* ===================================================================
+       * TextEffect — the motion-primitives API, ported a second time.
+       *
+       * The Remotion port (engine/src/engine/motion/textEffect.tsx) replaced
+       * framer-motion's wall clock with useCurrentFrame. This one replaces
+       * useCurrentFrame with tween offsets on the paused timeline. The API is
+       * unchanged: `per`, `preset`, `variants`, `staggerChildren` and
+       * `duration` are still written in SECONDS exactly as Seyan's six samples
+       * write them, `start` and `exitAt` are still frames, and `mask` is still
+       * sample 3's segmentWrapperClassName.
+       * =================================================================== */
+
+      const PRESETS = {
+        fade: {
+          container: { visible: { transition: { staggerChildren: 0.03 } } },
+          item: {
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.4 } },
+            exit: { opacity: 0, transition: { duration: 0.3 } },
+          },
+        },
+        blur: {
+          container: { visible: { transition: { staggerChildren: 0.04 } } },
+          item: {
+            hidden: { opacity: 0, filter: 'blur(14px)' },
+            visible: { opacity: 1, filter: 'blur(0px)', transition: { duration: 0.5 } },
+            exit: { opacity: 0, filter: 'blur(14px)', transition: { duration: 0.3 } },
+          },
+        },
+        slide: {
+          container: { visible: { transition: { staggerChildren: 0.04 } } },
+          item: {
+            hidden: { opacity: 0, y: 46 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            exit: { opacity: 0, y: -46, transition: { duration: 0.3 } },
+          },
+        },
+        scale: {
+          container: { visible: { transition: { staggerChildren: 0.04 } } },
+          item: {
+            hidden: { opacity: 0, scale: 0.7 },
+            visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+            exit: { opacity: 0, scale: 0.7, transition: { duration: 0.3 } },
+          },
+        },
+        'fade-in-blur': {
+          container: { visible: { transition: { staggerChildren: 0.04 } } },
+          item: {
+            hidden: { opacity: 0, y: 46, filter: 'blur(14px)' },
+            visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.55 } },
+            exit: { opacity: 0, y: -46, filter: 'blur(14px)', transition: { duration: 0.3 } },
+          },
+        },
+        /* THE HOUSE STYLE. Straight from 6.md: the piece burns in out of blur
+           and darkness, and on the way out it lifts and burns back into it. */
+        'blur-slide': {
+          container: { visible: { transition: { staggerChildren: 0.035 } } },
+          item: {
+            hidden: { opacity: 0, y: 0, filter: 'blur(16px) brightness(0%)' },
+            visible: {
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px) brightness(100%)',
+              transition: { duration: 0.45 },
+            },
+            exit: {
+              opacity: 0,
+              y: -44,
+              filter: 'blur(16px) brightness(0%)',
+              transition: { duration: 0.4 },
+            },
+          },
+        },
+        /* From 4.md: every character swings down onto its baseline. */
+        flip: {
+          container: { visible: { transition: { staggerChildren: 0.05 } } },
+          item: {
+            hidden: { opacity: 0, rotateX: 90, y: 18 },
+            visible: { opacity: 1, rotateX: 0, y: 0, transition: { duration: 0.32 } },
+            exit: { opacity: 0, rotateX: -60, y: -18, transition: { duration: 0.25 } },
+          },
+        },
+      };
+
+      const readFilter = (filter) => {
+        if (!filter) return { blur: 0, brightness: 100 };
+        const b = /blur\(([\d.]+)px\)/.exec(filter);
+        const br = /brightness\(([\d.]+)%\)/.exec(filter);
+        return { blur: b ? Number(b[1]) : 0, brightness: br ? Number(br[1]) : 100 };
+      };
+
+      const REST = { opacity: 1, x: 0, y: 0, scale: 1, rotateX: 0, rotateY: 0, blur: 0, brightness: 100 };
+
+      function resolveState(state, fallback) {
+        if (!state) return fallback;
+        const f = readFilter(state.filter);
+        return {
+          opacity: state.opacity ?? fallback.opacity,
+          x: state.x ?? fallback.x,
+          y: state.y ?? fallback.y,
+          scale: state.scale ?? fallback.scale,
+          rotateX: state.rotateX ?? fallback.rotateX,
+          rotateY: state.rotateY ?? fallback.rotateY,
+          blur: state.filter ? f.blur : fallback.blur,
+          brightness: state.filter ? f.brightness : fallback.brightness,
+        };
+      }
+
+      function mergeVariants(base, over) {
+        if (!over) return base;
+        return {
+          container: {
+            ...base.container,
+            ...over.container,
+            visible: {
+              ...(base.container && base.container.visible),
+              ...(over.container && over.container.visible),
+              transition: {
+                ...(base.container && base.container.visible && base.container.visible.transition),
+                ...(over.container && over.container.visible && over.container.visible.transition),
+              },
+            },
+          },
+          item: {
+            hidden: { ...(base.item && base.item.hidden), ...(over.item && over.item.hidden) },
+            visible: {
+              ...(base.item && base.item.visible),
+              ...(over.item && over.item.visible),
+              transition: {
+                ...(base.item && base.item.visible && base.item.visible.transition),
+                ...(over.item && over.item.visible && over.item.visible.transition),
+              },
+            },
+            exit: {
+              ...(base.item && base.item.exit),
+              ...(over.item && over.item.exit),
+              transition: {
+                ...(base.item && base.item.exit && base.item.exit.transition),
+                ...(over.item && over.item.exit && over.item.exit.transition),
+              },
+            },
+          },
+        };
+      }
+
+      const segment = (text, per) => {
+        if (per === 'line') return text.split('\n');
+        if (per === 'word') return text.split(' ');
+        return Array.from(text);
+      };
+
+      /**
+       * Split a string, stagger the pieces, animate each one from `hidden` to
+       * `visible`, and optionally back out to `exit`.
+       *
+       * @param host   element the split lives in
+       * @param text   the string
+       * @param o      { at, start, per, preset, variants, delay, exitAt, mask,
+       *                 exitReversed, itemStyle }
+       *               `at` is the scene's absolute start frame; `start` is the
+       *               scene-local frame, exactly as the Remotion scene wrote it.
+       */
+      function textEffect(host, text, o) {
+        const base = o.at || 0;
+        const per = o.per || 'word';
+        const preset = o.preset || 'blur-slide';
+        const exitReversed = o.exitReversed !== false;
+
+        const v = mergeVariants(PRESETS[preset], o.variants);
+        const pieces = segment(text, per);
+
+        const cv = v.container && v.container.visible && v.container.visible.transition;
+        const iv = v.item && v.item.visible && v.item.visible.transition;
+        const ix = v.item && v.item.exit && v.item.exit.transition;
+
+        const stagger = ((cv && cv.staggerChildren) ?? 0.04) * FPS;
+        const enterFrames = ((iv && iv.duration) ?? 0.45) * FPS;
+        const exitFrames = ((ix && ix.duration) ?? 0.35) * FPS;
+        const groupDelay = ((o.delay || 0) + ((cv && cv.delay) ?? 0)) * FPS;
+
+        const hidden = resolveState(v.item && v.item.hidden, { ...REST, opacity: 0 });
+        const visible = resolveState(v.item && v.item.visible, REST);
+        const exitTo = resolveState(v.item && v.item.exit, { ...REST, opacity: 0 });
+
+        /* A mask is a box with overflow hidden around each piece. It can only
+           hide movement that runs straight up or down (DO-NOT-DO 46). */
+        const onlyVertical =
+          hidden.x === 0 &&
+          hidden.scale === 1 &&
+          hidden.rotateX === 0 &&
+          hidden.rotateY === 0 &&
+          (o.exitAt === undefined || (exitTo.x === 0 && exitTo.scale === 1 && exitTo.rotateX === 0));
+        const masked = !!o.mask && onlyVertical;
+
+        const flips = hidden.rotateX !== 0 || hidden.rotateY !== 0;
+
+        /* Blur runs on a word or a character. It never runs on a full-screen
+           layer (DO-NOT-DO 7). */
+        const usesFilter =
+          !!(v.item && v.item.hidden && v.item.hidden.filter) ||
+          !!(v.item && v.item.visible && v.item.visible.filter) ||
+          !!(v.item && v.item.exit && v.item.exit.filter);
+        const fstr = (s) => 'blur(' + s.blur + 'px) brightness(' + s.brightness + '%)';
+
+        const outer = mk(host, 'span', {
+          display: per === 'line' ? 'block' : 'inline-block',
+          whiteSpace: 'pre-wrap',
+        });
+        /* 3D is only paid for when a variant actually asks for a flip. */
+        if (flips) outer.style.perspective = '1400px';
+        if (o.style) Object.assign(outer.style, o.style);
+
+        pieces.forEach((piece, i) => {
+          const inAt = base + o.start + groupDelay + i * stagger;
+          const outIndex = exitReversed ? pieces.length - 1 - i : i;
+          const outAt = o.exitAt === undefined ? 0 : base + o.exitAt + outIndex * stagger * 0.6;
+
+          const item = o.itemStyle ? o.itemStyle(i) : undefined;
+
+          let wrap = null;
+          if (masked) {
+            /* Layout styles go on the wrapper: its own em-based padding is
+               computed against ITS font size (DO-NOT-DO 69). */
+            wrap = mk(outer, 'span', {
+              display: per === 'line' ? 'block' : 'inline-block',
+              overflow: 'hidden',
+              paddingBottom: '0.24em',
+              marginBottom: '-0.24em',
+              paddingTop: '0.10em',
+              marginTop: '-0.10em',
+            });
+            if (item) Object.assign(wrap.style, item);
+          }
+
+          const inner = mk(wrap || outer, 'span', {
+            display: 'inline-block',
+            whiteSpace: 'pre',
+            transformOrigin: 'center bottom',
+          });
+          if (!masked && item) Object.assign(inner.style, item);
+          inner.textContent = piece + (per === 'word' && i < pieces.length - 1 ? ' ' : '');
+
+          const from = {
+            opacity: hidden.opacity,
+            x: hidden.x,
+            y: hidden.y,
+            scale: hidden.scale,
+            rotationX: hidden.rotateX,
+            rotationY: hidden.rotateY,
+          };
+          const to = {
+            opacity: visible.opacity,
+            x: visible.x,
+            y: visible.y,
+            scale: visible.scale,
+            rotationX: visible.rotateX,
+            rotationY: visible.rotateY,
+            duration: F(enterFrames),
+            ease: E.out,
+          };
+          if (usesFilter) {
+            from.filter = fstr(hidden);
+            to.filter = fstr(visible);
+          }
+          tl.fromTo(inner, from, to, F(inAt));
+
+          if (o.exitAt !== undefined) {
+            const leave = {
+              opacity: exitTo.opacity,
+              x: exitTo.x,
+              y: exitTo.y,
+              scale: exitTo.scale,
+              rotationX: exitTo.rotateX,
+              rotationY: exitTo.rotateY,
+              duration: F(exitFrames),
+              ease: E.in,
+            };
+            if (usesFilter) leave.filter = fstr(exitTo);
+            tl.to(inner, leave, F(outAt));
+          }
+        });
+
+        return outer;
+      }
+
+      /* ===================================================================
+       * THE GROUND
+       *
+       * Every boundary here is the frame a cut has finished covering the
+       * frame, which is why some are a cut's own frame and some are a section
+       * start. Read it next to the cut list.
+       * =================================================================== */
+
+      const ground = $('ground');
+      [
+        [0, C.cream], //          1  the stack
+        [90, C.nearBlack], //     2  one signal
+        [240, C.purple], //       3  it picks it up
+        [345, C.nearBlack], //    4  four channels
+        [480, C.cream], //        5  it decides
+        [600, C.deepIndigo], //   6  it doesn't stop
+        [780, C.cream], //        7  24/7
+        [866, C.lightGrey], //    8  it writes back
+        [1050, C.cream], //       9  the money
+        [1200, C.nearBlack], //  10  30x ROI
+        [1290, C.darkTeal], //   11  the logo
+      ].forEach(([f, col]) => tl.set(ground, { backgroundColor: col }, F(f)));
+
+      /* ===================================================================
+       * 1 — YOUR STACK. 0.0-3.0s. Ground: warm cream.
+       *
+       * Fifteen marks the viewer recognises come at the frame from every edge
+       * at once and slam into a wall. Nobody has to read anything to
+       * understand it, which is exactly what a first second is for.
+       * =================================================================== */
+
+      /** Fifteen marks, five columns by three rows. The order is the reading
+       *  order they land in, and it is not alphabetical. */
+      const STORM = [
+        { file: 'hubspot', name: 'HubSpot', optical: 0.86 },
+        { file: 'salesforce', name: 'Salesforce', optical: 1.0 },
+        { file: 'shopify', name: 'Shopify', optical: 0.9 },
+        { file: 'slack', name: 'Slack', optical: 0.95 },
+        { file: 'gmail', name: 'Gmail', optical: 1.02 },
+        { file: 'klaviyo', name: 'Klaviyo', optical: 1.0 },
+        { file: 'pipedrive', name: 'Pipedrive', optical: 0.78 },
+        { file: 'attio', name: 'Attio', optical: 0.92 },
+        { file: 'monday', name: 'monday.com', optical: 1.0 },
+        { file: 'calendly', name: 'Calendly', optical: 0.8 },
+        { file: 'whatsapp', name: 'WhatsApp', optical: 0.8 },
+        { file: 'zendesk', name: 'Zendesk', optical: 0.94 },
+        { file: 'omnisend', name: 'Omnisend', optical: 0.68 },
+        { file: 'make', name: 'Make', optical: 0.96 },
+        { file: 'dynamics', name: 'Microsoft Dynamics', optical: 0.82 },
+      ];
+
+      /**
+       * Where each tile starts. Off-frame in a seeded direction, far enough
+       * that it is genuinely outside the picture before it is drawn at all.
+       *
+       * Baked, not computed: these are Remotion's own random('storm-…-i')
+       * values, sampled once so the storm is the identical storm and the port
+       * does not have to reimplement a hash (DO-NOT-DO 5).
+       */
+      const LAUNCH = [
+        { x: 705.105, y: -1274.284, rot: -7.639 },
+        { x: 747.213, y: 1264.782, rot: 11.62 },
+        { x: -1856.786, y: 520.806, rot: 7.395 },
+        { x: 524.79, y: -1470.821, rot: 4.567 },
+        { x: 2103.699, y: 600.961, rot: -7.437 },
+        { x: 1555.798, y: -411.727, rot: 5.426 },
+        { x: -271.581, y: -1366.514, rot: 6.516 },
+        { x: 756.178, y: 1256.721, rot: 12.846 },
+        { x: 1178.124, y: -1293.165, rot: -0.489 },
+        { x: -783.222, y: 962.579, rot: 9.992 },
+        { x: -1634.55, y: -512.707, rot: -11.69 },
+        { x: 204.66, y: 1518.653, rot: 11.501 },
+        { x: 572.325, y: -1117.843, rot: -3.07 },
+        { x: -1000.485, y: 1191.165, rot: 2.671 },
+        { x: -510.982, y: -1470.169, rot: -12.643 },
+      ];
+
+      const LIT_SHADOW = '0 18px 40px -12px rgba(99,102,241,0.35)';
+      const REST_SHADOW = '0 2px 10px -4px rgba(1,1,1,0.10)';
+
+      (function scene01() {
+        const S = 0; // absolute start frame
+        const COLS = 5, ROWS = 3, TILE_W = 250, TILE_H = 160, GAP = 24;
+        const WALL_W = COLS * TILE_W + (COLS - 1) * GAP; // 1346
+        const WALL_H = ROWS * TILE_H + (ROWS - 1) * GAP; // 528
+        const LINE_W = 1920 - SAFE_X * 2; // 1636
+
+        const STORM_STEP = 1.2, STORM_FRAMES = 18;
+        const HEAD_AT = 34, SWEEP_AT = 48, SWEEP_STEP = 2.2;
+        const IMPLODE_AT = 78, IMPLODE_FRAMES = 12;
+
+        const root = $('s01');
+        /* Remotion's <AbsoluteFill> is a column flexbox; a plain div is not.
+           Every scene that centres content has to say so. */
+        Object.assign(root.style, {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          paddingBottom: px(SAFE_Y),
+        });
+        const col = mk(root, 'div', {}, 'col');
+
+        /* The line lands after the wall, so the picture reads before the
+           words. Never allowed to wrap (DO-NOT-DO 67). */
+        const head = mk(col, 'div', {
+          fontSize: px(152),
+          color: C.nearBlack,
+          textAlign: 'center',
+          width: px(LINE_W),
+          marginBottom: px(44),
+        }, 'disp nowrap');
+        textEffect(head, 'ALL YOUR TOOLS.', {
+          at: S, start: HEAD_AT, per: 'word', preset: 'blur-slide', mask: true,
+        });
+
+        const wall = mk(col, 'div', {
+          position: 'relative',
+          width: px(WALL_W),
+          height: px(WALL_H),
+        });
+
+        /* 3. IMPLODE — the whole shot rushes into one point. Cut 1. */
+        tl.to(head, {
+          y: 210, scale: 0, opacity: 0,
+          duration: F(IMPLODE_FRAMES), ease: E.in,
+        }, F(S + IMPLODE_AT));
+
+        STORM.forEach((mark, i) => {
+          const cx = i % COLS;
+          const cy = Math.floor(i / COLS);
+          const left = cx * (TILE_W + GAP);
+          const top = cy * (TILE_H + GAP);
+
+          const holder = mk(wall, 'div', {
+            position: 'absolute',
+            left: px(left),
+            top: px(top),
+            width: px(TILE_W),
+            height: px(TILE_H),
+          });
+          const card = mk(holder, 'div', {}, 'tile');
+          const inner = Math.min(TILE_W, TILE_H) * 0.52;
+          const img = mk(card, 'img', {
+            width: px(inner * mark.optical),
+            height: px(inner * mark.optical),
+          });
+          img.src = 'assets/logos/' + mark.file + '.svg';
+          img.alt = mark.name;
+
+          /* 1. STORM. */
+          const at = S + i * STORM_STEP;
+          const L = LAUNCH[i];
+          tl.fromTo(holder,
+            { x: L.x, y: L.y, rotation: L.rot, scale: 0.86, filter: 'blur(11px)' },
+            { x: 0, y: 0, rotation: 0, scale: 1, filter: 'blur(0px)',
+              duration: F(STORM_FRAMES), ease: E.out },
+            F(at));
+          tl.fromTo(holder, { opacity: 0 }, { opacity: 1, duration: F(3), ease: E.none }, F(at));
+
+          /* 2. SWEEP — a diagonal wave, one tile behind the next. */
+          const litAt = S + SWEEP_AT + (cx + cy) * SWEEP_STEP;
+          tl.to(card, { borderColor: C.purple, duration: F(3), ease: E.none }, F(litAt));
+          tl.to(card, { borderColor: C.borderCool, duration: F(8), ease: E.none }, F(litAt + 3));
+          tl.set(card, { boxShadow: LIT_SHADOW }, F(litAt + 1.5));
+          tl.set(card, { boxShadow: REST_SHADOW }, F(litAt + 7));
+
+          /* 3. IMPLODE — every tile toward the middle of the wall. */
+          tl.to(holder, {
+            x: (WALL_W - TILE_W) / 2 - left,
+            y: (WALL_H - TILE_H) / 2 - top,
+            scale: 0, opacity: 0, filter: 'blur(9px)',
+            duration: F(IMPLODE_FRAMES), ease: E.in,
+          }, F(S + IMPLODE_AT));
+        });
+      })();
+
+      /* ===================================================================
+       * 2 — ONE SIGNAL. 3.0-8.0s. Ground: near black.
+       *
+       * The wall of fifteen tools has just collapsed into a point. This is
+       * what the point turned out to be: one event, in one of those tools.
+       * =================================================================== */
+
+      (function scene02() {
+        const S = 90;
+        const DISC_CY = 334, DISC_R = 66, HEAD_TOP = 462, CHIPS_TOP = 764;
+        const HEAD_AT = 8, CHIPS_AT = 40, CHIPS_STEP = 4, CHIPS_FRAMES = 12;
+        const EXIT_AT = 110, GROW_AT = 135, GROW_FRAMES = 15;
+
+        /* From research/facts.json, row `pos.signals`. Three of the five. */
+        const CHIPS = ['FORM FILL', 'ABANDONED CART', 'MISSED CALL'];
+
+        const root = $('s02');
+
+        /* Two rings leaving the beacon. Sized in px so the 3px stroke never
+           scales — width and height are what move, not a transform. */
+        [2, 18].forEach((at) => {
+          const ring = mk(root, 'div', {
+            position: 'absolute',
+            left: px(960),
+            top: px(DISC_CY),
+            width: px(DISC_R * 2),
+            height: px(DISC_R * 2),
+            transform: 'translate(-50%, -50%)',
+            borderRadius: '50%',
+            border: '3px solid ' + C.purple,
+            opacity: 0,
+            visibility: 'hidden',
+          });
+          tl.set(ring, { autoAlpha: 0 }, 0);
+          tl.set(ring, { autoAlpha: 1 }, F(S + at));
+          tl.fromTo(ring,
+            { width: px(DISC_R * 2), height: px(DISC_R * 2), opacity: 0.5 },
+            { width: px((DISC_R + 190) * 2), height: px((DISC_R + 190) * 2), opacity: 0,
+              duration: F(26), ease: E.out },
+            F(S + at));
+        });
+
+        /* The beacon, under the type. The one filled purple element here. */
+        const disc = mk(root, 'div', {
+          background: C.purple,
+          clipPath: 'circle(0px at 960px ' + DISC_CY + 'px)',
+        }, 'fill');
+        tl.fromTo(disc,
+          { clipPath: 'circle(0px at 960px ' + DISC_CY + 'px)' },
+          { clipPath: 'circle(' + DISC_R + 'px at 960px ' + DISC_CY + 'px)',
+            duration: F(10), ease: E.out },
+          F(S));
+
+        const head = mk(root, 'div', {
+          position: 'absolute',
+          left: 0, right: 0,
+          top: px(HEAD_TOP),
+          textAlign: 'center',
+          fontSize: px(220),
+          color: C.white,
+        }, 'disp');
+        /* 4.md — per char, rotateX 90 into place. The one flip in the film. */
+        textEffect(head, 'ONE SIGNAL.', {
+          at: S, start: HEAD_AT, per: 'char', preset: 'flip', exitAt: EXIT_AT,
+        });
+
+        const chipRow = mk(root, 'div', {
+          position: 'absolute',
+          left: 0, right: 0,
+          top: px(CHIPS_TOP),
+          display: 'flex',
+          justifyContent: 'center',
+          gap: px(30),
+        });
+        CHIPS.forEach((chip, i) => {
+          const el = mk(chipRow, 'div', {
+            padding: '16px 24px',
+            border: '3px solid rgba(255,255,255,0.34)',
+            fontSize: px(56),
+            color: 'rgba(255,255,255,0.92)',
+          }, 'body eyebrow pill');
+          el.textContent = chip;
+          const at = S + CHIPS_AT + i * CHIPS_STEP;
+          tl.fromTo(el, { y: 26, opacity: 0 },
+            { y: 0, opacity: 1, duration: F(CHIPS_FRAMES), ease: E.out }, F(at));
+          tl.to(el, { y: -30, opacity: 0, duration: F(9), ease: E.in },
+            F(S + EXIT_AT + i * 2));
+        });
+
+        /*
+         * Cut 2. The beacon becomes the frame, over the top of everything, and
+         * the next scene opens on the purple it leaves behind. Clipped as a
+         * real circle from the disc's own centre on an inOut curve — on a
+         * swift curve the shape never reads (DO-NOT-DO 45).
+         */
+        const grow = mk(root, 'div', { background: C.purple }, 'fill');
+        grow.style.clipPath = 'circle(0px at 960px ' + DISC_CY + 'px)';
+        tl.fromTo(grow,
+          { clipPath: 'circle(0px at 960px ' + DISC_CY + 'px)' },
+          { clipPath: 'circle(' + DISC_R + 'px at 960px ' + DISC_CY + 'px)',
+            duration: F(10), ease: E.out },
+          F(S));
+        tl.to(grow, {
+          clipPath: 'circle(' + (DISC_R + 1190) + 'px at 960px ' + DISC_CY + 'px)',
+          duration: F(GROW_FRAMES), ease: E.inOut,
+        }, F(S + GROW_AT));
+      })();
+
+      /* ===================================================================
+       * 3 — SOMETHING PICKS IT UP. 8.0-12.0s. Ground: Outcraft purple.
+       *
+       * The one quiet shot in the first half, and the only full-purple frame
+       * in the film. A question, then its answer four beats apart — and the
+       * question stays (DO-NOT-DO 42).
+       * =================================================================== */
+
+      (function scene03() {
+        const S = 240;
+        const ASK_AT = 4, ANSWER_AT = 30, EXIT_AT = 88;
+
+        const root = $('s03');
+        root.className = 'clip centre';
+
+        const block = mk(root, 'div', {
+          textAlign: 'center',
+          width: px(1636),
+          color: C.white,
+        }, 'disp nowrap');
+
+        /*
+         * BOTH SIZES ARE MEASURED TO FIT ON ONE LINE inside the 1636px safe
+         * width. SOMETHING PICKS IT UP. is 22 characters: at hero it is about
+         * 1850px and wraps, and AN AI SALES TEAM. at payoff was 2040px and
+         * wrapped too (DO-NOT-DO 67).
+         *
+         * The Remotion cut animated font-size and margin-top. Neither survives
+         * a seek-by-frame capture: both reflow text, so the tween snaps to
+         * whole device pixels and the ease-out tail stutters. They are
+         * transforms here instead, and the arithmetic below reproduces the
+         * Remotion layout to the pixel.
+         *
+         * A line box is taller than its font size — the masked wrappers sit on
+         * their own bottom margin edge, so the box is k x the font size, where
+         * k depends on the face's metrics. It is MEASURED off the page below
+         * rather than assumed, because assuming k = 1 put every frame of this
+         * shot twenty pixels out.
+         *
+         *   Remotion, with `open` = o:
+         *     ask height   k(132 - 32o)   answer margin-top  40o
+         *     block height 292k - 32ko + 40o, centred, then translated -30o
+         *
+         *   Here the boxes never resize, so the block is 292k tall and centres
+         *   once. Solving for the same ask top and answer top gives
+         *
+         *     block y  = o(16k - 50)      answer y = o(40 - 32k)
+         *
+         * and the question's step down becomes a scale about its own top edge,
+         * which is where a shrinking line-height-1 box keeps its glyphs.
+         */
+        const ask = mk(block, 'div', { fontSize: px(132), transformOrigin: 'center top' });
+        textEffect(ask, 'SOMETHING PICKS IT UP.', {
+          at: S, start: ASK_AT, per: 'word', preset: 'blur-slide', mask: true, exitAt: EXIT_AT,
+        });
+
+        const answer = mk(block, 'div', { fontSize: px(160), color: C.white });
+        textEffect(answer, 'AN AI SALES TEAM.', {
+          at: S, start: ANSWER_AT, per: 'word', preset: 'blur-slide', mask: true, exitAt: EXIT_AT + 4,
+        });
+
+        /* k, off the real page, with the real face loaded. The guard is for the
+           case where this scene's clip is already hidden when build() runs —
+           a hidden box measures zero, and a zero here would throw the shot
+           fifty pixels up the frame rather than fail loudly. */
+        const measured = ask.getBoundingClientRect().height / 132;
+        const k = measured > 0.9 && measured < 1.6 ? measured : 1.13;
+
+        /* The stack slides up as the answer takes the space under it, and the
+           question steps down so it never competes with it (DO-NOT-DO 43).
+           The first line stays put — nothing vanishes to make room
+           (DO-NOT-DO 42). */
+        tl.to(block, { y: 16 * k - 50, duration: F(16), ease: E.out }, F(S + ANSWER_AT));
+        tl.to(ask, { scale: 100 / 132, duration: F(16), ease: E.out }, F(S + ANSWER_AT));
+        tl.to(answer, { y: 40 - 32 * k, duration: F(16), ease: E.out }, F(S + ANSWER_AT));
+      })();
+
+      /* ===================================================================
+       * 4 — VOICE. SMS. EMAIL. WHATSAPP. 11.5-16.0s. Ground: near black.
+       *
+       * Mounted a beat before its own section, because the barn door that
+       * hands over to it has to have something behind it (DO-NOT-DO 70).
+       * Four equal quarters is the plainest way to say "these are equal".
+       * =================================================================== */
+
+      /* Lucide, 1.75px stroke, drawn white (DO-NOT-DO 20). */
+      const LUCIDE = {
+        phone: 'M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384',
+        sms: 'M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z',
+        mail: 'm22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7',
+        check: 'M20 6 9 17l-5-5',
+      };
+
+      function lucide(parent, kind, size, stroke, colour) {
+        const ns = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('width', size);
+        svg.setAttribute('height', size);
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', colour);
+        svg.setAttribute('stroke-width', stroke);
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+        if (kind === 'mail') {
+          const r = document.createElementNS(ns, 'rect');
+          r.setAttribute('x', '2'); r.setAttribute('y', '4');
+          r.setAttribute('width', '20'); r.setAttribute('height', '16');
+          r.setAttribute('rx', '2');
+          svg.appendChild(r);
+        }
+        const p = document.createElementNS(ns, 'path');
+        p.setAttribute('d', LUCIDE[kind]);
+        svg.appendChild(p);
+        parent.appendChild(svg);
+        return svg;
+      }
+
+      (function scene04() {
+        const S = 345;
+        const CELL_W = 760, CELL_H = 250, GAP = 44;
+        const GRID_W = CELL_W * 2 + GAP; // 1564
+        const GRID_H = CELL_H * 2 + GAP; // 544
+        const ICON = 80, MARK_GAP = 32, PAD_LEFT = 40, WORD = 104;
+        const FIRST_AT = 8, STEP = 12, SWEEP_AT = 68, SWEEP_STEP = 6, ALL_ON_AT = 94;
+
+        /* The exact words come from research/facts.json, row `pos.channels`.
+           Not paraphrased and not reordered. */
+        const CHANNELS = [
+          { word: 'VOICE.', kind: 'phone' },
+          { word: 'SMS.', kind: 'sms' },
+          { word: 'EMAIL.', kind: 'mail' },
+          { word: 'WHATSAPP.', kind: 'whatsapp' },
+        ];
+
+        const root = $('s04');
+        Object.assign(root.style, { display: 'flex', flexDirection: 'column', alignItems: 'center' });
+
+        const eyebrow = mk(root, 'div', {
+          marginTop: px(SAFE_Y),
+          fontSize: px(78),
+          color: 'rgba(255,255,255,0.55)',
+        }, 'body eyebrow');
+        textEffect(eyebrow, 'IT REACHES OUT', { at: S, start: 0, per: 'word', preset: 'blur' });
+
+        const grid = mk(root, 'div', {
+          position: 'relative',
+          width: px(GRID_W),
+          height: px(GRID_H),
+          marginTop: px(62),
+        });
+
+        CHANNELS.forEach((channel, i) => {
+          const cx = i % 2;
+          const cy = Math.floor(i / 2);
+          const at = S + FIRST_AT + i * STEP;
+
+          const cell = mk(grid, 'div', {
+            position: 'absolute',
+            left: px(cx * (CELL_W + GAP)),
+            top: px(cy * (CELL_H + GAP)),
+            width: px(CELL_W),
+            height: px(CELL_H),
+            display: 'flex',
+            alignItems: 'center',
+            gap: px(MARK_GAP),
+            paddingLeft: px(PAD_LEFT),
+            borderRadius: '24px',
+            border: '2.5px solid rgba(255,255,255,0.14)',
+            backgroundColor: 'rgba(99,102,241,0)',
+          });
+
+          const markBox = mk(cell, 'div', { display: 'flex' });
+          if (channel.kind === 'whatsapp') {
+            /* WHATSAPP is a product name, so it gets its own real vector mark
+               in its own green. A generic bubble next to it would be wrong. */
+            const img = mk(markBox, 'img', { width: px(ICON), height: px(ICON) });
+            img.src = 'assets/logos/whatsapp.svg';
+            img.alt = 'WhatsApp';
+            img.style.objectFit = 'contain';
+          } else {
+            lucide(markBox, channel.kind, ICON, 1.75, C.white);
+          }
+
+          const word = mk(cell, 'div', {
+            fontSize: px(WORD),
+            color: C.white,
+          }, 'disp nowrap');
+          /* 6.md — the house blur-slide, per character on a short word. */
+          textEffect(word, channel.word, {
+            at: S, start: FIRST_AT + i * STEP + 3, per: 'char', preset: 'blur-slide',
+          });
+
+          /* 1. ARRIVE — and nothing ever leaves (DO-NOT-DO 42). */
+          tl.fromTo(cell, { y: 54, opacity: 0 },
+            { y: 0, opacity: 1, duration: F(16), ease: E.out }, F(at));
+          tl.fromTo(markBox, { opacity: 0 },
+            { opacity: 1, duration: F(10), ease: E.out }, F(at));
+
+          /* 2. SWEEP — one purple pass over this quadrant, then off again. */
+          const litAt = S + SWEEP_AT + i * SWEEP_STEP;
+          const allOnAt = S + ALL_ON_AT;
+          const downFrames = Math.min(10, Math.max(1, allOnAt - (litAt + 4)));
+          tl.to(cell, {
+            borderColor: C.purple, backgroundColor: 'rgba(99,102,241,0.13)',
+            duration: F(4), ease: E.none,
+          }, F(litAt));
+          tl.to(cell, {
+            borderColor: 'rgba(255,255,255,0.14)', backgroundColor: 'rgba(99,102,241,0)',
+            duration: F(downFrames), ease: E.none,
+          }, F(litAt + 4));
+
+          /* 3. ALL ON — the four light together and hold. That is the
+             sentence this shot makes, and it is made of light. */
+          tl.to(cell, {
+            borderColor: C.purple, backgroundColor: 'rgba(99,102,241,0.13)',
+            duration: F(10), ease: E.out,
+          }, F(allOnAt));
+        });
+      })();
+
+      /* ===================================================================
+       * 5 — IT DECIDES. 16.0-20.0s. Ground: warm cream.
+       *
+       * `claim.decides` in research/facts.json, rendered exactly as that row
+       * writes it. The single most important shot in the film for a viewer
+       * trying to work out what Outcraft actually is.
+       * =================================================================== */
+
+      (function scene05() {
+        const S = 480;
+        const CHIPS = ['VOICE', 'SMS', 'EMAIL', 'WHATSAPP'];
+        const PICKED = 0; // Voice, because it is the one that books.
+        const CHIPS_FRAMES = 7, COPY_AT = 6, PICK_AT = 30, EXIT_AT = 92;
+
+        /* Sample 3's shape, with the stagger put on the 120 BPM grid: 0.5s is
+           exactly one beat, so each clause lands on the music. */
+        const LINE_VARIANTS = {
+          container: { visible: { transition: { staggerChildren: 0.5 } } },
+          item: {
+            hidden: { opacity: 0, y: 44 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.42 } },
+            exit: { opacity: 0, y: -44, transition: { duration: 0.3 } },
+          },
+        };
+
+        const root = $('s05');
+        root.className = 'clip';
+        Object.assign(root.style, {
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+        });
+
+        const row = mk(root, 'div', { display: 'flex', gap: px(22), marginBottom: px(96) });
+        CHIPS.forEach((chip, i) => {
+          const el = mk(row, 'div', {
+            padding: '16px 40px',
+            backgroundColor: C.white,
+            border: '2.5px solid ' + C.borderCool,
+            color: C.inkMuted,
+            fontSize: px(56),
+          }, 'body eyebrow pill');
+          el.textContent = chip;
+
+          const at = S + i * 4;
+          tl.fromTo(el, { y: 24, opacity: 0 },
+            { y: 0, opacity: 1, duration: F(CHIPS_FRAMES), ease: E.out }, F(at));
+
+          /* When PICKS THE CHANNEL. lands, one chip lights — and the other
+             three do not go anywhere. */
+          if (i === PICKED) {
+            tl.to(el, {
+              backgroundColor: C.purple, borderColor: C.purple, color: C.white, scale: 1.06,
+              duration: F(9), ease: E.out,
+            }, F(S + PICK_AT));
+          }
+          tl.to(el, { y: -26, opacity: 0, duration: F(10), ease: E.in }, F(S + EXIT_AT));
+        });
+
+        const copy = mk(root, 'div', { textAlign: 'center', color: C.nearBlack }, 'disp');
+        /* 3.md — per line, each in its own overflow-hidden wrapper. Hierarchy
+           comes from size: three identical lines read as a bulleted list. */
+        textEffect(copy, 'IT READS THE REPLY.\nPICKS THE CHANNEL.\nPICKS THE NEXT MOVE.', {
+          at: S, start: COPY_AT, per: 'line', preset: 'slide', variants: LINE_VARIANTS,
+          mask: true, exitAt: EXIT_AT, exitReversed: false,
+          itemStyle: (i) => ({
+            fontSize: px(i === 0 ? 160 : 134),
+            lineHeight: i === 0 ? '1' : '1.2',
+            color: i === 0 ? C.nearBlack : C.inkSecondary,
+          }),
+        });
+      })();
+
+      /* ===================================================================
+       * 6 — IT DOESN'T STOP. 20.0-26.0s. Ground: deep indigo.
+       *
+       * The steps are real: `claim.cadence` in research/facts.json, read out
+       * of the live app. Five of the seven, in order, and nothing invented.
+       * Cut 6 is part of the scene — the rail rolls up and off the top.
+       * =================================================================== */
+
+      (function scene06() {
+        const S = 600;
+        const STEPS = [
+          { channel: 'CALL', when: 'NOW' },
+          { channel: 'EMAIL', when: '5 MIN' },
+          { channel: 'CALL', when: '6 HRS' },
+          { channel: 'SMS', when: '1 DAY' },
+          { channel: 'CALL', when: '2 DAYS' },
+        ];
+        const LIST_W = 1280, ROW_H = 84;
+        const FIRST_AT = 14, STEP = 16, BOOKED_AT = 108, ROLL_AT = 165, ROLL_FRAMES = 13;
+
+        const root = $('s06');
+        root.className = 'clip centre';
+
+        const list = mk(root, 'div', { width: px(LIST_W) });
+
+        const eyebrow = mk(list, 'div', {
+          fontSize: px(78),
+          color: 'rgba(255,255,255,0.55)',
+          textAlign: 'center',
+          marginBottom: px(44),
+        }, 'body eyebrow');
+        textEffect(eyebrow, "IT DOESN'T STOP", { at: S, start: 0, per: 'word', preset: 'blur' });
+
+        STEPS.forEach((step, i) => {
+          const at = S + FIRST_AT + i * STEP;
+          const row = mk(list, 'div', {
+            height: px(ROW_H),
+            display: 'flex',
+            alignItems: 'center',
+            gap: px(30),
+            borderBottom: '2px solid rgba(255,255,255,0.14)',
+          });
+
+          /* The coral dot, marking the step as it fires. Small, and only ever
+             small (DO-NOT-DO 18). */
+          const dot = mk(row, 'span', {
+            width: px(20), height: px(20), borderRadius: '50%',
+            background: C.coral, flexShrink: 0,
+          });
+          const chan = mk(row, 'span', {
+            flex: '1', fontSize: px(80), color: C.white,
+          }, 'disp');
+          chan.textContent = step.channel;
+          const when = mk(row, 'span', {
+            fontSize: px(80), letterSpacing: '0.01em', color: 'rgba(255,255,255,0.62)',
+          }, 'body num');
+          when.textContent = step.when;
+
+          tl.fromTo(row, { x: -70, opacity: 0 },
+            { x: 0, opacity: 1, duration: F(14), ease: E.out }, F(at));
+          tl.fromTo(dot, { scale: 0 }, { scale: 1, duration: F(6), ease: E.out }, F(at + 6));
+        });
+
+        /* The outcome. Inverted, so it never reads as a sixth action. */
+        const bookedWrap = mk(list, 'div', {
+          marginTop: px(26), display: 'flex', justifyContent: 'center',
+        });
+        const booked = mk(bookedWrap, 'div', {
+          padding: '14px 68px 22px',
+          borderRadius: '999px',
+          background: C.white,
+          color: C.deepIndigo,
+          fontSize: px(112),
+        }, 'disp');
+        booked.textContent = 'BOOKED.';
+        tl.fromTo(bookedWrap, { y: 40, scale: 0.9, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: F(13), ease: E.out }, F(S + BOOKED_AT));
+
+        /* Cut 6 — the rail rolls up and takes the frame with it. */
+        tl.to(root, { y: -1180, duration: F(ROLL_FRAMES), ease: E.in }, F(S + ROLL_AT));
+      })();
+
+      /* ===================================================================
+       * 7 — 24/7. 26.0-28.9s. Ground: warm cream.
+       *
+       * `num.coverage` in research/facts.json. One number, one line, nothing
+       * else in the frame. It is the breath the second half is launched from.
+       * =================================================================== */
+
+      (function scene07() {
+        const S = 780;
+        const NUMBER_AT = 2, LINE_AT = 24;
+
+        /* Four characters, four frames apart, each landing in 0.4s. */
+        const STRIKE = {
+          container: { visible: { transition: { staggerChildren: 0.13 } } },
+          item: { visible: { transition: { duration: 0.4 } } },
+        };
+
+        const root = $('s07');
+        root.className = 'clip';
+        Object.assign(root.style, {
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+        });
+
+        const num = mk(root, 'div', { fontSize: px(350), color: C.nearBlack }, 'disp num');
+        /* 1.md — per char. The slash, and only the slash, is coral: it is one
+           glyph wide, which is the entire allowance coral gets. */
+        textEffect(num, '24/7', {
+          at: S, start: NUMBER_AT, per: 'char', preset: 'scale', variants: STRIKE,
+          itemStyle: (i) => (i === 2 ? { color: C.coral } : undefined),
+        });
+
+        const line = mk(root, 'div', {
+          marginTop: px(42), fontSize: px(78), color: C.inkMuted,
+        }, 'body eyebrow');
+        textEffect(line, 'IT NEVER CLOCKS OFF', {
+          at: S, start: LINE_AT, per: 'word', preset: 'blur-slide', mask: true,
+        });
+      })();
+
+      /* ===================================================================
+       * 8 — THEN IT WRITES BACK. 28.9-35.0s. Ground: the app's light grey.
+       *
+       * The shot that closes the loop. Scene 1 threw fifteen tools at the
+       * frame; this puts the result back where it started. The film is a
+       * circle, not a funnel.
+       * =================================================================== */
+
+      /* Six wide lockups. A mark says an integration exists; a lockup says the
+         name of the system the outcome was written into. */
+      const WRITE_BACK = [
+        { file: 'hubspot-wordmark', name: 'HubSpot', optical: 0.82 },
+        { file: 'klaviyo-wordmark', name: 'Klaviyo', optical: 0.8 },
+        { file: 'shopify-wordmark', name: 'Shopify', optical: 0.8 },
+        { file: 'pipedrive-wordmark', name: 'Pipedrive', optical: 0.86 },
+        { file: 'attio-wordmark', name: 'Attio', optical: 0.74 },
+        { file: 'monday-wordmark', name: 'monday.com', optical: 0.9 },
+      ];
+
+      (function scene08() {
+        const S = 866;
+        const COLS = 3, ROWS = 2, TILE_W = 420, TILE_H = 170, GAP = 26;
+        const WALL_W = COLS * TILE_W + (COLS - 1) * GAP; // 1312
+        const WALL_H = ROWS * TILE_H + (ROWS - 1) * GAP; // 366
+        const HEAD_AT = 6, RISE_AT = 14, RISE_STEP = 4;
+        const WRITE_AT = 60, WRITE_STEP = 10, CLEAR_AT = 172, CLEAR_FRAMES = 12;
+        /* The pulse settles at 0.34 rather than 0, so a written tile stays
+           marked. This is that blend of borderCool and purple. */
+        const PULSE_REST = 'rgb(186,189,237)';
+
+        const root = $('s08');
+        Object.assign(root.style, { display: 'flex', flexDirection: 'column', alignItems: 'center' });
+
+        const header = mk(root, 'div', { marginTop: px(SAFE_Y), textAlign: 'center' });
+
+        const eyebrow = mk(header, 'div', { fontSize: px(78), color: C.inkMuted }, 'body eyebrow');
+        textEffect(eyebrow, '20+ NATIVE INTEGRATIONS', { at: S, start: 0, per: 'word', preset: 'blur' });
+
+        const head = mk(header, 'div', {
+          marginTop: px(34), fontSize: px(152), color: C.nearBlack,
+        }, 'disp');
+        textEffect(head, 'THEN IT WRITES BACK.', {
+          at: S, start: HEAD_AT, per: 'word', preset: 'blur-slide', mask: true,
+        });
+
+        const wall = mk(root, 'div', {
+          position: 'relative', width: px(WALL_W), height: px(WALL_H), marginTop: px(44),
+        });
+
+        /* 3. CLEAR — cut 8. The wall opens rather than being wiped, so the
+           money shot behind it reads as what was underneath all along. */
+        tl.to(header, { y: -180, opacity: 0, duration: F(CLEAR_FRAMES), ease: E.in },
+          F(S + CLEAR_AT));
+
+        WRITE_BACK.forEach((mark, i) => {
+          const cx = i % COLS;
+          const cy = Math.floor(i / COLS);
+          const left = cx * (TILE_W + GAP);
+          const top = cy * (TILE_H + GAP);
+
+          const holder = mk(wall, 'div', {
+            position: 'absolute', left: px(left), top: px(top),
+            width: px(TILE_W), height: px(TILE_H),
+          });
+          const card = mk(holder, 'div', {}, 'tile');
+          /* A lockup is wide and low, so it is contained by width. */
+          const img = mk(card, 'img', {
+            width: px(TILE_W * 0.6 * mark.optical),
+            height: px(TILE_H * 0.46),
+          });
+          img.src = 'assets/logos/' + mark.file + '.svg';
+          img.alt = mark.name;
+
+          /* The check STAYS — by the end of the shot all six are ticked at
+             once, which is the sentence this scene is making. Outlined, not
+             filled: only one filled purple element is allowed in a frame. */
+          const check = mk(holder, 'div', {
+            position: 'absolute', right: px(20), top: px(20),
+            width: px(48), height: px(48), borderRadius: '50%',
+            background: C.white, border: '3px solid ' + C.purple,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            opacity: 0,
+          });
+          lucide(check, 'check', 28, 2.5, C.purple);
+
+          /* 1. RISE. */
+          const at = S + RISE_AT + i * RISE_STEP;
+          tl.fromTo(holder, { y: 46, scale: 0.94, opacity: 0 },
+            { y: 0, scale: 1, opacity: 1, duration: F(15), ease: E.out }, F(at));
+
+          /* 2. WRITE — a pulse that passes, and a check that stays. */
+          const writeAt = S + WRITE_AT + i * WRITE_STEP;
+          tl.to(card, { borderColor: C.purple, duration: F(4), ease: E.none }, F(writeAt));
+          tl.to(card, { borderColor: PULSE_REST, duration: F(12), ease: E.none }, F(writeAt + 4));
+          tl.set(card, { boxShadow: LIT_SHADOW }, F(writeAt + 2));
+          tl.set(card, { boxShadow: REST_SHADOW }, F(writeAt + 13.09));
+          tl.fromTo(check, { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: F(8), ease: E.out }, F(writeAt + 3));
+
+          /* 3. CLEAR — outward from the middle of the wall. */
+          tl.to(holder, {
+            x: (left + TILE_W / 2 - WALL_W / 2) * 2.1,
+            y: (top + TILE_H / 2 - WALL_H / 2) * 2.6,
+            opacity: 0,
+            duration: F(CLEAR_FRAMES), ease: E.in,
+          }, F(S + CLEAR_AT));
+        });
+      })();
+
+      /* ===================================================================
+       * 9 — $100,000+ RECOVERED. EVERY MONTH. 35.0-40.0s. Ground: cream.
+       *
+       * `case.pulsetto.revenue` in research/facts.json. The counter STEPS on a
+       * sixteenth rather than tweening: a smooth count reads as a chart
+       * animation, a stepping one reads as a machine.
+       * =================================================================== */
+
+      (function scene09() {
+        const S = 1050;
+        const COUNT_AT = 2, COUNT_FRAMES = 52;
+        const PLUS_AT = COUNT_AT + COUNT_FRAMES; // 54
+        const RULE_AT = PLUS_AT + 6; //             60
+        const LINE_AT = PLUS_AT + 12; //            66
+        const LOGO_AT = PLUS_AT + 38; //            92
+        const NUMBER = 290; // not size.mega — $100,000 at 350 runs outside the safe width
+        const LOGO_ROW_H = 100;
+
+        /* Grouped by hand. toLocaleString reads the machine's locale. */
+        const money = (v) => '$' + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        const root = $('s09');
+        root.className = 'clip';
+        Object.assign(root.style, {
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+        });
+
+        const numRow = mk(root, 'div', {
+          display: 'flex', alignItems: 'flex-start',
+          fontSize: px(NUMBER), color: C.nearBlack,
+        }, 'disp');
+
+        /* `reserve` — the hidden copy is the only thing that sets the box's
+           width, so a centred counter never re-centres itself as it grows
+           (DO-NOT-DO 56). */
+        const slot = mk(numRow, 'span', {
+          position: 'relative', display: 'inline-block', whiteSpace: 'pre',
+        }, 'num');
+        const ghost = mk(slot, 'span', { visibility: 'hidden' });
+        ghost.textContent = money(100000);
+        const shown = mk(slot, 'span', {
+          position: 'absolute', left: 0, right: 0, top: 0,
+          textAlign: 'center', whiteSpace: 'pre',
+        });
+        shown.textContent = money(0);
+
+        const STEP_F = 3.75; // a sixteenth
+        const steps = Math.max(1, Math.round(COUNT_FRAMES / STEP_F)); // 14
+        const counter = { i: 0 };
+        tl.fromTo(counter, { i: 0 }, {
+          i: steps,
+          duration: F(steps * STEP_F),
+          ease: E.none,
+          onUpdate() {
+            const idx = Math.min(steps, Math.max(0, Math.floor(counter.i + 1e-9)));
+            const p = idx / steps;
+            /* Decelerate into the landing so the last few numbers read. */
+            shown.textContent = money(100000 * (1 - Math.pow(1 - p, 3)));
+          },
+        }, F(S + COUNT_AT));
+
+        /* The plus is not part of the count. Counting to a "+" is meaningless;
+           landing on $100,000 and then having a plus arrive says "and it kept
+           going" (DO-NOT-DO 57). */
+        const plus = mk(numRow, 'span', { color: C.purple, opacity: 0 });
+        plus.textContent = '+';
+        tl.fromTo(plus, { y: -28, scale: 0.6, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: F(8), ease: E.out }, F(S + PLUS_AT));
+
+        /* Drawn with a clip, never by scaling from a flipped transform origin
+           (DO-NOT-DO 47). */
+        const rule = mk(root, 'div', {
+          width: px(1180), height: px(7), marginTop: px(26),
+          background: C.nearBlack,
+          clipPath: 'inset(0 100% 0 0)',
+        });
+        tl.fromTo(rule, { clipPath: 'inset(0 100% 0 0)' },
+          { clipPath: 'inset(0 0% 0 0)', duration: F(13), ease: E.swift }, F(S + RULE_AT));
+
+        const line = mk(root, 'div', {
+          marginTop: px(34), fontSize: px(112), color: C.inkSecondary,
+        }, 'disp');
+        textEffect(line, 'RECOVERED. EVERY MONTH.', {
+          at: S, start: LINE_AT, per: 'word', preset: 'blur-slide', mask: true,
+        });
+
+        /* The Pulsetto row holds its 100px from the first frame of the shot,
+           whatever it is showing: a block that grows later would shove the
+           number upward at the exact moment it is being read (DO-NOT-DO 68). */
+        const logoRow = mk(root, 'div', {
+          height: px(LOGO_ROW_H), display: 'flex', alignItems: 'center',
+          gap: px(26), opacity: 0,
+        });
+        const at = mk(logoRow, 'span', {
+          fontSize: px(34), color: C.inkMuted,
+        }, 'body eyebrow');
+        at.textContent = 'AT';
+        const logo = mk(logoRow, 'img', { height: px(54), width: 'auto', objectFit: 'contain' });
+        logo.src = 'assets/logos/pulsetto.png';
+        logo.alt = 'Pulsetto';
+        tl.fromTo(logoRow, { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: F(14), ease: E.out }, F(S + LOGO_AT));
+      })();
+
+      /* ===================================================================
+       * 10 — 30x ROI. 40.0-43.0s. Ground: near black.
+       *
+       * `case.pulsetto.roi`, the same customer as the shot before. It scatters
+       * instead of counting, because a second counter eight frames later would
+       * read as the same shot twice. `pop` is spent here, once, on the payoff.
+       * =================================================================== */
+
+      /** Remotion's random('roi-…-i'), baked. Scatter distance 130px against a
+       *  glyph roughly 180px wide, so no letter can reach its neighbour's slot
+       *  (DO-NOT-DO 61). */
+      const ROI_SCATTER = [
+        { x: -63.282, y: -166.64 },
+        { x: -121.213, y: 18.596 },
+        { x: 29.598, y: 122.847 },
+      ];
+
+      (function scene10() {
+        const S = 1200;
+        const NUMBER_AT = 0, LABEL_AT = 24;
+
+        const root = $('s10');
+        root.className = 'clip';
+        Object.assign(root.style, {
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+        });
+
+        const num = mk(root, 'div', { fontSize: px(350), color: C.white }, 'disp num');
+        const holder = mk(num, 'span', { display: 'inline-block', whiteSpace: 'pre' });
+        Array.from('30x').forEach((ch, i) => {
+          const span = mk(holder, 'span', { display: 'inline-block' });
+          span.textContent = ch;
+          const at = S + NUMBER_AT + i * 2;
+          const off = ROI_SCATTER[i];
+          tl.fromTo(span, { x: off.x, y: off.y, scale: 0.4 },
+            { x: 0, y: 0, scale: 1, duration: F(30), ease: popEase }, F(at));
+          tl.fromTo(span, { opacity: 0 },
+            { opacity: 1, duration: F(5), ease: E.none }, F(at));
+        });
+
+        const label = mk(root, 'div', {
+          marginTop: px(34), fontSize: px(78), color: 'rgba(255,255,255,0.58)',
+        }, 'body eyebrow');
+        textEffect(label, 'ROI', { at: S, start: LABEL_AT, per: 'char', preset: 'blur-slide' });
+      })();
+
+      /* ===================================================================
+       * 11 — THE LOGO AND ONE NEXT STEP. 43.0-48.0s. Ground: dark teal.
+       *
+       * The logo lands at the end and only at the end (DO-NOT-DO 29), and it
+       * wipes on behind a clip that moves the mask and never the mark
+       * (DO-NOT-DO 21). One CTA, no choices.
+       * =================================================================== */
+
+      (function scene11() {
+        const S = 1290;
+        const LOGO_AT = 1, URL_AT = 29, CTA_AT = 53;
+
+        const root = $('s11');
+        root.className = 'clip';
+        Object.assign(root.style, {
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+        });
+
+        const clip = mk(root, 'div', { clipPath: 'inset(0 100% 0 0)' });
+        const mark = mk(clip, 'img', { width: px(760), height: 'auto', display: 'block' });
+        mark.src = 'assets/brand/Outcraft_logo_white.svg';
+        mark.alt = 'Outcraft';
+        tl.fromTo(clip, { clipPath: 'inset(0 100% 0 0)' },
+          { clipPath: 'inset(0 0% 0 0)', duration: F(22), ease: E.swift }, F(S + LOGO_AT));
+
+        const url = mk(root, 'div', {
+          marginTop: px(46), fontWeight: '400', fontSize: px(78),
+          color: 'rgba(255,255,255,0.62)',
+        }, 'body eyebrow');
+        url.style.fontWeight = '400';
+        textEffect(url, 'outcraft.ai', { at: S, start: URL_AT, per: 'char', preset: 'blur-slide' });
+
+        const cta = mk(root, 'div', {
+          marginTop: px(66), padding: '26px 66px', borderRadius: '999px',
+          background: C.purple, color: C.white, fontSize: px(52),
+          letterSpacing: '0.02em', opacity: 0,
+        }, 'body');
+        cta.textContent = 'Book a demo';
+        tl.fromTo(cta, { y: 26, scale: 0.94, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: F(14), ease: E.out }, F(S + CTA_AT));
+      })();
+
+      /* ===================================================================
+       * THE SIX COLOUR CUTS
+       *
+       * Every one runs in the same direction as whatever it is taking off the
+       * frame (DO-NOT-DO 64), every one is placed after the move it is cutting
+       * away from has finished (DO-NOT-DO 44), and not one is made out of a
+       * colour the frame is already wearing (DO-NOT-DO 62).
+       * =================================================================== */
+
+      /* 3 — the purple ground itself splits and parts like a barn door. Drawn
+         in the ground's own colour on purpose: at the frame it fires nothing
+         appears to have been added, and then the picture opens. */
+      (function cut3() {
+        const AT = 345, FRAMES = 15;
+        const halfStyle = {
+          position: 'absolute', left: px(-2), right: px(-2),
+          height: '51%', background: C.purple,
+        };
+        const a = $('cut3a');
+        const b = $('cut3b');
+        Object.assign(a.style, halfStyle, { top: 0 });
+        Object.assign(b.style, halfStyle, { bottom: 0 });
+        /* inOut so the doors are visibly doors, not a frame that blinks. */
+        tl.fromTo(a, { yPercent: 0 }, { yPercent: -102, duration: F(FRAMES), ease: E.inOut }, F(AT));
+        tl.fromTo(b, { yPercent: 0 }, { yPercent: 102, duration: F(FRAMES), ease: E.inOut }, F(AT));
+      })();
+
+      /* 4 — five cream bars shred the black frame in alternating directions
+         and become the cream ground behind them. The most violent cut in the
+         film, and it is used once. */
+      (function cut4() {
+        const AT = 462, COUNT = 5, FRAMES = 10, STEP = 2;
+        const host = $('cut4');
+        const size = 100 / COUNT;
+        for (let i = 0; i < COUNT; i++) {
+          const bar = mk(host, 'div', {
+            position: 'absolute',
+            background: C.cream,
+            left: i * size + '%',
+            top: px(-2),
+            width: size + 0.4 + '%',
+            bottom: px(-2),
+          });
+          /* Alternate bars come from opposite sides, which is what stops it
+             reading as a plain wipe with extra steps. */
+          const dir = i % 2 === 0 ? -1 : 1;
+          tl.fromTo(bar, { yPercent: 105 * dir },
+            { yPercent: 0, duration: F(FRAMES), ease: E.swift }, F(AT + i * STEP));
+        }
+      })();
+
+      /* 5 — a hard indigo edge crosses from the right on an eight-degree
+         slant and stops. It runs right to left, the same way the decision
+         copy is leaving. */
+      (function cut5() {
+        const AT = 588, FRAMES = 12;
+        const p = $('cut5p');
+        /*
+         * THE ONE PLACE THIS PORT DOES NOT COPY THE REMOTION RENDER, AND WHY.
+         *
+         * `PanelWipe` in engine/src/engine/motion/transitions.tsx builds its
+         * transform by blending two strings with
+         *
+         *     a.match(/-?\d+/g)
+         *
+         * On "translate3d(0, -110%, 0)" that regex also matches the 3 in
+         * "translate3d", so the numbers come out as [3, 0, -110, 0] and the
+         * function reads pa[0] and pa[1] — the 3 and the first 0. Both cuts
+         * therefore render a CONSTANT translate3d(3%, 0%, 0): the colour does
+         * not travel at all. It appears whole on the cut frame, sits 3% right
+         * of where it should, and vanishes. Measured off the render, not read
+         * off the code: at frame 1192 the Remotion shutter's leading edge is
+         * already at its landing row, seven frames into a fifteen-frame move.
+         *
+         * Two of the film's ten cuts are affected — cut 5 and cut 9 — and both
+         * are documented in Engine.tsx as moving cuts ("a hard indigo edge
+         * crosses from the right", "a black shutter drops from the top edge
+         * and lands"). Copying that forward would mean knowingly shipping a
+         * broken cut in a new deliverable, so this port performs the move the
+         * source describes, on the source's own curve and frame numbers.
+         *
+         * The box is 2440x1600 — oversized, as the `inset: -260` in the
+         * original intends. It cannot be that in Remotion, because
+         * <AbsoluteFill> forces width and height to 100% and the inset
+         * shorthand only moves the box. So the Remotion panel is frame-sized
+         * and offset, and could never cover the bottom-right corner even if it
+         * did travel. Here a skewed edge never shows a corner of the shot
+         * behind it, which is what the source comment asks for.
+         *
+         * See TRANSLATION_NOTES.md. The Remotion film has the same bug and is
+         * left untouched — that fix is Seyan's call, not this port's.
+         */
+        Object.assign(p.style, {
+          position: 'absolute',
+          top: px(-260), right: px(-260), bottom: px(-260), left: px(-260),
+          background: C.deepIndigo,
+        });
+        tl.fromTo(p, { xPercent: 110, skewY: -8 },
+          { xPercent: 0, skewY: -8, duration: F(FRAMES), ease: E.swift }, F(AT));
+      })();
+
+      /* 7 — a black band irises open out of a slit in the middle. The only cut
+         in the film that grows from a slit, and it reads as the frame taking a
+         breath. inOut, so the band is seen opening. */
+      (function cut7() {
+        const AT = 855, FRAMES = 11;
+        const host = $('cut7');
+        host.style.background = C.nearBlack;
+        host.style.clipPath = 'inset(50% 0 50% 0)';
+        tl.fromTo(host, { clipPath: 'inset(50% 0 50% 0)' },
+          { clipPath: 'inset(0% 0 0% 0)', duration: F(FRAMES), ease: E.inOut }, F(AT));
+      })();
+
+      /* 9 — a black shutter drops from the top edge and lands. */
+      (function cut9() {
+        const AT = 1185, FRAMES = 15;
+        const p = $('cut9p');
+        /* The second of the two cuts that never moved in Remotion. See the
+           long note on cut 5 — this one drops, as its own name says. */
+        Object.assign(p.style, {
+          position: 'absolute',
+          top: px(-260), right: px(-260), bottom: px(-260), left: px(-260),
+          background: C.nearBlack,
+        });
+        tl.fromTo(p, { yPercent: -110 },
+          { yPercent: 0, duration: F(FRAMES), ease: E.swift }, F(AT));
+      })();
+
+      /* 10 — teal ink floods across on a slant, under the logo. A rotated
+         rectangle, not a gradient: the edge must stay hard. The rotation lives
+         on the wrapper so it is applied before the translate, which is the
+         order the Remotion transform string had. */
+      (function cut10() {
+        const AT = 1275, FRAMES = 15, REACH = 2900;
+        const host = $('cut10');
+        host.style.overflow = 'hidden';
+        const rot = $('cut10r');
+        Object.assign(rot.style, {
+          position: 'absolute',
+          left: px(-700), top: px(-700),
+          width: px(REACH), height: px(REACH),
+          transform: 'rotate(-32deg)',
+        });
+        const fill = $('cut10f');
+        Object.assign(fill.style, {
+          position: 'absolute', inset: '0', background: C.darkTeal,
+        });
+        tl.fromTo(fill, { x: -REACH, y: REACH * 0.5 },
+          { x: 0, y: 0, duration: F(FRAMES), ease: E.swift }, F(AT));
+      })();
+
+      /* ===================================================================
+       * SOUND
+       *
+       * Sound is a timeline asset, not a shot asset. Every cue in the film is
+       * one row of the table in tools/cues.mjs, pinned to an absolute frame,
+       * and no scene above contains a line of audio code (DO-NOT-DO 49).
+       *
+       * The <audio> elements themselves are written into the markup by
+       * tools/gen-audio.mjs so the runtime's flat media query finds them
+       * before any script runs. This block only adds their levels.
+       * =================================================================== */
+
+      /* One gain over the whole mix. The cue levels are a balance against each
+         other, not a delivery level. Measured off a render, never assumed
+         (DO-NOT-DO 65). */
+      const MASTER = 1.32;
+
+      (function sound() {
+        /* Which of the three files this render is. Read once — variables do
+           not change mid-render. */
+        const vars =
+          (window.__hyperframes && window.__hyperframes.getVariables
+            ? window.__hyperframes.getVariables()
+            : null) || {};
+        const wantBed = vars.bgm !== false;
+        const wantCues = vars.sfx !== false;
+
+        /* The bed's level follows the film's energy curve, not a flat number.
+           Held around a third so the impacts always have headroom to land. */
+        const BED_F = [0, 20, 90, 240, 345, 462, 600, 708, 780, 866, 1050, 1200, 1275, 1360, 1440];
+        const BED_V = [0, 0.2, 0.24, 0.2, 0.26, 0.3, 0.26, 0.34, 0.2, 0.28, 0.3, 0.26, 0.3, 0.18, 0];
+        const bed = $('bed');
+        if (bed && wantBed) {
+          tl.set(bed, { volume: BED_V[0] * MASTER }, 0);
+          for (let i = 1; i < BED_F.length; i++) {
+            tl.to(bed, {
+              volume: BED_V[i] * MASTER,
+              duration: F(BED_F[i] - BED_F[i - 1]),
+              ease: E.none,
+            }, F(BED_F[i - 1]));
+          }
+        } else if (bed) {
+          tl.set(bed, { volume: 0 }, 0);
+        }
+
+        /* Every cue: flat at its own level with four frames of fade at the
+           tail so a file cut short never clicks. Risers swell in. */
+        (window.__HF_CUES || []).forEach((cue, i) => {
+          const a = $('cue' + i);
+          if (!a) return;
+          if (!wantCues) {
+            tl.set(a, { volume: 0 }, 0);
+            return;
+          }
+          const v = cue.volume * MASTER;
+          if (cue.swell) {
+            tl.fromTo(a, { volume: 0.12 * v },
+              { volume: v, duration: F(cue.swell), ease: E.none }, F(cue.from));
+          } else {
+            tl.set(a, { volume: v }, F(cue.from));
+          }
+          tl.to(a, { volume: 0, duration: F(4), ease: E.none }, F(cue.from + cue.frames - 4));
+        });
+      })();
+
+      /* The one paused timeline, registered under the root's composition id.
+         Last line of build(), so the timeline is never seen half-made. */
+      window.__timelines['engine'] = tl;
+
+      } /* end build() */
+
+      Promise.all([
+        document.fonts.load("700 152px 'Bricolage Grotesque'"),
+        document.fonts.load("600 78px 'Inter'"),
+        document.fonts.load("400 78px 'Inter'"),
+      ])
+        .then(() => document.fonts.ready)
+        .then(build)
+        .catch(build);
+    </script>
+  </body>
+</html>

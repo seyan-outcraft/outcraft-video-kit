@@ -1,0 +1,112 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e16]:
+    - list [ref=e17]:
+      - listitem [ref=e18]:
+        - list [ref=e19]:
+          - listitem [ref=e20]:
+            - list [ref=e21]:
+              - listitem [ref=e22]:
+                - link "Campaigns" [ref=e23] [cursor=pointer]:
+                  - /url: /campaigns
+              - listitem [ref=e26]:
+                - link "Analytics" [ref=e27] [cursor=pointer]:
+                  - /url: /analytics
+              - listitem [ref=e30]:
+                - link "Conversation Intelligence" [ref=e31] [cursor=pointer]:
+                  - /url: /campaigns/304/evaluation
+              - listitem [ref=e34]:
+                - link "Leads Management" [ref=e35] [cursor=pointer]:
+                  - /url: /leads
+          - listitem [ref=e38]:
+            - generic [ref=e39]: Admin Routes
+            - list [ref=e40]:
+              - listitem [ref=e41]:
+                - link "AI Available Actions" [ref=e42] [cursor=pointer]:
+                  - /url: /campaigns/304/actions
+              - listitem [ref=e45]:
+                - link "Debug" [ref=e46] [cursor=pointer]:
+                  - /url: /quick-debug
+              - link "Admin Panel" [ref=e49] [cursor=pointer]:
+                - /url: /admin
+      - listitem [ref=e52]:
+        - 'button "OC Muhtasim Sey... #90" [ref=e55] [cursor=pointer]':
+          - generic [ref=e56]:
+            - generic [ref=e57]: OC
+            - generic [ref=e59]: Muhtasim Sey...
+            - generic [ref=e60]: "#90"
+  - main [ref=e63]:
+    - generic [ref=e65]:
+      - navigation "Tabs" [ref=e70]:
+        - link "Campaigns" [ref=e71] [cursor=pointer]:
+          - /url: /campaigns
+        - link "A/B Tests" [ref=e73] [cursor=pointer]:
+          - /url: /ab-tests
+        - link "Archived" [ref=e75] [cursor=pointer]:
+          - /url: /campaigns/archived
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e80]:
+            - heading "Campaigns" [level=3] [ref=e81]
+            - paragraph [ref=e82]: All your campaigns in one place. Manage, group, and optimise your outreach.
+          - button "Create New" [ref=e84] [cursor=pointer]
+        - generic [ref=e88]:
+          - generic [ref=e89]: Search
+          - searchbox "Search" [ref=e95]
+        - generic [ref=e100]:
+          - generic [ref=e102]:
+            - link "Test Modified 1 week ago 0 Setup Not Completed" [ref=e104] [cursor=pointer]:
+              - /url: /campaigns/1011/onboarding
+              - generic [ref=e106]:
+                - generic [ref=e116]:
+                  - generic [ref=e117]: Test
+                  - generic [ref=e119]: Modified 1 week ago
+                - generic [ref=e122]:
+                  - button "0" [ref=e123]
+                  - generic [ref=e128]: Setup Not Completed
+            - button "Actions" [ref=e134] [cursor=pointer]
+          - generic [ref=e138]:
+            - link "test Modified 1 week ago 0 Setup Not Completed" [ref=e140] [cursor=pointer]:
+              - /url: /campaigns/430/onboarding
+              - generic [ref=e142]:
+                - generic [ref=e152]:
+                  - generic [ref=e153]: test
+                  - generic [ref=e155]: Modified 1 week ago
+                - generic [ref=e158]:
+                  - button "0" [ref=e159]
+                  - generic [ref=e164]: Setup Not Completed
+            - button "Actions" [ref=e170] [cursor=pointer]
+          - generic [ref=e174]:
+            - link "My First Campaign Modified 1 week ago 0 Setup Not Completed" [ref=e176] [cursor=pointer]:
+              - /url: /campaigns/304/onboarding
+              - generic [ref=e178]:
+                - generic [ref=e186]:
+                  - generic [ref=e187]: My First Campaign
+                  - generic [ref=e189]: Modified 1 week ago
+                - generic [ref=e192]:
+                  - button "0" [ref=e193]
+                  - generic [ref=e198]: Setup Not Completed
+            - button "Actions" [ref=e204] [cursor=pointer]
+          - generic [ref=e208]:
+            - link "Test HubSpot Campaign Modified 2 weeks ago 0 Setup Not Completed" [ref=e210] [cursor=pointer]:
+              - /url: /campaigns/1143/onboarding
+              - generic [ref=e212]:
+                - generic [ref=e222]:
+                  - generic [ref=e223]: Test HubSpot Campaign
+                  - generic [ref=e225]: Modified 2 weeks ago
+                - generic [ref=e228]:
+                  - button "0" [ref=e229]
+                  - generic [ref=e234]: Setup Not Completed
+            - button "Actions" [ref=e240] [cursor=pointer]
+  - generic:
+    - status
+  - iframe
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - iframe
+          - iframe [ref=e244]:
+            - button "Open customer support" [ref=f3e4]
+  - generic:
+    - tooltip "Aug 21, 2026 06:28:36 UTC"

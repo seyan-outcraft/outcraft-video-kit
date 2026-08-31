@@ -1,0 +1,56 @@
+- generic [active] [ref=f8e1]:
+  - navigation [ref=f8e16]:
+    - list [ref=f8e17]:
+      - listitem [ref=f8e18]:
+        - list [ref=f8e19]:
+          - listitem [ref=f8e20]:
+            - list [ref=f8e21]:
+              - listitem [ref=f8e22]:
+                - link "Campaigns" [ref=f8e23] [cursor=pointer]:
+                  - /url: /campaigns
+              - listitem [ref=f8e26]:
+                - link "Analytics" [ref=f8e27] [cursor=pointer]:
+                  - /url: /analytics
+              - listitem [ref=f8e30]:
+                - link "Conversation Intelligence" [ref=f8e31] [cursor=pointer]:
+                  - /url: /campaigns/304/evaluation
+              - listitem [ref=f8e34]:
+                - link "Leads Management" [ref=f8e35] [cursor=pointer]:
+                  - /url: /leads
+          - listitem [ref=f8e38]:
+            - generic [ref=f8e39]: Admin Routes
+            - list [ref=f8e40]:
+              - listitem [ref=f8e41]:
+                - link "AI Available Actions" [ref=f8e42] [cursor=pointer]:
+                  - /url: /campaigns/304/actions
+              - listitem [ref=f8e45]:
+                - link "Debug" [ref=f8e46] [cursor=pointer]:
+                  - /url: /quick-debug
+              - link "Admin Panel" [ref=f8e49] [cursor=pointer]:
+                - /url: /admin
+      - listitem [ref=f8e52]
+  - main [ref=f8e54]:
+    - generic [ref=f8e56]:
+      - navigation "Tabs" [ref=f8e62]:
+        - link "Leads" [ref=f8e63] [cursor=pointer]:
+          - /url: leads
+        - link "Campaign Runs" [ref=f8e65] [cursor=pointer]:
+          - /url: lead-campaigns
+        - link "Interactions" [ref=f8e67] [cursor=pointer]:
+          - /url: outreach
+        - link "Handoffs" [ref=f8e69] [cursor=pointer]:
+          - /url: handoffs
+      - generic [ref=f8e72]:
+        - generic [ref=f8e73]:
+          - heading "Leads" [level=3] [ref=f8e74]
+          - paragraph [ref=f8e75]: Browse and manage your leads.
+        - generic [ref=f8e76]:
+          - generic [ref=f8e77]: Campaign id
+          - generic [ref=f8e89]: Selected filters
+          - generic [ref=f8e100]:
+            - button "Review Required 0" [disabled]:
+              - text: Review Required
+              - generic: "0"
+            - button "Add Lead" [ref=f8e103] [cursor=pointer]
+  - generic:
+    - status

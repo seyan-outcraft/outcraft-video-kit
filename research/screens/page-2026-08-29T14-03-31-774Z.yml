@@ -1,0 +1,271 @@
+- generic [active] [ref=f32e1]:
+  - link "Skip to main content" [ref=f32e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f32e4]:
+    - generic [ref=f32e11]:
+      - navigation "Navigation Menu" [ref=f32e21]:
+        - menu [ref=f32e22]:
+          - menuitem "Sign in" [ref=f32e23] [cursor=pointer]
+          - menuitem "FAQ" [ref=f32e24] [cursor=pointer]
+      - generic [ref=f32e31]:
+        - link [ref=f32e34] [cursor=pointer]:
+          - /url: http://outcraft.ai
+        - list [ref=f32e37]:
+          - listitem [ref=f32e38]:
+            - link "For B2B & SaaS" [ref=f32e39] [cursor=pointer]:
+              - /url: https://www.outcraft.ai/solutions/b2b?hsLang=en
+          - listitem [ref=f32e40]:
+            - link "For B2C & E-comm" [ref=f32e41] [cursor=pointer]:
+              - /url: https://www.outcraft.ai/solutions/b2c?hsLang=en
+          - listitem [ref=f32e42]:
+            - link "Resources" [ref=f32e43] [cursor=pointer]:
+              - /url: javascript:;
+            - menuitem "Toggle menu"
+          - listitem [ref=f32e44]:
+            - link "Company" [ref=f32e45] [cursor=pointer]:
+              - /url: https://www.outcraft.ai/company?hsLang=en
+          - listitem [ref=f32e46]:
+            - link "Pricing" [ref=f32e47] [cursor=pointer]:
+              - /url: https://www.outcraft.ai/pricing?hsLang=en
+        - link "Start Free" [ref=f32e51] [cursor=pointer]:
+          - /url: https://app.outcraft.ai/auth/signup
+  - main [ref=f32e55]:
+    - generic [ref=f32e59]:
+      - generic [ref=f32e62]:
+        - generic [ref=f32e67]:
+          - heading "Keep Your Stack. Add An AI Sales Team." [level=1] [ref=f32e68]
+          - paragraph [ref=f32e69]: Connect Outcraft to the tools that already capture leads and customer activity. When a demo request, checkout, payment issue, or customer event happens, Outcraft starts a human-sounding conversation in seconds and writes the outcome back
+        - generic [ref=f32e71]:
+          - link "Start Free" [ref=f32e78] [cursor=pointer]:
+            - /url: https://outcraft.ai/auth/signup
+          - generic [ref=f32e82]: Talk to Outcraft AI
+        - link "Prefer a guided walkthrough? Book a Demo" [ref=f32e97] [cursor=pointer]:
+          - /url: https://www.outcraft.ai/book-a-demo?hsLang=en
+          - text: Prefer a guided walkthrough?
+          - generic [ref=f32e98]: Book a Demo
+      - generic [ref=f32e104]:
+        - paragraph [ref=f32e110]: Trusted by revenue teams at
+        - generic [ref=f32e116]:
+          - img "hume-health-logo" [ref=f32e118]
+          - img "pulsetto_2" [ref=f32e120]
+          - img "Taima_Titanium_logo" [ref=f32e122]
+          - img "omnisend_2" [ref=f32e124]
+          - img "impact-brands-logo-black" [ref=f32e126]
+          - img "kiloverse" [ref=f32e128]
+          - img "gothnrock_2" [ref=f32e130]
+          - img "warmy_2" [ref=f32e132]
+          - img "salesforge" [ref=f32e134]
+      - heading "CRM & sales pipeline" [level=2] [ref=f32e143]
+      - generic [ref=f32e145]:
+        - generic [ref=f32e146]:
+          - img "salesforce_logo" [ref=f32e152]
+          - generic [ref=f32e157]:
+            - heading "SalesForce" [level=3] [ref=f32e158]
+            - paragraph [ref=f32e159]: Integrate Salesforce to trigger campaigns based on CRM events and customer data. Automate follow-ups, nurture leads, and drive sales with Salesforce-powered campaigns.
+          - link "View Integration" [ref=f32e165] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/salesforce?hsLang=en
+        - generic [ref=f32e169]:
+          - img "hubspot_logo" [ref=f32e175]
+          - generic [ref=f32e180]:
+            - heading "HubSpot" [level=3] [ref=f32e181]
+            - paragraph [ref=f32e183]: Utilize HubSpot contact properties changes to automate campaigns based on marketing and sales interactions. Integrate scheduling-links and book meetings with your team live - during calls.
+          - link "View Integration" [ref=f32e189] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/hubspot?hsLang=en
+        - generic [ref=f32e193]:
+          - img "shopify_logo" [ref=f32e199]
+          - generic [ref=f32e204]:
+            - heading "Shopify" [level=3] [ref=f32e205]
+            - paragraph [ref=f32e206]: Integrate Salesforce to trigger campaigns based on CRM events and customer data. Automate follow-ups, nurture leads, and drive sales with Salesforce-powered campaigns.
+          - link "View Integration" [ref=f32e212] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/shopify?hsLang=en
+      - generic [ref=f32e217]:
+        - generic [ref=f32e218]:
+          - img "klaviyo_logo" [ref=f32e224]
+          - generic [ref=f32e229]:
+            - heading "Klaviyo" [level=3] [ref=f32e230]
+            - paragraph [ref=f32e231]: Leverage Klaviyo events to create targeted campaigns that respond to customer interactions, such as email opens, clicks, and purchases.
+          - link "View Integration" [ref=f32e237] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/klaviyo?hsLang=en
+        - generic [ref=f32e241]:
+          - img "attio_logo" [ref=f32e247]
+          - generic [ref=f32e252]:
+            - heading "Attio" [level=3] [ref=f32e253]
+            - paragraph [ref=f32e254]: Connect Attio CRM to trigger campaigns based on customer data and keep your outreach workflow connected to your CRM.
+          - link "View Integration" [ref=f32e260] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/attio?hsLang=en
+        - generic [ref=f32e264]:
+          - img "ms_dynamics_logo" [ref=f32e270]
+          - generic [ref=f32e275]:
+            - heading "Microsoft Dynamics 365" [level=3] [ref=f32e276]
+            - paragraph [ref=f32e278]: Connect Microsoft Dynamics 365 to trigger campaigns based on CRM events and customer data. Automate follow-ups, nurture leads, and drive sales with Dynamics-powered campaigns.
+          - link "View Integration" [ref=f32e284] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/microsoft-dynamics?hsLang=en
+      - generic [ref=f32e289]:
+        - generic [ref=f32e290]:
+          - img "slack_logo" [ref=f32e296]
+          - generic [ref=f32e301]:
+            - heading "Slack" [level=3] [ref=f32e302]
+            - paragraph [ref=f32e304]: Connect Slack to get real time notifications from your campaigns.
+          - link "View Integration" [ref=f32e310] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/slack?hsLang=en
+        - generic [ref=f32e314]:
+          - img "gmail_logo" [ref=f32e320]
+          - generic [ref=f32e325]:
+            - heading "Gmail" [level=3] [ref=f32e326]
+            - paragraph [ref=f32e327]: Connect your email account to allow AI agent to send emails and access email data for better personalization.
+          - link "View Integration" [ref=f32e333] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/gmail?hsLang=en
+        - generic [ref=f32e337]:
+          - img "curl_logo" [ref=f32e343]
+          - generic [ref=f32e348]:
+            - heading "Custom API" [level=3] [ref=f32e349]
+            - paragraph [ref=f32e350]: Integrate with any external system via API to trigger campaigns based on custom events. Choose this if you have your own backend or want to connect a service that is not natively supported.
+          - link "View Integration" [ref=f32e356] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/custom-api?hsLang=en
+      - generic [ref=f32e361]:
+        - generic [ref=f32e362]:
+          - img "ms_outlook_logo" [ref=f32e368]
+          - generic [ref=f32e373]:
+            - heading "Microsoft 365 Outlook" [level=3] [ref=f32e374]
+            - paragraph [ref=f32e375]: Connect your Outlook account to allow the AI agent to send emails, manage follow-ups, and access email data for seamless, personalized communication.
+          - link "View Integration" [ref=f32e381] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/microsoft-365-outlook?hsLang=en
+        - generic [ref=f32e385]:
+          - img "whatsapp_logo" [ref=f32e391]
+          - generic [ref=f32e396]:
+            - heading "WhatsApp" [level=3] [ref=f32e397]
+            - paragraph [ref=f32e398]: Integrate WhatsApp to engage customers directly on their preferred messaging app. Automate real-time, two-way conversational outreach for checkout recovery, support, and updates.
+          - link "View Integration" [ref=f32e404] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/whatsapp?hsLang=en
+        - generic [ref=f32e408]:
+          - img "calendly_logo" [ref=f32e414]
+          - generic [ref=f32e419]:
+            - heading "Calendly" [level=3] [ref=f32e420]
+            - paragraph [ref=f32e421]: Connect Calendly to allow the AI voice agent to check availability, book meetings, and schedule demos directly into your team's calendars in real-time during live calls.
+          - link "View Integration" [ref=f32e427] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/calendly?hsLang=en
+      - generic [ref=f32e432]:
+        - generic [ref=f32e433]:
+          - img "cal_com_logo" [ref=f32e439]
+          - generic [ref=f32e444]:
+            - heading "Cal.com" [level=3] [ref=f32e445]
+            - paragraph [ref=f32e446]: Integrate Cal.com to enable real-time scheduling automation. Let your AI agent seamlessly verify availability and lock in meetings with prospects directly during conversations.
+          - link "View Integration" [ref=f32e452] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/cal-com?hsLang=en
+        - generic [ref=f32e456]:
+          - img "chili_piper_logo" [ref=f32e462]
+          - generic [ref=f32e467]:
+            - heading "Chili Piper" [level=3] [ref=f32e468]
+            - paragraph [ref=f32e469]: Connect Chili Piper to instantly route and book qualified inbound leads with the right representatives live during AI voice interactions, maximizing your inbound pipeline velocity.
+          - link "View Integration" [ref=f32e475] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/chili-piper?hsLang=en
+        - generic [ref=f32e479]:
+          - img "pipedrive_logo" [ref=f32e485]
+          - generic [ref=f32e490]:
+            - heading "Pipedrive" [level=3] [ref=f32e491]
+            - paragraph [ref=f32e492]: Integrate Pipedrive to trigger autonomous revenue workflows based on deal stages and activity changes, keeping your outreach perfectly synchronized with your sales pipeline.
+          - link "View Integration" [ref=f32e498] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/pipedrive?hsLang=en
+      - generic [ref=f32e503]:
+        - generic [ref=f32e504]:
+          - img "checkoutchamp_logo" [ref=f32e510]
+          - generic [ref=f32e515]:
+            - heading "CheckoutChamp" [level=3] [ref=f32e516]
+            - paragraph [ref=f32e517]: Leverage Checkout Champ data to trigger instant, omnichannel campaigns the moment a checkout is abandoned. Turn missed checkout intent into completed purchases and maximize e-commerce revenue.
+          - link "View Integration" [ref=f32e523] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/checkout-champ?hsLang=en
+        - generic [ref=f32e527]:
+          - img "make_logo" [ref=f32e533]
+          - generic [ref=f32e538]:
+            - heading "Make" [level=3] [ref=f32e539]
+            - paragraph [ref=f32e540]: Connect Make.com to build advanced, custom automation workflows between Outcraft AI and your wider software ecosystem to coordinate your revenue engine seamlessly.
+          - link "View Integration" [ref=f32e546] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/make-com?hsLang=en
+        - generic [ref=f32e550]:
+          - img "zapier_logo" [ref=f32e556]
+          - generic [ref=f32e561]:
+            - heading "Zapier" [level=3] [ref=f32e562]
+            - paragraph [ref=f32e563]: Connect Zapier to link Outcraft AI with thousands of external applications. Easily trigger autonomous outreach campaigns from data events happening across your entire tech stack.
+          - link "View Integration" [ref=f32e569] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/zapier?hsLang=en
+      - generic [ref=f32e574]:
+        - generic [ref=f32e575]:
+          - img "zendesk_logo" [ref=f32e581]
+          - generic [ref=f32e586]:
+            - heading "Zendesk" [level=3] [ref=f32e587]
+            - paragraph [ref=f32e588]: Connect Zendesk to sync support ticket metrics with your revenue workflows. Enable your AI agent to handle high-value support interactions, manage churn risks, and resolve issues before they impact revenue.
+          - link "View Integration" [ref=f32e594] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/zendesk?hsLang=en
+        - generic [ref=f32e598]:
+          - img "omnisend_logo" [ref=f32e604]
+          - generic [ref=f32e609]:
+            - heading "Omnisend" [level=3] [ref=f32e610]
+            - paragraph [ref=f32e611]: Leverage Omnisend customer behavior and audience data to orchestrate marketing campaigns with autonomous voice and text outreach, extending your revenue streams beyond traditional email.
+          - link "View Integration" [ref=f32e617] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/omnisend?hsLang=en
+        - generic [ref=f32e621]:
+          - img "monday_logo" [ref=f32e627]
+          - generic [ref=f32e632]:
+            - heading "Monday" [level=3] [ref=f32e633]
+            - paragraph [ref=f32e634]: Connect monday.com to trigger autonomous revenue workflows based on board updates and item status changes. Automate follow-ups, nurture leads, and keep your team's sales and operational pipelines perfectly synchronized with your outreach.
+          - link "View Integration" [ref=f32e640] [cursor=pointer]:
+            - /url: https://www.outcraft.ai/integrations/monday-com?hsLang=en
+      - generic [ref=f32e646]:
+        - generic [ref=f32e651]:
+          - heading "Connect One Tool. Start One Workflow." [level=2] [ref=f32e652]
+          - paragraph [ref=f32e653]: Let Outcraft AI turn every lead into real customer revenue and growth.
+        - link "Start Free" [ref=f32e659] [cursor=pointer]:
+          - /url: https://outcraft.ai/auth/signup
+        - link "Prefer a guided walkthrough? Book a Demo" [ref=f32e668] [cursor=pointer]:
+          - /url: https://www.outcraft.ai/book-a-demo?hsLang=en
+          - text: Prefer a guided walkthrough?
+          - generic [ref=f32e669]: Book a Demo
+  - contentinfo [ref=f32e674]:
+    - generic [ref=f32e678]:
+      - generic [ref=f32e680]:
+        - generic [ref=f32e681]:
+          - link [ref=f32e687] [cursor=pointer]:
+            - /url: /?hsLang=en
+            - img "Outcraft_logo (5) (2)" [ref=f32e688]
+          - paragraph [ref=f32e694]: Outcraft is the AI Sales Team for Inbound Demand - AI sales agents that call, qualify, and convert leads, customers, and at-risk accounts across voice, SMS, email, and WhatsApp.
+          - generic [ref=f32e699]:
+            - generic [ref=f32e700]: SOC 2 · in progress
+            - generic [ref=f32e701]: HIPAA · in progress
+        - generic [ref=f32e702]:
+          - strong [ref=f32e709]: Solutions
+          - navigation "Navigation Menu" [ref=f32e715]:
+            - menu [ref=f32e716]:
+              - menuitem "For B2B SaaS" [ref=f32e717] [cursor=pointer]
+              - menuitem "For B2C & E-commerce" [ref=f32e718] [cursor=pointer]
+              - menuitem "Integrations" [ref=f32e719] [cursor=pointer]
+        - generic [ref=f32e720]:
+          - strong [ref=f32e727]: Resources
+          - navigation "Navigation Menu" [ref=f32e733]:
+            - menu [ref=f32e734]:
+              - menuitem "Success Stories" [ref=f32e735] [cursor=pointer]
+              - menuitem "Blog" [ref=f32e736] [cursor=pointer]
+              - menuitem "Webinars" [ref=f32e737] [cursor=pointer]
+              - menuitem "FAQ" [ref=f32e738] [cursor=pointer]
+              - menuitem "Partner Marketplace" [ref=f32e739] [cursor=pointer]
+        - generic [ref=f32e740]:
+          - strong [ref=f32e747]: Company
+          - navigation "Navigation Menu" [ref=f32e753]:
+            - menu [ref=f32e754]:
+              - menuitem "About" [ref=f32e755] [cursor=pointer]
+              - menuitem "Careers" [ref=f32e756] [cursor=pointer]
+              - menuitem "Pricing" [ref=f32e757] [cursor=pointer]
+              - menuitem "Privacy Policy" [ref=f32e758] [cursor=pointer]
+              - menuitem "Terms of Service" [ref=f32e759] [cursor=pointer]
+              - menuitem "Anti-spam" [ref=f32e760] [cursor=pointer]
+              - menuitem "Data Processing Agreement" [ref=f32e761] [cursor=pointer]
+      - generic [ref=f32e764]:
+        - generic [ref=f32e769]:
+          - link "Follow us on LinkedIn" [ref=f32e770] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/OutcraftAI
+          - link "Follow us on Facebook" [ref=f32e775] [cursor=pointer]:
+            - /url: https://www.facebook.com/OutcraftAI
+          - link "Follow us on X" [ref=f32e780] [cursor=pointer]:
+            - /url: https://x.com/OutcraftAI
+          - link "Follow us on Instagram" [ref=f32e785] [cursor=pointer]:
+            - /url: https://www.instagram.com/OutcraftAI
+        - contentinfo [ref=f32e795]: © 2026 Outcraft AI

@@ -1,0 +1,111 @@
+- generic [active] [ref=f32e1]:
+  - generic [ref=f32e3]:
+    - generic [ref=f32e4]: Exit Setup
+    - generic [ref=f32e11]:
+      - generic [ref=f32e12]: ZZ Research - Video (do not use)
+      - paragraph [ref=f32e13]: Book Appointment
+    - navigation [ref=f32e14]:
+      - list [ref=f32e15]:
+        - listitem [ref=f32e16]:
+          - generic [ref=f32e17]: Company
+          - list [ref=f32e18]:
+            - listitem [ref=f32e19]:
+              - link "Information" [ref=f32e20] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/identity
+            - listitem [ref=f32e23]:
+              - link "Industry" [ref=f32e24] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/industry
+            - listitem [ref=f32e28]:
+              - link "Compliance" [ref=f32e29] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/company/compliance
+        - listitem [ref=f32e32]:
+          - generic [ref=f32e33]: Campaign
+          - list [ref=f32e34]:
+            - listitem [ref=f32e35]:
+              - link "Instructions" [ref=f32e36] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/context
+            - listitem [ref=f32e39]:
+              - link "General Settings" [ref=f32e40] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/general
+            - listitem [ref=f32e43]:
+              - link "Schedule" [ref=f32e44] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/schedule
+            - listitem [ref=f32e47]:
+              - link "Outreach Channels" [ref=f32e48] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/channels
+            - listitem [ref=f32e51]:
+              - link "Booking" [ref=f32e52] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/booking
+            - listitem [ref=f32e55]:
+              - link "Outreach Sequence" [ref=f32e56] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/sequence
+            - listitem [ref=f32e59]:
+              - link "Follow-Ups" [ref=f32e60] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/follow-up-sequence
+            - listitem [ref=f32e63]:
+              - link "Conversation Intelligence" [ref=f32e64] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/campaign/evaluations
+        - listitem [ref=f32e67]:
+          - generic [ref=f32e68]: AI Agent
+          - list [ref=f32e69]:
+            - listitem [ref=f32e70]:
+              - link "Configuration" [ref=f32e71] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/agent
+        - listitem [ref=f32e74]:
+          - generic [ref=f32e75]: Finish
+          - list [ref=f32e76]:
+            - listitem [ref=f32e77]:
+              - link "Review & Launch" [ref=f32e78] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/finish
+        - listitem [ref=f32e81]:
+          - generic [ref=f32e82] [cursor=pointer]: Advanced
+          - list [ref=f32e87]:
+            - listitem [ref=f32e88]:
+              - link [ref=f32e89] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/countries
+            - listitem [ref=f32e93]:
+              - link [ref=f32e94] [cursor=pointer]:
+                - /url: /campaigns/1304/onboarding/overrides
+  - generic [ref=f32e98]:
+    - main [ref=f32e99]:
+      - generic [ref=f32e101]:
+        - generic [ref=f32e108]:
+          - heading "Industry & Market" [level=2] [ref=f32e109]
+          - text: Define your business category and market so agent could tailor the setup to your outreach needs.
+        - generic [ref=f32e112]:
+          - button [ref=f32e114] [cursor=pointer]
+          - generic [ref=f32e124]:
+            - generic [ref=f32e131]:
+              - text: Industry
+              - superscript [ref=f32e132]: "*"
+            - generic [ref=f32e140]:
+              - generic [ref=f32e144]:
+                - text: Company Description
+                - superscript [ref=f32e145]: "*"
+              - textbox "Company Description*" [ref=f32e150]:
+                - /placeholder: Wellness device brand helping customers manage stress, sleep, and relaxation routines.
+            - generic [ref=f32e153]:
+              - generic [ref=f32e154]: Problem You Solve
+              - textbox "Problem You Solve" [ref=f32e162]:
+                - /placeholder: Customers need clear guidance before choosing a wellness device and may need help after checkout.
+            - generic [ref=f32e165]:
+              - generic [ref=f32e166]: Benefits Over Competitors (Differentiators)
+              - textbox "Benefits Over Competitors (Differentiators)" [ref=f32e174]:
+                - /placeholder: Portable device, approachable education, fast customer support, and practical wellness routines.
+            - generic [ref=f32e177]:
+              - generic [ref=f32e178]: Ideal Customer Profile
+              - textbox "Ideal Customer Profile" [ref=f32e186]:
+                - /placeholder: Health-conscious consumers, busy professionals, and customers researching stress or sleep support.
+            - generic [ref=f32e189]:
+              - generic [ref=f32e190]: Frequently Asked Questions (FAQs)
+              - textbox "Frequently Asked Questions (FAQs)" [ref=f32e198]:
+                - /placeholder: "Q: Is the product easy to use?\nA: Yes, setup is designed to be simple.\n\nQ: Can customers get support?\nA: Yes, support can help with product and delivery questions."
+    - generic [ref=f32e202]:
+      - button "Back" [ref=f32e204] [cursor=pointer]
+      - generic [ref=f32e207]:
+        - generic [ref=f32e210]:
+          - button "Test" [disabled]
+        - button "Continue" [ref=f32e211] [cursor=pointer]
+        - button [ref=f32e218] [cursor=pointer]
+  - generic:
+    - status
